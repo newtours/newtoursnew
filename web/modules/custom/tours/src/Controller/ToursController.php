@@ -50,7 +50,20 @@ class ToursController extends ControllerBase {
 //$categories_vocabulary = 'tour_directions';
    
   foreach ($data as $m=>$tour){
-             
+      var_dump(mb_detect_encoding($tour->tour_name));
+      header('Content-Type: text/html; charset=cp1251');
+      echo $tour->tour_name;
+      echo iconv('cp1251', 'UTF-8/IGNORE', $tour->tour_name);exit;
+      //var_dump($tour->tour_name);exit;
+      $string = $tour->tour_name;
+      //$string = str_replace('=', '%', $string);
+      //$string = rawurldecode($string);var_dump($string);
+      //$string = echo iconv('Windows-1251', 'UTF-8/IGNORE', $string);
+      echo $string;exit;
+
+      //setlocale(LC_CTYPE, 'POSIX');
+      //var_dump(iconv("cp1251_general_ci", "UTF-8/IGNORE", $tour->tour_name));exit;
+           var_dump(\Drupal\Component\Utility\Unicode::convertToUtf8($tour->tour_name,'Windows-1251'));  exit;
       $node = \Drupal::entityTypeManager()->getStorage('node')->create(
                  array('type' => 'tours',
                      'title' => $tour->tour_name,
