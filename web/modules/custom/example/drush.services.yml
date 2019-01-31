@@ -1,0 +1,5 @@
+services:
+  example.commands:
+    class: \Drupal\example\Commands\ExampleCommands
+    tags:
+      - { name: drush.command }

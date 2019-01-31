@@ -1,0 +1,11 @@
+## YAML Template.
+---
+wishlist-carousel:
+  version: 1.x
+  css:
+    theme:
+      css/wishlistCarousel.css: {}
+  js:
+    js/wishlistCarousel.js: {}
+  dependencies:
+    - core/jquery

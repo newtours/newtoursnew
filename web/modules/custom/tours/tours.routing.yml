@@ -1,0 +1,25 @@
+
+tours.tours_controller_generate:
+  path: '/tours/list'
+  defaults:
+    _controller: '\Drupal\tours\Controller\ToursController::connectToNewtours'
+    _title: 'Tours Main'
+  requirements:
+    _permission: 'access content'
+    
+tours.tours_controller_update:
+  path: '/tours/update/{table}/{id}'
+  defaults:
+    _controller: '\Drupal\tours\Controller\ToursController::updateFromSource'
+    _title: 'Tours Update'
+  requirements:
+    _permission: 'access content'
+    
+tours.carousel:
+  path: '/tours/carousel'
+  defaults:
+    _controller: '\Drupal\tours\Controller\ToursController::showCarousel'
+    _title: 'Carousel'
+  requirements:
+    _permission: 'access content'
+      

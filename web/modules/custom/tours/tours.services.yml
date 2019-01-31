@@ -1,0 +1,7 @@
+services:
+  tours.twig.extension:
+    class: Drupal\tours\TwigExtension\DefaultTwigExtension
+    arguments: ['@renderer']
+    tags:
+      - { name: twig.extension }
+

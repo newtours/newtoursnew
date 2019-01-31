@@ -1,0 +1,14 @@
+{
+  "name": "drupal/tours",
+  "type": "drupal-module",
+  "description": "Main module to manage tours and output",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/tours",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/tours",
+    "source": "http://cgit.drupalcode.org/tours"
+  },
+  "require": { }
+}
