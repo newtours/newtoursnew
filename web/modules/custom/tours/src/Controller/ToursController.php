@@ -46,13 +46,14 @@ class ToursController extends ControllerBase {
   
   $data = $db->select('tours','t')->fields('t')->execute();
    $result = array();
-   
+   //var_dump($data);exit;
 //$categories_vocabulary = 'tour_directions';
    
   foreach ($data as $m=>$tour){
+      /*
       var_dump(mb_detect_encoding($tour->tour_name));
       header('Content-Type: text/html; charset=cp1251');
-      echo $tour->tour_name;
+      echo $tour->tour_name;exit;
       echo iconv('cp1251', 'UTF-8/IGNORE', $tour->tour_name);exit;
       //var_dump($tour->tour_name);exit;
       $string = $tour->tour_name;
@@ -64,6 +65,8 @@ class ToursController extends ControllerBase {
       //setlocale(LC_CTYPE, 'POSIX');
       //var_dump(iconv("cp1251_general_ci", "UTF-8/IGNORE", $tour->tour_name));exit;
            var_dump(\Drupal\Component\Utility\Unicode::convertToUtf8($tour->tour_name,'Windows-1251'));  exit;
+       * */
+       
       $node = \Drupal::entityTypeManager()->getStorage('node')->create(
                  array('type' => 'tours',
                      'title' => $tour->tour_name,
@@ -77,9 +80,10 @@ class ToursController extends ControllerBase {
                      'field_tour_direction'=>$tour->tour_direction,
                      'field_tour_nights'=>$tour->tour_nnights,
                      'field_tour_nights_remark'=>$tour->tour_nnights_rem,
-                     'field_tour_old_id'=>$tour->tour_rowid,
-                     'field_tour_price_base'=>$tour->tour_price,
-                     'field_tour_short_description'=>$tour->tour_descr,
+                     'field_tour_old_rowid'=>$tour->tour_rowid,
+                     'field_tour_price'=>$tour->tour_price,
+                     'field_tour_descr'=>$tour->tour_descr,
+                     'field_tour_startdate'=>$tour->tour_startdate,
                     // 'field_tour_type'=>$tour->tour_type,
                      'field_tour_date_remark'=>$tour->tour_date_remark,
                      
@@ -88,12 +92,19 @@ class ToursController extends ControllerBase {
       
                $query = \Drupal::service('entity.query')
                                     ->get('node')
-                                    ->condition('field_tour_old_id', $tour->tour_rowid);
+                                    ->condition('field_tour_old_rowid', $tour->tour_rowid);
                 $entity_ids = $query->execute();
-                if ($entity_ids) $node->save($entity_ids); 
-                else $node->save(); 
+                if (count($entity_ids) > 0 ) {
+                    var_dump(count($entity_ids));
+                    $node->save($entity_ids);               
+                } 
+                else {
+                    echo 'New';
+                    $node->save(); 
+                    
+                }
                 $entityArray[] = $entity_ids;
-               
+            exit;   
                
      foreach ($tour as $key=>$value) {
          $result[$m][$key] =$value;
