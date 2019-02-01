@@ -2,6 +2,7 @@ tests/phpunit.xml
 vendor
 box.phar
 drush.phar
+drush.bat
 #The mkdocs output directory.
 site
 #The sami output directories
