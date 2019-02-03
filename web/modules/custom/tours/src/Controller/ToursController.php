@@ -173,7 +173,7 @@ class ToursController extends ControllerBase {
                  // var_dump($tour->tour_rowid);
                   //var_dump($entity_ids);
                   
-                  if ($entity_ids) {
+                  if ($entity_ids) { 
                       
                       $node = \Drupal::entityTypeManager()->getStorage('node')->load(key($entity_ids));
                       
