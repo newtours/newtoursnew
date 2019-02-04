@@ -255,11 +255,23 @@ class ToursController extends ControllerBase {
             // Close external connection
             \Drupal\Core\Database\Database::setActiveConnection();         
             foreach ($data as $m=>$tour){    
-
+/*
                   $query = \Drupal::service('entity.query')
                                     ->get('node')
                                     ->condition('field_direction_rowid', $tour->direction_rowid);
                   $entity_ids = $query->execute();
+ * */
+ 
+                $entity_ids = \Drupal::entityTypeManager()
+                    ->getListBuilder('node')
+                    ->getStorage()
+                    ->loadByProperties([
+                    'type' => 'tour_direction',
+                    'field_direction_rowid' => $tour->direction_rowid,
+                 ]);
+                
+                
+                
 var_dump($entity_ids);
 echo '<br/>';
                   if (count($entity_ids) > 0) {    
