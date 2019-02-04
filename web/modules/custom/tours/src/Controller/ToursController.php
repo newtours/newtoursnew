@@ -261,7 +261,7 @@ class ToursController extends ControllerBase {
                                     ->condition('field_direction_rowid', $tour->direction_rowid);
                   $entity_ids = $query->execute();
  * */
- 
+                // Look https://www.drupal.org/node/2849874        
                 $entity_ids = \Drupal::entityTypeManager()
                     ->getListBuilder('node')
                     ->getStorage()
