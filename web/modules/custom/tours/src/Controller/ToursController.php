@@ -50,28 +50,51 @@ class ToursController extends ControllerBase {
 //$categories_vocabulary = 'tour_directions';
    
   foreach ($data as $m=>$tour){
-      /*
-      var_dump(mb_detect_encoding($tour->tour_name));
-      header('Content-Type: text/html; charset=cp1251');
-      echo $tour->tour_name;exit;
-      echo iconv('cp1251', 'UTF-8/IGNORE', $tour->tour_name);exit;
-      //var_dump($tour->tour_name);exit;
-      $string = $tour->tour_name;
-      //$string = str_replace('=', '%', $string);
-      //$string = rawurldecode($string);var_dump($string);
-      //$string = echo iconv('Windows-1251', 'UTF-8/IGNORE', $string);
-      echo $string;exit;
 
-      //setlocale(LC_CTYPE, 'POSIX');
-      //var_dump(iconv("cp1251_general_ci", "UTF-8/IGNORE", $tour->tour_name));exit;
-           var_dump(\Drupal\Component\Utility\Unicode::convertToUtf8($tour->tour_name,'Windows-1251'));  exit;
-       * */
-       
-      $node = \Drupal::entityTypeManager()->getStorage('node')->create(
-                 array('type' => 'tours',
-                     'title' => $tour->tour_name,
-                     'field_tour_name' => $tour->tour_name,
-                   
+                $query = \Drupal::service('entity.query')
+                                    ->get('node')
+                                    ->condition('field_tour_old_rowid', $tour->tour_rowid);
+                $entity_ids = $query->execute();
+                if (count($entity_ids) > 0 ) {
+                    $node = \Drupal::entityTypeManager()->getStorage('node')->load(key($entity_ids));
+                     $node->title = strip_tags($tour->tour_name);
+                     $node->field_tour_name = $tour->tour_name;                   
+                     $node->field_tour_active = $tour->tour_active;
+                     $node->field_tour_base_link = $tour->tour_link;
+                     $node->field_tour_base_picture = $tour->tour_picture;
+                     $node->field_tour_days = $tour-tour_ndays;
+                     $node->field_tour_days_remark = $tour->tour_ndays_rem;
+                     $node->field_tour_direction = $tour->tour_direction;
+                     $node->field_tour_type = $tour->tour_type;
+                     $node->field_tour_counry = $tour->tour_country;
+                     $node->field_tour_nights = $tour->tour_nnights;
+                     $node->field_tour_nights_remark = $tour->tour_nnights_rem;
+                     $node->field_tour_old_rowid = $tour->tour_rowid;
+                     $node->field_tour_price = $tour->tour_price;
+                     $node->field_tour_descr = $tour->tour_descr;
+                     $node->field_tour_startdate=$tour->tour_startdate;
+                     $node->field_tour_date_01=$tour->tour_m01_days;
+                     $node->field_tour_date_02=$tour->tour_m02_days;
+                     $node->field_tour_date_03=$tour->tour_m03_days;
+                     $node->field_tour_date_04=$tour->tour_m04_days;
+                     $node->field_tour_date_05=$tour->tour_m05_days;
+                     $node->field_tour_date_06=$tour->tour_m06_days;
+                     $node->field_tour_date_07=$tour->tour_m07_days;
+                     $node->field_tour_date_08=$tour->tour_m08_days;
+                     $node->field_tour_date_09=$tour->tour_m09_days;
+                     $node->field_tour_date_10=$tour->tour_m10_days;
+                     $node->field_tour_date_11=$tour->tour_m11_days;
+                     $node->field_tour_date_12=$tour->tour_m12_days;   
+                     $node->field_tour_week_days=$tour->tour_week_days;
+                    //$node->ield_tour_type'=>$tour->tour_type;
+                     $node->field_tour_date_remark=$tour->tour_date_remark;                       
+                                 
+                } 
+                else {
+                $node = \Drupal::entityTypeManager()->getStorage('node')->create(
+                    array('type' => 'tours',
+                     'title' => strip_tags($tour->tour_name),
+                     'field_tour_name' => $tour->tour_name,                   
                      'field_tour_active'=>$tour->tour_active,
                      'field_tour_base_link'=>$tour->tour_link,
                      'field_tour_base_picture'=>$tour->tour_picture,
@@ -84,25 +107,24 @@ class ToursController extends ControllerBase {
                      'field_tour_price'=>$tour->tour_price,
                      'field_tour_descr'=>$tour->tour_descr,
                      'field_tour_startdate'=>$tour->tour_startdate,
+                     'field_tour_date_01'=>$tour->tour_m01_days,
+                     'field_tour_date_02'=>$tour->tour_m02_days,
+                     'field_tour_date_03'=>$tour->tour_m03_days,
+                     'field_tour_date_04'=>$tour->tour_m04_days,
+                     'field_tour_date_05'=>$tour->tour_m05_days,
+                     'field_tour_date_06'=>$tour->tour_m06_days,
+                     'field_tour_date_07'=>$tour->tour_m07_days,
+                     'field_tour_date_08'=>$tour->tour_m08_days,
+                     'field_tour_date_09'=>$tour->tour_m09_days,
+                     'field_tour_date_10'=>$tour->tour_m10_days,
+                     'field_tour_date_11'=>$tour->tour_m11_days,
+                     'field_tour_date_12'=>$tour->tour_m12_days,   
+                     'field_tour_week_days'=>$tour->tour_week_days,
                     // 'field_tour_type'=>$tour->tour_type,
-                     'field_tour_date_remark'=>$tour->tour_date_remark,
-                     
-                     ));
-       
-      
-               $query = \Drupal::service('entity.query')
-                                    ->get('node')
-                                    ->condition('field_tour_old_rowid', $tour->tour_rowid);
-                $entity_ids = $query->execute();
-                if (count($entity_ids) > 0 ) {
-                    var_dump(count($entity_ids));
-                    $node->save($entity_ids);               
-                } 
-                else {
-                    echo 'New';
-                    $node->save(); 
-                    
+                     'field_tour_date_remark'=>$tour->tour_date_remark,                     
+                     ));                                        
                 }
+                $node->save(); 
                 $entityArray[] = $entity_ids;
             exit;   
                
@@ -120,7 +142,17 @@ class ToursController extends ControllerBase {
 
 }
 
-
+    /**
+    * To delete all content
+     * @code
+     *   $result = \Drupal::entityQuery('node')
+     *  ->condition('type', 'tour_direction')
+     *  ->execute();
+     * 
+     *   entity_delete_multiple('node', $result);exit;
+     *  #code_end 
+    * 
+    */
     public function updateFromSource ($table,$id='all')
     {
              
@@ -130,16 +162,137 @@ class ToursController extends ControllerBase {
                 return $this->updateToursTable($id);
                 break;
             case 'dates':
-                
                 return $this->updateDatesTable ( $id );
                 break;
-            case 2:
-                echo "i=2";
+            case 'directions':
+                return $this->updateDiectionsTable ( $id );
                 break;
+            case 'types':
+                return $this->updatetypeTable ( $id );
+                break; 
+            case 'countries':
+                        $list = (\Drupal\Core\Locale\CountryManager::getStandardList());
+                exit;
             default:
                 return 'Nothing did';
             }            
     }
+
+    protected function updateTypeTable ( $id = null )
+    {
+          \Drupal\Core\Database\Database::setActiveConnection('external');
+          $db = \Drupal\Core\Database\Database::getConnection();
+          if (isset($id) && 'null' != $id)  {
+          $data = $db->select('types','t')
+                                ->fields('t')
+                                ->condition('type_rowid',$id, '=')
+                                ->execute();
+          }
+          else {
+          $data = $db->select('types','t')
+                                 ->fields('t')
+                                 ->execute();              
+          }
+            $result = array();
+            // Close external connection
+            \Drupal\Core\Database\Database::setActiveConnection();         
+            foreach ($data as $m=>$tour){    
+
+                  $query = \Drupal::service('entity.query')
+                                    ->get('node')
+                                    ->condition('field_tour_types_rowid', $tour->directiom_rowid);
+                  $entity_ids = $query->execute();
+                  if (count($entity_ids) > 0) {                       
+                     $node = \Drupal::entityTypeManager()->getStorage('node')->load(key($entity_ids));
+                            $node->setTitle($tour->type_name);
+                            $node->field_tour_type_rowid->value =  $tour->type_rowid;
+                            $node->field_tour_type_name->value= $tour->type_name;
+                            $node->field_tour_type_active->value = $tour->type_active;                                                                            
+                  } else {            
+                    $node = \Drupal::entityTypeManager()->getStorage('node')->create(
+                            array(
+                            'type' => 'tour_types',
+                            'title' => strip_tags($tour->type_name),
+                            'field_tour_type_rowid' =>  $tour->type_rowid,
+                            'field_tour_type_name'=> $tour->type_name,
+                            'field_tour_type_name' => $tour->type_active,                                  
+                    
+                     ));
+                  }
+                    $added =  $node->save(); 
+                    $entityArray[$tour->type_rowid] = 'added -  ' . $added;
+            }
+        return array(
+             '#type' => 'markup',
+                '#markup' => $this->t( 'Update Types with id ' . implode(' , ',$entityArray)),
+            );
+    }    
+    
+    protected function updateDiectionsTable ( $id = null )
+    {
+        //DElete multiple
+        /*
+        $result = \Drupal::entityQuery('node')
+            ->condition('type', 'tour_direction')
+            ->execute();      
+            entity_delete_multiple('node', $result);exit;
+        */    
+
+          \Drupal\Core\Database\Database::setActiveConnection('external');
+          $db = \Drupal\Core\Database\Database::getConnection();
+          if (isset($id) && 'null' != $id)  {
+          $data = $db->select('directions','t')
+                                ->fields('t')
+                                ->condition('direction_rowid',$id, '=')
+                                ->execute();
+          }
+          else {
+          $data = $db->select('directions','t')
+                                 ->fields('t')
+                                 ->execute();              
+          }
+            $result = array();
+            // Close external connection
+            \Drupal\Core\Database\Database::setActiveConnection();         
+            foreach ($data as $m=>$tour){    
+
+                  $query = \Drupal::service('entity.query')
+                                    ->get('node')
+                                    ->condition('field_direction_rowid', $tour->direction_rowid);
+                  $entity_ids = $query->execute();
+var_dump($entity_ids);
+echo '<br/>';
+                  if (count($entity_ids) > 0) {    
+                      echo '<br/>Updated' . $tour->direction_rowid . '<br/>';
+                     $node = \Drupal::entityTypeManager()->getStorage('node')->load(key($entity_ids));
+                            $node->setTitle($tour->direction_name);
+                            $node->field_direction_rowid->value =  $tour->direction_rowid;
+                            $node->field_direction_name->value= $tour->direction_name;
+                            $node->field_direction_active->value = $tour->direction_active; 
+                            $added = $node->save($entity_ids);
+                            
+                  } else {
+             echo '<br/>Created' . $tour->direction_rowid . '<br/>';
+                    $node = \Drupal::entityTypeManager()->getStorage('node')->create(
+                            array(
+                            'type' => 'tour_direction',
+                            'title' => strip_tags($tour->direction_name),
+                            'field_direction_rowid' =>  $tour->direction_rowid,
+                            'field_direction_name'=> $tour->direction_name,
+                            'field_direction_active' => $tour->direction_active,                                                     
+                            ));
+                    $added = $node->save();
+                  }
+                    //$added =  (count($entity_ids) > 0) ? $node->save($entity_ids) : $node->save(); 
+                    $entityArray[$tour->direction_rowid] = 'added -  ' . $added;
+            }
+            exit;
+        return array(
+             '#type' => 'markup',
+                '#markup' => $this->t( 'Update Diections with id ' . implode(' , ',$entityArray)),
+            );
+    }
+
     
     protected function updateToursTable ( $id )
     {
@@ -152,7 +305,7 @@ class ToursController extends ControllerBase {
           $db = \Drupal\Core\Database\Database::getConnection();
           if ($id)  {
           $data = $db->select('tours','t')
-                                 ->fields('t')
+                                ->fields('t')
                                 ->condition('tour_rowid',$id, '=')
                                 ->execute();
           }
@@ -163,33 +316,34 @@ class ToursController extends ControllerBase {
           }
             $result = array();
             // Close external connection
-                 \Drupal\Core\Database\Database::setActiveConnection();      
+            \Drupal\Core\Database\Database::setActiveConnection();      
         foreach ($data as $m=>$tour){
-            
+    //var_dump($tour);        
                   $query = \Drupal::service('entity.query')
                                     ->get('node')
-                                    ->condition('field_tour_old_id', $tour->tour_rowid);
+                                    ->condition('field_tour_old_rowid', $tour->tour_rowid);
                   $entity_ids = $query->execute();
-                 // var_dump($tour->tour_rowid);
-                  //var_dump($entity_ids);
+                  //var_dump($tour->tour_rowid);
+                 // var_dump($entity_ids);
                   
                   if ($entity_ids) { 
                       
                       $node = \Drupal::entityTypeManager()->getStorage('node')->load(key($entity_ids));
-                      
+  
                                  //$node->setTitle($tour->tour_name);
-                                 $node->field_tour_name->value = $tour->tour_name;
-                  
-                                  $node->field_tour_active->value=$tour->tour_active;
+                                 $node->field_tour_name->value =  $tour->tour_name;
+                                 $node->field_tour_active->value= $tour->tour_active;
+                                 $node->field_tour_price->value = $tour->tour_price;
+                                 $node->field_tour_descr->value = $tour->tour_descr ;                                 
                                   $node->field_tour_base_link->value = $tour->tour_link;
                                   $node->field_tour_base_picture->value = $tour->tour_picture;
                                    $node->field_tour_days->value   =$tour->tour_ndays;
-                                    $node->field_tour_days_remark->value=$tour->tour_ndays_rem;
+                                    $node->field_tour_days_old_remarks->value=$tour->tour_ndays_rem;
                                    $node->field_tour_direction->value=$tour->tour_direction;
                                    $node->field_tour_nights->value=$tour->tour_nnights;
-                                   $node->field_tour_nights_remark->value=$tour->tour_nnights_rem;
-                                   $node->field_tour_old_id->value =$tour->tour_rowid;
-                                   $node->field_tour_price_base->value =$tour->tour_price;
+                                   $node->field_tour_nights_old_remark->value=$tour->tour_nnights_rem;
+                                   //$node->field_tour_old_rowid->value =$tour->tour_rowid; // No need refresh
+
                                    $node->field_tour_short_description->value = $tour->tour_descr;
                                     // 'field_tour_type'=>$tour->tour_type,
                                    $node->field_tour_date_remark->value = $tour->tour_date_remark;
@@ -203,18 +357,17 @@ class ToursController extends ControllerBase {
                             array('type' => 'tours',
                                     'title' => $tour->tour_name,
                                     'field_tour_name' => $tour->tour_name,
-                   
+                                    'field_tour_price->value' => $tour->tour_price,                   
                                     'field_tour_active'=>$tour->tour_active,
                                     'field_tour_base_link'=>$tour->tour_link,
                                     'field_tour_base_picture'=>$tour->tour_picture,
                                     'field_tour_days'=>$tour->tour_ndays,
-                                    'field_tour_days_remark'=>$tour->tour_ndays_rem,
+                                    'field_tour_days_old_remarks'=>$tour->tour_ndays_rem,
                                     'field_tour_direction'=>$tour->tour_direction,
                                     'field_tour_nights'=>$tour->tour_nnights,
-                                    'field_tour_nights_remark'=>$tour->tour_nnights_rem,
-                                    'field_tour_old_id'=>$tour->tour_rowid,
-                                    'field_tour_price_base'=>$tour->tour_price,
-                                    'field_tour_short_description'=>$tour->tour_descr,
+                                    'field_tour_nights_old_remark'=>$tour->tour_nnights_rem,
+                                    'field_tour_old_rowid'=>$tour->tour_rowid,                                   
+                                    'field_tour_descr'=>$tour->tour_descr,
                                     // 'field_tour_type'=>$tour->tour_type,
                                     'field_tour_date_remark'=>$tour->tour_date_remark,                    
                      ));
@@ -255,10 +408,11 @@ class ToursController extends ControllerBase {
                                  ->execute();              
           }
             $result = array();
-            
-                        // Close external connection
-                 \Drupal\Core\Database\Database::setActiveConnection();      
+            //var_dump($data);exit;
+            // Close external connection
+            \Drupal\Core\Database\Database::setActiveConnection();      
             foreach ($data as $m=>$tour){
+                // var_dump($tour);exit;
                 $tour->new_tour_id = NULL;
                 $TourDateTime = NULL;
                 $newTourDateString = NULL;
@@ -266,7 +420,7 @@ class ToursController extends ControllerBase {
             // Check for nid in main tours content
                   $query = \Drupal::service('entity.query')
                                     ->get('node')
-                                    ->condition('field_tour_old_id', $tour->td_tour);
+                                    ->condition('field_tour_old_rowid', $tour->td_tour);
                   $entity_ids = $query->execute();
                   
                   if(!$entity_ids) return  array(
@@ -279,7 +433,7 @@ class ToursController extends ControllerBase {
                   $newTourDateString = $TourDateTime->format('Y-m-d\TH:i:s');
                     // Check if record alredy exist 
                   var_dump($newTourDateString);
-                  
+    exit;              
                   $query = \Drupal::service('entity.query')
                                     ->get('node')
                                     ->condition('field_tour_date_old_tour_rowid', $tour->td_tour)  
