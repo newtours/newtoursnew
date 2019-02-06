@@ -14,6 +14,13 @@ use  \Drupal\Core\Datetime\DrupalDateTime;
  */
 class ToursController extends ControllerBase {
 
+
+
+
+
+
+
+
   /**
    * Generate.
    *
@@ -165,7 +172,7 @@ class ToursController extends ControllerBase {
                 return $this->updateDatesTable ( $id );
                 break;
             case 'directions':
-                return $this->updateDiectionsTable ( $id );
+                return $this->updateDirectionsTable ( $id );
                 break;
             case 'types':
                 return $this->updatetypeTable ( $id );
@@ -228,7 +235,7 @@ class ToursController extends ControllerBase {
             );
     }    
     
-    protected function updateDiectionsTable ( $id = null )
+    protected function updateDirectionsTable ( $id = null )
     {
         //DElete multiple
         /*

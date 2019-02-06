@@ -1,0 +1,14 @@
+
+toursdata.tours_data_controller_updateData:
+  path: '/toursdata/update/{table}/{id}'
+  defaults:
+    _controller: '\Drupal\toursdata\Controller\ToursDataController::updateFromSource'
+    _title: 'ToursDataController'
+    table: NULL
+    id: 'all'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    #_permission: 'access content'
+  options:
+    no_cache: 'TRUE'
+

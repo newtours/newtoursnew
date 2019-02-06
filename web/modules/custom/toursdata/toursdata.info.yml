@@ -1,0 +1,5 @@
+name: 'ToursData'
+type: module
+description: 'Admin Tours Data'
+core: 8.x
+package: 'Custom'

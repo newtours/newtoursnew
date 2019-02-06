@@ -1,0 +1,14 @@
+{
+  "name": "drupal/toursdata",
+  "type": "drupal-module",
+  "description": "Admin Tours Data",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/toursdata",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/toursdata",
+    "source": "http://cgit.drupalcode.org/toursdata"
+  },
+  "require": { }
+}
