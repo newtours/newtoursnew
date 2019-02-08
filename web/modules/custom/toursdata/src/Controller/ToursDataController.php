@@ -355,7 +355,7 @@ exit;
             // Close external connection
             \Drupal\Core\Database\Database::setActiveConnection();
         }
-var_dump($tour_rowid);
+
         // Avoid duplicate entries in tour_dates entity table. Key here is $tour_rowid, not $entity
         if ($start) {
             $entityIdsArray = $this->entityTypeManager()
@@ -385,7 +385,6 @@ var_dump($tour_rowid);
                         $dates = explode(',', $data);
                         if (count($dates) > 0) {
                             foreach ($dates as $date) {
-                                echo '308 ' .$date .'=>>>> ';
                                 $suffix = '';
                                 $prefix = '';
                                 $int = (int)filter_var($date, FILTER_SANITIZE_NUMBER_INT);
@@ -403,7 +402,8 @@ var_dump($tour_rowid);
                                             'field_tour_date' => $tourDateString,
                                             'field_tour_date_old_tour_rowid' => $tour_rowid,
                                             'field_tour_date_suffix' => $suffix,
-                                            'field_tour_date_prefix' => $prefix
+                                            'field_tour_date_prefix' => $prefix,
+                                                'field_tour_date_generated_from' => 'Date string array  of ' . $month
                                             ]
                                         ]);
 
@@ -416,7 +416,7 @@ var_dump($tour_rowid);
                                     if (!empty($date)) {
                                         $dateArrays = [];
                                         $date = strtolower($date);
-echo '420 ' .$date .'=>>>> ';
+//echo '420 ' .$date .'=>>>> ';
                                         foreach($this->_weekArray as $weekArrayKey=>$weekArrayValue) {
                                             if (false !== strpos($date,strtolower($weekArrayKey))) {
                                                 echo ($weekArrayValue) . ' ';
@@ -441,7 +441,8 @@ echo '420 ' .$date .'=>>>> ';
                                                 'field_tour_date' => $weekDay,
                                                 'field_tour_date_old_tour_rowid' => $tour_rowid,
                                                 'field_tour_date_suffix' => $suffix,
-                                                'field_tour_date_prefix' => $prefix
+                                                'field_tour_date_prefix' => $prefix,
+                                                'field_tour_date_generated_from' => 'String  ' . $dateOfArray->format('l'). ' of ' .$month
                                             ]
                                         ]);//var_dump($nodeId);
                                         if ($nodeId) {
@@ -454,26 +455,27 @@ echo '420 ' .$date .'=>>>> ';
                         }
                     }
                 } else {
-                    $weekdays = explode(',',$value);
+                    $weekdays = explode(',',$value);var_dump($weekdays);
                     foreach($weekdays as $wValue) {
-                        //var_dump($year);
+                        //var_dump($wValue);
                         for($i=1;$i<13; $i++) {
                             $month = ($i < 10) ? '0'.$i : $i;
-                            //var_dump($month);
+                            var_dump($month);
                             $wValue = ($wValue == 7) ? 0 : $wValue;
                             $dateArrays = $this->getAllDaysInAMonth($year, $month, $this->_weekDays[$wValue]);
-                            //var_dump($dateArrays);
+                            //var_dump($wValue);exit;
                             if (isset($dateArrays)) {
                                 foreach ($dateArrays as $dateOfArray) {
                                     echo($dateOfArray->format('Y-m-d')) . '<br/>';
                                     $weekDay = $dateOfArray->format('Y-m-d');
                                     $nodeId = $this->_createDateNode([
-                                        $entity => ['title' => $tour_rowid . ' @' . $weekDay,
+                                        $entity => ['title' => $wValue . '-'.$dateOfArray->format('l') . ' '.$tour_rowid . ' @' . ' ' . $weekDay,
                                             'type' => 'tour_dates',
                                             'field_tour_date' => $weekDay,
                                             'field_tour_date_old_tour_rowid' => $tour_rowid,
                                             'field_tour_date_suffix' => $suffix,
-                                            'field_tour_date_prefix' => $prefix
+                                            'field_tour_date_prefix' => $prefix,
+                                            'field_tour_date_generated_from' => 'Week day   ' . $dateOfArray->format('l')
                                         ]
                                     ]);
                                     if ($nodeId) {
