@@ -7,6 +7,14 @@ use Drupal\taxonomy\Entity\Term;
 use \Drupal\node\Entity\Node;
 use  \Drupal\Core\Datetime\DrupalDateTime;
 
+
+
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Entity\EntityManagerInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Database\Database;
+
 /**
  * Class ToursController.
  *
@@ -16,33 +24,115 @@ class ToursController extends ControllerBase {
 
 
 
+    /**
+     * Constructs a new ToursDataController object.
+     */
+    public function __construct(EntityManagerInterface $entity_manager, ContainerAwareInterface $entity_query, EntityTypeManagerInterface $entity_type_manager) {
+        $this->entityManager = $entity_manager;
+        $this->entityQuery = $entity_query;
+        $this->entityTypeManager = $entity_type_manager->getListBuilder('node')
+            ->getStorage();
 
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    public static function create(ContainerInterface $container) {
+        return new static(
+            $container->get('entity.manager'),
+            $container->get('entity.query'),
+            $container->get('entity_type.manager')
+        );
+    }
 
+  public function showTourList()
+  {
+      $toursEntity = $this->entityTypeManager()
+          ->loadByProperties([
+              'type' => 'tours'
+          ]);
+      if (0 == count($toursEntity)){
+          $markDataEmpty = 'Tours Table is empty';
+      }
+      foreach ($toursEntity as $key=>$value) {
 
+          $tours[$key] = [
+              'tour_rowid'=>$value->field_tour_old_rowid->value,
+              'tour_name'=>$value->field_tour_name->value,
+              'tour_link'=> $value->field_tour_base_link->value,
+              'tour_image'=> $value->field_tour_base_picture->value,
+              'tour_days'=> $value->field_tour_days->value,
+              //'tour_dates'=> $value->field_tour_days->value,
+              //'tour_prices'=> $value->field_tour_days->value,
+          ];
+      }
+//var_dump($types);exit;
 
-  /**
-   * Generate.
-   *
-   * @return string
-   *   Return Hello string.
-   */
-  public function generate() {
-    return [
-      '#type' => 'markup',
-      '#markup' => $this->t('Implement method: generate')
-    ];
+      return [
+          //'#type' => 'markup',
+          '#theme' => 'tours_list',
+          '#tours_data'=> isset($tours) ? $tours : NULL,
+          '#attached' => [
+              'library' => [
+                  'tours/respTable',
+                  //'tours/wishlist-carousel',
+                  //'core/drupal.dialog.ajax'
+                ],
+              'drupalSettings' => [
+                  'tourData' => 'test',
+                ]
+              ],
+          //'#markup' => '',
+      ];
   }
-  
-    public function showList( $id ) {
- 
-    return array(
-      '#theme' => 'tours_list',
-      '#test_var' => $this->t('Test Value'),
-    );
- 
-  }
-  
+
+
+   public function showTourDates ($list = null,$date = NULL)
+   {
+       $datesEntity = $this->entityTypeManager()
+           ->loadByProperties([
+               'type' => 'tour_dates',
+               'field_tour_date_tour' => $list,
+           ]);
+       if (0 == count($datesEntity)){
+           $markDataEmpty = 'Date Table is empty';
+       }
+       $tour = $this->entityTypeManager->load($list);
+       $tourName = $tour->field_tour_name->value;
+       $tourDays = $tour->field_tour_days->value;
+       foreach ($datesEntity as $key=>$value) {
+           $dates[$key] = [
+           'dates_tour'=>$value->field_tour_date_tour->target_id,
+               'date_date'=>$value->field_tour_date->value,
+               'date_suffix'=>$value->field_tour_date_suffix->value,
+               'date_prefix'=>$value->field_tour_date_prefix->value,
+               'dates_tour_rowid'=>$value->field_tour_date_old_tour_rowid->value,
+               'date_remark'=>$value->field_tour_date_remark->value,
+               'date_generated'=>$value->field_tour_date_generated_from->value,
+
+               ];
+       }
+
+//var_dump($datesEntity);exit;
+       return [
+           //'#type' => 'markup',
+           '#theme' => 'tours_list',
+           '#dates_data'=> isset($dates) ? $dates : NULL,
+           '#table_title'=>['name'=>$tourName, 'days'=>$tourDays],
+           '#attached' => [
+               'library' => [
+                   'tours/respTable',
+                   //'tours/wishlist-carousel',
+                   //'core/drupal.dialog.ajax'
+               ],
+               'drupalSettings' => [
+                   'tourData' => 'test',
+               ]
+           ],
+           //'#markup' => '',
+       ];
+   }
   public function connectToNewtours() {
 
       //$node = \Drupal::entityTypeManager()->getStorage('node')->create(array('type' => 'tours', 'title' => 'Another node'));

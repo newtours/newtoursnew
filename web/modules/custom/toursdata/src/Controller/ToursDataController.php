@@ -356,17 +356,18 @@ class ToursDataController extends ControllerBase {
 
             }
 
-            echo '<br/><br/>';
-            var_dump($entityArray);
+            //echo '<br/><br/>';
+            //var_dump($entityArray);
 
-exit;
+//exit;
         }
 
         //  \Drupal\Core\Database\Database::setActiveConnection();
         //var_dump($entityArray);exit  ;
+        $resShow = implode(',',$entityArray);
         return array(
             '#type' => 'markup',
-            '#markup' => $this->t( 'Update tours with id '),
+            '#markup' => $this->t( 'Update tours with id ' . $resShow),
         );
 
     }

@@ -23,11 +23,19 @@ function tours_help($route_name, RouteMatchInterface $route_match) {
   }
 }
 
-function tourst_twig_theme($existing, $type, $theme, $path) {
+function tours_theme($existing, $type, $theme, $path) {
   return array(
-    'tours_list' => array(
-      'variables' => array('tour_list' => NULL),
-    ),
+    'tours_list' => [
+        'variables' => [
+            'tours_data'=>NULL,
+            'empty_data' => NULL,
+            'dates_data'=>NULL,
+            'price_data'=>NULL,
+            'header'=> NULL,
+            'table_title'=> NULL
+        ],
+
+    ],
       'wishlist_carousel' => [
           
       ]

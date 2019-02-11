@@ -1,5 +1,18 @@
 ## YAML Template.
----
+respTable:
+  js:
+    js/tourTable.js: {}
+    https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js: { type: external, minified: true }
+    https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js: { type: external, minified: true }
+    https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js: { type: external, minified: true }
+  css:
+     theme:
+       https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css: {type: external}
+       https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css: {type: external}
+
+  dependencies:
+    - core/jquery
+
 wishlist-carousel:
   version: 1.x
   css:
@@ -9,3 +22,4 @@ wishlist-carousel:
     js/wishlistCarousel.js: {}
   dependencies:
     - core/jquery
+

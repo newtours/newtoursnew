@@ -9,6 +9,7 @@ base theme: bootstrap_barrio
 libraries:
   - newt/bootstrap_cdn
   - newt/global-styling
+#  - newt/respTable
 
 regions:
   top_header: 'Top Header'

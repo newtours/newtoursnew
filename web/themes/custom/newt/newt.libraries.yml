@@ -29,3 +29,4 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
+

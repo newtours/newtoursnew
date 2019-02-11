@@ -1,9 +1,21 @@
 
-tours.tours_controller_generate:
+tours.tours_controller_list:
   path: '/tours/list'
   defaults:
-    _controller: '\Drupal\tours\Controller\ToursController::connectToNewtours'
+ #   _controller: '\Drupal\tours\Controller\ToursController::connectToNewtours'
+    _controller: '\Drupal\tours\Controller\ToursController::showTourList'
     _title: 'Tours Main'
+  requirements:
+    _permission: 'access content'
+
+tours.tours_controller_dates:
+  path: '/dates/{list}/{date}'
+  defaults:
+ #   _controller: '\Drupal\tours\Controller\ToursController::connectToNewtours'
+    _controller: '\Drupal\tours\Controller\ToursController::showTourDates'
+    _title: 'Tours Main'
+    list: NULL
+    date: NULL
   requirements:
     _permission: 'access content'
     

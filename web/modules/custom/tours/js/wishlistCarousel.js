@@ -13,7 +13,7 @@
 (function(){
   $('.carousel-showmanymoveone .item').each(function(){
     var itemToClone = $(this);
-
+console.log("tttttt");
     for (var i=1;i<4;i++) {
       itemToClone = itemToClone.next();
 
