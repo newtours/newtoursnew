@@ -7,7 +7,7 @@
 #/web/profiles/contrib/
 #/web/libraries/
  nbproject/
-
+/config/sync
 
 # Ignore sensitive information
 /web/sites/*/settings.php
