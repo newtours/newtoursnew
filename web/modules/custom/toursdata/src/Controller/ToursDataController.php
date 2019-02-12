@@ -101,22 +101,28 @@ class ToursDataController extends ControllerBase {
                 $return = $this->_updateAllTables($id);
                 break;
             case 'tours':
-                return $this->_updateToursTable($id);
+                $return = $this->_updateToursTable($id);
                 break;
             case 'dates':
-                return $this->updateDatesTable ( $id );
+                $return =  $this->updateDatesTable ( $id );
                 break;
             case 'directions':
-                return $this->_updateDirectionsTable ( $id );
+                $return =  $this->_updateDirectionsTable ( $id );
                 break;
             case 'places':
-                return $this->_updatePlacesTable ( $id );
+                $return =  $this->_updatePlacesTable ( $id );
                 break;
             case 'types':
-                return $this->_updateTypesTable ( $id );
+                $return =  $this->_updateTypesTable ( $id );
                 break;
             case 'districts':
-                return $this->_updateDistrictsTable($id);
+                $return =  $this->_updateDistrictsTable($id);
+                break;
+            case 'boarding':
+                $return =  $this->_updateBoardingPlacesTime($id);
+                break;
+            case 'prices':
+                $return = $this->_updatePricesTabel($id);
                 break;
             case 'countries':
                 $list = (\Drupal\Core\Locale\CountryManager::getStandardList());
@@ -126,12 +132,18 @@ class ToursDataController extends ControllerBase {
                 //print_r($list['US']);
                 exit;
             default:
-                return 'Nothing did';
+                $return =  'Nothing did';
 
+        }
+        if (is_array($return)) {
+            $result = [];
+            foreach ($return as $key=>$value) {
+                $result .= $key . '=>' . $value. '<br/>';
+            }
         }
         return [
             '#type' => 'markup',
-            '#markup' => $this->t('Implement method: updateData')
+            '#markup' => $result
         ];
     }
 
@@ -361,10 +373,10 @@ class ToursDataController extends ControllerBase {
 
 //exit;
         }
-
+        return $entityArray;
         //  \Drupal\Core\Database\Database::setActiveConnection();
         //var_dump($entityArray);exit  ;
-        $resShow = implode(',',$entityArray);
+        //$resShow = implode(',',$entityArray);
         return array(
             '#type' => 'markup',
             '#markup' => $this->t( 'Update tours with id ' . $resShow),
@@ -699,6 +711,7 @@ class ToursDataController extends ControllerBase {
             $entityArray[$tour->type_rowid] = 'added -  ' . $added;
 
         }
+        return $entityArray;
         return array(
             '#type' => 'markup',
             '#markup' => $this->t( 'Update Types with id ' . implode(' , ',$entityArray)),
@@ -741,6 +754,7 @@ class ToursDataController extends ControllerBase {
                 $node->field_district_active->value = $tour->district_active;
 
                 $node->save($entity_ids);
+                $entityArray[$node->id()] = $tour->district_name;
             } else {
                 $node = $this->entityTypeManager()->create(
                     [
@@ -751,9 +765,11 @@ class ToursDataController extends ControllerBase {
                         'field_place_active' => $tour->place_active,
                     ]);
                 $node->save($entity_ids);
+                $entityArray[$node->id()] = $tour->district_name;
             }
 
         }
+        return $entityArray;
         return array(
             '#type' => 'markup',
             '#markup' => $this->t( 'Update Types with id '),
@@ -800,6 +816,7 @@ class ToursDataController extends ControllerBase {
                 $node->field_tour_type_active->value = $tour->type_active;
 
                 $node->save($entity_ids);
+                $entityArray[$node->id()] = $tour->type_name;
             } else {
                 $node = $this->entityTypeManager()->create(
                     [
@@ -810,9 +827,11 @@ class ToursDataController extends ControllerBase {
                         'field_tour_type_active' => $tour->type_active,
                     ]);
                 $node->save($entity_ids);
+                $entityArray[$node->id()] = $tour->type_name;
             }
 
         }
+        return $entityArray;
         return array(
             '#type' => 'markup',
             '#markup' => $this->t( 'Update Types with id '),
@@ -859,6 +878,7 @@ class ToursDataController extends ControllerBase {
                 $node->field_direction_active->value = $tour->direction_active;
 
                 $node->save($entity_ids);
+                $entityArray[$node->id()] = $tour->direction_name;
             } else {
                 $node = $this->entityTypeManager()->create(
                     [
@@ -869,9 +889,11 @@ class ToursDataController extends ControllerBase {
                         'field_direction_active' => $tour->direction_active,
                     ]);
                 $node->save($entity_ids);
+                $entityArray[$node->id()] = $tour->direction_name;
             }
 
         }
+        return $entityArray;
         return array(
             '#type' => 'markup',
             '#markup' => $this->t( 'Update Directions with id '),
@@ -905,102 +927,244 @@ class ToursDataController extends ControllerBase {
      * @param bool $start
      * @param bool $external
      */
-    protected function _updatePricesTabel ($entity, $tour_rowid, array $ids, $start = true, $external = false)
+    protected function _updatePricesTabel ($tour_rowid = null)
     {
-        // Drafted Below using if need export from external tour_dates table, $entity - td_rowid !!!!!
-        if ($external) {
-            $db = $this->_setExternalConnection();
-            if ($entity) {
-                $data = $db->select('tour_prices', 't')
+        $db = $this->_setExternalConnection();
+         if ($tour_rowid) {
+            $data = $db->select('tours', 't')
                     ->fields('t')
-                    ->condition('tprice_rowid', $entity, '=')
+                    ->condition('tour_rowid', $tour_rowid, '=')
                     ->execute();
+
             } else {
-                $data = $db->select('tour_dprices', 't')
+                $data = $db->select('tours', 't')
                     ->fields('t')
                     ->execute();
-            }
-            // Close external connection
-            \Drupal\Core\Database\Database::setActiveConnection();
-        }
+         }
+         \Drupal\Core\Database\Database::setActiveConnection();
 
-        $entityIdsArray = $this->entityTypeManager()
+        // Load Tours Entities
+        $tours_ent_ids = $this->entityTypeManager()
             ->loadByProperties([
-                'type' => 'tour_prices',
-                'field_tour_price_tour_rowid' => $tour_rowid,
+                'type' => 'tours'
             ]);
-
-        // Avoid duplicate entries in tour_dates entity table. Key here is $tour_rowid, not $entity
-        // But for prices this is not needed, usually
-        if ($start) {
-            if (count($entityIdsArray)) {
-                $this->entityTypeManager()->delete($entityIdsArray);
-            }
+        if (0 == count($tours_ent_ids)){
+            return ['Tours  not exists, need insert it first'];
         }
+        foreach ($tours_ent_ids as $key=>$value) {
+            $tours[$value->field_tour_old_rowid->value]  = $key;
+        }
+        // Check if single tour_rowid and entity exists
+        if ($tour_rowid && !isset($tours[$tour_rowid])) {
+            return ['Tour ' .$tour_rowid . ' Not Created Yet'] ;
+        }
+
+        //var_dump($tours);exit;
+        foreach($data as $m=>$tour) {
+            $entityId = $tours[$tour->tour_rowid];
+            if(isset($entityId)) {
+                $prices_ent_ids = $this->entityTypeManager()
+                    ->loadByProperties([
+                        'type' => 'tour_prices',
+                        'field_tour_price_tour' => $entityId,
+                    ]);
+             if (count($prices_ent_ids) > 0 ) {
+                 $nodeKey = key($prices_ent_ids); // this is node Id
+                 $node = $prices_ent_ids[$nodeKey];
+                 $node->setTitle('Prices for '.strip_tags($tour->tour_name));
+
+                 $node->field_tour_main_price->value = $tour->tour_price;
+                 $node->field_tour_old_price->value  =  $tour->tour_old_price;
+                 $node->field_tour_price_3->value    = $tour->tour_price_disc_3;
+                 $node->field_tour_price_4->value    = $tour->tour_price_disc_4;
+                 $node->field_tour_price_flight->value = $tour->tour_price_flight;
+                 $node->field_tour_price_without_flight->value = $tour->tour_price_without_flight;
+                 $node->field_tour_price_kids->value   = $tour->tour_price_kids;
+                 $node->field_tour_price_prefix->value = $tour->tour_price_prefix;
+                 $node->field_tour_price_promo->value   = $tour->tour_price_promo;
+                 $node->field_tour_price_single->value  = $tour->tour_price_single;
+                 $node->field_tour_price_suffix->value  = $tour->tour_price_suffix;
+                 $node->field_tour_price_teen->value   = $tour->tour_price_teen;
+                 $node->field_tour_price_lux = $tour->tour_price_lux;
+                 $node->field_tour_price_tour_rowid->value = $tour->tour_rowid;
+                 $node->field_tour_price_tour->target_id = $entityId;
+
+                 $added =  $node->save($nodeKey);
+                 if (2 == $added) {
+                     $entityArray[$tour->tour_rowid] = 'edited -  ' . $node->id();
+                     if ($node->id() != $nodeKey) return 'Updated incorrect entity ' . $nodeKey . ' to ' .$node->id();
+                 }
+             } else {
+                 $node = $this->entityTypeManager()->create(
+                     ['type' => 'tour_prices',
+                        'title'=>'Prices for '.strip_tags($tour->tour_name),
+                         'field_tour_main_price' => $tour->tour_price,
+                         'field_tour_old_price' => $tour->tour_old_price,
+                         'field_tour_price_3' =>   $tour->tour_price_disc_3,
+                         'field_tour_price_4' =>   $tour->tour_price_disc_4,
+                         'field_tour_price_flight' => $tour->tour_price_flight,
+                         'field_tour_price_without_flight' => $tour->tour_price_without_flight,
+                         'field_tour_price_kids' => $tour->tour_price_kids,
+                         'field_tour_price_prefix' => $tour->tour_price_prefix,
+                         'field_tour_price_promo' => $tour->tour_price_promo,
+                         'field_tour_price_single' => $tour->tour_price_single,
+                         'field_tour_price_suffix' => $tour->tour_price_suffix,
+                         'field_tour_price_teen' => $tour->tour_price_teen,
+                         'field_tour_price_lux' => $tour->tour_price_lux,
+                         //'field_tour_price_tour' => $entityId,
+                         'field_tour_price_tour_rowid' => $tour->tour_rowid,
+                     ]);
+                 $node->field_tour_price_tour->target_id = $entityId;
+                 $added = $node->save();
+                 if (1 == $added) {
+                     $entityArray[$tour->tour_rowid] = 'saved -  ' . $node->id();
+                 }
+             }
+
+            } else {
+                $entityArray[$tour->tour_rowid]  =  'Tour ' .$tour_rowid . ' Not Created Yet' ;
+            }
+            //var_dump($entityArray);exit;
+        }
+
+        return $entityArray;
+        var_dump($entityArray);exit;
+        return $entityArray;
+    }
+
+    /**
+     * @param null $tour_rowid
+     * Structure
+     * @code
+     *
+     *  field_boarding_time
+        field_boarding_time_place
+        field_boarding_time_prefix
+        field_boarding_time_suffix
+        field_boarding_time_tour
+        field_boarding_time_tour_rowid
+
+     * @endcode
+     */
+    protected function _updateBoardingPlacesTime ($tour_rowid = null)
+    {
+        //$node = $this->entityTypeManager()
+        //    ->loadByProperties([
+        //        'type' => 'tour_boarding_places_time',]);
+        //$this->entityTypeManager()->delete($node);exit;
+
+        // Load boarding Places Entity
+        $places_ent_ids = $this->entityTypeManager()
+            ->loadByProperties([
+                'type' => 'boarding_places'
+            ]);
+        if (0 == count($places_ent_ids)){
+            return 'Places  not exists, need insert it first';
+        }
+        foreach ($places_ent_ids as $key=>$value) {
+            $places[$value->field_place_old_rowid->value]  = $key;
+        }
+
+        // Load Tours Entities
+        $tours_ent_ids = $this->entityTypeManager()
+            ->loadByProperties([
+                'type' => 'tours'
+            ]);
+        if (0 == count($tours_ent_ids)){
+            return 'Tours  not exists, need insert it first';
+        }
+        foreach ($tours_ent_ids as $key=>$value) {
+            $tours[$value->field_tour_old_rowid->value]  = $key;
+        }
+
+        $db = $this->_setExternalConnection();
+        // Load source tour_places
+        if ($tour_rowid)  {
+            $data = $db->select('tour_places','t')
+                ->fields('t')
+                ->condition('tp_tour',$tour_rowid, '=')
+                ->execute();
+        }
+        else {
+            $data = $db->select('tour_places','t')
+                ->fields('t')
+                ->execute()->fetchAll();
+        }
+        \Drupal\Core\Database\Database::setActiveConnection();
 
         foreach ($data as $m=>$tour) {
-//var_dump($tour->tour_rowid);
-//var_dump(count($entity_ids));echo '<br/><br/><br/>';
-            // if more than one entity in array - this is wrong need cleanup
-            if (1 < count($entityIdsArray)) return 'Exists multiple prices  for tour id ' . $tour->tour_rowid;
-            elseif (count($entityIdsArray) == 1) {
+            // $entity_ids - is array of nodes, keyed by node Id
+            //
+            $boarding_ent = $this->entityTypeManager()
+                ->loadByProperties([
+                    'type' => 'tour_boarding_places_time',
+                    //'field_boarding_time_tour_rowid' => $tour->tp_tour,
+                    'field_boarding_time_old_rowid' => $tour->tp_rowid
+                ]);
+            $nodeKey = key($boarding_ent); // this is node Id
+            $node = $boarding_ent[$nodeKey];
+             //var_dump(count($boarding_ent));exit;
+            if (1 == count($boarding_ent)) {
+                echo $tour->tp_time . '==>';
+                echo $tours[$tour->tp_tour];
+                echo '<br/>';
 
-                $nodeKey = key($entityIdsArray); // this is node Id
-                $node = $entityIdsArray[$nodeKey];  // also can use current($entity_ids) or reset
-//var_dump($node);
-                $node->setTitle('Prices for '.strip_tags($tour->tour_name));
+                $node->setTitle($tour->tp_tour);
+                $dt = new \DateTime("1970-01-01 $tour->tp_time", new \DateTimeZone('UTC'));
+                $node->field_boarding_time->value = (int)$dt->getTimestamp();
+                //$node->field_boarding_time_place->target_id = $places[$tour->tp_place];
+                //$node->field_boarding_time_prefix
+                $node->field_boarding_time_suffix->value = $tour->tp_remark;
+                //$node->field_boarding_time_tour->target_d = $tours[$tour->tp_tour];
+                $node->field_boarding_time_tour_rowid->value = $tour->tp_tour;
+                $node->field_boarding_time_old_rowid->value = $tour->tp_rowid;
+                $node->field_boarding_time_place->target_id = $places[$tour->tp_place];
+                $node->field_boarding_time_tour->target_id = $tours[$tour->tp_tour];
 
-                $node->field_tour_main_price->value = $tour->tour_price;
-                $node->field_tour_old_price->value  =  $tour->tour_old_price;
-                $node->field_tour_price_3->value    = $tour->field_tour_price_3;
-                $node->field_tour_price_4->value    = $tour->field_tour_price_4;
-                $node->field_tour_price_flight->value = $tour->field_tour_price_flight;
-                $node->field_tour_price_without_flight->value = $tour->tour_rowid;
-                $node->field_tour_price_kids->value   = $tour->field_tour_price_kids;
-                $node->field_tour_price_prefix->value = $tour->field_tour_price_prefix;
-                $node->field_tour_price_promo->value   = $tour->field_tour_price_promo;
-                $node->field_tour_price_single->value  = $tour->field_tour_price_single;
-                $node->field_tour_price_suffix->value  = $tour->field_tour_price_suffix;
-                $node->field_tour_price_teen->value   = $tour->field_tour_price_teen;
-                $node->field_tour_price_tour->value    = $entity;
-                $node->field_tour_price_tour_rowid->value = $tour->tour_rowid;
-                $node->field_tour_price_tour->target_id = $entity;
-
-                $added =  $node->save(key($entity_ids));
+                //echo $tour->tp_time . '==>';
+                //echo $tours[$tour->tp_tour];
+                //echo '<br/>' . $nodeKey . '<br/>';
+                $added =  $node->save();
                 if (2 == $added) {
-                    $entityArray[$tour->tour_rowid] = 'edited -  ' . $node->id();
-                    if ($node->id() != $nodeKey) return 'Updated incorrect entity ' . $nodeKey . ' to ' .$node->id();
+                    $entityArray[$tour->tp_rowid] = 'edited -  ' . $node->id();
+                    //if ($node->id() != $nodeKey) return 'Updated incorrect entity ' . $nodeKey . ' to ' .$node->id();
                 }
-
+                //
             } else {
-
+                // Duplicates entry is not correct. Need delete
+                if (1 < count($node)) {
+                    $this->entityTypeManager()->delete($node);
+                }
+                //echo $tour->tp_time . '==>';
+                //echo $tours[$tour->tp_tour];
+                //echo '<br/>';
+                $dt = new \DateTime("1970-01-01 $tour->tp_time", new \DateTimeZone('UTC'));
                 $node = $this->entityTypeManager()->create(
-                    ['type' => 'tour_prices',
-
-                        'field_tour_old_price'  =>  $tour->tour_old_price,
-                'field_tour_price_3'   => $tour->field_tour_price_3,
-                'field_tour_price_4'   => $tour->field_tour_price_4,
-                'field_tour_price_flight' => $tour->field_tour_price_flight,
-                'field_tour_price_without_flight' => $tour->tour_rowid,
-                'field_tour_price_kids'   => $tour->field_tour_price_kids,
-                'field_tour_price_prefix' => $tour->field_tour_price_prefix,
-                'field_tour_price_promo'  => $tour->field_tour_price_promo,
-                'field_tour_price_single'  => $tour->field_tour_price_single,
-                'field_tour_price_suffix'  => $tour->field_tour_price_suffix,
-                'field_tour_price_teen'   => $tour->field_tour_price_teen,
-                'field_tour_price_tour'    => $entity,
-                'field_tour_price_tour_rowid' => $tour->tour_rowid,
+                    [    'type' => 'tour_boarding_places_time',
+                        'title'=>$tour->tp_tour,
+                        'field_boarding_time'=>(int)$dt->getTimestamp(),
+                        'field_boarding_time_suffix'=>$tour->tp_remark,
+                        'field_boarding_time_tour_rowid'=>$tour->tp_rowid,
+                        'field_boarding_time_old_rowid'=>$tour->tp_rowid
                     ]);
-                $node->field_tour_price_tour->target_id = $entity;
+                $node->field_boarding_time_place->target_id = $places[$tour->tp_place];
+                $node->field_boarding_time_tour->target_id = $tours[$tour->tp_tour];
                 $added =  $node->save();
                 if (1 == $added) {
-                    $entityArray[$tour->tour_rowid] = 'saved -  ' . $node->id();
-                }
+                    $entityArray[$tour->tp_rowid] = 'created -  ' . $node->id();
+                    }
+
             }
         }
+        return $entityArray;
+
 
     }
 
+    /**
+     * @param string $connection
+     * @return \Drupal\Core\Database\Connection
+     */
     protected function _setExternalConnection ($connection = 'external')
     {
         Database::setActiveConnection($connection);
