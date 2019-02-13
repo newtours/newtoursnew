@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tour_dates.body
+    - node.type.tour_dates
+  module:
+    - text
+    - user
+id: node.tour_dates.teaser
+targetEntityType: node
+bundle: tour_dates
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_tour_date: true
+  field_tour_date_old_rowd: true
+  field_tour_date_prefix: true
+  field_tour_date_suffix: true
+  field_tour_date_tour: true
+  langcode: true

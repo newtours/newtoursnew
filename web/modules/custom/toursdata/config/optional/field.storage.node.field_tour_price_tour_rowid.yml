@@ -1,0 +1,20 @@
+uuid: 1d80d27e-fc55-45af-95b1-89e744dcce94
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_tour_price_tour_rowid
+field_name: field_tour_price_tour_rowid
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

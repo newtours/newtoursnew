@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_days_old_remarks
+    - node.type.tours
+  module:
+    - text
+id: node.tours.field_tour_days_old_remarks
+field_name: field_tour_days_old_remarks
+entity_type: node
+bundle: tours
+label: 'Tour Days Old Remarks'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

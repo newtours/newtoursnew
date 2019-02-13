@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_dates_remark_legasy_
+    - node.type.tours
+  module:
+    - text
+id: node.tours.field_tour_dates_remark_legasy_
+field_name: field_tour_dates_remark_legasy_
+entity_type: node
+bundle: tours
+label: 'Tour Dates Remark (Legasy)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

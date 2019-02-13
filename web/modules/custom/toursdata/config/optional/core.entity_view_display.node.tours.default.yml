@@ -1,0 +1,335 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.tours.body
+    - field.field.node.tours.field_tour_active
+    - field.field.node.tours.field_tour_base_link
+    - field.field.node.tours.field_tour_base_picture
+    - field.field.node.tours.field_tour_date_01
+    - field.field.node.tours.field_tour_date_02
+    - field.field.node.tours.field_tour_date_03
+    - field.field.node.tours.field_tour_date_04
+    - field.field.node.tours.field_tour_date_05
+    - field.field.node.tours.field_tour_date_06
+    - field.field.node.tours.field_tour_date_07
+    - field.field.node.tours.field_tour_date_08
+    - field.field.node.tours.field_tour_date_09
+    - field.field.node.tours.field_tour_date_10
+    - field.field.node.tours.field_tour_date_11
+    - field.field.node.tours.field_tour_date_12
+    - field.field.node.tours.field_tour_dates
+    - field.field.node.tours.field_tour_dates_remark_legasy_
+    - field.field.node.tours.field_tour_days
+    - field.field.node.tours.field_tour_days_old_remarks
+    - field.field.node.tours.field_tour_days_prefix
+    - field.field.node.tours.field_tour_days_suffix
+    - field.field.node.tours.field_tour_descr
+    - field.field.node.tours.field_tour_direction
+    - field.field.node.tours.field_tour_name
+    - field.field.node.tours.field_tour_nights
+    - field.field.node.tours.field_tour_nights_old_remark
+    - field.field.node.tours.field_tour_nights_prefix
+    - field.field.node.tours.field_tour_nights_suffix
+    - field.field.node.tours.field_tour_old_rowid
+    - field.field.node.tours.field_tour_price
+    - field.field.node.tours.field_tour_startdate
+    - field.field.node.tours.field_tour_tour_direction
+    - field.field.node.tours.field_tour_tour_type
+    - field.field.node.tours.field_tour_week_days
+    - node.type.tours
+  module:
+    - datetime
+    - text
+    - user
+id: node.tours.default
+targetEntityType: node
+bundle: tours
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_tour_active:
+    weight: 123
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_tour_base_link:
+    weight: 124
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_base_picture:
+    weight: 125
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_date_01:
+    weight: 112
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_02:
+    weight: 110
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_03:
+    weight: 111
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_04:
+    weight: 113
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_05:
+    weight: 114
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_06:
+    weight: 115
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_07:
+    weight: 116
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_08:
+    weight: 117
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_09:
+    weight: 118
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_10:
+    weight: 119
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_11:
+    weight: 122
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_12:
+    weight: 121
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_dates:
+    weight: 108
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_tour_dates_remark_legasy_:
+    weight: 138
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_days:
+    weight: 126
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_tour_days_old_remarks:
+    weight: 129
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_days_prefix:
+    weight: 127
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_days_suffix:
+    weight: 128
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_descr:
+    weight: 105
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_direction:
+    weight: 135
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tour_name:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_nights:
+    weight: 130
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_tour_nights_old_remark:
+    weight: 133
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_nights_prefix:
+    weight: 131
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_nights_suffix:
+    weight: 132
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_old_rowid:
+    weight: 102
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_tour_price:
+    weight: 104
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_tour_startdate:
+    weight: 106
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_tour_tour_direction:
+    weight: 137
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tour_tour_type:
+    weight: 136
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tour_week_days:
+    weight: 134
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

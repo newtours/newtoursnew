@@ -1,0 +1,20 @@
+uuid: 7745480d-d6db-4b20-baaa-608b34ee14e8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_tour_old_rowid
+field_name: field_tour_old_rowid
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

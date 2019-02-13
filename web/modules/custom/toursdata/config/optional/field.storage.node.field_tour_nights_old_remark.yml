@@ -1,0 +1,20 @@
+uuid: c7f19354-d7cf-4636-9db7-1313bd10daff
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_tour_nights_old_remark
+field_name: field_tour_nights_old_remark
+entity_type: node
+type: text
+settings:
+  max_length: 100
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

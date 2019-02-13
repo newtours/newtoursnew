@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_date_suffix
+    - node.type.tour_dates
+  module:
+    - text
+id: node.tour_dates.field_tour_date_suffix
+field_name: field_tour_date_suffix
+entity_type: node
+bundle: tour_dates
+label: 'Tour Date suffix'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

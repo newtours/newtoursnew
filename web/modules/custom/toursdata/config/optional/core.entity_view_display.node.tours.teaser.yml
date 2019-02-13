@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tours.body
+    - node.type.tours
+  module:
+    - text
+    - user
+id: node.tours.teaser
+targetEntityType: node
+bundle: tours
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_tour_active: true
+  field_tour_base_link: true
+  field_tour_base_picture: true
+  field_tour_date_01: true
+  field_tour_date_02: true
+  field_tour_date_03: true
+  field_tour_date_04: true
+  field_tour_date_05: true
+  field_tour_date_06: true
+  field_tour_date_07: true
+  field_tour_date_08: true
+  field_tour_date_09: true
+  field_tour_date_10: true
+  field_tour_date_11: true
+  field_tour_date_12: true
+  field_tour_dates: true
+  field_tour_days: true
+  field_tour_days_old_remarks: true
+  field_tour_days_prefix: true
+  field_tour_days_suffix: true
+  field_tour_descr: true
+  field_tour_direction: true
+  field_tour_name: true
+  field_tour_nights: true
+  field_tour_nights_old_remark: true
+  field_tour_nights_prefix: true
+  field_tour_nights_suffix: true
+  field_tour_old_rowid: true
+  field_tour_price: true
+  field_tour_startdate: true
+  field_tour_week_days: true
+  langcode: true

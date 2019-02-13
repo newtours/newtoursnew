@@ -1,0 +1,21 @@
+uuid: 2f06741a-6832-4de8-8320-9425143afa42
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_tour_date_generated_from
+field_name: field_tour_date_generated_from
+entity_type: node
+type: string
+settings:
+  max_length: 50
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

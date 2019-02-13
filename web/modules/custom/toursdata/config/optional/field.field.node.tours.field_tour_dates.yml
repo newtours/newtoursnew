@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_dates
+    - node.type.tours
+  module:
+    - datetime
+id: node.tours.field_tour_dates
+field_name: field_tour_dates
+entity_type: node
+bundle: tours
+label: 'Tour Dates'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

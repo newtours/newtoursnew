@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_price_kids
+    - node.type.tour_prices
+id: node.tour_prices.field_tour_price_kids
+field_name: field_tour_price_kids
+entity_type: node
+bundle: tour_prices
+label: 'Tour Price Kids'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: float

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_date_11
+    - node.type.tours
+id: node.tours.field_tour_date_11
+field_name: field_tour_date_11
+entity_type: node
+bundle: tours
+label: 'Tour Date 11'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

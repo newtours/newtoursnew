@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tour_prices.body
+    - node.type.tour_prices
+  module:
+    - text
+    - user
+id: node.tour_prices.teaser
+targetEntityType: node
+bundle: tour_prices
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_tour_main_price: true
+  field_tour_old_price: true
+  field_tour_price_3: true
+  field_tour_price_4: true
+  field_tour_price_flight: true
+  field_tour_price_kids: true
+  field_tour_price_prefix: true
+  field_tour_price_promo: true
+  field_tour_price_single: true
+  field_tour_price_suffix: true
+  field_tour_price_teen: true
+  field_tour_price_tour: true
+  field_tour_price_tour_rowid: true
+  field_tour_price_without_flight: true
+  langcode: true

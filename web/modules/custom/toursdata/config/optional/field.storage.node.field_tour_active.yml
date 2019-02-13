@@ -1,0 +1,18 @@
+uuid: 25fba3b3-1071-4a5e-9afa-4a349e7ce900
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_tour_active
+field_name: field_tour_active
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: 9f815d6d-c6dd-487c-af53-f85c9a73c4b4
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_tour_days_prefix
+field_name: field_tour_days_prefix
+entity_type: node
+type: text
+settings:
+  max_length: 50
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

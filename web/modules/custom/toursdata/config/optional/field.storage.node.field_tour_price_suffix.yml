@@ -1,0 +1,20 @@
+uuid: c2c1cec6-008a-4a2f-acdb-070cb0d7257f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_tour_price_suffix
+field_name: field_tour_price_suffix
+entity_type: node
+type: text
+settings:
+  max_length: 100
+module: text
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

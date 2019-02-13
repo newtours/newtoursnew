@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tour_boarding_places_time.body
+    - node.type.tour_boarding_places_time
+  module:
+    - text
+    - user
+id: node.tour_boarding_places_time.teaser
+targetEntityType: node
+bundle: tour_boarding_places_time
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_boarding_time: true
+  field_boarding_time_prefix: true
+  field_boarding_time_suffix: true
+  langcode: true

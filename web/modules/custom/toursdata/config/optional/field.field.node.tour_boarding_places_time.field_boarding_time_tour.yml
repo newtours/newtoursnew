@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_boarding_time_tour
+    - node.type.tour_boarding_places_time
+    - node.type.tours
+id: node.tour_boarding_places_time.field_boarding_time_tour
+field_name: field_boarding_time_tour
+entity_type: node
+bundle: tour_boarding_places_time
+label: 'Boarding Time Tour'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      tours: tours
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

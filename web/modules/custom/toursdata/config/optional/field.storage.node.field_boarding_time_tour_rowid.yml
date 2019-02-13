@@ -1,0 +1,20 @@
+uuid: d41855f4-2f40-46d8-bfd0-da3165be68c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_boarding_time_tour_rowid
+field_name: field_boarding_time_tour_rowid
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

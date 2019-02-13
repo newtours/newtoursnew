@@ -1,0 +1,101 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.tour_dates.body
+    - field.field.node.tour_dates.field_tour_date
+    - field.field.node.tour_dates.field_tour_date_generated_from
+    - field.field.node.tour_dates.field_tour_date_old_rowd
+    - field.field.node.tour_dates.field_tour_date_old_tour_rowid
+    - field.field.node.tour_dates.field_tour_date_prefix
+    - field.field.node.tour_dates.field_tour_date_remark
+    - field.field.node.tour_dates.field_tour_date_suffix
+    - field.field.node.tour_dates.field_tour_date_tour
+    - node.type.tour_dates
+  module:
+    - datetime
+    - text
+    - user
+id: node.tour_dates.default
+targetEntityType: node
+bundle: tour_dates
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_tour_date:
+    weight: 103
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_tour_date_generated_from:
+    weight: 109
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tour_date_old_rowd:
+    weight: 102
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_tour_date_old_tour_rowid:
+    weight: 107
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_tour_date_prefix:
+    weight: 105
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_date_remark:
+    weight: 108
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_date_suffix:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tour_date_tour:
+    weight: 106
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
