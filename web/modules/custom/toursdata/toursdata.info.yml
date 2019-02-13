@@ -1,5 +1,12 @@
-name: 'ToursData'
+name: ToursData
 type: module
 description: 'Admin Tours Data'
 core: 8.x
-package: 'Custom'
+package: Custom
+mtime: 1550073543
+dependencies:
+  - node
+  - text
+  - user
+version: null
+php: 5.5.9
