@@ -136,9 +136,9 @@ class ToursDataController extends ControllerBase {
 
         }
         if (is_array($return)) {
-            $result = [];
+            $result = '';
             foreach ($return as $key=>$value) {
-                $result .= $key . '=>' . $value. '<br/>';
+                $result .= $key . '=>' . (is_array($value) ? implode(',->',$value) : $value). '<br/>';
             }
         }
         return [
