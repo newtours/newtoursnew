@@ -58,6 +58,13 @@ class ToursDataController extends ControllerBase {
         'Saturday'
     ];
 
+    protected $__tableMainRefernceFields =
+        [
+            'tour_dates'=>'field_tour_date_tour' ,
+            'tour_prices'=>'field_tour_price_tour',
+            'tour_boarding_places_time'=> 'field_boarding_time_tour',
+        ];
+
   /**
    * Constructs a new ToursDataController object.
    */
@@ -186,8 +193,9 @@ class ToursDataController extends ControllerBase {
     field_tour_week_days
 
      *
-     *
-     *
+     * PLease admit that dates generated only on update tour, not in initial created
+     * Due the dates table can be huge and on creating need run dates creating after node save - we dont know node id yet
+     * For dates can create additional method with tour entity id
      * @code
      * @param $id
      * @return array
@@ -198,7 +206,9 @@ class ToursDataController extends ControllerBase {
 // Delete multiple entities at once.
 //\Drupal::entityTypeManager()->getStorage($entity_type)->delete(array($id1 => $entity1, $id2 => $entity2));
 
-
+        $curYear = date("Y");
+        $yearPrefix = ( $curYear & 1 ) ? $curYear: $curYear + 1;
+        $datesResult = '';
 
         $db = $this->_setExternalConnection();
         if ($id)  {
@@ -293,27 +303,26 @@ class ToursDataController extends ControllerBase {
 
                 $node->field_tour_tour_type->target_id = $types[$tour->tour_type];
                 $node->field_tour_tour_direction->target_id = $direction[$tour->tour_direction];
-                $curYear = date("Y");
-                $yearPrefix = ( $curYear & 1 ) ? $curYear: $curYear + 1;
+
 
                 // Dates section
                 $start = true; // import key, due dates deleted after every update - delete only when start Month 01
                 if (isset($tour->tour_week_days) && !empty(trim($tour->tour_week_days))) {
-                    var_dump($tour->tour_week_days);
-                    $this->_updateDatesTable ( $nodeKey, $tour->tour_rowid,
+                    //var_dump($tour->tour_week_days);
+                    $datesResult .= $this->_updateDatesTable ( $nodeKey, $tour->tour_rowid,
                         [ $yearPrefix=>$tour->tour_week_days],$start);
                 } else {
                     for ($i = 1; $i < 13; $i++) {
                         if ($i < 10) {
                             $node->{'field_tour_date_0' . $i}->value = $tour->{'tour_m0' . $i . '_days'};
-                            $this->_updateDatesTable($nodeKey, $tour->tour_rowid,
+                            $datesResult .=$this->_updateDatesTable($nodeKey, $tour->tour_rowid,
                                 [$yearPrefix => [
                                     '0' . $i => $tour->{'tour_m0' . $i . '_days'}
                                 ]
                                 ], $start);
                         } else {
                             $node->{'field_tour_date_' . $i}->value = $tour->{'tour_m' . $i . '_days'};
-                            $this->_updateDatesTable($nodeKey, $tour->tour_rowid,
+                            $datesResult .= $this->_updateDatesTable($nodeKey, $tour->tour_rowid,
                                 [$yearPrefix => [
                                     $i => $tour->{'tour_m' . $i . '_days'}
                                 ]
@@ -326,7 +335,7 @@ class ToursDataController extends ControllerBase {
 
                 $added =  $node->save(key($entity_ids));
                 if (2 == $added) {
-                    $entityArray[$tour->tour_rowid] = 'edited -  ' . $node->id();
+                    $entityArray[$tour->tour_rowid] = 'edited -  ' . $node->id() . ' <br/>DATES ' .$datesResult;
                     if ($node->id() != $nodeKey) return 'Updated incorrect entity ' . $nodeKey . ' to ' .$node->id();
                 }
 
@@ -353,6 +362,7 @@ class ToursDataController extends ControllerBase {
                     ]);
                 $node->field_tour_tour_type->target_id = $types[$tour->tour_type];
                 $node->field_tour_tour_direction->target_id = $direction[$tour->tour_direction];
+
                 // Dates section
                 for($i=1;$i<13;$i++) {
                     if ($i < 10) {
@@ -361,9 +371,10 @@ class ToursDataController extends ControllerBase {
                         $node->{'field_tour_date_'.$i}->value = $tour->{'tour_m'.$i.'_days'};
                     }
                 }
+
                 $added =  $node->save();
                 if (1 == $added) {
-                    $entityArray[$tour->tour_rowid] = 'saved -  ' . $node->id();
+                    $entityArray[$tour->tour_rowid] = 'saved -  ' . $node->id() . $datesResult;
                 }
 
             }
@@ -476,7 +487,7 @@ class ToursDataController extends ControllerBase {
                                     if ($nodeId) {
                                         $entityArray[$tour_rowid][$nodeId] = 'saved -  ' . $tourDateString;
                                     }
-                                    echo $nodeId . ' ' . $tourDateString . '<br/>';
+                                    //echo $nodeId . ' ' . $tourDateString . '<br/>';
                                     //var_dump($tourDateString);
                                 } else {
                                     if (!empty($date)) {
@@ -521,18 +532,18 @@ class ToursDataController extends ControllerBase {
                         }
                     }
                 } else {
-                    $weekdays = explode(',',$value);var_dump($weekdays);
+                    $weekdays = explode(',',$value);//var_dump($weekdays);
                     foreach($weekdays as $wValue) {
                         //var_dump($wValue);
                         for($i=1;$i<13; $i++) {
                             $month = ($i < 10) ? '0'.$i : $i;
-                            var_dump($month);
+                            //var_dump($month);
                             $wValue = ($wValue == 7) ? 0 : $wValue;
                             $dateArrays = $this->getAllDaysInAMonth($year, $month, $this->_weekDays[$wValue]);
                             //var_dump($wValue);exit;
                             if (isset($dateArrays)) {
                                 foreach ($dateArrays as $dateOfArray) {
-                                    echo($dateOfArray->format('Y-m-d')) . '<br/>';
+                                    //echo($dateOfArray->format('Y-m-d')) . '<br/>';
                                     $weekDay = $dateOfArray->format('Y-m-d');
                                     $nodeId = $this->_createDateNode([
                                         $entity => ['title' => $wValue . '-'.$dateOfArray->format('l') . ' '.$tour_rowid . ' @' . ' ' . $weekDay,
@@ -555,7 +566,14 @@ class ToursDataController extends ControllerBase {
                     }
                 }
             }
+        $return = '';
+            if (isset($entityArray)) {
+                foreach ($entityArray[$tour_rowid] as $key=>$value ) {
+                    $return .= '<br/>date=>' .$key . ' ' . $value;
+                }
 
+            }
+        return $return ;
 
     }
 
@@ -1161,6 +1179,83 @@ class ToursDataController extends ControllerBase {
 
     }
 
+    /**
+     * Actually main purpose delete tour and all related dates, prices, boarding time etc
+     * But can delete single dependency
+     * @param $table
+     * @param $id - node Id
+     */
+    public function deleteEntities ($table, $id)
+    {
+        if (!isset($table) && !isset($d)) {
+            return [
+                '#type' => 'markup',
+                '#markup' => 'table and Id mandatory',
+            ];
+        }
+        if ('tours' == $table) {
+            $tourNode = $this->entityTypeManager()->load($id);
+            //var_dump(key($tourNode));exit;
+            if (isset($tourNode)) {
+                $tourNode->delete();
+            }
+
+            $dateNode = $this->entityTypeManager()
+                ->loadByProperties([
+                    'type' => 'tour_dates',
+                    'field_tour_date_tour' => $id,
+                ]);
+            $dateCount = count($dateNode);
+            if ($dateCount > 0) {
+                $this->entityTypeManager()->delete($dateNode);
+            }
+
+
+            $priceNode = $this->entityTypeManager()
+                ->loadByProperties([
+                    'type' => 'tour_prices',
+                    'field_tour_price_tour' => $id,
+                ]);
+            $priceCount = count($priceNode) ;
+            if ($priceCount > 0) {
+                $this->entityTypeManager()->delete($priceNode);
+            }
+
+
+            $boardingNode = $this->entityTypeManager()
+                ->loadByProperties([
+                    'type' => 'tour_boarding_places_time',
+                    'field_boarding_time_tour' => $id,
+                ]);
+            $boardingCount = count($boardingNode) ;
+            if ($boardingCount> 0) {
+                $this->entityTypeManager()->delete($boardingNode);
+            }
+            $result = 'Deleted tour =>' .$id . ' Dates=> ' .  $dateCount .' Prices=>' .$priceCount . ' Boarding => ' . $boardingCount;
+        } else {
+            if (in_array($table, ['tour_dates','tour_prices','tour_boarding_places_time'])) {
+                $deleteNodes = $this->entityTypeManager()
+                    ->loadByProperties([
+                        'type' => $table,
+                        $this->_tableMainRefernceFields[$table] => $id,
+                    ]);
+                $nCount = count($deleteNodes);
+                if ($nCount > 0) {
+                    $this->entityTypeManager()->delete($deleteNodes);
+                }
+                $result = $table . ' entities related to tour ' . $id . ' deleted ' . $nCount;
+            } else {
+                $result = 'Only particular tables can deleted';
+            }
+        }
+
+        return [
+            '#type' => 'markup',
+            '#markup' => $result
+        ];
+
+
+    }
     /**
      * @param string $connection
      * @return \Drupal\Core\Database\Connection

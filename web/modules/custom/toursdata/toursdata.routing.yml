@@ -12,3 +12,13 @@ toursdata.tours_data_controller_updateData:
   options:
     no_cache: 'TRUE'
 
+toursdata.tours_data_delete_tour:
+  path: '/toursdata/delete/{table}/{id}'
+  defaults:
+    _controller: '\Drupal\toursdata\Controller\ToursDataController::deleteEntities'
+    _title: 'ToursDataController'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    #_permission: 'access content'
+  options:
+    no_cache: 'TRUE'
