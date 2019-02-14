@@ -1162,7 +1162,7 @@ class ToursDataController extends ControllerBase {
                         'title'=>$tour->tp_tour,
                         'field_boarding_time'=>(int)$dt->getTimestamp(),
                         'field_boarding_time_suffix'=>$tour->tp_remark,
-                        'field_boarding_time_tour_rowid'=>$tour->tp_rowid,
+                        'field_boarding_time_tour_rowid'=>$tour->tp_tour,
                         'field_boarding_time_old_rowid'=>$tour->tp_rowid
                     ]);
                 $node->field_boarding_time_place->target_id = $places[$tour->tp_place];
