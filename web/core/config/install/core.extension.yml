@@ -1,3 +1,4 @@
-module: {}
+module:
+  standard: 1000
 theme: {}
-profile: ''
+profile: standart
