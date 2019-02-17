@@ -1,0 +1,31 @@
+uuid: 1c0e4a88-b5ec-452e-9aba-6402783b5df8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.orders.body
+    - node.type.orders
+  module:
+    - text
+    - user
+id: node.orders.teaser
+targetEntityType: node
+bundle: orders
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,23 @@
+uuid: 690cf473-c32b-4ad6-abac-c53330c42d15
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_price
+    - node.type.tours
+id: node.tours.field_tour_price
+field_name: field_tour_price
+entity_type: node
+bundle: tours
+label: 'Tour Price'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: float

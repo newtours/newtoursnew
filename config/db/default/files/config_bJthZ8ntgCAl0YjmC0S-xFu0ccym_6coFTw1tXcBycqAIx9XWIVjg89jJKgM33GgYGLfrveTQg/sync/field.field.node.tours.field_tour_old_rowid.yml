@@ -1,0 +1,23 @@
+uuid: fbb17670-bcb5-4dd1-86a8-d044089565a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_old_rowid
+    - node.type.tours
+id: node.tours.field_tour_old_rowid
+field_name: field_tour_old_rowid
+entity_type: node
+bundle: tours
+label: 'Tour legacy RowId'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

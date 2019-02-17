@@ -1,0 +1,23 @@
+uuid: e70ed0f7-009e-4d63-aa5f-06ee8cfeab78
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_days
+    - node.type.tours
+id: node.tours.field_tour_days
+field_name: field_tour_days
+entity_type: node
+bundle: tours
+label: 'Tour Days'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ' day| days'
+field_type: integer

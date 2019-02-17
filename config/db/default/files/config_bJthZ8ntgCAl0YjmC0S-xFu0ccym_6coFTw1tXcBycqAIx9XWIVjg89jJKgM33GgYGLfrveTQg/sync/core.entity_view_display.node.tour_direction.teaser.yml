@@ -1,0 +1,34 @@
+uuid: 8762a370-035e-4d2b-b330-8011eaf18976
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tour_direction.body
+    - node.type.tour_direction
+  module:
+    - text
+    - user
+id: node.tour_direction.teaser
+targetEntityType: node
+bundle: tour_direction
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_direction_active: true
+  field_direction_name: true
+  field_direction_rowid: true
+  langcode: true

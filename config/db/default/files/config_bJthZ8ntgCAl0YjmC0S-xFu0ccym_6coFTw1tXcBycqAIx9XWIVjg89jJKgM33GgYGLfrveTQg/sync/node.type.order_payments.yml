@@ -1,0 +1,18 @@
+uuid: 4fb3128d-9e7f-4265-b3a1-803d3a3f1762
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Order Payments'
+type: order_payments
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,20 @@
+uuid: 7ad312c1-bed2-4554-8149-6f7cde67001a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_order_guests
+field_name: field_order_guests
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

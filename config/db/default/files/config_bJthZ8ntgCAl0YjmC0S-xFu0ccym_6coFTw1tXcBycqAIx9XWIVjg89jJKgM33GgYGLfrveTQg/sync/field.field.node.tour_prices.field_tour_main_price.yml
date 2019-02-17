@@ -1,0 +1,23 @@
+uuid: fa641503-b54f-4891-9157-964a7b365d7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_main_price
+    - node.type.tour_prices
+id: node.tour_prices.field_tour_main_price
+field_name: field_tour_main_price
+entity_type: node
+bundle: tour_prices
+label: 'Tour Main Price '
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: float

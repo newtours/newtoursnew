@@ -1,0 +1,18 @@
+uuid: 3c52f09a-665c-4261-a7e0-b02c50643feb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_order_total
+field_name: field_order_total
+entity_type: node
+type: float
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

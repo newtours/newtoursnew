@@ -1,0 +1,22 @@
+uuid: 09be267b-0ac8-478a-8a75-9ddfada99b14
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - newt
+_core:
+  default_config_hash: za-39d5WDUg6XvbyqSnuVYEeq6QM4qKJxW8MnoAha5A
+id: newt_search
+theme: newt
+region: sidebar_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

@@ -1,0 +1,23 @@
+uuid: fab00eab-877e-4e66-ada2-63461b96f6b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_price_teen
+    - node.type.tour_prices
+id: node.tour_prices.field_tour_price_teen
+field_name: field_tour_price_teen
+entity_type: node
+bundle: tour_prices
+label: 'Tour Price Teen'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: float

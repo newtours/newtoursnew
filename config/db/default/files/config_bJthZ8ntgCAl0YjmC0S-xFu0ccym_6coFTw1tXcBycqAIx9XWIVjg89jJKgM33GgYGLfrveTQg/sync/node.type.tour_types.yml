@@ -1,0 +1,18 @@
+uuid: e2a77391-9f8a-4705-950a-a1d92ca96b3e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Tour Types'
+type: tour_types
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

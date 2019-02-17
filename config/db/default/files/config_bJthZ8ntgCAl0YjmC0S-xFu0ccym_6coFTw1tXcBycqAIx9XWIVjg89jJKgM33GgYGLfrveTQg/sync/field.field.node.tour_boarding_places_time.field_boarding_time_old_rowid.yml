@@ -1,0 +1,23 @@
+uuid: 6f203139-3aaa-4a17-88ac-0a8648fc2c3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_boarding_time_old_rowid
+    - node.type.tour_boarding_places_time
+id: node.tour_boarding_places_time.field_boarding_time_old_rowid
+field_name: field_boarding_time_old_rowid
+entity_type: node
+bundle: tour_boarding_places_time
+label: 'Boarding Time Old Rowid'
+description: 'Old rowid from tour_places table. Using to validate initial export'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,22 @@
+uuid: 19ebefe4-9626-4b19-b85b-be3f03f08224
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.tour_boarding_places_time
+  module:
+    - text
+id: node.tour_boarding_places_time.body
+field_name: body
+entity_type: node
+bundle: tour_boarding_places_time
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

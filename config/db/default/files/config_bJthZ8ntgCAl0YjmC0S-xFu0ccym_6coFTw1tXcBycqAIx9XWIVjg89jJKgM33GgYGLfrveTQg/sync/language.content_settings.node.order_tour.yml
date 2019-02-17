@@ -1,0 +1,16 @@
+uuid: f4c99c20-7cd7-4586-a182-9219ae14f160
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.order_tour
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.order_tour
+target_entity_type_id: node
+target_bundle: order_tour
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,23 @@
+uuid: 04b2fc6f-5d17-430b-bc30-bd0831a170fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_nights
+    - node.type.tours
+id: node.tours.field_tour_nights
+field_name: field_tour_nights
+entity_type: node
+bundle: tours
+label: 'Tour Nights'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: night|nights
+field_type: integer

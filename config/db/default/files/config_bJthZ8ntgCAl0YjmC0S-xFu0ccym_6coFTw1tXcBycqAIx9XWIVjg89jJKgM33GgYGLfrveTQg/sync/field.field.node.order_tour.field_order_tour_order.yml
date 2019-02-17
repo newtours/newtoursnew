@@ -1,0 +1,29 @@
+uuid: 3e3ded5a-0949-488a-a123-9d31db4a2994
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_order_tour_order
+    - node.type.order_tour
+    - node.type.orders
+id: node.order_tour.field_order_tour_order
+field_name: field_order_tour_order
+entity_type: node
+bundle: order_tour
+label: 'Order Tour Order'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      orders: orders
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

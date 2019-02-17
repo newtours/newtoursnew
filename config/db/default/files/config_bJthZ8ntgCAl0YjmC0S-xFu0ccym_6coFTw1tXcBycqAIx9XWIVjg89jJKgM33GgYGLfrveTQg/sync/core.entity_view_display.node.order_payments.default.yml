@@ -1,0 +1,38 @@
+uuid: 9a733f1b-9659-4e20-8889-6a85b934f9d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.order_payments.body
+    - field.field.node.order_payments.field_order_payment_order
+    - node.type.order_payments
+  module:
+    - text
+    - user
+id: node.order_payments.default
+targetEntityType: node
+bundle: order_payments
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_order_payment_order:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

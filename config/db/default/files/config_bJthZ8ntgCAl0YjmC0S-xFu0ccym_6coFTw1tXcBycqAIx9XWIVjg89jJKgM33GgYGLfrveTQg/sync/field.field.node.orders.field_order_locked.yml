@@ -1,0 +1,23 @@
+uuid: a5bc0e2f-5abd-400c-8a39-c028235a40ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_order_locked
+    - node.type.orders
+id: node.orders.field_order_locked
+field_name: field_order_locked
+entity_type: node
+bundle: orders
+label: 'Order locked'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

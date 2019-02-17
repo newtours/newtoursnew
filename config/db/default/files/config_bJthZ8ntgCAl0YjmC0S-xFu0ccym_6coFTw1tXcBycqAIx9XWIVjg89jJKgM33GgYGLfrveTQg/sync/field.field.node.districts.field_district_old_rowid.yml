@@ -1,0 +1,23 @@
+uuid: d98880f9-a942-4a9a-bd94-30d432f51829
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_district_old_rowid
+    - node.type.districts
+id: node.districts.field_district_old_rowid
+field_name: field_district_old_rowid
+entity_type: node
+bundle: districts
+label: 'District Old RowId'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

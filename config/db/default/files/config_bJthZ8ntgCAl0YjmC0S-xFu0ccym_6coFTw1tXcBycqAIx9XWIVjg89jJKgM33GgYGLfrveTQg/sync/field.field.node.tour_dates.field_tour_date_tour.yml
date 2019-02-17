@@ -1,0 +1,25 @@
+uuid: d7332634-93b8-45fb-b237-9ab4197491b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_date_tour
+    - node.type.tour_dates
+id: node.tour_dates.field_tour_date_tour
+field_name: field_tour_date_tour
+entity_type: node
+bundle: tour_dates
+label: 'Tour Date Tour'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: tours_list
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

@@ -1,0 +1,11 @@
+uuid: c9d41de2-8f90-4194-85a8-d695106494fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tours
+id: node.tours
+target_entity_type_id: node
+target_bundle: tours
+default_langcode: site_default
+language_alterable: false

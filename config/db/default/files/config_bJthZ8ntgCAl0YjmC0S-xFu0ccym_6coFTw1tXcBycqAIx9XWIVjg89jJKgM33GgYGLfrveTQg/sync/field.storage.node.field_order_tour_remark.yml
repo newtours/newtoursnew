@@ -1,0 +1,19 @@
+uuid: 49c910de-51fc-4672-bd20-a72e644ab801
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_order_tour_remark
+field_name: field_order_tour_remark
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

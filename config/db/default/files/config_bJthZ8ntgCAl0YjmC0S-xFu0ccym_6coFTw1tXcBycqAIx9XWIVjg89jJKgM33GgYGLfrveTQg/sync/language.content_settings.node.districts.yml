@@ -1,0 +1,11 @@
+uuid: 96c0813a-c192-4bff-8340-15a723646b06
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.districts
+id: node.districts
+target_entity_type_id: node
+target_bundle: districts
+default_langcode: site_default
+language_alterable: false

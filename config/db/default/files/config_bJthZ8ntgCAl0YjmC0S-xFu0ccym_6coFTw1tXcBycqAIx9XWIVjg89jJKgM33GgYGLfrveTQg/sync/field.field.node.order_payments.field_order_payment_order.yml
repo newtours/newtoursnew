@@ -1,0 +1,29 @@
+uuid: 5fecd9f9-903a-4f3a-bd68-2bebadd011ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_order_payment_order
+    - node.type.order_payments
+    - node.type.orders
+id: node.order_payments.field_order_payment_order
+field_name: field_order_payment_order
+entity_type: node
+bundle: order_payments
+label: 'Order Payment Order'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      orders: orders
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

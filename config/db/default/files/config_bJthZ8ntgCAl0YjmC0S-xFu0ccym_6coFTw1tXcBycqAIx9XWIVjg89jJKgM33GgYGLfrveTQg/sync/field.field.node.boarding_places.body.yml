@@ -1,0 +1,22 @@
+uuid: e4d5cc93-b896-461d-8eec-72de6a16fc8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.boarding_places
+  module:
+    - text
+id: node.boarding_places.body
+field_name: body
+entity_type: node
+bundle: boarding_places
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

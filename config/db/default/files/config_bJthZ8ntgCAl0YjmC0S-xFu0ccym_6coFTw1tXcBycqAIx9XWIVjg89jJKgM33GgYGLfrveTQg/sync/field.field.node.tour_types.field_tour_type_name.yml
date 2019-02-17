@@ -1,0 +1,21 @@
+uuid: 7529b5ed-7450-49fa-a5d2-95b61d60b14f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_type_name
+    - node.type.tour_types
+  module:
+    - text
+id: node.tour_types.field_tour_type_name
+field_name: field_tour_type_name
+entity_type: node
+bundle: tour_types
+label: 'Tour Type Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

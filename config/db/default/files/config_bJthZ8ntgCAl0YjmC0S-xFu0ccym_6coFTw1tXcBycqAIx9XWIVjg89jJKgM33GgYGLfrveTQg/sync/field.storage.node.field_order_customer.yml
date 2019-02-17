@@ -1,0 +1,20 @@
+uuid: 0b23a8a6-ce05-445d-aea2-140d91f378d4
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: node.field_order_customer
+field_name: field_order_customer
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

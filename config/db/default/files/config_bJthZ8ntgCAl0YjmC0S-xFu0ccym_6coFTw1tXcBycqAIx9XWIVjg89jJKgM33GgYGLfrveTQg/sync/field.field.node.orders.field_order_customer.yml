@@ -1,0 +1,31 @@
+uuid: b154e873-a618-4197-bf44-5019822083a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_order_customer
+    - node.type.orders
+id: node.orders.field_order_customer
+field_name: field_order_customer
+entity_type: node
+bundle: orders
+label: 'Order Customer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        administrator: administrator
+    target_bundles: null
+    sort:
+      field: field_last_name
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

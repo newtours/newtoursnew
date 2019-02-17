@@ -1,0 +1,21 @@
+uuid: 32b32cd4-3033-40b8-b1d1-349154796476
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_name
+    - node.type.boarding_places
+  module:
+    - text
+id: node.boarding_places.field_place_name
+field_name: field_place_name
+entity_type: node
+bundle: boarding_places
+label: 'Place Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

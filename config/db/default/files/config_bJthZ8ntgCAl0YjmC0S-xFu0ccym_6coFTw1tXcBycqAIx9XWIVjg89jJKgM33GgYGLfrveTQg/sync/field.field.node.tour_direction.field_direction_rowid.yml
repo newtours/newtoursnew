@@ -1,0 +1,23 @@
+uuid: f133c0cd-e3cf-4d4f-98a7-f932e02be60c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_direction_rowid
+    - node.type.tour_direction
+id: node.tour_direction.field_direction_rowid
+field_name: field_direction_rowid
+entity_type: node
+bundle: tour_direction
+label: 'Direction RowId'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

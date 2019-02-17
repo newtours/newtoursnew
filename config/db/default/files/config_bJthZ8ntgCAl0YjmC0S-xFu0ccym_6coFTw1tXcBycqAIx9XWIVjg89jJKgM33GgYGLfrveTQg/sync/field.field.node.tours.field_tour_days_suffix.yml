@@ -1,0 +1,21 @@
+uuid: 0759fe25-eef7-402e-acb1-234da68328d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_days_suffix
+    - node.type.tours
+  module:
+    - text
+id: node.tours.field_tour_days_suffix
+field_name: field_tour_days_suffix
+entity_type: node
+bundle: tours
+label: 'Tour Days Suffix'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

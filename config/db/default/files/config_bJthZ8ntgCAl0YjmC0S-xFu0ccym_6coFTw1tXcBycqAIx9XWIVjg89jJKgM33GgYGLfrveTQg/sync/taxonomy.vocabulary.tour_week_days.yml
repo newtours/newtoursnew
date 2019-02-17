@@ -1,0 +1,9 @@
+uuid: 6c1b79ea-e453-4840-9a8a-77418a680574
+langcode: en
+status: true
+dependencies: {  }
+name: 'Tour Week Days'
+vid: tour_week_days
+description: ''
+hierarchy: 0
+weight: 0

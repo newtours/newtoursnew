@@ -1,0 +1,21 @@
+uuid: 00f5993f-f4db-4d9b-807e-9372a893a66d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_descr
+    - node.type.tours
+  module:
+    - text
+id: node.tours.field_tour_descr
+field_name: field_tour_descr
+entity_type: node
+bundle: tours
+label: 'Tour Short Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

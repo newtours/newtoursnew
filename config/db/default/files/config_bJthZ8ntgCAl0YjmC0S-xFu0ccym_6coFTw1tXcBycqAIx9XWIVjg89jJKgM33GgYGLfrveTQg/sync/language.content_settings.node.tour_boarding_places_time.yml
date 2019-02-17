@@ -1,0 +1,11 @@
+uuid: 7f284ada-9a78-458e-842e-2ce759d0a13a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tour_boarding_places_time
+id: node.tour_boarding_places_time
+target_entity_type_id: node
+target_bundle: tour_boarding_places_time
+default_langcode: site_default
+language_alterable: false

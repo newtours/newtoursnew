@@ -1,0 +1,11 @@
+uuid: 1adc35fc-4ad2-428a-a2f9-d2fa24d71fdc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.order_payments
+id: node.order_payments
+target_entity_type_id: node
+target_bundle: order_payments
+default_langcode: site_default
+language_alterable: false

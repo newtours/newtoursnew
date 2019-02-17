@@ -1,0 +1,21 @@
+uuid: fe2c328d-86ed-4ee1-a2e2-478a03838bd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_nights_suffix
+    - node.type.tours
+  module:
+    - text
+id: node.tours.field_tour_nights_suffix
+field_name: field_tour_nights_suffix
+entity_type: node
+bundle: tours
+label: 'Tour Nights Suffix'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

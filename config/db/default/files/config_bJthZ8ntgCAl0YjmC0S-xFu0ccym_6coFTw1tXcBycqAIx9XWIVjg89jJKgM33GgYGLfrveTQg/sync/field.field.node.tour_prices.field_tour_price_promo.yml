@@ -1,0 +1,23 @@
+uuid: 79098499-51cd-45dd-8718-63ef4cddaf2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_price_promo
+    - node.type.tour_prices
+id: node.tour_prices.field_tour_price_promo
+field_name: field_tour_price_promo
+entity_type: node
+bundle: tour_prices
+label: 'Tour Price Promo'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: float

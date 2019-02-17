@@ -1,0 +1,21 @@
+uuid: c903d2fc-8c19-4926-b6dd-405d508b3ac8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_days_prefix
+    - node.type.tours
+  module:
+    - text
+id: node.tours.field_tour_days_prefix
+field_name: field_tour_days_prefix
+entity_type: node
+bundle: tours
+label: 'Tour Days Prefix'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

@@ -1,0 +1,23 @@
+uuid: e70aab35-0c10-4008-9ad7-b7d738378959
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_order_total
+    - node.type.orders
+id: node.orders.field_order_total
+field_name: field_order_total
+entity_type: node
+bundle: orders
+label: 'Order Total'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: float

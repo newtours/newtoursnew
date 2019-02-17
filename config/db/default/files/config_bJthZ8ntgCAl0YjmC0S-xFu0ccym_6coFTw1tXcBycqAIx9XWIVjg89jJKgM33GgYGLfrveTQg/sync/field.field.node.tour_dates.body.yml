@@ -1,0 +1,22 @@
+uuid: fc6b7230-5186-4337-8c0f-b1b9fa2d87b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.tour_dates
+  module:
+    - text
+id: node.tour_dates.body
+field_name: body
+entity_type: node
+bundle: tour_dates
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

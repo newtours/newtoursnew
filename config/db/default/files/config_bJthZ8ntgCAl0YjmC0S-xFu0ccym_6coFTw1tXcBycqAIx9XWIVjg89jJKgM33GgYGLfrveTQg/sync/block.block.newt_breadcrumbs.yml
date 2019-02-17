@@ -1,0 +1,22 @@
+uuid: 4242dc9b-70c0-4fc4-a83c-8c3343f721f6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - newt
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: newt_breadcrumbs
+theme: newt
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

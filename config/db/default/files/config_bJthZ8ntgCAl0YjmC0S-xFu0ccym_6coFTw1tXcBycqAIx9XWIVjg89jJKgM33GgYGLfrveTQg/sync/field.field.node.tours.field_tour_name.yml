@@ -1,0 +1,21 @@
+uuid: 1fc4f2f9-94c9-4d38-b9ac-052ffd0a0f0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_name
+    - node.type.tours
+  module:
+    - text
+id: node.tours.field_tour_name
+field_name: field_tour_name
+entity_type: node
+bundle: tours
+label: 'Tour Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

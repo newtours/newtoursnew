@@ -1,0 +1,20 @@
+uuid: 3f3a79f4-efd5-4ffd-b885-d524ef5f966f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_tour_nights_suffix
+field_name: field_tour_nights_suffix
+entity_type: node
+type: text
+settings:
+  max_length: 50
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

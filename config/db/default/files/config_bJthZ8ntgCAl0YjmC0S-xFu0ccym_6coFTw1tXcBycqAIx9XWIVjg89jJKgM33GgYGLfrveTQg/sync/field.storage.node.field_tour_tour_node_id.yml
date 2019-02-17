@@ -1,0 +1,20 @@
+uuid: adba4161-f966-46cb-9203-8d6f9ef7dbff
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_tour_tour_node_id
+field_name: field_tour_tour_node_id
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

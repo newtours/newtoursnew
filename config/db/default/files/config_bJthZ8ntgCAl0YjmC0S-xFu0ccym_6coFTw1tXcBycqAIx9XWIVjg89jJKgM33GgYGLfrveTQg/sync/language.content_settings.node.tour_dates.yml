@@ -1,0 +1,11 @@
+uuid: fbaa42e3-7f1a-4246-ab01-7fdb13cc8eaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tour_dates
+id: node.tour_dates
+target_entity_type_id: node
+target_bundle: tour_dates
+default_langcode: site_default
+language_alterable: false

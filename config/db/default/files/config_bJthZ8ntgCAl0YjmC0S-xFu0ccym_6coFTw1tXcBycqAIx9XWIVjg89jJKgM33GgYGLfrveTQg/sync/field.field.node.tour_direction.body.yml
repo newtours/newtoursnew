@@ -1,0 +1,22 @@
+uuid: 1be329ac-5634-466b-ba86-06fa84554096
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.tour_direction
+  module:
+    - text
+id: node.tour_direction.body
+field_name: body
+entity_type: node
+bundle: tour_direction
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

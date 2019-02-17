@@ -1,0 +1,29 @@
+uuid: 79082074-889a-4116-8beb-6eb97ac02e77
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_order_creator
+    - node.type.orders
+id: node.orders.field_order_creator
+field_name: field_order_creator
+entity_type: node
+bundle: orders
+label: 'Order Staff'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: false
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

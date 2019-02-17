@@ -1,0 +1,22 @@
+uuid: 705d0c87-d891-47f1-a380-b55ed97bd2bb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - newt
+_core:
+  default_config_hash: jQQUUWN2Uxr5qZtc9zcJKBCxpKY8orN1u2HPqYYRQDI
+id: newt_powered
+theme: newt
+region: footer_fifth
+weight: 10
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

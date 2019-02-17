@@ -1,0 +1,23 @@
+uuid: 4510b66c-6e25-44ef-bc49-5da6ec4dcda5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_price_lux
+    - node.type.tour_prices
+id: node.tour_prices.field_tour_price_lux
+field_name: field_tour_price_lux
+entity_type: node
+bundle: tour_prices
+label: 'Tour Price Lux'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

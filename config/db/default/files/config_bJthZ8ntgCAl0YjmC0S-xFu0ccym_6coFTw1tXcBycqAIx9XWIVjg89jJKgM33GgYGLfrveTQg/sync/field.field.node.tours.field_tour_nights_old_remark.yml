@@ -1,0 +1,21 @@
+uuid: 3d6e2cde-7d7e-4e29-95ea-1f2a0efeed40
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_nights_old_remark
+    - node.type.tours
+  module:
+    - text
+id: node.tours.field_tour_nights_old_remark
+field_name: field_tour_nights_old_remark
+entity_type: node
+bundle: tours
+label: 'Tour Nights Old Remark'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

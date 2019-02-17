@@ -1,0 +1,19 @@
+uuid: 3941c33d-18e2-4dab-a01a-8da333e7709a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_order_payment_order
+field_name: field_order_payment_order
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

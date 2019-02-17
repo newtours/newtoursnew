@@ -1,0 +1,23 @@
+uuid: dd5176e2-a265-4feb-8ca2-ece66eace5e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_active
+    - node.type.boarding_places
+id: node.boarding_places.field_place_active
+field_name: field_place_active
+entity_type: node
+bundle: boarding_places
+label: 'Place Active'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,11 @@
+uuid: 300ca24b-d9ee-4c96-8d0d-03069a66df23
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tour_prices
+id: node.tour_prices
+target_entity_type_id: node
+target_bundle: tour_prices
+default_langcode: site_default
+language_alterable: true

@@ -1,0 +1,22 @@
+uuid: f6ef482d-bfb2-41e0-bb45-f06ba5afbe3b
+langcode: en
+status: true
+dependencies:
+  theme:
+    - newt
+_core:
+  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
+id: newt_local_tasks
+theme: newt
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

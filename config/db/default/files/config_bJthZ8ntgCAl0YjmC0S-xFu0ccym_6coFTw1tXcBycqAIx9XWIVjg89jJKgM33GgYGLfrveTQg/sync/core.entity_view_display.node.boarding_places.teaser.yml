@@ -1,0 +1,37 @@
+uuid: e69670d2-fec4-47e4-b7a2-311de825f761
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.boarding_places.body
+    - node.type.boarding_places
+  module:
+    - text
+    - user
+id: node.boarding_places.teaser
+targetEntityType: node
+bundle: boarding_places
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_district: true
+  field_place_active: true
+  field_place_lat: true
+  field_place_long: true
+  field_place_name: true
+  field_place_old_rowid: true
+  langcode: true

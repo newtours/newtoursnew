@@ -1,0 +1,11 @@
+uuid: a87a86d0-107b-4531-a9c8-f68990ed47ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tour_types
+id: node.tour_types
+target_entity_type_id: node
+target_bundle: tour_types
+default_langcode: site_default
+language_alterable: false

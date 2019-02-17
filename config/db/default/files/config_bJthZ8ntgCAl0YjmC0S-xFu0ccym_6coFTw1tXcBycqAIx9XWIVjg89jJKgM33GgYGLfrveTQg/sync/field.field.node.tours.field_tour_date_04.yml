@@ -1,0 +1,19 @@
+uuid: 776868f3-a09a-45e1-841e-481541e5bfd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_date_04
+    - node.type.tours
+id: node.tours.field_tour_date_04
+field_name: field_tour_date_04
+entity_type: node
+bundle: tours
+label: 'Tour Date 04'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

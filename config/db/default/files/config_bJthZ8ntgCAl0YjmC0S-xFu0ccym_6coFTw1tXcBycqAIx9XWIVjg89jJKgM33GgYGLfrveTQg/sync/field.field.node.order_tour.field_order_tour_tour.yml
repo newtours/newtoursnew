@@ -1,0 +1,25 @@
+uuid: ef668365-49c8-412b-91c9-07e878a3c817
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_order_tour_tour
+    - node.type.order_tour
+id: node.order_tour.field_order_tour_tour
+field_name: field_order_tour_tour
+entity_type: node
+bundle: order_tour
+label: 'Order Tour Tour'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: tours_list
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

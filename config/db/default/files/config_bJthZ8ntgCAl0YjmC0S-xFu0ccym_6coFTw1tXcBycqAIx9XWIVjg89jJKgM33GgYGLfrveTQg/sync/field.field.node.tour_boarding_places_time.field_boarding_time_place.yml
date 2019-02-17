@@ -1,0 +1,25 @@
+uuid: b6625dd4-6a72-4e65-984b-4e80c86c800c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_boarding_time_place
+    - node.type.tour_boarding_places_time
+id: node.tour_boarding_places_time.field_boarding_time_place
+field_name: field_boarding_time_place
+entity_type: node
+bundle: tour_boarding_places_time
+label: 'Boarding Time Place'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: boarding_places
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

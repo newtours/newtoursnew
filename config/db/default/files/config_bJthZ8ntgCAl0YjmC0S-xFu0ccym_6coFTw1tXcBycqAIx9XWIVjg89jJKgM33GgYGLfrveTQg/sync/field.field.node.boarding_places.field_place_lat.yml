@@ -1,0 +1,23 @@
+uuid: bd391769-121a-4737-8b61-d05cd24ae2bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_lat
+    - node.type.boarding_places
+id: node.boarding_places.field_place_lat
+field_name: field_place_lat
+entity_type: node
+bundle: boarding_places
+label: 'Place Latitude'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

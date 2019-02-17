@@ -1,0 +1,20 @@
+uuid: e5a79cc6-ac61-4b45-9446-5ea35e03ff18
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_tour_startdate
+field_name: field_tour_startdate
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

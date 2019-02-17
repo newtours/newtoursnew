@@ -1,0 +1,22 @@
+uuid: f2692a9d-6a8b-43ff-9a31-d3426428c6c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.order_payments
+  module:
+    - text
+id: node.order_payments.body
+field_name: body
+entity_type: node
+bundle: order_payments
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

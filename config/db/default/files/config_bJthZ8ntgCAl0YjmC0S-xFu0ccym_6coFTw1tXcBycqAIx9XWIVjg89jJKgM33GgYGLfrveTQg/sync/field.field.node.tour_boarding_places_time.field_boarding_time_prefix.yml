@@ -1,0 +1,21 @@
+uuid: eb1c3848-e4d9-4938-b65e-61522232b176
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_boarding_time_prefix
+    - node.type.tour_boarding_places_time
+  module:
+    - text
+id: node.tour_boarding_places_time.field_boarding_time_prefix
+field_name: field_boarding_time_prefix
+entity_type: node
+bundle: tour_boarding_places_time
+label: 'Boarding Time prefix'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

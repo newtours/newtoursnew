@@ -1,0 +1,20 @@
+uuid: 6e895615-acf3-41c8-a292-fff7ecd4b3d2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: node.field_order_creator
+field_name: field_order_creator
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

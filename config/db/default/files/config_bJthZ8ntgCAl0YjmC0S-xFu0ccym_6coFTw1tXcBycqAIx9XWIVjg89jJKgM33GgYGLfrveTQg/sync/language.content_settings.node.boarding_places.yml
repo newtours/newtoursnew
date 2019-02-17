@@ -1,0 +1,11 @@
+uuid: 3718e1a4-c15f-4e4f-a30c-b9467c242a01
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.boarding_places
+id: node.boarding_places
+target_entity_type_id: node
+target_bundle: boarding_places
+default_langcode: site_default
+language_alterable: false

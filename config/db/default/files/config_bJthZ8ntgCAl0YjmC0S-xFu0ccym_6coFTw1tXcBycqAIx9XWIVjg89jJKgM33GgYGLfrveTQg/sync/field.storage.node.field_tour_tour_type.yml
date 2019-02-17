@@ -1,0 +1,19 @@
+uuid: 115915a6-ea64-4f8b-99e6-56ace284a312
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_tour_tour_type
+field_name: field_tour_tour_type
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

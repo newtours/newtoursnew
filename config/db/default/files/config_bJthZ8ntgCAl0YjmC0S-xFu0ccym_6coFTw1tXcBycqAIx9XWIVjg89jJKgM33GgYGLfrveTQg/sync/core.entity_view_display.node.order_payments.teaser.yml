@@ -1,0 +1,31 @@
+uuid: fc1e36e3-ff46-4cf4-8f7d-69d16f8c439a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.order_payments.body
+    - node.type.order_payments
+  module:
+    - text
+    - user
+id: node.order_payments.teaser
+targetEntityType: node
+bundle: order_payments
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

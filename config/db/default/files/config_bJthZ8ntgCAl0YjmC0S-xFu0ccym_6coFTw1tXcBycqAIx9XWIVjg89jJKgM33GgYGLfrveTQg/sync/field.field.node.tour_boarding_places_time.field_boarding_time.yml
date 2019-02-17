@@ -1,0 +1,21 @@
+uuid: 82106490-5c00-4789-aaf3-5903099e3d93
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_boarding_time
+    - node.type.tour_boarding_places_time
+  module:
+    - time_field
+id: node.tour_boarding_places_time.field_boarding_time
+field_name: field_boarding_time
+entity_type: node
+bundle: tour_boarding_places_time
+label: 'Boarding Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: time

@@ -1,0 +1,23 @@
+uuid: cd4b8b27-5dd0-4ea2-bd75-d9f8c97d22d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_order_guests
+    - node.type.orders
+id: node.orders.field_order_guests
+field_name: field_order_guests
+entity_type: node
+bundle: orders
+label: 'Order Guests'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,23 @@
+uuid: d8a63c87-7dc8-4e61-8801-538e7fa90a20
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_old_price
+    - node.type.tour_prices
+id: node.tour_prices.field_tour_old_price
+field_name: field_tour_old_price
+entity_type: node
+bundle: tour_prices
+label: 'Tour Old Price'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: float

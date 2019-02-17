@@ -1,0 +1,24 @@
+uuid: 7e009f54-e569-47a4-9286-b775d0fb81ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_order_date
+    - node.type.orders
+  module:
+    - datetime
+id: node.orders.field_order_date
+field_name: field_order_date
+entity_type: node
+bundle: orders
+label: 'Order Date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

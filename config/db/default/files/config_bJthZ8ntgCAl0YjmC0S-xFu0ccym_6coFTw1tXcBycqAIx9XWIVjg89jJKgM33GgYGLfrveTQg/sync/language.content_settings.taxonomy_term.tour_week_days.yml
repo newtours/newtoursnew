@@ -1,0 +1,16 @@
+uuid: c9455650-2c5b-4c64-a1de-2a21aad2f58d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.tour_week_days
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.tour_week_days
+target_entity_type_id: taxonomy_term
+target_bundle: tour_week_days
+default_langcode: site_default
+language_alterable: false

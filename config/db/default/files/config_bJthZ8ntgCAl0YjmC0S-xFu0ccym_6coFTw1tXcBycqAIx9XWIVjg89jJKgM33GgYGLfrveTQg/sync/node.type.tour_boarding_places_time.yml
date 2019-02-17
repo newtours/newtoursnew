@@ -1,0 +1,18 @@
+uuid: 71b843c3-c8e8-42a8-be4b-7ca682c4205a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Tour Boarding Places Time'
+type: tour_boarding_places_time
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

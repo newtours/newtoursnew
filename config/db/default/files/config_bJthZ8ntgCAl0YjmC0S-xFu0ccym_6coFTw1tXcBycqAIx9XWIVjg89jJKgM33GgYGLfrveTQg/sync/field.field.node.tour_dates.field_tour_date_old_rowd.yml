@@ -1,0 +1,23 @@
+uuid: 6308a661-12ae-4df9-8543-1486cda42c95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tour_date_old_rowd
+    - node.type.tour_dates
+id: node.tour_dates.field_tour_date_old_rowd
+field_name: field_tour_date_old_rowd
+entity_type: node
+bundle: tour_dates
+label: 'Tour Date Old Rowd'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

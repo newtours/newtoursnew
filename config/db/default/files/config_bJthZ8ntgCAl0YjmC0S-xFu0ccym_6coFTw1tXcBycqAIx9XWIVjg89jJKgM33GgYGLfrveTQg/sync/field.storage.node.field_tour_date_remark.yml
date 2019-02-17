@@ -1,0 +1,20 @@
+uuid: a6974eca-c7fb-48c4-9a1e-77337361da6a
+langcode: ru
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_tour_date_remark
+field_name: field_tour_date_remark
+entity_type: node
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
