@@ -6,7 +6,7 @@
 #/web/themes/contrib/
 #/web/profiles/contrib/
 #/web/libraries/
- nbproject/
+ /nbproject/
 /config/sync
 
 # Ignore sensitive information
