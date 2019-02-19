@@ -6,8 +6,9 @@
 #/web/themes/contrib/
 #/web/profiles/contrib/
 #/web/libraries/
- /nbproject/
+/nbproject/
 /config/sync
+nbproject/
 
 # Ignore sensitive information
 /web/sites/*/settings.php
