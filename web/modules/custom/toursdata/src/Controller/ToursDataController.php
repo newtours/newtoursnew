@@ -202,24 +202,7 @@ class ToursDataController extends ControllerBase {
      */
     protected function _updateToursTable ( $id )
     {
-        echo $id;
-        //for ($i=1;$i<800;$i++) {
-            //echo $i;
-            $entityIdsArray = $this->entityTypeManager()
-                ->loadByProperties([
-                    'type' => 'tour_dates',
-                    //'field_tour_date_old_tour_rowid' => $i,
-                ]);
-            foreach ($entityIdsArray as $key=>$value) {
-                echo $key . '=>';
-                echo $value->id();
-                $this->entityTypeManager()->delete([$key=>$value]);
-            }exit;
-                        var_dump(count($entityIdsArray));
-                       $del =  $this->entityTypeManager()->delete($entityIdsArray);
-                       var_dump($del);
-       // }
-       exit;
+
 // Delete multiple entities at once.
 //\Drupal::entityTypeManager()->getStorage($entity_type)->delete(array($id1 => $entity1, $id2 => $entity2));
 
@@ -432,40 +415,18 @@ class ToursDataController extends ControllerBase {
      */
     protected function _updateDatesTable ( $entity, $tour_rowid, array $ids, $start = true, $external = false )
     {
-
-            
-        // Drafted Below using if need export from external tour_dates table, $entity - td_rowid !!!!!
-        if ($external) {
-            $db = $this->_setExternalConnection();
-            if ($entity) {
-                $data = $db->select('tour_dates', 't')
-                    ->fields('t')
-                    ->condition('td_rowid', $entity, '=')
-                    ->execute();
-            } else {
-                $data = $db->select('tour_dates', 't')
-                    ->fields('t')
-                    ->execute();
-            }
-            // Close external connection
-            \Drupal\Core\Database\Database::setActiveConnection();
-        }
-
+//var_dump($ids);
         // Avoid duplicate entries in tour_dates entity table. Key here is $tour_rowid, not $entity
         if ($start) {
- var_dump($tour_rowid); 
-  var_dump($start); 
- 
             $entityIdsArray = $this->entityTypeManager()
                 ->loadByProperties([
                     'type' => 'tour_dates',
-                    //'field_tour_date_old_tour_rowid' => 30,
+                    'field_tour_date_old_tour_rowid' => $tour_rowid,
                 ]);
-                        var_dump(count($entityIdsArray));
-                        $this->entityTypeManager()->delete($entityIdsArray);exit;
             }
 
             // to avoid delete, below array for update dates if exists
+        if (count($entityIdsArray) > 0) {    
         foreach($entityIdsArray as $key=>$value) {
                 //var_dump($value->field_tour_date->value);exit;
                 $datesEntityArray[$value->field_tour_date->value] = [
@@ -485,13 +446,13 @@ class ToursDataController extends ControllerBase {
                     
                 ];    
             }
+        }
 
-var_dump(count($entityIdsArray));
-            if (count($entityIdsArray)) {
-                $this->entityTypeManager()->delete($entityIdsArray);
-            }
+            //if (count($entityIdsArray)) {
+            //    $this->entityTypeManager()->delete($entityIdsArray);
+            //}
        
-exit;
+//exit;
         if (count($ids) == 0) {
             return 'Source dates array is empty';
         }
@@ -513,16 +474,20 @@ exit;
                                     $TourDateTime = \DateTime::createFromFormat('Y-m-d', $year . '-' . $month . '-' . $int);
                                     //$tourDateString = $TourDateTime->format('Y-m-d\TH:i:s');
                                     $tourDateString = $year . '-' . $month . '-' . ((1 == strlen($int)) ? '0' . $int : $int);
+                                    $title = $tour_rowid . ' @' . $tourDateString;
                                     if (false !== strpos($date, '*')) {
                                         $suffix = '*';
                                     }
                                     if(isset($datesEntityArray[$tourDateString])) {
+                                        //$datesEntityArray[$tourDateString]['data']['field_tour_date_suffix'] = $suffix;
+                                        //$datesEntityArray[$tourDateString]['data']['field_tour_date_prefix'] = $prefix;
+                                        $datesEntityArray[$tourDateString]['data']['title'] = $title;
                                         $nodeId = $nodeId = $this->_createDateNode($datesEntityArray[$tourDateString],true);
                                         unset($datesEntityArray[$tourDateString]);
                                     } else {
                                     $nodeId = $this->_createDateNode(
                                         [ $entity =>
-                                            ['title' => $tour_rowid . ' @' . $tourDateString,
+                                            ['title' => $title,
                                             'type' => 'tour_dates',
                                             'field_tour_date' => $tourDateString,
                                             'field_tour_date_old_tour_rowid' => $tour_rowid,
@@ -544,28 +509,30 @@ exit;
 //echo '420 ' .$date .'=>>>> ';
                                         foreach($this->_weekArray as $weekArrayKey=>$weekArrayValue) {
                                             if (false !== strpos($date,strtolower($weekArrayKey))) {
-                                                echo ($weekArrayValue) . ' ';
-                                                echo $weekArrayKey . ' ';
-                                                $dateArrays = array_merge($this->getAllDaysInAMonth($year, $month, $weekArrayValue));
-
-                                            }
+ //echo ($weekArrayValue) . ' ';
+//echo $weekArrayKey . ' ' . '<br/>';
+                                                $dateArrays = array_merge($dateArrays,$this->getAllDaysInAMonth($year, $month, $weekArrayValue));
+                                            }                                            
                                         }
-                                        $dateArrays = array_merge($dateArrays);
-                                        //echo '******<br/>';
-                                        //var_dump($dateArrays);
-                                        //echo '******<br/>';
+//echo '******<br/>';
+// var_dump($dateArrays);
+//echo '******<br/>';
                                     }
                                 }
                                 if (isset($dateArrays) && count($dateArrays)> 0) {
                                     foreach ($dateArrays as $dateOfArray) {
                                         $weekDay = $dateOfArray->format('Y-m-d');
+                                        $title = $tour_rowid . ' @' . $weekDay;
                                        // echo $weekDay . ' line 438******<br/>';
                                     if(isset($datesEntityArray[$weekDay])) {
+                                        //$datesEntityArray[$tourDateString]['data']['field_tour_date_suffix'] = $suffix;
+                                        //$datesEntityArray[$tourDateString]['data']['field_tour_date_prefix'] = $prefix;
+                                        $datesEntityArray[$tourDateString]['data']['title'] = $title;
                                         $nodeId = $nodeId = $this->_createDateNode($datesEntityArray[$weekDay],true);
                                         unset($datesEntityArray[$weekDay]);
                                     } else {
                                         $nodeId = $this->_createDateNode([
-                                            $entity => ['title' => $tour_rowid . ' @' . $weekDay,
+                                            $entity => ['title' => $title,
                                                 'type' => 'tour_dates',
                                                 'field_tour_date' => $weekDay,
                                                 'field_tour_date_old_tour_rowid' => $tour_rowid,
@@ -598,17 +565,19 @@ exit;
                                 foreach ($dateArrays as $dateOfArray) {
                                     //echo($dateOfArray->format('Y-m-d')) . '<br/>';
                                     $weekDay = $dateOfArray->format('Y-m-d');
-                                    if(isset($datesEntityArray[$weekDay])) {
+                                    $title = $tour_rowid . '-'.$dateOfArray->format('l') . ' '. ' @' . ' ' . $weekDay;
+                                    if(isset($datesEntityArray[$weekDay])) {   
+                                       $datesEntityArray[$tourDateString]['data']['title'] = $title;
                                         $nodeId = $nodeId = $this->_createDateNode($datesEntityArray[$weekDay],true);
                                         unset($datesEntityArray[$weekDay]);
                                     } else {                                    
                                     $nodeId = $this->_createDateNode([
-                                        $entity => ['title' => $wValue . '-'.$dateOfArray->format('l') . ' '.$tour_rowid . ' @' . ' ' . $weekDay,
+                                        $entity => ['title' => $title,
                                             'type' => 'tour_dates',
                                             'field_tour_date' => $weekDay,
                                             'field_tour_date_old_tour_rowid' => $tour_rowid,
-                                            'field_tour_date_suffix' => $suffix,
-                                            'field_tour_date_prefix' => $prefix,
+                                            //'field_tour_date_suffix' => $suffix,
+                                            //'field_tour_date_prefix' => $prefix,
                                             'field_tour_date_generated_from' => 'Week day   ' . $dateOfArray->format('l')
                                         ]
                                     ]);
@@ -628,10 +597,14 @@ exit;
             if (count($datesEntityArray) > 0) {
                 $delete = [];
                 foreach($datesEntityArray as $key=>$value) {
-                    $delete[key($value['entitity'])] = $value['entitity'] ; 
+                    //$delete[key($value['entitity'])] = $value['entitity'] ; 
+                    if(!isset($value->field_tour_date_lock) && true != $value->field_tour_date_lock) {
+                        $this->entityTypeManager()->delete($value['entitity']);
+                    }
                 }
+               // var_dump($delete);exit
                  //$this->entityTypeManager()->delete($delete);
-            }//exit;
+            }
         $return = '';
             if (isset($entityArray)) {
                 foreach ($entityArray[$tour_rowid] as $key=>$value ) {
@@ -649,17 +622,18 @@ exit;
      */
     protected function _createDateNode($data,$update = false)
     {
-        if(!update) {
+    
+        if(!$update) {
             $entity = key($data);
             $node = $this->entityTypeManager()->create($data[$entity]);
             $node->field_tour_date_tour->target_id = $entity;
             $node->save();
         } else {
             $node = $this->entityTypeManager()->load($data['node']);
-            foreach($data as $key=>$value) {
-            $node->{key($value['data'])}->value = $value['data']; 
-            $node->save($data['node']);
+            foreach($data['data'] as $key=>$value) {
+                $node->$key->value = $value; 
             }
+            $node->save($data['node']);
         }
         return $node->id();
     }
