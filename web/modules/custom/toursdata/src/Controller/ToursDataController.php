@@ -440,7 +440,7 @@ class ToursDataController extends ControllerBase {
                         'field_tour_date_prefix' => $value->field_tour_date_prefix->value,
                         'field_tour_date_generated_from'=>$value->field_tour_date_generated_from->value
                     ],
-                    'entitity'=>[
+                    'entity'=>[
                         $key=>$value,
                     ]
                     
@@ -597,9 +597,9 @@ class ToursDataController extends ControllerBase {
             if (count($datesEntityArray) > 0) {
                 $delete = [];
                 foreach($datesEntityArray as $key=>$value) {
-                    //$delete[key($value['entitity'])] = $value['entitity'] ; 
+                    //$delete[key($value['entity'])] = $value['entity'] ;
                     if(!isset($value->field_tour_date_lock) && true != $value->field_tour_date_lock) {
-                        $this->entityTypeManager()->delete($value['entitity']);
+                        $this->entityTypeManager()->delete($value['entity']);
                     }
                 }
                // var_dump($delete);exit
