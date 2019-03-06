@@ -428,7 +428,8 @@ class ToursDataController extends ControllerBase {
             // to avoid delete, below array for update dates if exists
         if (count($entityIdsArray) > 0) {    
         foreach($entityIdsArray as $key=>$value) {
-                //var_dump($value->field_tour_date->value);exit;
+                //var_dump($value->field_tour_date->value);
+                //var_dump($value->getTitle());echo '=>' . $key . '</br>';
                 $datesEntityArray[$value->field_tour_date->value] = [
                     'node'=>$key,
                     'type' => 'tour_dates',
@@ -447,6 +448,7 @@ class ToursDataController extends ControllerBase {
                 ];    
             }
         }
+
 
             //if (count($entityIdsArray)) {
             //    $this->entityTypeManager()->delete($entityIdsArray);
@@ -527,7 +529,7 @@ class ToursDataController extends ControllerBase {
                                     if(isset($datesEntityArray[$weekDay])) {
                                         //$datesEntityArray[$tourDateString]['data']['field_tour_date_suffix'] = $suffix;
                                         //$datesEntityArray[$tourDateString]['data']['field_tour_date_prefix'] = $prefix;
-                                        $datesEntityArray[$tourDateString]['data']['title'] = $title;
+                                        $datesEntityArray[$weekDay]['data']['title'] = $title;
                                         $nodeId = $nodeId = $this->_createDateNode($datesEntityArray[$weekDay],true);
                                         unset($datesEntityArray[$weekDay]);
                                     } else {
@@ -567,7 +569,7 @@ class ToursDataController extends ControllerBase {
                                     $weekDay = $dateOfArray->format('Y-m-d');
                                     $title = $tour_rowid . '-'.$dateOfArray->format('l') . ' '. ' @' . ' ' . $weekDay;
                                     if(isset($datesEntityArray[$weekDay])) {   
-                                       $datesEntityArray[$tourDateString]['data']['title'] = $title;
+                                       $datesEntityArray[$weekDay]['data']['title'] = $title;
                                         $nodeId = $nodeId = $this->_createDateNode($datesEntityArray[$weekDay],true);
                                         unset($datesEntityArray[$weekDay]);
                                     } else {                                    
@@ -598,7 +600,7 @@ class ToursDataController extends ControllerBase {
                 $delete = [];
                 foreach($datesEntityArray as $key=>$value) {
                     //$delete[key($value['entity'])] = $value['entity'] ;
-                    if(!isset($value->field_tour_date_lock) && true != $value->field_tour_date_lock) {
+                    if(!isset($value->field_tour_date_lock) && true != $value->field_tour_date_lock && isset($value['entity'])) {
                         $this->entityTypeManager()->delete($value['entity']);
                     }
                 }
