@@ -110,8 +110,10 @@ class ToursDataController extends ControllerBase {
             case 'tours':
                 $return = $this->_updateToursTable($id);
                 break;
+            // dates not call directly
             case 'dates':
-                $return =  $this->_updateDatesTable ( $id );
+                //$return =  $this->_updateDatesTable ( $id );
+                $return = '';
                 break;
             case 'directions':
                 $return =  $this->_updateDirectionsTable ( $id );
@@ -130,6 +132,14 @@ class ToursDataController extends ControllerBase {
                 break;
             case 'prices':
                 $return = $this->_updatePricesTabel($id);
+                break;
+            case 'files':
+                if('stars' == $id) {
+                    $return = $this->_updateFromStarsFile(null);
+                }
+                elseif ('regular' == $id ) {
+                    $return = $this->_updateFromDataFile(null);
+                }
                 break;
             case 'countries':
                 $list = (\Drupal\Core\Locale\CountryManager::getStandardList());
@@ -962,10 +972,7 @@ class ToursDataController extends ControllerBase {
 
         }
         return $entityArray;
-        return array(
-            '#type' => 'markup',
-            '#markup' => $this->t( 'Update Directions with id '),
-        );
+
     }
 
     /**
@@ -1352,4 +1359,105 @@ class ToursDataController extends ControllerBase {
         return $days;
     }
 
+    /**
+     * using /source/www/stars/a_source_stars_new_data.php
+     * @param $file
+     */
+    protected function _updateFromStarsFile ($file)
+    {
+        $sourceRoot = dirname(DRUPAL_ROOT) . '/source/';
+        //var_dump($file);exit;
+        if(!($file)) {
+            include $sourceRoot . 'stars/a_source_stars_new_data.php';
+            if(isset($array_groups)) {
+                $result = [];
+                foreach($array_groups as $key=>$value) {
+                    $group = $key;
+                    foreach ($value as $subKey => $subValue) {
+                        $file = $sourceRoot . 'stars/stars/new_data/' . $subValue;
+                        $source = file_get_contents($file);
+                        preg_match_all('/\$[A-Za-z0-9-_]+/', $source, $vars);
+                        include $file;
+                        foreach ($vars[0] as &$variables) {
+                            $variables =  substr($variables,1);
+                            if(isset($$variables) && isset($tour_rowid)) {
+                                if (is_array($$variables)) {
+                                    foreach($$variables as $value) {
+                                        if(is_array($value)) {
+                                            foreach ($value as $subvalue) {
+                                                if (!empty($subvalue) && !is_null($subvalue)) {
+                                                    $result[$tour_rowid][$variables][][] = mb_convert_encoding($subvalue, "utf-8", "windows-1251");
+                                                }
+                                            }
+                                        } else {
+                                            if (!empty($value) && !is_null($value)) {
+                                                $result[$tour_rowid][$variables][] = mb_convert_encoding($value, "utf-8", "windows-1251");
+                                            }
+                                        }
+
+                                    }
+                                }
+                                else {
+                                    if(!empty($$variables) && !is_null($$variables)) {
+                                        $result[$tour_rowid][$variables] = mb_convert_encoding($$variables, "utf-8", "windows-1251");
+                                    }
+                                }
+                            }
+                            //echo $variables . '<br/>';
+                        }
+                        $result[$tour_rowid]['group'] = $group;
+                        $result[$tour_rowid]['group_weight'] = $subKey;
+                        $vars = [];
+
+                    }
+                }
+            }
+        }
+        var_dump($result);exit;
+
+
+        $file = $sourceRoot . 'stars/stars/new_data/description_1.php';
+        $source = file_get_contents(dirname(DRUPAL_ROOT) . '/source/stars/stars/new_data/description_1.php');
+        preg_match_all('/\$[A-Za-z0-9-_]+/', $source, $vars);
+         include $file;
+        $result = [];
+        foreach ($vars[0] as &$variables) {
+            $variables =  substr($variables,1);
+            if(isset($$variables) && isset($tour_rowid)) {
+                if (is_array($$variables)) {
+                    foreach($$variables as $value) {
+                        if(is_array($value)) {
+                            foreach ($value as $subvalue) {
+                                if (!empty($subvalue) && !is_null($subvalue)) {
+                                    $result[$tour_rowid][$variables][][] = mb_convert_encoding($subvalue, "utf-8", "windows-1251");
+                                }
+                            }
+                        } else {
+                            if (!empty($value) && !is_null($value)) {
+                                $result[$tour_rowid][$variables][] = mb_convert_encoding($value, "utf-8", "windows-1251");
+                            }
+                        }
+
+                    }
+                }
+                else {
+                    if(!empty($$variables) && !is_null($$variables)) {
+                        $result[$tour_rowid][$variables] = mb_convert_encoding($$variables, "utf-8", "windows-1251");
+                    }
+                }
+            }
+            //echo $variables . '<br/>';
+        }
+
+var_dump($result);exit;
+
+    }
+
+    /**
+     * @param $data
+     */
+    protected function _updateDescrTable ($data)
+    {
+
+    }
 }
