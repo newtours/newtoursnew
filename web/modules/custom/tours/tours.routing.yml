@@ -35,3 +35,12 @@ tours.carousel:
   requirements:
     _permission: 'access content'
       
+
+tours.default_order_form:
+  path: '/tours/form/default_order'
+  defaults:
+    _form: '\Drupal\tours\Form\DefaultOrderForm'
+    _title: 'DefaultOrderForm'
+  requirements:
+    _access: 'TRUE'
+  

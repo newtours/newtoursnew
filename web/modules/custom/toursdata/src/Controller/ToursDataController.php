@@ -71,6 +71,9 @@ class ToursDataController extends ControllerBase {
   public function __construct(EntityManagerInterface $entity_manager, ContainerAwareInterface $entity_query, EntityTypeManagerInterface $entity_type_manager) {
     $this->entityManager = $entity_manager;
     $this->entityQuery = $entity_query;
+
+     // !!! Actually not using here
+      // ControllerBase has  method entityTypeManager()
     $this->entityTypeManager = $entity_type_manager->getListBuilder('node')
                                                     ->getStorage();
 
