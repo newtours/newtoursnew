@@ -1,0 +1,69 @@
+
+tours.nt_calendar:
+  path: '/calendar/{view}'
+  defaults:
+    _controller: '\Drupal\tours_calendar\Controller\CalendarController::hebCalendar'
+    _title: 'Full Year Calendar'
+    view: null
+  requirements:
+    _permission: 'access content'
+
+tours.calendar_tour:
+  path: '/calendar-tour/{id}/{params}'
+  defaults:
+    _controller: '\Drupal\tours_calendar\Controller\CalendarController::tourCalendar'
+    _title: 'Calendar Tour'
+    id: null
+    params: null
+  requirements:
+    _permission: 'access content'
+
+tours.nt_calendar_data:
+  path: '/calendar-data/{events}'
+  defaults:
+    _controller: '\Drupal\tours_calendar\Controller\CalendarController::hebCalendarData'
+    _title: 'Full Year Calendar'
+    events: NULL
+  requirements:
+    _permission: 'access content' 
+
+tours.parsha:
+  path: '/weekly-parsha/{parsha}'
+  defaults:
+    _controller: '\Drupal\tours_calendar\Controller\CalendarController::weeklyParsha'
+    _title: 'Weekly Parsha'
+    parsha: NULL
+  requirements:
+    _permission: 'access content'
+
+tours.parsha_by_date:
+  path: '/weekly-parsha-date/{date}'
+  defaults:
+    _controller: '\Drupal\tours_calendar\Controller\CalendarController::todayParsha'
+    _title: 'Weekly Parsha'
+    date: NULL
+  requirements:
+    _permission: 'access content'
+    
+tours.current_date:
+  path: '/custom-calendar/{date}'
+  defaults:
+    _controller: '\Drupal\tours_calendar\Controller\CalendarController::generateCurrentDate'
+    _title: 'Today Calendar'
+    date: NULL
+  requirements:
+    _permission: 'access content'   
+    
+tours.date_convert:
+  path: '/convert-date/{type}/{date}/{sun}'
+  defaults:
+    _controller: '\Drupal\tours_calendar\Controller\CalendarController::dateConverter'
+    _title: 'Date converter'
+    type: 'tohebrew'
+    date: NULL
+    sun: ''
+  requirements:
+    _permission: 'access content'     
+    
+
+      

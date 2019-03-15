@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Contains tours_calendar.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function tours_calendar_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the tours_calendar module.
+    case 'help.page.tours_calendar':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Full Calendar related functions') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tours_calendar_theme() {
+  return [
+    'tours_calendar' => [
+      'render element' => 'children',
+        'variables' => ['node_events' => NULL],
+    ],
+      'weekly_parsha' =>[
+          'variables' => ['parsha' => NULL ]
+      ],
+      'young_parsha'=> [
+          'variables'=>[
+              'parsha_data'=> NULL,
+              'haftarah_data'=> NULL,
+          ]
+      ]
+  ];
+}

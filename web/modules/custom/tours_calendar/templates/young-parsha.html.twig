@@ -1,0 +1,42 @@
+{#
+/**
+ * Default theme implementation for Views to output a Parsha's data.
+ * Including haftarah, day schedule and announcements
+ *
+ * Available variables:
+ * - options: View plugin style options:
+ *   - classes: CSS classes.
+ *   - defaultDate: Default date of the calendar
+ *   - start: Field name of start date
+ *   - end: Field name of end date
+ *
+ * @see template_preprocess_views_view_fullcalendar()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+<div id ="parsha-main-data"  >
+    <section class=" col-xs-12 col-sm-12">
+
+        {% for key,value in parsha_data['data']  %}
+        <div class="row pb-2">
+            <div class="col-xs-6 col-sm-5 col-md-5">
+                {{ value['heb'] | raw }}
+            </div>
+
+            <div class="col-xs-6 col-sm-5 col-md-offset-1 col-md-5 pb-3">
+                {{ value['eng'] | raw }}
+            </div>
+
+
+        </div>
+        {% endfor %}
+
+    </section>
+
+
+</div>
+
+

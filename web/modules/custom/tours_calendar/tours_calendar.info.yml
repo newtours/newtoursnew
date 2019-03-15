@@ -1,0 +1,5 @@
+name: 'Tours Calendar'
+type: module
+description: 'Full Calendar related functions'
+core: 8.x
+package: 'Custom'
