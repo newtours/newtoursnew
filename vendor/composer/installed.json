@@ -4931,7 +4931,8 @@
         "keywords": [
             "mock",
             "xunit"
-        ]
+        ],
+        "abandoned": true
     },
     {
         "name": "psr/container",
@@ -8393,6 +8394,60 @@
         "homepage": "https://www.drupal.org/project/datatables",
         "support": {
             "source": "http://cgit.drupalcode.org/datatables"
+        }
+    },
+    {
+        "name": "drupal/bootstrap_sass",
+        "version": "1.9.0",
+        "version_normalized": "1.9.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/bootstrap_sass",
+            "reference": "8.x-1.9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/bootstrap_sass-8.x-1.9.zip",
+            "reference": "8.x-1.9",
+            "shasum": "268aed5386815dff31b2769b649cce817f11b40c"
+        },
+        "require": {
+            "drupal/bootstrap_barrio": "^4.8.0",
+            "drupal/core": "~8.0"
+        },
+        "type": "drupal-theme",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.9",
+                "datestamp": "1551065287",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "hatuhay",
+                "homepage": "https://www.drupal.org/user/827704"
+            },
+            {
+                "name": "ndf",
+                "homepage": "https://www.drupal.org/user/599438"
+            }
+        ],
+        "description": "SASS subtheme for Barrio Theme.",
+        "homepage": "http://drupal.org/project/bootstrap_sass",
+        "support": {
+            "source": "http://cgit.drupalcode.org/bootstrap_sass"
         }
     }
 ]
