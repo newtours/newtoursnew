@@ -30,3 +30,147 @@ function bengreen_sass_form_system_theme_settings_alter(&$form, FormStateInterfa
       'bg-transparent' => t('Transparent'),
   );
 }
+
+function bengreen_sass_theme_suggestions_page_alter(array &$suggestions, array $variables, $hook)
+{
+    // Try to get the node, so we can check if we're on the node page.
+    $node = Drupal::request()->attributes->get('node');
+    //$bibs= \Drupal::service('bib.virtua');
+    //$possibleFormatTypes = $bibs->getPathFormatTypes();
+    $possibleFormatTypes = [];
+    if (gettype($node) == "string") {
+        return;
+    }
+    //for blog node level suggestions
+    if ($node) {
+        $alias = \Drupal::service('path.alias_manager')
+            ->getAliasByPath('/node/' . $node->id());
+
+        if ($node->getType() == "blog_post") {
+            $suggestions[] = 'page__content__template__c';
+            return;
+        }
+        if ($alias == "/calendar" || $alias == "/get-a-card") {
+            $suggestions[] = 'page__landing__template__a';
+            return;
+        }
+
+        if ($alias == "/about-us") {
+            $suggestions[] = 'page__landing__template__a';
+            return;
+        }
+        if ($alias == "/support") {
+            $suggestions[] = 'page__landing__template__a';
+            return;
+        }
+        /*   else {
+             if ($alias == "/about-us/services") {
+               $suggestions[] = 'page__about_us';
+               $suggestions[] = 'page__directory__template__a';
+               return;
+             }
+             else {
+               if (strpos($alias, '/about-us/services/') !== FALSE) {
+                 $suggestions[] = 'page__about_us';
+                 $suggestions[] = 'page__directory__template__a';
+                 return;
+               }
+             }
+           } */
+    }
+
+    $current_path = \Drupal::service('path.current')->getPath();
+    $path = explode('/', $current_path);
+
+    if (isset($path[1])) {
+
+
+        if ('my-account' == $path[1]) {
+            if (!isset($path[2])) {
+                $suggestions[] = 'page__' . $path[1];
+                $suggestions[] = 'page__' . $path[1] . '_landing';
+            } else {
+                $suggestions[] = 'page__' . $path[1];
+                $suggestions[] = 'page__item__content__template__b';
+            }
+        }elseif('calendar' == $path[1]){
+            $suggestions[] = 'page__' . $path[1] . '__custom';
+
+        } elseif ('about-us' == $path[1]) {
+            if (isset($path[2]) && $path[2] == 'locations' && !isset($path[3])) {
+                $suggestions[] = 'page__' . $path[1];
+                $suggestions[] = 'page__locations__template';
+            }
+            if (isset($path[2]) && $path[2] == 'locations' && isset($path[3])) {
+                $suggestions[] = 'page__' . $path[1];
+                $suggestions[] = 'page__landing__template__a';
+            } else {
+                if (isset($path[2]) && $path[2] == 'news-media' && isset($path[3]) && $path[3] == 'blog') {
+                    $suggestions[] = 'page__' . $path[1];
+                    $suggestions[] = 'page__landing__template__b';
+                }elseif (isset($path[2]) && $path[2] == 'news-media' && isset($path[3]) && $path[3] == 'press-releases') {
+                    $suggestions[] = 'page__' . $path[1];
+                    $suggestions[] = 'page__landing__template__b';
+
+                }elseif (isset($path[2]) && $path[2] == 'news-media' && isset($path[3]) && $path[3] == 'library-and-staff-awards') {
+                    $suggestions[] = 'page__' . $path[1];
+                    $suggestions[] = 'page__landing__template__b';
+
+                } else {
+                    $suggestions[] = 'page__' . $path[1];
+                    $suggestions[] = 'page__default';
+                }
+            }
+
+        } elseif ('bib' == $path[1] || in_array($path[1],$possibleFormatTypes)) {
+            $suggestions[] = 'page__' . $path[1] . '_bibdata';
+            // bellow created temporarily
+            $suggestions[] = 'page__' . 'my_account';
+
+        } elseif ('event' == $path[1]) {
+            $suggestions[] = 'page__' . $path[1] . '_bibdata';
+            // bellow created temporarily
+            $suggestions[] = 'page__' . 'my_account';
+
+        } elseif ('calendar' == $path[1] && count($path)>2) {
+            $suggestions[] = 'page__' . $path[1] . '_bibdata';
+            // bellow created temporarily
+            $suggestions[] = 'page__' . 'my_account';
+
+        } /*elseif ('books-movies-more' == $path[1] && 'books' == $path[2]) {
+            $suggestions[] = 'page__' . $path[1];
+            $suggestions[] = 'page__item__template__a';
+
+        } */
+        elseif ('books-movies-more' == $path[1]) {
+            $suggestions[] = 'page__' . $path[1];
+            $suggestions[] = 'page__landing__template__b';
+
+        } elseif (('search' == $path[1]) || ('calendar' == $path[1])) {
+            $suggestions[] = 'page__' . $path[1];
+            $suggestions[] = 'page__item__template__a';
+            return;
+        } else {
+            if ($current_path == '/programs-activities') {
+                $suggestions[] = 'page__programs_activities';
+                $suggestions[] = 'page__landing__template__a';
+                return;
+            } else {
+                $suggestions[] = 'page__' . $path[1];
+            }
+        }
+    }
+
+}
+
+function bengreen_sass_theme_suggestions_block_alter(array &$suggestions, array $variables, $hook)
+{
+    $current_path = \Drupal::service('path.current')->getPath();
+    $path = explode('/', $current_path);
+
+    if (isset($path[1])) {
+        if ('calendar' == $path[1]) {
+            $suggestions[] = 'block__' . $path[1];
+        }
+    }
+}
