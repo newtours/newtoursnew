@@ -96,7 +96,10 @@ function bengreen_sass_theme_suggestions_page_alter(array &$suggestions, array $
         }elseif('calendar' == $path[1]){
             $suggestions[] = 'page__' . $path[1] . '__custom';
 
-        } elseif ('about-us' == $path[1]) {
+        }elseif('index' == $path[1]){
+            $suggestions[] = 'page__' . $path[1] . '__custom';
+        }
+        elseif ('about-us' == $path[1]) {
             if (isset($path[2]) && $path[2] == 'locations' && !isset($path[3])) {
                 $suggestions[] = 'page__' . $path[1];
                 $suggestions[] = 'page__locations__template';

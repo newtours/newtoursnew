@@ -46,6 +46,25 @@ class ToursController extends ControllerBase {
         );
     }
 
+  public function indexPage()
+  {
+      return [
+          //'#type' => 'markup',
+          '#theme' => 'index_list',
+          '#tours_data'=> isset($tours) ? $tours : NULL,
+          '#attached' => [
+              'library' => [
+                  //'tours/respTable',
+                  'tours/main-carousel',
+                  //'core/drupal.dialog.ajax'
+              ],
+              'drupalSettings' => [
+                  'tourData' => 'test',
+              ]
+          ],
+          //'#markup' => '',
+      ];
+  }
   public function showTourList()
   {
       $toursEntity = $this->entityTypeManager()

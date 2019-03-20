@@ -38,6 +38,9 @@ function tours_theme($existing, $type, $theme, $path) {
     ],
       'wishlist_carousel' => [
           
-      ]
+      ],
+      'index_list' =>[
+
+    ]
   );
 }

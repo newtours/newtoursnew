@@ -23,3 +23,13 @@ wishlist-carousel:
   dependencies:
     - core/jquery
 
+main-carousel:
+  version: 1.x
+  css:
+    theme:
+      css/mainCarousel.css: {}
+  js:
+    js/mainCarousel.js: {}
+  dependencies:
+    - core/jquery
+

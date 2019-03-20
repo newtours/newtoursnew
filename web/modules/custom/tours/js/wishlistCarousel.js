@@ -10,7 +10,7 @@
 
 }());
 
-(function(){
+(function ($, Drupal, settings) {
   $('.carousel-showmanymoveone .item').each(function(){
     var itemToClone = $(this);
 console.log("tttttt");
@@ -28,6 +28,6 @@ console.log("tttttt");
         .appendTo($(this));
     }
   });
-}());
+})(jQuery, Drupal);
 
 

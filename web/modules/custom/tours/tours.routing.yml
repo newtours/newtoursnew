@@ -43,4 +43,13 @@ tours.default_order_form:
     _title: 'DefaultOrderForm'
   requirements:
     _access: 'TRUE'
+
+tours.index_controller_list:
+  path: '/index/main'
+  defaults:
+ #   _controller: '\Drupal\tours\Controller\ToursController::connectToNewtours'
+    _controller: '\Drupal\tours\Controller\ToursController::indexPage'
+    _title: 'Index Main'
+  requirements:
+    _permission: 'access content'
   
