@@ -184,7 +184,7 @@
 
 .hc-header-quote {
   color: $white;
-  font-size: $font-size-xlarge;
+  font-size: ceil(($font-size-base * 2.3));
   font-family: "Roboto Slab", serif;
   font-weight: 300;
   line-height: 1.19;
@@ -192,13 +192,13 @@
 
 .hc-header-open-quote {
   color: $white;
-  font-size: $font-size-xlarge;
+  font-size: ceil(($font-size-base * 2.3));
   font-weight: 300;
 }
 
 .hc-header-close-quote {
   color: $white;
-  font-size: $font-size-xlarge;
+  font-size: ceil(($font-size-base * 2.3));
   font-weight: 300;
 }
 
@@ -207,7 +207,7 @@
 }
 
 .hc-header-link span {
-    font-size: $font-size-h5;
+    //font-size: $font-size-h5;
     color: $white;
     font-weight: 600;
     text-transform: uppercase;
@@ -239,7 +239,7 @@
   height: 3.75em;
   background-color: $dark-coral;
   z-index: 100000;
-  font-size: $font-size-small+1;
+  //font-size: $font-size-small+1;
   font-weight: bold;
   color: $tab-purple;
   padding-bottom: 1.25em;
@@ -263,13 +263,13 @@
 }
 
 .hc-thumbnail-datetime-location {
-  font-size: $font-size-xsmall;
+  //font-size: $font-size-xsmall;
   margin-bottom: 1.875em;
   padding: 0em 1.25em;
 }
 
 .hc-thumbnail-link {
-  font-size: $font-size-xsmall;
+  //font-size: $font-size-xsmall;
   color: $mariner;
   padding: 0em 1.25em;
   text-transform: uppercase;
