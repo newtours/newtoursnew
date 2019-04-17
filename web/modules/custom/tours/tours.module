@@ -36,6 +36,17 @@ function tours_theme($existing, $type, $theme, $path) {
         ],
 
     ],
+    'carousels_list' => [
+        'variables' => [
+            'tours_data'=>NULL,
+            'empty_data' => NULL,
+            'dates_data'=>NULL,
+            'price_data'=>NULL,
+            'header'=> NULL,
+            'table_title'=> NULL
+        ],
+
+    ],
       'wishlist_carousel' => [
           
       ],

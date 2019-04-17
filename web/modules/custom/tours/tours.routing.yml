@@ -28,10 +28,11 @@ tours.tours_controller_update:
     _permission: 'access content'
     
 tours.carousel:
-  path: '/tours/carousel'
+  path: '/tours/carousel/{type}'
   defaults:
     _controller: '\Drupal\tours\Controller\ToursController::showCarousel'
     _title: 'Carousel'
+    type: NULL
   requirements:
     _permission: 'access content'
       

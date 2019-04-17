@@ -605,8 +605,26 @@ echo '<br/>';
          
      }
      
-     public function showCarousel()
+     public function showCarousel($type = NUll)
      {
+         
+            return [
+          //'#type' => 'markup',
+          '#theme' => 'carousels_list',
+          '#tours_data'=> isset($tours) ? $tours : NULL,
+          '#attached' => [
+              'library' => [
+                  //'tours/respTable',
+                  'tours/slick-carousel',
+                  //'core/drupal.dialog.ajax'
+              ],
+              'drupalSettings' => [
+                  'tourData' => 'test',
+              ]
+          ],
+          //'#markup' => '',
+      ];   
+         
          
        $markUp =   '   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Bitter" rel="stylesheet" type="text/css">
 <div class="container">
