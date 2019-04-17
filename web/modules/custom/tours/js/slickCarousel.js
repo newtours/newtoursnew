@@ -54,8 +54,8 @@
         dots: true,
         infinite: true,
         centerMode: true,
-        slidesToShow: 5,
-        slidesToScroll: 3
+        slidesToShow: 3,
+        slidesToScroll: 1
     });
     $(".variable").slick({
         dots: true,
