@@ -10,3 +10,9 @@ global-styling:
   dependencies:
     - core/jquery
     - core/drupal
+slick:
+  version: 1.8.0
+  js:
+    ../../libraries/slick/slick/slick.min.js: {}
+  dependencies:
+    - core/jquery    
