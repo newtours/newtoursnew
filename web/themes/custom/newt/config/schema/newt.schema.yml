@@ -1,5 +1,0 @@
-# Schema for the configuration files of the Bootstrap Barrio Subtheme.
-
-newt.settings:
-  type: theme_settings
-  label: 'Bootstrap NewT Subtheme settings'

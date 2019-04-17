@@ -2,12 +2,4 @@
  * @file
  * Styles for Bootstrap Barrio page.
  */
-#page-wrapper {
-  margin: 0 auto;
-  border: 1px solid $border-blue; /*$gray-lighter; */
-  background-color: $porcelain;
-  @media (min-width: $screen-md-min) {
-    max-width: 1366px;
-  }
-}
 

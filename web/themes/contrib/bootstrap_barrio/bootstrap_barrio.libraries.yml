@@ -6,6 +6,7 @@ global-styling:
   css:
     component:
       css/components/affix.css: {}
+      css/components/alerts.css: {}
       css/components/book.css: {}
       css/components/comments.css: {}
       css/components/contextual.css: {}
@@ -51,7 +52,11 @@ affix:
   css:
     component:
       css/components/affix.css: {}
-
+alerts:
+  version: VERSION
+  css:
+    component:
+      css/components/alerts.css: {}
 book-navigation:
   version: VERSION
   css:
@@ -117,6 +122,11 @@ tabs:
   css:
     component:
       css/components/tabs.css: {}
+
+toast:
+  version: VERSION
+  js:
+    js/toast.js: {}
 
 verticaltabs:
   version: VERSION
@@ -269,3 +279,10 @@ mdb:
     - core/jquery
     - bootstrap_barrio/material_design_icons
 
+bootstrap:
+  js:
+    /libraries/popper/popper.min.js: {}
+    /libraries/bootstrap/dist/js/bootstrap.min.js: {}
+  css:
+    component:
+      /libraries/bootstrap/dist/css/bootstrap.min.css: {}
