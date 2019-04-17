@@ -6,13 +6,15 @@ global-styling:
     js/global.js: {}
   css:
     component:
-      css/style.css: {}
+       /libraries/slick/slick/slick.css: {}
+       /libraries/slick/slick/slick-theme.css: {}
+       css/style.css: {}
   dependencies:
     - core/jquery
     - core/drupal
 slick:
   version: 1.8.0
   js:
-    ../../libraries/slick/slick/slick.min.js: {}
+    /libraries/slick/slick/slick.min.js: {}
   dependencies:
     - core/jquery    
