@@ -1,350 +1,156 @@
-<div class="container text-center my-3">
-    <h2>Bootstrap 4 Multiple Item Carousel</h2>
-    <div class="row mx-auto my-auto">
-        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-            <div class="carousel-inner w-100" role="listbox">
-                <div class="carousel-item active">
-                    <img class="d-block col-3 img-fluid" src="http://placehold.it/350x180?text=1">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block col-3 img-fluid" src="http://placehold.it/350x180?text=2">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block col-3 img-fluid" src="http://placehold.it/350x180?text=3">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block col-3 img-fluid" src="http://placehold.it/350x180?text=4">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block col-3 img-fluid" src="http://placehold.it/350x180?text=5">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block col-3 img-fluid" src="http://placehold.it/350x180?text=6">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-    <h4>Advances one slide at a time</h4>
-</div>
-
-<div class="container text-center my-3">
-    <h2>Bootstrap 4 Multiple Item Carousel</h2>
-    <div class="row mx-auto my-auto">
-        <!--Carousel Wrapper-->
-        <!--Carousel Wrapper-->
-        <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(88).jpg"
-                         alt="First slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(121).jpg"
-                         alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(31).jpg"
-                         alt="Third slide">
-                </div>
-            </div>
-            <!--/.Slides-->
-            <!--Controls-->
-            <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            <!--/.Controls-->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-thumb" data-slide-to="0" class="active"> <img class="d-block w-100"
-                                                                                         src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(88).jpg" class="img-fluid"></li>
-                <li data-target="#carousel-thumb" data-slide-to="1"><img class="d-block w-100"
-                                                                         src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(121).jpg" class="img-fluid">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="2"><img class="d-block w-100"
-                                                                         src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(31).jpg" class="img-fluid"></li>
-            </ol>
-        </div>
-        <!--/.Carousel Wrapper-->
-        <!--/.Carousel Wrapper-->
-    </div>
-</div>
+<style type="text/css">
 
 
+
+    .slider {
+        width: 90%;
+        margin: 100px auto;
+    }
+
+    .slick-slide {
+        margin: 0px 20px;
+    }
+
+    .slick-slide img {
+        width: 100%;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+        color: black;
+    }
+
+
+    .slick-slide {
+        transition: all ease-in-out .3s;
+        opacity: .2;
+    }
+
+    .slick-active {
+        opacity: .5;
+    }
+
+    .slick-current {
+        opacity: 1;
+    }
+    .slick-prev{
+   transform: rotate(-180deg) !important;
+}
+
+.slick-next{
+   transform: rotate(360deg) !important;
+}
+</style>
 <div class="container">
     <div class="row">
-        <!--Carousel Wrapper-->
-        <div id="video-carousel-example2" class="carousel slide carousel-fade" data-ride="carousel">
-            <!--Indicators-->
-            <ol class="carousel-indicators">
-                <li data-target="#video-carousel-example2" data-slide-to="0" class="active"></li>
-                <li data-target="#video-carousel-example2" data-slide-to="1"></li>
-                <li data-target="#video-carousel-example2" data-slide-to="2"></li>
-            </ol>
-            <!--/.Indicators-->
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-                <!-- First slide -->
-                <div class="carousel-item active">
-                    <!--Mask color-->
-                    <div class="view">
-                        <!--Video source-->
-                        <video class="video-fluid" autoplay loop muted>
-                            <source src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4" />
-                        </video>
-                        <div class="mask rgba-indigo-light"></div>
-                    </div>
-
-                    <!--Caption-->
-                    <div class="carousel-caption">
-                        <div class="animated fadeInDown">
-                            <h3 class="h3-responsive">Light mask</h3>
-                            <p>First text</p>
-                        </div>
-                    </div>
-                    <!--Caption-->
-                </div>
-                <!-- /.First slide -->
-
-                <!-- Second slide -->
-                <div class="carousel-item">
-                    <!--Mask color-->
-                    <div class="view">
-                        <!--Video source-->
-                        <video class="video-fluid" autoplay loop muted>
-                            <source src="https://mdbootstrap.com/img/video/animation-intro.mp4" type="video/mp4" />
-                        </video>
-                        <div class="mask rgba-purple-slight"></div>
-                    </div>
-
-                    <!--Caption-->
-                    <div class="carousel-caption">
-                        <div class="animated fadeInDown">
-                            <h3 class="h3-responsive">Super light mask</h3>
-                            <p>Secondary text</p>
-                        </div>
-                    </div>
-                    <!--Caption-->
-                </div>
-                <!-- /.Second slide -->
-
-                <!-- Third slide -->
-                <div class="carousel-item">
-                    <!--Mask color-->
-                    <div class="view">
-                        <!--Video source-->
-                        <video class="video-fluid" autoplay loop muted>
-                            <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
-                        </video>
-                        <div class="mask rgba-black-strong"></div>
-                    </div>
-
-                    <!--Caption-->
-                    <div class="carousel-caption">
-                        <div class="animated fadeInDown">
-                            <h3 class="h3-responsive">Strong mask</h3>
-                            <p>Third text</p>
-                        </div>
-                    </div>
-                    <!--Caption-->
-                </div>
-                <!-- /.Third slide -->
+<section class="center slider">
+    <div>
+        <div class="card mb-2">
+            <img class="card-img-top"
+                 src="https://image.queenslibrary.org/lamps/images/default/ProgramType/event_small/TeenProgram.png" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Freestyle Fridays</h4>
+                <p class="card-text">Join us after school on Fridays to hang out with your friends and participate in activities like board games, ping pong, art, and karaoke! Each week features a different activity; come on by to check it out!
+                </p>
+                <a class="btn btn-primary">Button</a>
             </div>
-            <!--/.Slides-->
-            <!--Controls-->
-            <a class="carousel-control-prev" href="#video-carousel-example2" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#video-carousel-example2" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            <!--/.Controls-->
         </div>
-        <!--Carousel Wrapper-->
     </div>
-</div>
-
-<!-- Multi Slide Carousel -->
-<div class="container">
-    <div class="row">
-        <!--Carousel Wrapper-->
-        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-            <!--Controls-->
-            <div class="controls-top">
-                <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-                <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-                            class="fas fa-chevron-right"></i></a>
+    <div>
+        <div class="card mb-2">
+            <img class="card-img-top"
+                 src="https://image.queenslibrary.org/lamps/images/default/ProgramType/event_small/Crafts.png">
+            <div class="card-body">
+                <h4 class="card-title">Knitting Club</h4>
+                <p class="card-text">Share patterns and techniques or just have a friendly chat while working on your knitting projects!
+                </p>
+                <a class="btn btn-primary">Button</a>
             </div>
-            <!--/.Controls-->
-
-            <!--Indicators-->
-            <ol class="carousel-indicators">
-                <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                <li data-target="#multi-item-example" data-slide-to="1"></li>
-                <li data-target="#multi-item-example" data-slide-to="2"></li>
-            </ol>
-            <!--/.Indicators-->
-
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-
-                <!--First slide-->
-                <div class="carousel-item active">
-
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                 src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                 src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                 src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!--/.First slide-->
-
-                <!--Second slide-->
-                <div class="carousel-item">
-
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!--/.Second slide-->
-
-                <!--Third slide-->
-                <div class="carousel-item">
-
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                 src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                 src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                 src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a class="btn btn-primary">Button</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!--/.Third slide-->
-
-            </div>
-            <!--/.Slides-->
-
         </div>
-        <!--/.Carousel Wrapper-->
     </div>
-</div>
+    <div>
+        <div class="card mb-2">
+            <img class="card-img-top"
+                 src="https://image.queenslibrary.org/lamps/images/default/ProgramType/event_small/PictureBook.png" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Family Story Time</h4>
+                <p class="card-text">Children and their families are invited to join us for songs, books, and parachute play. A parent or caregiver must be present.
+                </p>
+                <a class="btn btn-primary">Button</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card mb-2">
+            <img class="card-img-top"
+                 src="https://image.queenslibrary.org/lamps/images/default/ProgramType/event_small/PictureBook.png" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Family Story Time</h4>
+                <p class="card-text">Children and their families are invited to join us for songs, books, and parachute play. A parent or caregiver must be present.
+                </p>
+                <a class="btn btn-primary">Button</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card mb-2">
+            <img class="card-img-top"
+                 src="https://image.queenslibrary.org/lamps/images/default/ProgramType/event_small/PictureBook.png" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Family Story Time</h4>
+                <p class="card-text">Children and their families are invited to join us for songs, books, and parachute play. A parent or caregiver must be present.
+                </p>
+                <a class="btn btn-primary">Button</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card mb-2">
+            <img class="card-img-top"
+                 src="https://image.queenslibrary.org/lamps/images/default/ProgramType/event_small/PictureBook.png" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Family Story Time</h4>
+                <p class="card-text">Children and their families are invited to join us for songs, books, and parachute play. A parent or caregiver must be present.
+                </p>
+                <a class="btn btn-primary">Button</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card mb-2">
+            <img class="card-img-top"
+                 src="https://image.queenslibrary.org/lamps/images/default/ProgramType/event_small/PictureBook.png" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Family Story Time</h4>
+                <p class="card-text">Children and their families are invited to join us for songs, books, and parachute play. A parent or caregiver must be present.
+                </p>
+                <a class="btn btn-primary">Button</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card mb-2">
+            <img class="card-img-top"
+                 src="https://image.queenslibrary.org/lamps/images/default/ProgramType/event_small/PictureBook.png" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Family Story Time</h4>
+                <p class="card-text">Children and their families are invited to join us for songs, books, and parachute play. A parent or caregiver must be present.
+                </p>
+                <a class="btn btn-primary">Button</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="card mb-2">
+            <img class="card-img-top"
+                 src="https://image.queenslibrary.org/lamps/images/default/ProgramType/event_small/PictureBook.png" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Family Story Time</h4>
+                <p class="card-text">Children and their families are invited to join us for songs, books, and parachute play. A parent or caregiver must be present.
+                </p>
+                <a class="btn btn-primary">Button</a>
+            </div>
+        </div>
+    </div>
+</section>
+    </div></div>

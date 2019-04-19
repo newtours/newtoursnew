@@ -1,0 +1,53 @@
+
+//-----------------------------------
+// !! CAROUSEL SLIDER ARROW BUTTONS
+//-----------------------------------
+
+.slick-prev{
+   transform: rotate(-180deg) !important;
+}
+
+.slick-next{
+   transform: rotate(360deg) !important;
+}
+
+.slick-prev, .slick-next{
+    padding: 0 0.625em !important;
+    border-radius: 3.4375em !important;
+    box-shadow: 0 0.125em 0.9375em 0 rgba(0, 0, 0, 0.5) !important;
+    padding: 0.625em 1.875em !important;
+    width: 4.8125em !important;
+    height: 4.8125em !important;
+    z-index: 1000 !important;
+    top: 9.125em !important;
+}
+
+
+
+
+.slick-prev:hover, .slick-next:hover {
+   background:$doger-blue !important;
+   box-shadow: 0 0.125em 0.9375em 0 rgba(0, 0, 0, 0.32);
+ }
+
+
+
+
+
+.slick-slider:hover{
+
+  @media (min-width: $screen-lg){
+
+  .slick-prev, .slick-next{
+      display:block !important;
+    }
+  }
+}
+
+//End of carousel slider arrow butons
+
+
+
+
+
+

@@ -55,7 +55,8 @@ class ToursController extends ControllerBase {
           '#attached' => [
               'library' => [
                   //'tours/respTable',
-                  'tours/main-carousel',
+                  //'tours/main-carousel',
+                  'tours/slick-carousel',
                   //'core/drupal.dialog.ajax'
               ],
               'drupalSettings' => [
