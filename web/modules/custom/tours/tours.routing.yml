@@ -53,4 +53,12 @@ tours.index_controller_list:
     _title: 'Index Main'
   requirements:
     _permission: 'access content'
-  
+    
+tours.index_controller_bootstmp:
+  path: '/boots/{template}'
+  defaults:
+    _controller: '\Drupal\tours\Controller\ToursController::bootsrapPage'
+    template: NULL
+    _title: 'Bootsrap Main'
+  requirements:
+    _permission: 'access content'  

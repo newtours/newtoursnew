@@ -24,7 +24,7 @@ function tours_help($route_name, RouteMatchInterface $route_match) {
 }
 
 function tours_theme($existing, $type, $theme, $path) {
-  return array(
+  return [
     'tours_list' => [
         'variables' => [
             'tours_data'=>NULL,
@@ -47,11 +47,14 @@ function tours_theme($existing, $type, $theme, $path) {
         ],
 
     ],
-      'wishlist_carousel' => [
+    'wishlist_carousel' => [
           
-      ],
-      'index_list' =>[
+    ],
+    'index_list' =>[
 
-    ]
-  );
+    ], 
+    'boots_tmp' =>[
+
+    ],      
+ ];
 }

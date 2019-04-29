@@ -1,0 +1,77 @@
+/**
+ * @file
+ * Bootstrap Barrio specific styling for the Buttons module.
+ */
+
+//BUTTON
+.btn {
+	cursor: pointer;
+	@include border-radius(3px);
+	// box-shadow: none!important;
+	-webkit-box-shadow: 0px 24px 36px -11px rgba(0,0,0,0.09);
+	-moz-box-shadow: 0px 24px 36px -11px rgba(0,0,0,0.09);
+	box-shadow: 0px 24px 36px -11px rgba(0,0,0,0.09);
+	&:hover, &:active, &:focus {
+		outline: none;
+	}
+	&.btn-primary {
+		background: $primary !important;
+		border: 1px solid $primary !important;
+		color: $white !important;
+		&:hover {
+			border: 1px solid $primary;
+			background: transparent;
+			color :$primary;
+		}
+		&.btn-outline-primary {
+			border: 1px solid $primary;
+			background: transparent;
+			color :$primary;
+			&:hover {
+				border: 1px solid transparent;
+				background: $primary;
+				color :$white;
+			}
+		}
+	}
+	&.btn-secondary {
+		background: $secondary !important;
+		border: 1px solid $secondary !important;
+		color: $white !important;
+		&:hover {
+			border: 1px solid $secondary !important;
+			background: transparent !important;
+			color :$secondary !important;
+		}
+		&.btn-outline-primary {
+			border: 1px solid $secondary;
+			background: transparent;
+			color :$secondary;
+			&:hover {
+				border: 1px solid transparent;
+				background: $secondary;
+				color :$white;
+			}
+		}
+	}
+	&.btn-white {
+		background: $white !important;
+		border: 1px solid $white !important;
+		color: $black !important;
+		&:hover {
+			border: 1px solid $black;
+			background: $white !important;
+			color :$white;
+		}
+		&.btn-outline-primary {
+			border: 1px solid $primary;
+			background: transparent;
+			color :$primary;
+			&:hover {
+				border: 1px solid transparent;
+				background: $primary;
+				color :$white;
+			}
+		}
+	}
+}

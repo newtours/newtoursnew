@@ -63,20 +63,7 @@ function bengreen_sass_theme_suggestions_page_alter(array &$suggestions, array $
             $suggestions[] = 'page__landing__template__a';
             return;
         }
-        /*   else {
-             if ($alias == "/about-us/services") {
-               $suggestions[] = 'page__about_us';
-               $suggestions[] = 'page__directory__template__a';
-               return;
-             }
-             else {
-               if (strpos($alias, '/about-us/services/') !== FALSE) {
-                 $suggestions[] = 'page__about_us';
-                 $suggestions[] = 'page__directory__template__a';
-                 return;
-               }
-             }
-           } */
+
     }
 
     $current_path = \Drupal::service('path.current')->getPath();
@@ -97,6 +84,10 @@ function bengreen_sass_theme_suggestions_page_alter(array &$suggestions, array $
             $suggestions[] = 'page__' . $path[1] . '__custom';
 
         }elseif('index' == $path[1]){
+            $suggestions[] = 'page__' . $path[1] . '__custom';
+        }
+        // Building theme temp templates
+        elseif('boots' == $path[1]) {
             $suggestions[] = 'page__' . $path[1] . '__custom';
         }
         elseif ('about-us' == $path[1]) {
@@ -176,4 +167,12 @@ function bengreen_sass_theme_suggestions_block_alter(array &$suggestions, array 
             $suggestions[] = 'block__' . $path[1];
         }
     }
+}
+
+function bengreen_sass_preprocess_menu(&$variables) {
+  if ($variables['menu_name'] == 'main') {
+    if (!isset($variables['attributes']['class'])) {
+      $variables['attributes']['class'] = [];
+    }
+    $variables['attributes']['class'] = array_merge($variables['attributes']['class'], ['bengreen-main-menu']);  }
 }
