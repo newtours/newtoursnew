@@ -22,3 +22,15 @@ toursdata.tours_data_delete_tour:
     #_permission: 'access content'
   options:
     no_cache: 'TRUE'
+
+toursdata.tours_data_query:
+   path: '/toursdata/query/{sql}'
+   defaults:
+     _controller: '\Drupal\toursdata\Controller\ToursDataController::getSqlQuery'
+     _title: 'ToursDataController'
+     sql: NULL
+   requirements:
+     _user_is_logged_in: 'TRUE'
+     #_permission: 'access content'
+   options:
+     no_cache: 'TRUE'

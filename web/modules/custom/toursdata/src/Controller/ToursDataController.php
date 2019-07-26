@@ -9,6 +9,8 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Database\Database;
 
+use PHPSQLParser\PHPSQLParser;
+
 /**
  * Class ToursDataController.
  */
@@ -1462,5 +1464,12 @@ var_dump($result);exit;
     protected function _updateDescrTable ($data)
     {
 
+    }
+
+    public function getSqlQuery ( $sql = null)
+    {
+
+        $parser = new PHPSQLParser('SELECT a FROM some_table an_alias WHERE d > 5;', true);
+        var_dump($parser);exit;
     }
 }

@@ -586,6 +586,10 @@ class ComposerStaticInit0de70b055c10c6ffbf0c6b213d5e4252
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
+            'PHPSQLParser\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/greenlion/php-sql-parser/src',
+            ),
         ),
         'E' => 
         array (
