@@ -145,15 +145,25 @@ class ToursController extends ControllerBase {
   //          ->loadByProperties([
   //              'type' => 'tour_dates',
   //          ]);
-
+        $nDates = 0;
+        $dates = [];
         foreach ($datesEntity as $value) {
             $key = $value->field_tour_date->value;
-            if (isset($result[$key])) continue;
+            if (isset($result[$key])) {
+                $result[$key]['counter'] = $result[$key]['counter'] + 1 ;
+                //var_dump( $result[$key]) ;
+                $dates[$nDates]['title'] = 'title ' .  $result[$key]['counter'] ;
+                continue;
+            }
             $result[$key] = [
                 'date'=>$key,
-                'title'=>'tour'
+                'title'=>1,
+                'counter'=> 1,
                 ];
-            $dates[] = $result[$key];
+
+            $dates[$nDates] = $result[$key];
+            $nDates ++;
+
         }
 
         /**
@@ -189,7 +199,7 @@ class ToursController extends ControllerBase {
 
        if (count($datesEntity) > 0) {
            foreach ($datesEntity as $key=>$value) {
-               $dates[$key] = [
+               $dates[$value->field_tour_date_tour->target_id] = [
                    'dates_tour'=>$value->field_tour_date_tour->target_id,
                    'date_date'=>$value->field_tour_date->value,
                    'date_suffix'=>$value->field_tour_date_suffix->value,
@@ -200,22 +210,24 @@ class ToursController extends ControllerBase {
                ];
                $tournid[] =  $value->field_tour_date_tour->target_id;
            }
-
+//var_dump($tournid);
            $toursEntity = $this->entityTypeManager->loadMultiple($tournid);
            foreach ($toursEntity as $key=>$value) {
                $toursData[$key] = [
                     'tour_name' => $value->field_tour_name->value,
                     'tour_ndays' => $value->field_tour_days->value,
-                    'tour_link'=>$value->field_tour_base_link,
-                    'tour_image'=>$value->field_tour_base_picture,
-                    'tour_days'=>$value->field_tour_days,
-                    'tour_days_prefix'=>$value->field_tour_days_prefix,
-                     'tour_days_suffix'=>$value->field_tour_days_suffix,
-                    'tour_old_rowid' =>$value->field_tour_old_rowid
+                    'tour_link'=>$value->field_tour_base_link->value,
+                    'tour_image'=>$value->field_tour_base_picture->value,
+                    'tour_days_prefix'=>$value->field_tour_days_prefix->value,
+                     'tour_days_suffix'=>$value->field_tour_days_suffix->value,
+                    'tour_old_rowid' =>$value->field_tour_old_rowid->value,
+                    'tour_short_description' => $value->field_tour_descr->value
                    ];
             }
            }
-
+       //echo $date . '<br/>';
+       //echo count($toursEntity) . '<br/>';exit;
+//var_dump($toursData);exit;
        if (isset($json)) {
            return new JsonResponse($dates);
        }
@@ -237,6 +249,7 @@ class ToursController extends ControllerBase {
            ],
            //'#markup' => '',
        ];
+       //var_dump($return);exit;
        return new \Symfony\Component\HttpFoundation\Response(render($return));
 
    }

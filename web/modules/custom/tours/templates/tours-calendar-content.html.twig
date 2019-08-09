@@ -14,23 +14,23 @@
  * @ingroup themeable
  */
 #}
-{%  if tours_data|length == 0 %}
+{%  if tours_data | length > 0 %}
     {% for key, value in tours_data  %}
 <!-- Modal Body-->
 
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-sm-12 border border-dark">
-                            {{ value['tour_name']  }}
+                        <div class="col-sm-12 border border-dark" >
+                            {{ value['tour_name']  | raw }} {{ value['tour_days_suffix'] }} {{ value['tour_ndays']  | raw  }} {{ value['tour_days_prefix'] }}
                             <div class="row">
                                 <div class="col-3 col-sm-3 border">
-                                    Level 2: .col-3 .col-sm-3
+                                     <img src=" {{ value['tour_image'] }} " alt ="{{ value['tour_name']  }}"  width="120" height="80"  />
                                 </div>
                                 <div class="col-7 col-sm-6 border">
-                                    Level 2: .col-4 .col-sm-6
+                                    {{ value['tour_short_description'] | raw}}
                                 </div>
                                 <div class="col-2 col-sm-3 border">
-                                    Level 2: .col-4 .col-sm-3
+                                    <button type="button" class="btn btn-primary" id="order-{{ value['tour_old_rowid'] }}">Order</button>
                                 </div>
                             </div>
                         </div>

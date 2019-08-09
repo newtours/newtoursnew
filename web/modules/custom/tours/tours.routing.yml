@@ -31,13 +31,7 @@ tours.tours_controller_showlist:
   requirements:
     _permission: 'access content'
     
-tours.tours_controller_update:
-  path: '/tours/update/{table}/{id}'
-  defaults:
-    _controller: '\Drupal\tours\Controller\ToursController::updateFromSource'
-    _title: 'Tours Update'
-  requirements:
-    _permission: 'access content'
+
     
 tours.carousel:
   path: '/tours/carousel/{type}'
