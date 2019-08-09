@@ -1,0 +1,40 @@
+{#
+/**
+ * Default theme implementation for Views to output a Fullcalendar View.
+ *
+ * Available variables:
+ * - options: View plugin style options:
+ *   - classes: CSS classes.
+ *   - defaultDate: Default date of the calendar
+ *   - start: Field name of start date
+ *   - end: Field name of end date
+ *
+ * @see template_preprocess_views_view_fullcalendar()
+ *
+ * @ingroup themeable
+ */
+#}
+{%  if tours_data|length == 0 %}
+    {% for key, value in tours_data  %}
+<!-- Modal Body-->
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 border border-dark">
+                            {{ value['tour_name']  }}
+                            <div class="row">
+                                <div class="col-3 col-sm-3 border">
+                                    Level 2: .col-3 .col-sm-3
+                                </div>
+                                <div class="col-7 col-sm-6 border">
+                                    Level 2: .col-4 .col-sm-6
+                                </div>
+                                <div class="col-2 col-sm-3 border">
+                                    Level 2: .col-4 .col-sm-3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+{% endif %}

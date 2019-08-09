@@ -26,16 +26,28 @@ function tours_help($route_name, RouteMatchInterface $route_match) {
 function tours_theme($existing, $type, $theme, $path) {
   return [
     'tours_list' => [
-        'variables' => [
-            'tours_data'=>NULL,
-            'empty_data' => NULL,
-            'dates_data'=>NULL,
-            'price_data'=>NULL,
-            'header'=> NULL,
-            'table_title'=> NULL
-        ],
+          'variables' => [
+              'tours_data'=>NULL,
+              'empty_data' => NULL,
+              'dates_data'=>NULL,
+              'price_data'=>NULL,
+              'header'=> NULL,
+              'table_title'=> NULL
+          ],
 
-    ],
+      ],
+      'tours_calendar_content' => [
+          'variables' => [
+              'tours_data'=>NULL,
+              'empty_data' => NULL,
+              'dates_data'=>NULL,
+              'price_data'=>NULL,
+              'header'=> NULL,
+              'table_title'=> NULL
+          ],
+
+      ],
+
     'carousels_list' => [
         'variables' => [
             'tours_data'=>NULL,

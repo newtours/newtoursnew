@@ -9,6 +9,8 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Database\Database;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 use PHPSQLParser\PHPSQLParser;
 
 /**
@@ -1468,8 +1470,40 @@ var_dump($result);exit;
 
     public function getSqlQuery ( $sql = null)
     {
+        $this->resQuery = [];
+        //$q="select * from tours where   (tour_rowid in(290,286,287,85,291) and tour_active=1) order by field(tour_rowid,290,85,287,291,286)";
+        $q = "SELECT t.td_rowid, t.td_tour, t.td_date, t1.* from tour_dates t  left outer join tours t1 on t.td_tour=t1.tour_rowid where td_date>='2019-07-29' and td_date<='2019-08-10' and tour_active=1  and tour_direction!=36   and tour_display_week in(0)  and tour_startdate <= '2019-01-01'  order by td_date, tour_ndays";
+        $parser = new PHPSQLParser($q, true);
+        foreach($parser->parsed as $key=>$value) {
+            //echo ' ' . $key . ' ';
+            //var_dump($value);
+            //echo '<br/><br/>';
+            $iterator = new \RecursiveArrayIterator($value );
+            iterator_apply($iterator, [$this,'_iterateQuery'], [$iterator,$key]);
+        }
+        //var_dump($this->resQuery);exit;
+        $response = (object) $this->resQuery;
+        return new JsonResponse($response);
 
-        $parser = new PHPSQLParser('SELECT a FROM some_table an_alias WHERE d > 5;', true);
-        var_dump($parser);exit;
+
+    }
+
+    protected function _iterateQuery (  $iterator,$key)
+    {
+
+        while ( $iterator -> valid() ) {
+
+            if ( $iterator -> hasChildren() ) {
+
+                $this->_iterateQuery($iterator -> getChildren(),$key);
+
+            }
+            else {
+                $this->resQuery[$key][$iterator -> key()][] = $iterator -> current() ;
+                //echo $key . ' => '.$iterator -> key() . ' : ' . $iterator -> current() .'<br/>';
+            }
+
+            $iterator -> next();
+        }
     }
 }

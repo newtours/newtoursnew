@@ -6,7 +6,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\node\Entity\Node;
 use  Drupal\Core\Datetime\DrupalDateTime;
-
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 /**
  * Class CalendarController.
  *
@@ -72,7 +73,29 @@ class CalendarController extends ControllerBase {
             'h2g=1&' . //– Convert from Hebrew to Gregorian date
             'cfg=json' //– output format is JSON (cfg=json) or XML (cfg=xml)  
         ];
-    
+
+
+
+    /**
+     * Constructs a new ToursDataController object.
+     */
+    public function __construct( EntityTypeManagerInterface $entity_type_manager) {
+
+        $this->entityTypeManager = $entity_type_manager->getListBuilder('node')
+            ->getStorage();
+
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function create(ContainerInterface $container) {
+        return new static(
+            $container->get('entity_type.manager')
+        );
+    }
+
+
    /**
     * Main calendar output
    * https://www.hebcal.com/home/1223/display-a-jewish-calendar-on-your-website-with-hebcal-fullcalendar-io
@@ -88,12 +111,13 @@ class CalendarController extends ControllerBase {
                    ];
  
       $nodeEvents = [
-             "title"=>"ל״ג בעומר",
+                    "title"=>"ל״ג בעומר",
                     "url"=>"http://www.hebcal.com/holidays/lag-baomer",
                     "className"=>"holiday",
-                    "hebrew"=>"ל״ג בעומר",
+                    "hebrew"=>"ל״ג בעומר", // shown if title not exists
+
                     "description"=>"33rd day of counting the Omer",
-                    "start"=>"2019-03-13",
+                    "start"=>"2019-08-07",
                     "allDay"=>true
       ];
  
@@ -123,7 +147,7 @@ class CalendarController extends ControllerBase {
    {
 
        // Load directions
-       $dates_ent_ids = $this->entityTypeManager
+       $dates_ent_ids = $this->entityTypeManager()
            ->loadByProperties([
                'type' => 'tour_dates',
                'field_tour_date_tour' => $id,

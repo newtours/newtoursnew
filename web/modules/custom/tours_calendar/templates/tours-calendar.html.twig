@@ -15,3 +15,52 @@
  */
 #}
 <div id="calendar"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="toursModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="toursModalLabel"> </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-3 border">
+                            1 of 3
+                        </div>
+                        <div class="col-5 border">
+                            2 of 3 (wider)
+                        </div>
+                        <div class="col border">
+                            3 of 3
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 border border-dark">
+                            Level 1: .col-sm-12
+                            <div class="row">
+                                <div class="col-3 col-sm-3 border">
+                                    Level 2: .col-3 .col-sm-3
+                                </div>
+                                <div class="col-7 col-sm-6 border">
+                                    Level 2: .col-4 .col-sm-6
+                                </div>
+                                <div class="col-2 col-sm-3 border">
+                                    Level 2: .col-4 .col-sm-3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
