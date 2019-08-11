@@ -4,7 +4,7 @@ global-styling:
     js/popper.min.js: {}
     js/bootstrap.min.js: {}
     js/global.js: {}
-    js/scrollax.min: {}
+    js/scrollax.min.js: {}
     js/jquery.waypoints.min.js: {}
   css:
     component:
