@@ -42,7 +42,7 @@
                 $('#toursModal').modal({
                     keyboard: false
                 })
-                //console.log(data)
+                console.log(data)
                 $(".modal-body").html(data)
             })
 
