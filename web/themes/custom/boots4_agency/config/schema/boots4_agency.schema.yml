@@ -1,0 +1,5 @@
+# Schema for the configuration files of the Bootstrap SASS Subtheme.
+
+boots4_agency.settings:
+  type: theme_settings
+  label: 'Bootstrap SASS Subtheme settings'
