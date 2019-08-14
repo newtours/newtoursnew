@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Bootstrap Barrio's override to display a menu.
+ * Default theme implementation to display a menu.
  *
  * Available variables:
  * - menu_name: The machine name of the menu.
@@ -11,11 +11,8 @@
  *   - title: The menu link title.
  *   - url: The menu link url, instance of \Drupal\Core\Url
  *   - localized_options: Menu link localized options.
- *   - is_expanded: TRUE if the link has visible children within the current
- *     menu tree.
- *   - is_collapsed: TRUE if the link has children within the current menu tree
- *     that are not currently visible.
- *   - in_active_trail: TRUE if the link is in the active trail.
+ *
+ * @ingroup templates
  */
 #}
 {% import _self as menus %}
@@ -30,35 +27,21 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('nav navbar-nav') }}>
+      <ul class="sm menu-base-theme" id="main-menu" {{ attributes.addClass('menu', 'nav', 'navbar-nav') }}>
     {% else %}
-      <ul class="dropdown-menu">
+      <ul>
     {% endif %}
     {% for item in items %}
-      {%
-        set classes = [
-          menu_level ? 'dropdown-item' : 'nav-item',
-          item.is_expanded ? 'menu-item--expanded',
-          item.is_collapsed ? 'menu-item--collapsed',
-          item.in_active_trail ? 'active',
-          item.below ? 'dropdown',
-        ]
-      %}
-      <li{{ item.attributes.addClass(classes) }}>
-        {%
-          set link_classes = [
-            not menu_level ? 'nav-link',
-            item.in_active_trail ? 'active',
-            item.below ? 'dropdown-toggle',
-            item.url.getOption('attributes').class ? item.url.getOption('attributes').class | join(' '),
-          ]
-        %}
-        {% if item.below %}
-          {{ link(item.title, item.url, {'class': link_classes, 'data-toggle': 'dropdown', 'aria-expanded': 'false', 'aria-haspopup': 'true' }) }}
-          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-        {% else %}
-          {{ link(item.title, item.url, {'class': link_classes}) }}
-        {% endif %}
+      {% if menu_level == 0 and item.is_expanded %}
+        <li>
+        <a href="{{ item.url }}" data-target="#" data-toggle="dropdown">{{ item.title }}</a>
+      {% else %}
+        <li{{ item.attributes }}>
+        {{ link(item.title, item.url) }}
+      {% endif %}
+      {% if item.below %}
+        {{ menus.menu_links(item.below, attributes.removeClass('nav', 'navbar-nav'), menu_level + 1) }}
+      {% endif %}
       </li>
     {% endfor %}
     </ul>

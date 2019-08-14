@@ -20,12 +20,12 @@
   {%- endif -%}
   <div class="details-wrapper">
     {% if errors %}
-      <div class="alert alert-danger" role="alert">
+      <div class="form-item--error-message">
         <strong>{{ errors }}</strong>
       </div>
     {% endif %}
     {%- if description -%}
-      <small class="details-description text-muted">{{ description }}</small>
+      <div class="details-description">{{ description }}</div>
     {%- endif -%}
     {%- if children -%}
       {{ children }}

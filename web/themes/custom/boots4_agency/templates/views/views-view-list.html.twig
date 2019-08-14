@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override for a view template to display a list of rows.
+ * Default theme implementation for a view template to display a list of rows.
  *
  * Available variables:
  * - attributes: HTML attributes for the container.
@@ -14,8 +14,11 @@
  *   - attributes: HTML attributes for the list element.
  *
  * @see template_preprocess_views_view_list()
+ *
+ * @ingroup themeable
  */
 #}
+
 {% if attributes -%}
   <div{{ attributes }}>
 {% endif %}
@@ -23,7 +26,7 @@
     <h3>{{ title }}</h3>
   {% endif %}
 
-  <{{ list.type }}{{ list.attributes }}>
+  <{{ list.type }} {{ list.attributes }} {{ list.type == 'ul' ? 'class="arrow_list"' : ''}} >
 
     {% for row in rows %}
       <li{{ row.attributes }}>{{ row.content }}</li>

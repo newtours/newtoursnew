@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override for views to display rows in a grid.
+ * Default theme implementation for views to display rows in a grid.
  *
  * Available variables:
  * - attributes: HTML attributes for the wrapping element.
@@ -22,6 +22,8 @@
  *     - content: The row or column contents.
  *
  * @see template_preprocess_views_view_grid()
+ *
+ * @ingroup themeable
  */
 #}
 {%
@@ -30,7 +32,6 @@
     options.alignment,
     'cols-' ~ options.columns,
     'clearfix',
-    'col',
   ]
 %}
 {% if options.row_class_default %}

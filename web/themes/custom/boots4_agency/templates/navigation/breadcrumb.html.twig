@@ -7,21 +7,18 @@
  * - breadcrumb: Breadcrumb trail items.
  */
 #}
-{{ attach_library('bootstrap_barrio/breadcrumb') }}
-
 {% if breadcrumb %}
-  <nav role="navigation" aria-label="breadcrumb">
-    <ol class="breadcrumb">
+  <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+    <ol>
     {% for item in breadcrumb %}
-      {% if item.url %}
-        <li class="breadcrumb-item">
+      <li>
+        {% if item.url %}
           <a href="{{ item.url }}">{{ item.text }}</a>
-        </li>
-      {% else %}
-        <li class="breadcrumb-item active">
+        {% else %}
           {{ item.text }}
-        </li>
-      {% endif %}
+        {% endif %}
+      </li>
     {% endfor %}
     </ol>
   </nav>

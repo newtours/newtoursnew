@@ -25,9 +25,7 @@
     'js-form-item',
     'form-item',
     'js-form-wrapper',
-    'form-group',
-    'col-auto',
-    errors ? 'has-error',
+    'form-wrapper',
   ]
 %}
 <fieldset{{ attributes.addClass(classes) }}>
@@ -44,7 +42,7 @@
   </legend>
   <div class="fieldset-wrapper">
     {% if errors %}
-      <div class="alert alert-danger" role="alert">
+      <div class="form-item--error-message">
         <strong>{{ errors }}</strong>
       </div>
     {% endif %}
@@ -56,7 +54,7 @@
       <span class="field-suffix">{{ suffix }}</span>
     {% endif %}
     {% if description.content %}
-      <small{{ description.attributes.addClass('description', 'text-muted') }}>{{ description.content }}</small>
+      <div{{ description.attributes.addClass('description') }}>{{ description.content }}</div>
     {% endif %}
   </div>
 </fieldset>
