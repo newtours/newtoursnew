@@ -59,148 +59,148 @@
 #}
 
 <div class="top-nav" data-spy="affix">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
 
-        {% if page.message %}
-          {{ page.message }}
-        {% endif %}
+                {% if page.message %}
+                    {{ page.message }}
+                {% endif %}
 
-        {% if page.email %}
-          <i class="fa fa-envelope"></i>
-          {{ page.email }}
-        {% endif %}
+                {% if page.email %}
+                    <i class="fa fa-envelope"></i>
+                    {{ page.email }}
+                {% endif %}
 
-      </div>
-      
-      {% if show_social_icon %}
-        <div class="col-md-6">
-          <p class="social-media">
-            {% if facebook_url %}
-              <a href="{{ facebook_url }}"  class="facebook" target="_blank" ><i class="fab fa-facebook-f"></i></a>
+            </div>
+
+            {% if show_social_icon %}
+                <div class="col-md-6">
+                    <p class="social-media">
+                        {% if facebook_url %}
+                            <a href="{{ facebook_url }}"  class="facebook" target="_blank" ><i class="fab fa-facebook-f"></i></a>
+                        {% endif %}
+                        {% if google_plus_url %}
+                            <a href="{{ google_plus_url }}"  class="google-plus" target="_blank" ><i class="fab fa-google-plus-g"></i></a>
+                        {% endif %}
+                        {% if twitter_url %}
+                            <a href="{{ twitter_url }}" class="twitter" target="_blank" ><i class="fab fa-twitter"></i></a>
+                        {% endif %}
+                        {% if linkedin_url %}
+                            <a href="{{ linkedin_url }}" class="linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        {% endif %}
+                        {% if pinterest_url %}
+                            <a href="{{ pinterest_url }}" class="pinterest" target="_blank" ><i class="fab fa-pinterest-p"></i></a>
+                        {% endif %}
+                        {% if rss_url %}
+                            <a href="{{ rss_url }}" class="rss" target="_blank" ><i class="fa fa-rss"></i></a>
+                        {% endif %}
+                    </p>
+                </div>
             {% endif %}
-            {% if google_plus_url %}
-              <a href="{{ google_plus_url }}"  class="google-plus" target="_blank" ><i class="fab fa-google-plus-g"></i></a>
-            {% endif %}
-            {% if twitter_url %}
-              <a href="{{ twitter_url }}" class="twitter" target="_blank" ><i class="fab fa-twitter"></i></a>
-            {% endif %}
-            {% if linkedin_url %}
-              <a href="{{ linkedin_url }}" class="linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            {% endif %}
-            {% if pinterest_url %}
-              <a href="{{ pinterest_url }}" class="pinterest" target="_blank" ><i class="fab fa-pinterest-p"></i></a>
-            {% endif %}
-            {% if rss_url %}
-              <a href="{{ rss_url }}" class="rss" target="_blank" ><i class="fa fa-rss"></i></a>
-            {% endif %}
-          </p>
+
         </div>
-      {% endif %}
-     
     </div>
-  </div>
 </div>
 
 <div class="header" data-toggle="affix">
-  <div class="container" >
-    <div class="row">
+    <div class="container" >
+        <div class="row">
 
-      <!-- Start: Header -->
+            <!-- Start: Header -->
 
-      <div class="navbar-header col-md-3"  >
-        <button type="button" class="navbar-toggle" data-toggle="affix" data-target="#main-navigation" >
-          <i class="fas fa-bars"></i>
-        </button>
-        {% if page.header %}
-          {{ page.header }}
-        {% endif %}
-      </div>
+            <div class="navbar-header col-md-3"  >
+                <button type="button" class="navbar-toggle" data-toggle="affix" data-target="#main-navigation" >
+                    <i class="fas fa-bars"></i>
+                </button>
+                {% if page.header %}
+                    {{ page.header }}
+                {% endif %}
+            </div>
 
-      <!-- End: Header -->
+            <!-- End: Header -->
 
-      {% if page.primary_menu  or page.search%}
-        <div class="col-md-9">
+            {% if page.primary_menu  or page.search%}
+                <div class="col-md-9">
 
-          {% if page.search %}
-            {{ page.search }}
-          {% endif %}
+                    {% if page.search %}
+                        {{ page.search }}
+                    {% endif %}
 
-          {{ page.primary_menu }}
-          
+                    {{ page.primary_menu }}
+
+                </div>
+            {% endif %}
+
         </div>
-      {% endif %}
-
-      </div>
 
     </div>
-  </div>
+</div>
 </div>
 
 
 {% if is_front and show_slideshow%}
-  <div class="container">
-    <div class="flexslider">
-      <ul class="slides">
-        {% for slider_contents in slider_content %}
-          {{ slider_contents | raw }}
-        {% endfor %}
-      </ul>
+    <div class="container">
+        <div class="flexslider">
+            <ul class="slides">
+                {% for slider_contents in slider_content %}
+                    {{ slider_contents | raw }}
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-  </div>
 {% endif %}
 
 
 <!-- Start: Top widget -->
 
 {% if page.topwidget_first or page.topwidget_second or page.topwidget_third %}
-  <div class="topwidget" id="topwidget">
+    <div class="topwidget" id="topwidget">
 
-    <div class="container">
+        <div class="container">
 
-      {% if page.topwidget_title %}
-        <h2 class="custom-block-title" >
-          {{ page.topwidget_title }}
-        </h2>
-      {% endif %}
+            {% if page.topwidget_title %}
+                <h2 class="custom-block-title" >
+                    {{ page.topwidget_title }}
+                </h2>
+            {% endif %}
 
-        <div class="row topwidget-list clearfix">
+            <div class="row topwidget-list clearfix">
 
-          <!-- Start: Top widget first -->          
-          {% if page.topwidget_first %}
-            <div class = {{ topwidget_class }}>{{ page.topwidget_first }}</div>
-          {% endif %}          
-          <!-- End: Top widget first --> 
+                <!-- Start: Top widget first -->
+                {% if page.topwidget_first %}
+                    <div class = {{ topwidget_class }}>{{ page.topwidget_first }}</div>
+                {% endif %}
+                <!-- End: Top widget first -->
 
-          <!-- Start: Top widget second -->          
-          {% if page.topwidget_second %}
-            <div class = {{ topwidget_class }}>{{ page.topwidget_second }}</div>
-          {% endif %}          
-          <!-- End: Top widget second --> 
-          
-          <!-- Start: Top widget third -->         
-          {% if page.topwidget_third %}
-            <div class = {{ topwidget_class }}>{{ page.topwidget_third }}</div>
-          {% endif %}          
-          <!-- End: Top widget third -->
+                <!-- Start: Top widget second -->
+                {% if page.topwidget_second %}
+                    <div class = {{ topwidget_class }}>{{ page.topwidget_second }}</div>
+                {% endif %}
+                <!-- End: Top widget second -->
 
+                <!-- Start: Top widget third -->
+                {% if page.topwidget_third %}
+                    <div class = {{ topwidget_class }}>{{ page.topwidget_third }}</div>
+                {% endif %}
+                <!-- End: Top widget third -->
+
+            </div>
         </div>
     </div>
-  </div>
 {% endif %}
 
 <!--End: Top widget -->
 
-    
+
 <!--Start: Highlighted -->
 
 {% if page.highlighted %}
-  <div class="highlighted">
-    <div class="container">
-      {{ page.highlighted }}
+    <div class="highlighted">
+        <div class="container">
+            {{ page.highlighted }}
+        </div>
     </div>
-  </div>
 {% endif %}
 
 <!--End: Highlighted -->
@@ -208,67 +208,67 @@
 <!--Start: Title -->
 
 {%  if page.page_title and not is_front %}
-  <div id="page-title">
-    <div id="page-title-inner">
-      <div class="container">
-        {{ page.page_title }}
-      </div>
+    <div id="page-title">
+        <div id="page-title-inner">
+            <div class="container">
+                {{ page.page_title }}
+            </div>
+        </div>
     </div>
-  </div>
 {% endif %}
 
 <!--End: Title -->
 
 <div class="main-content">
-  <div class="container">
-    <div class="">
+    <div class="container">
+        <div class="">
 
-      <!--Start: Breadcrumb -->
+            <!--Start: Breadcrumb -->
 
-      {% if not is_front %}
-        <div class="row">
-          <div class="col-md-12">{{ page.breadcrumb }}</div>
+            {% if not is_front %}
+                <div class="row">
+                    <div class="col-md-12">{{ page.breadcrumb }}</div>
+                </div>
+            {% endif %}
+
+            <!--End: Breadcrumb -->
+
+            <div class="row layout">
+
+                <!--- Start: Left SideBar -->
+                {% if page.sidebar_first %}
+                    <div class={{sidebarfirst}}>
+                        <div class="sidebar">
+                            {{ page.sidebar_first }}
+                        </div>
+                    </div>
+                {% endif %}
+                <!-- End Left SideBar -->
+
+                <!--- Start Content -->
+                {% if page.content %}
+                    <div class={{contentlayout}}>
+                        <div class="content_layout">
+                            {{ page.content }}
+                        </div>
+                    </div>
+                {% endif %}
+                <!-- End: Content -->
+
+                <!-- Start: Right SideBar -->
+                {% if page.sidebar_second %}
+                    <div class={{sidebarsecond}}>
+                        <div class="sidebar">
+                            {{ page.sidebar_second }}
+                        </div>
+                    </div>
+                {% endif %}
+                <!-- End: Right SideBar -->
+
+            </div>
+
         </div>
-      {% endif %}
-
-      <!--End: Breadcrumb -->
-
-      <div class="row layout">
-
-        <!--- Start: Left SideBar -->
-        {% if page.sidebar_first %}
-          <div class={{sidebarfirst}}>
-            <div class="sidebar">
-              {{ page.sidebar_first }}
-            </div>
-          </div>
-        {% endif %}
-        <!-- End Left SideBar -->
-
-        <!--- Start Content -->
-        {% if page.content %}
-          <div class={{contentlayout}}>
-            <div class="content_layout">
-              {{ page.content }}
-            </div>              
-          </div>
-        {% endif %}
-        <!-- End: Content -->
-
-        <!-- Start: Right SideBar -->
-        {% if page.sidebar_second %}
-          <div class={{sidebarsecond}}>
-            <div class="sidebar">
-              {{ page.sidebar_second }}
-            </div>
-          </div>
-        {% endif %}
-        <!-- End: Right SideBar -->
-        
-      </div>
-    
     </div>
-  </div>
 </div>
 
 <!-- End: Main content -->
@@ -278,44 +278,44 @@
 
 {% if page.features_first or page.features_second or page.features_third %}
 
-  <div class="features">
-    <div class="container">
+    <div class="features">
+        <div class="container">
 
-      {% if page.features_title %}
-        <h2 class="custom-block-title" >
-          {{ page.features_title }}
-        </h2>
-      {% endif %}
+            {% if page.features_title %}
+                <h2 class="custom-block-title" >
+                    {{ page.features_title }}
+                </h2>
+            {% endif %}
 
-      <div class="row">
+            <div class="row">
 
-        <!-- Start: Features First -->
-        {% if page.features_first %}
-          <div class = {{ features_first_class }}>
-            {{ page.features_first }}
-          </div>
-        {% endif %}
-        <!-- End: Features First -->
+                <!-- Start: Features First -->
+                {% if page.features_first %}
+                    <div class = {{ features_first_class }}>
+                        {{ page.features_first }}
+                    </div>
+                {% endif %}
+                <!-- End: Features First -->
 
-        <!-- Start :Features Second -->
-        {% if page.features_second %}
-          <div class = {{ features_class }}>
-            {{ page.features_second }}
-          </div>
-        {% endif %}
-        <!-- End: Features Second -->
+                <!-- Start :Features Second -->
+                {% if page.features_second %}
+                    <div class = {{ features_class }}>
+                        {{ page.features_second }}
+                    </div>
+                {% endif %}
+                <!-- End: Features Second -->
 
-        <!-- Start: Features third -->
-        {% if page.features_third %}
-          <div class = {{ features_class }}>
-            {{ page.features_third }}
-          </div>
-        {% endif %}
-        <!-- End: Features Third -->
+                <!-- Start: Features third -->
+                {% if page.features_third %}
+                    <div class = {{ features_class }}>
+                        {{ page.features_third }}
+                    </div>
+                {% endif %}
+                <!-- End: Features Third -->
 
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
 {% endif %}
 <!--End: Features -->
@@ -324,11 +324,11 @@
 <!-- Start: Services -->
 {% if page.services %}
 
-  <div class="services" id="services">
-    <div class="container">
-      {{ page.services }}
+    <div class="services" id="services">
+        <div class="container">
+            {{ page.services }}
+        </div>
     </div>
-  </div>
 
 {% endif %}
 <!--End: Services -->
@@ -338,11 +338,11 @@
 <!-- Start: Services -->
 {% if page.products %}
 
-  <div class="products" id="products">
-    <div class="container">
-      {{ page.products }}
+    <div class="products" id="products">
+        <div class="container">
+            {{ page.products }}
+        </div>
     </div>
-  </div>
 
 {% endif %}
 <!--End: Services -->
@@ -351,52 +351,52 @@
 <!-- Start: Price table widgets -->
 {% if page.pricetable_first or page.pricetable_second or page.pricetable_third %}
 
-  <div class="price-table" id="price-table">    
-    <div class="container">
+    <div class="price-table" id="price-table">
+        <div class="container">
 
-      {% if page.pricetable_title %}
-        <h2 class="custom-block-title" >
-          {{ page.pricetable_title }}
-        </h2>
-      {% endif %}
+            {% if page.pricetable_title %}
+                <h2 class="custom-block-title" >
+                    {{ page.pricetable_title }}
+                </h2>
+            {% endif %}
 
-      <div class="row">
+            <div class="row">
 
-        <!-- Start: Bottom First -->          
-        {% if page.pricetable_first %}
-          <div class = {{ pricetable_class }}>
-            {{ page.pricetable_first }}
-          </div>
-        {% endif %}          
-        <!-- End: Bottom First -->
+                <!-- Start: Bottom First -->
+                {% if page.pricetable_first %}
+                    <div class = {{ pricetable_class }}>
+                        {{ page.pricetable_first }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom First -->
 
-        <!-- Start: Bottom Second -->
-        {% if page.pricetable_second %}
-          <div class = {{ pricetable_class }}>
-            {{ page.pricetable_second }}
-          </div>
-        {% endif %}          
-        <!-- End: Bottom Second -->
+                <!-- Start: Bottom Second -->
+                {% if page.pricetable_second %}
+                    <div class = {{ pricetable_class }}>
+                        {{ page.pricetable_second }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom Second -->
 
-        <!-- Start: Bottom third -->          
-        {% if page.pricetable_third %}
-          <div class = {{ pricetable_class }}>
-            {{ page.pricetable_third }}
-          </div>
-        {% endif %}          
-        <!-- End: Bottom Third -->
+                <!-- Start: Bottom third -->
+                {% if page.pricetable_third %}
+                    <div class = {{ pricetable_class }}>
+                        {{ page.pricetable_third }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom Third -->
 
-        <!-- Start: Bottom third -->          
-        {% if page.pricetable_forth %}
-          <div class = {{ pricetable_class }}>
-            {{ page.pricetable_forth }}
-          </div>
-        {% endif %}          
-        <!-- End: Bottom Third -->
+                <!-- Start: Bottom third -->
+                {% if page.pricetable_forth %}
+                    <div class = {{ pricetable_class }}>
+                        {{ page.pricetable_forth }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom Third -->
 
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
 {% endif %}
 <!--End: Price table widgets -->
@@ -405,52 +405,52 @@
 <!-- Start: Bottom widgets -->
 {% if page.bottom_first or page.bottom_second or page.bottom_third or page.bottom_forth %}
 
-  <div class="bottom-widget" id="bottom-widget">    
-    <div class="container">
+    <div class="bottom-widget" id="bottom-widget">
+        <div class="container">
 
-      {% if page.bottom_title %}
-        <h2 class="custom-block-title" >
-          {{ page.bottom_title }}
-        </h2>
-      {% endif %}
+            {% if page.bottom_title %}
+                <h2 class="custom-block-title" >
+                    {{ page.bottom_title }}
+                </h2>
+            {% endif %}
 
-      <div class="row">
+            <div class="row">
 
-        <!-- Start: Bottom First -->          
-        {% if page.bottom_first %}
-          <div class = {{ bottom_class }}>
-            {{ page.bottom_first }}
-          </div>
-        {% endif %}          
-        <!-- End: Bottom First -->
+                <!-- Start: Bottom First -->
+                {% if page.bottom_first %}
+                    <div class = {{ bottom_class }}>
+                        {{ page.bottom_first }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom First -->
 
-        <!-- Start: Bottom Second -->
-        {% if page.bottom_second %}
-          <div class = {{ bottom_class }}>
-            {{ page.bottom_second }}
-          </div>
-        {% endif %}          
-        <!-- End: Bottom Second -->
+                <!-- Start: Bottom Second -->
+                {% if page.bottom_second %}
+                    <div class = {{ bottom_class }}>
+                        {{ page.bottom_second }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom Second -->
 
-        <!-- Start: Bottom third -->          
-        {% if page.bottom_third %}
-          <div class = {{ bottom_class }}>
-            {{ page.bottom_third }}
-          </div>
-        {% endif %}          
-        <!-- End: Bottom Third -->
+                <!-- Start: Bottom third -->
+                {% if page.bottom_third %}
+                    <div class = {{ bottom_class }}>
+                        {{ page.bottom_third }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom Third -->
 
-        <!-- Start: Bottom Forth -->
-        {% if page.bottom_forth %}
-          <div class = {{ bottom_class }}>
-            {{ page.bottom_forth }}
-          </div>
-        {% endif %}
-        <!-- End: Bottom Forth -->
+                <!-- Start: Bottom Forth -->
+                {% if page.bottom_forth %}
+                    <div class = {{ bottom_class }}>
+                        {{ page.bottom_forth }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom Forth -->
 
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
 {% endif %}
 <!--End: Bottom widgets -->
@@ -459,53 +459,53 @@
 <!-- Start: Team widgets -->
 {% if page.team_first or page.team_second or page.team_third or page.team_forth %}
 
-  <div class="team" id="team">    
-    <div class="container">
+    <div class="team" id="team">
+        <div class="container">
 
-      {% if page.team_title %}
-        <h2 class="custom-block-title" >
-          {{ page.team_title }}
-        </h2>
-      {% endif %}
+            {% if page.team_title %}
+                <h2 class="custom-block-title" >
+                    {{ page.team_title }}
+                </h2>
+            {% endif %}
 
 
-      <div class="row team-list">
+            <div class="row team-list">
 
-        <!-- Start: Bottom First -->          
-        {% if page.team_first %}
-          <div class = {{ team_class }}>
-            {{ page.team_first }}
-          </div>
-        {% endif %}          
-        <!-- End: Bottom First -->
+                <!-- Start: Bottom First -->
+                {% if page.team_first %}
+                    <div class = {{ team_class }}>
+                        {{ page.team_first }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom First -->
 
-        <!-- Start: Bottom Second -->
-        {% if page.team_second %}
-          <div class = {{ team_class }}>
-            {{ page.team_second }}
-          </div>
-        {% endif %}          
-        <!-- End: Bottom Second -->
+                <!-- Start: Bottom Second -->
+                {% if page.team_second %}
+                    <div class = {{ team_class }}>
+                        {{ page.team_second }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom Second -->
 
-        <!-- Start: Bottom third -->          
-        {% if page.team_third %}
-          <div class = {{ team_class }}>
-            {{ page.team_third }}
-          </div>
-        {% endif %}          
-        <!-- End: Bottom Third -->
+                <!-- Start: Bottom third -->
+                {% if page.team_third %}
+                    <div class = {{ team_class }}>
+                        {{ page.team_third }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom Third -->
 
-        <!-- Start: Bottom Forth -->
-        {% if page.team_forth %}
-          <div class = {{ team_class }}>
-            {{ page.team_forth }}
-          </div>
-        {% endif %}
-        <!-- End: Bottom Forth -->
+                <!-- Start: Bottom Forth -->
+                {% if page.team_forth %}
+                    <div class = {{ team_class }}>
+                        {{ page.team_forth }}
+                    </div>
+                {% endif %}
+                <!-- End: Bottom Forth -->
 
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
 {% endif %}
 <!--End: Team widgets -->
@@ -514,44 +514,44 @@
 <!-- Start: Footer widgets -->
 {% if page.footer_first or page.footer_second or page.footer_third %}
 
-  <div class="footer" id="footer">
-    <div class="container">
+    <div class="footer" id="footer">
+        <div class="container">
 
-      {% if page.footer_title %}
-        <h2 class="custom-block-title" >
-          {{ page.footer_title }}
-        </h2>
-      {% endif %}
+            {% if page.footer_title %}
+                <h2 class="custom-block-title" >
+                    {{ page.footer_title }}
+                </h2>
+            {% endif %}
 
-      <div class="row">
+            <div class="row">
 
-        <!-- Start: Footer First -->
-        {% if page.footer_first %}
-          <div class = {{ footer_class }}>
-            {{ page.footer_first }}
-          </div>
-        {% endif %}
-        <!-- End: Footer First -->
+                <!-- Start: Footer First -->
+                {% if page.footer_first %}
+                    <div class = {{ footer_class }}>
+                        {{ page.footer_first }}
+                    </div>
+                {% endif %}
+                <!-- End: Footer First -->
 
-        <!-- Start :Footer Second -->
-        {% if page.footer_second %}
-          <div class = {{ footer_class }}>
-            {{ page.footer_second }}
-          </div>
-        {% endif %}
-        <!-- End: Footer Second -->
+                <!-- Start :Footer Second -->
+                {% if page.footer_second %}
+                    <div class = {{ footer_class }}>
+                        {{ page.footer_second }}
+                    </div>
+                {% endif %}
+                <!-- End: Footer Second -->
 
-        <!-- Start: Footer third -->
-        {% if page.footer_third %}
-          <div class = {{ footer_class }}>
-            {{ page.footer_third }}
-          </div>
-        {% endif %}
-        <!-- End: Footer Third -->
+                <!-- Start: Footer third -->
+                {% if page.footer_third %}
+                    <div class = {{ footer_class }}>
+                        {{ page.footer_third }}
+                    </div>
+                {% endif %}
+                <!-- End: Footer Third -->
 
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
 {% endif %}
 <!--End: Footer widgets -->
@@ -561,17 +561,12 @@
 
     <div class="container">
 
-      <span>Copyright © {{ "now"|date("Y") }}. All rights reserved.</span>
+        <span>Copyright © {{ "now"|date("Y") }}. All rights reserved.</span>
 
-      {% if show_credit_link %}
-        <span class="credit-link">Designed By <a href="http://www.zymphonies.com" target="_blank">Zymphonies</a></span>
-      {% endif %}
+        {% if show_credit_link %}
+            <span class="credit-link">Designed By <a href="http://www.zymphonies.com" target="_blank">Zymphonies</a></span>
+        {% endif %}
 
-  </div>
+    </div>
 </div>
 <!-- End: Copyright -->
-
-
-
-
-

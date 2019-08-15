@@ -7,6 +7,38 @@ global-styling:
   css:
     component:
       css/style.css: {}
+      css/bootstrap.min.css: {}
   dependencies:
     - core/jquery
     - core/drupal
+# smartmenus
+smartmenus:
+  version: 1.x
+  css:
+    theme:
+      /libraries/smartmenus/css/sm-core-css.css: {}
+  js:
+    /libraries/smartmenus/jquery.smartmenus.js: {}
+  dependencies:
+    - core/jquery
+# OWL
+owl:
+  version: 1.x
+  css:
+    theme:
+      /libraries/owl/assets/owl.carousel.css: {}
+      /libraries/owl/assets/owl.theme.default.min.css: {}
+  js:
+   /libraries/owl/owl.carousel.min.js: {}
+  dependencies:
+    - core/jquery
+# flexslider
+flexslider:
+  version: v2.7.2
+  css:
+    theme:
+      /libraries/flexslider/css/flexslider.css: {}
+  js:
+    /libraries/flexslider/js/jquery.flexslider-min.js: {}
+  dependencies:
+    - core/jquery

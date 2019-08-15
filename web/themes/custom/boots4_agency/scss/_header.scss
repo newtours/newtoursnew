@@ -30,6 +30,7 @@
     padding: 7px 0;
     text-align: left;
     background: #fff;
+
 }
 
 .main-header {
@@ -62,10 +63,13 @@
 
 .site-branding{
 	margin: 0;
+
+    /*box-sizing: border-box !important; */
 }
 
 .region-header{
 	padding: 12px 0;
+
 }
 
 .region-header .brand{
