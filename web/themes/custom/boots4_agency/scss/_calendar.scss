@@ -1,0 +1,31 @@
+
+/*Calendar*/
+
+
+
+
+.fc-content-skeleton{
+	background: none;
+
+
+
+	table{
+
+		tbody{
+          tr{
+            td{
+              .fc-event-container{
+                .fc-event, .fc-event-dot{
+                  background-color:$linkColor !important;
+                  .fc-title{
+                    color:#000000 !important;
+                  }
+                }
+              }
+            }
+          }
+
+		} 
+	}
+}
+
