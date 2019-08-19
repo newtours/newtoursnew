@@ -48,6 +48,7 @@ class ToursController extends ControllerBase {
       return [
           //'#type' => 'markup',
           '#theme' => 'index_list',
+          '#title'=>'',
           '#tours_data'=> isset($tours) ? $tours : NULL,
           '#attached' => [
               'library' => [
@@ -66,20 +67,21 @@ class ToursController extends ControllerBase {
   
   public function bootsrapPage ($template = null) {
             return [
-          //'#type' => 'markup',
-          '#theme' => 'index_list',
-          '#tours_data'=> isset($tours) ? $tours : NULL,
-          '#attached' => [
-              'library' => [
+                //'#type' => 'markup',
+                '#theme' => 'index_list',
+                '#title'=>'',
+                '#tours_data'=> isset($tours) ? $tours : NULL,
+                '#attached' => [
+                'library' => [
                   //'tours/respTable',
                   //'tours/main-carousel',
                   'tours/slick-carousel',
                   //'core/drupal.dialog.ajax'
-              ],
-              'drupalSettings' => [
+                ],
+                'drupalSettings' => [
                   'tourData' => 'test',
-              ]
-          ],
+                ]
+            ],
           //'#markup' => '',
       ];
   }
