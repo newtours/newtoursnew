@@ -42,3 +42,19 @@ flexslider:
     /libraries/flexslider/js/jquery.flexslider-min.js: {}
   dependencies:
     - core/jquery
+# smartmenus
+smartmenus:
+  version: 1.x
+  css:
+    theme:
+      /libraries/smartmenus/css/sm-core-css.css: {}
+  js:
+    /libraries/smartmenus/jquery.smartmenus.js: {}
+  dependencies:
+    - core/jquery
+# Font awesome
+fontawesome:
+  version: 1.x
+  css:
+    theme:
+      /libraries/fontawesome/css/fontawesome-all.css: {}

@@ -57,7 +57,8 @@ nav h2{
 	}
 
 	li{
-
+        float:left;
+        display:inline-block;
 		a{
 			font-family: $titleFontFamily;
 			color: #fff;
@@ -66,9 +67,9 @@ nav h2{
 			padding: 24px 20px;
 			font-size: 1.1em;
 
-			&:hover, 
-			&:focus, 
-			&:active, 
+			&:hover,
+			&:focus,
+			&:active,
 			&.highlighted{
 				background: none;
 				color: $menuTextActiveColor;
@@ -89,7 +90,7 @@ nav h2{
 				line-height: 120%;
 				font-size: 2em;
 			}
-		} 
+		}
 	}
 }
 
