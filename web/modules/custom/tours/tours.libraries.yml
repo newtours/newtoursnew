@@ -33,8 +33,12 @@ main-carousel:
   dependencies:
     - core/jquery
 slick-carousel:
+  css:
+    theme:
+      /libraries/slick/slick/slick.css: {}
+      /libraries/slick/slick/slick-theme.css: {}
   js:
-    #/libraries/slick/slick/slick.min.js: {}
+    /libraries/slick/slick/slick.min.js: {}
     js/slickCarousel.js: {}
   dependencies:
     - core/jquery
