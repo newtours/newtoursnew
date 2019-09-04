@@ -9,6 +9,8 @@ libraries:
   - boots4_agency/global-styling
   - boots4_agency/smartmenus
   - boots4_agency/owl
+  - boots4_agency/fontawesome
+  - boots4_agency/flexslider
 libraries-override:
   bootstrap_barrio/global-styling: false
 #Regions from zymphonies

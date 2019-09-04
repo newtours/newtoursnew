@@ -38,6 +38,138 @@ function boots4_agency_form_system_theme_settings_alter(&$form, FormStateInterfa
       'bg-white' => t('White'),
       'bg-transparent' => t('Transparent'),
   );
+
+    $form['boots4_agency_info'] = array(
+        '#markup' => '<h2><br/>Advanced Theme Settings</h2><div class="messages messages--warning">Clear cache after making any changes in theme settings. <a href="../../config/development/performance">Click here to clear cache</a></div>'
+    );
+
+    //Social Icon Link
+    $form['boots4_agency_settings']['social_icon'] = array(
+        '#type' => 'details',
+        '#title' => t('Social Media Link'),
+        '#collapsible' => TRUE,
+        '#collapsed' => FALSE,
+    );
+    $form['boots4_agency_settings']['social_icon']['show_social_icon'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Show Social Icons'),
+        '#default_value' => theme_get_setting('show_social_icon'),
+        '#description'   => t("Show/Hide Social media links"),
+    );
+    $form['boots4_agency_settings']['social_icon']['facebook_url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Facebook URL'),
+        '#default_value' => theme_get_setting('facebook_url'),
+    );
+    $form['boots4_agency_settings']['social_icon']['google_plus_url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Google plus URL'),
+        '#default_value' => theme_get_setting('google_plus_url'),
+    );
+    $form['boots4_agency_settings']['social_icon']['twitter_url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Twitter URL'),
+        '#default_value' => theme_get_setting('twitter_url'),
+    );
+    $form['boots4_agency_settings']['social_icon']['linkedin_url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('LinkedIn URL'),
+        '#default_value' => theme_get_setting('linkedin_url'),
+    );
+    $form['boots4_agency_settings']['social_icon']['pinterest_url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Pinterest URL'),
+        '#default_value' => theme_get_setting('pinterest_url'),
+    );
+    $form['boots4_agency_settings']['social_icon']['rss_url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('RSS URL'),
+        '#default_value' => theme_get_setting('rss_url'),
+    );
+
+    //Show/Hide credit
+    $form['boots4_agency_settings']['credit_link'] = array(
+        '#type' => 'details',
+        '#title' => t('Footer Credit Link'),
+        '#collapsible' => TRUE,
+        '#collapsed' => FALSE,
+    );
+    $form['boots4_agency_settings']['credit_link']['show_credit_link'] = array(
+        '#type' => 'checkbox',
+        '#title' => t("Show/Hide 'Designed by Zymphonies' credit text"),
+        '#default_value' => theme_get_setting('show_credit_link'),
+        '#description'   => t("Highly recommend to display credit in footer"),
+    );
+
+    //Slide show configure
+    $form['boots4_agency_settings']['slideshow'] = array(
+        '#type' => 'details',
+        '#title' => t('Front Page Slideshow'),
+        '#collapsible' => TRUE,
+        '#collapsed' => FALSE,
+    );
+    $form['boots4_agency_settings']['slideshow']['no_of_slides'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Number of slides'),
+        '#default_value' => theme_get_setting('no_of_slides'),
+        '#description'  => t("Enter the number of slides required & Save configuration"),
+        '#markup' => '<div class="messages messages--warning">Clear caches after making any changes in theme settings. <a href="../../config/development/performance">Click here to clear cache</a></div>',
+    );
+    $form['boots4_agency_settings']['slideshow']['show_slideshow'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Show Slideshow'),
+        '#default_value' => theme_get_setting('show_slideshow'),
+        '#description'   => t("Show/Hide Slideshow in home page"),
+    );
+    $form['boots4_agency_settings']['slideshow']['slide'] = array(
+        '#markup' => t('Change the banner image, title, description and link using below fieldset'),
+    );
+
+    for ($i = 1; $i <= theme_get_setting('no_of_slides'); $i++) {
+        $form['boots4_agency_settings']['slideshow']['slide' . $i] = array(
+            '#type' => 'details',
+            '#title' => t('Slide '.$i),
+            '#collapsible' => TRUE,
+            '#collapsed' => TRUE,
+        );
+        $form['boots4_agency_settings']['slideshow']['slide' . $i]['slide_image_path' . $i] = array(
+            '#type' => 'managed_file',
+            '#title' => t('Slide '.$i.' Image'),
+            '#default_value' => theme_get_setting('slide_image_path'.$i,'boots4_agency'),
+            '#upload_location' => 'public://',
+        );
+        $form['boots4_agency_settings']['slideshow']['slide' . $i]['slide_title_' . $i] = array(
+            '#type' => 'textfield',
+            '#title' => t('Slide '.$i.' Title'),
+            '#default_value' => theme_get_setting('slide_title_' . $i,'boots4_agency'),
+        );
+        $form['boots4_agency_settings']['slideshow']['slide' . $i]['slide_description_' . $i] = array(
+            '#type' => 'textarea',
+            '#title' => t('Slide '.$i.' Description'),
+            '#default_value' => theme_get_setting('slide_description_' . $i,'boots4_agency'),
+        );
+        $form['boots4_agency_settings']['slideshow']['slide' . $i]['slide_url_' . $i] = array(
+            '#type' => 'textfield',
+            '#title' => t('Slide '.$i.' URL'),
+            '#default_value' => theme_get_setting('slide_url_' . $i,'boots4_agency'),
+        );
+
+        // Make the uploaded images permanent.
+        $image = theme_get_setting('slide_image_path'.$i,'boots4_agency');
+        if(!empty($image)){
+            $file = File::load($image[0]);
+            $file->status = FILE_STATUS_PERMANENT;
+            $file->save();
+            $file_usage = \Drupal::service('file.usage');
+            $file_usage_check = $file_usage->listUsage($file);
+            if (empty($file_usage_check)) {
+                $file_usage->add($file, 'boots4_agency', 'theme', $image[0]);
+            }
+        }
+
+    }
+
+
 }
 
 
@@ -47,7 +179,7 @@ function boots4_agency_form_system_theme_settings_alter(&$form, FormStateInterfa
  * Implements hook_preprocess_page() for block templates.
  */
 
-function boots4_agency_theme_preprocess_page(&$variables) {
+function boots4_agency_preprocess_page(&$variables) {
 
 
     // Add responsive class for top widget.
@@ -168,22 +300,44 @@ function boots4_agency_theme_preprocess_page(&$variables) {
     $current_path = explode("/", $current_url);
     $variables['current_path'] = $current_path[2];
 
-
+//var_dump(theme_get_setting('show_slideshow','boots4_agency') == 1) ; exit;
     // Slider
     // Assign Variable for slider
     if ($variables['is_front']) {
-        if (theme_get_setting('show_slideshow','school_zymphonies_theme') == 1) {
+        if (theme_get_setting('show_slideshow','boots4_agency') == 1) {
             $variables['show_slideshow'] = 1;
-            $variables['slider_content'] = school_zymphonies_theme_get_slider_content();
+            $variables['slider_content'] = boots4_agency_get_slider_content();
         }
     }
 
 }
 
+
+/**
+ * Implements hook_preprocess_HOOK() for page templates.
+ */
+function boots4_agency_preprocess_page_title(&$variables) {
+    // Since the title and the shortcut link are both block level elements,
+    // positioning them next to each other is much simpler with a wrapper div.
+    if (!empty($variables['title_suffix']['add_or_remove_shortcut']) && $variables['title']) {
+        // Add a wrapper div using the title_prefix and title_suffix render
+        // elements.
+        $variables['title_prefix']['shortcut_wrapper'] = [
+            '#markup' => '<div class="shortcut-wrapper clearfix">',
+            '#weight' => 100,
+        ];
+        $variables['title_suffix']['shortcut_wrapper'] = [
+            '#markup' => '</div>',
+            '#weight' => -99,
+        ];
+        // Make sure the shortcut link is the first item in title_suffix.
+        $variables['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
+    }
+}
 /**
  * Implements hook_preprocess_menu().
  */
-function boots4_agency_theme_preprocess_menu(&$variables, $hook) {
+function boots4_agency_preprocess_menu(&$variables, $hook) {
     if ($hook == 'menu__main') { // We're doing that for main menu.
         // Get the current path.
         $current_path = \Drupal::request()->getRequestUri();
@@ -202,24 +356,24 @@ function boots4_agency_theme_preprocess_menu(&$variables, $hook) {
  * Slider
  * Implements custom function for get slider content.
  */
-function boots4_agency_theme_get_slider_content() {
+function boots4_agency_get_slider_content() {
     $slider_content = array();
     for ($i = 1; $i <= theme_get_setting('no_of_slides'); $i++) {
-        $fid = theme_get_setting('slide_image_path'.$i,'school_zymphonies_theme');
+        $fid = theme_get_setting('slide_image_path'.$i,'boots4_agency');
         if (!empty($fid)) {
             $file = file_load($fid[0]);
             $uri = $file->getFileUri();
             $path = file_create_url($uri);
         }
         else {
-            $path = base_path() . drupal_get_path('theme', 'school_zymphonies_theme') . theme_get_setting('slide_image_path_' . $i, 'school_zymphonies_theme');
+            $path = base_path() . drupal_get_path('theme', 'boots4_agency') . theme_get_setting('slide_image_path_' . $i, 'boots4_agency');
         }
         $slider_content[$i] = '<li>
       <img src="' . $path . '" alt="Slider Banner" />
       <div class="slider-caption">
-        <h2 class="slider-title">' . theme_get_setting('slide_title_' . $i, 'school_zymphonies_theme').'</h2>
-        <div class="clearfix"><p class="slider-description">' . theme_get_setting('slide_description_' . $i, 'school_zymphonies_theme').'</p></div>
-        <a href=' . theme_get_setting('slide_url_' . $i, 'school_zymphonies_theme') . ' class="more-link">Read more</a>
+        <h2 class="slider-title">' . theme_get_setting('slide_title_' . $i, 'boots4_agency').'</h2>
+        <div class="clearfix"><p class="slider-description">' . theme_get_setting('slide_description_' . $i, 'boots4_agency').'</p></div>
+        <a href=' . theme_get_setting('slide_url_' . $i, 'boots4_agency') . ' class="more-link">Read more</a>
       </div>
     </li>';
     }
