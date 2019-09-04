@@ -100,6 +100,11 @@ nav h2{
     background: $mobileMenuBg;
     margin-bottom: 15px;
     border-radius: 5px;
+  #main-menu {
+    li a {
+      color:#fff ;
+    }
+  }
 }
 
 
