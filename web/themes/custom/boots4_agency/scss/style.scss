@@ -5,6 +5,9 @@
 **/
 @import "global";
 @import "variables-and-mixins";
+body {
+  padding-top: 140px !important;
+}
 
 @media (min-width: 767px) {
 
