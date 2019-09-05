@@ -24,6 +24,182 @@ $mobileMenuBg: #000;
 $desktopMenuTextColor: #fff;
 $desktopMenuDropDownBg: $linkColor;
 $borderColor: #e8e8e8;
+$box-shadow:0 0.5rem 1rem rgba(0,0,0,.15);
+
+// colors
+$primary-shade: #A8CF45;
+$primary-light: lighten($primary-shade, 37%);
+$primary-dark: darken($primary-shade, 12%);
+$accent-shade: #0079C0;
+$accent-light: lighten($accent-shade, 37%);
+$accent-dark: darken($accent-shade, 12%);
+// Reassign color vars to semantic color scheme
+$red: #dc3545;
+$yellow: #ffc107;
+$green: #28a745;
+$cyan: #17a2b8;
+$gray-100: #f8f9fa !default;
+$gray-800: #343a40 !default;
+$theme-colors: ( primary: $accent-shade, secondary: $primary-shade, success: $green, info: $cyan, warning: $yellow, danger: $red, light: $gray-100, dark: $gray-800);
+$brand-primary: $accent-shade;
+//$brand-success: $green;
+//$brand-info: $teal;
+//$brand-warning: $orange;
+//$brand-danger: $red;
+$brand-inverse: $primary-shade;
+// Body
+//
+// Settings for the `<body>` element.
+//$body-bg: $white;
+//$body-color: $gray-dark;
+$inverse-bg: $primary-shade;
+//$inverse-color: $gray-lighter;
+// Links
+//
+// Style anchor elements.
+$link-color: $accent-shade;
+$link-decoration: none;
+$link-hover-color: $accent-dark;
+$link-hover-decoration: underline;
+// Comments
+$comment-spacer-x: 1.25em;
+$comment-spacer-y: 1.25em;
+// Responsive font sizes
+$enable-responsive-font-sizes: true;
+//$font-size-base:          1.0em;
+//$font-size-xlarge:        ceil(($font-size-base * 2.3)); // ~37px
+
+//## Gray variations
+$porcelain:				#f7f8fa;
+$charade:				#2f3041; // Main typography, iconography
+$dark-gray:             #272727;
+$gray-base:              #000 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:              lighten($gray-base, 20%) !default;   // #333
+$gray:                   lighten($gray-base, 33.5%) !default; // #555
+$gray-light:             lighten($gray-base, 46.3%) !default; // #767
+$gray-black:             lighten($gray-base, 59.3%) !default; // #979
+$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+$gray-xlight:            lighten($gray-base, 60.1%) !default; //
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+
+
+
+$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
+$brand-success:         #5cb85c !default;
+$brand-info:            #5bc0de !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #9C2A1F !default;
+$gray-chateau:          #99a1a7;
+$box-shadow:			#d3d6db; // box-shadow color for clear button on search
+$border-grey:		   	#d6dade; // Border color for input fields
+$nobel-grey:            #b4b4b4; // copyright gray
+//$dove-grey:				#666666; // Global text color body text
+$iron-grey:				#dddee0; // borders
+$iron:                  #cacece;
+$iron-lighter:          #cecece; // legacy border color
+$shuttle-gray:			#64676a; // get a card category
+$light-grey:		    #ECEEF0; // horizontal rule, table borders
+$tower-gray:            #adb8c0;
+$oslo-gray:             #93999e;
+$whisper:				#EDEDED; // search sidebar sub facets background color
+
+//## Blue variations
+$dark-blue: #2a00b3;
+$mariner:			#5C3296; // Global textual link color, Links on light background (Porcelain)
+$doger-blue:			#000099; // Link hover color, Button color **replaced with doublespace bright-purple
+$border-blue:			#000099; // Blue border for buttons, **replaced with doublespace bright-purple
+$pure-blue:			#000080; // carousel card border color
+//$royal-blue:			#5C3296; // Load more button border in careers page
+$royal-blue:			#2570eb; // Load more button border in careers page
+$bluewood:			#2e405a; // Page hero headers, item quick view background,  title cards, footer
+$mega-quick-bg:         #e4e6f0; // Mega menu background color, Quickview background color
+$bright-purple:         #5C3296; // Global link color
+$brighter-purple:       #754EC4; // Hover global link color
+$mid-purple:            #422980; // Homepage carousel background, Title container, megamenu hover, interior(NAV) header
+$dark-purple:           #282561; // Mega menu panel, footer, quickview, my-account background
+$darkest-purple:        #1a0a50; // Dart text color, carousel tab text color
+$light-purple:          #c9c7ff; // Mega menu active link color
+$storm-gray:            #6A6C87; // Mega menu text color
+$tab-purple:            #130245; // Hero Carousel tab color
+
+//# Pearl Lusta variations
+$pearl-lusta: #f5edd6;
+$pearl-lusta-light: #fcfaf4;
+$pearl-lusta-lighter: #faf6eb;
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+//** Deprecated `$screen-xs` as of v3.0.1
+$screen-xs:                  480px !default;
+//** Deprecated `$screen-xs-min` as of v3.2.0
+$screen-xs-min:              $screen-xs !default;
+//** Deprecated `$screen-phone` as of v3.0.1
+$screen-phone:               $screen-xs-min !default;
+
+// Small screen / tablet
+//** Deprecated `$screen-sm` as of v3.0.1
+$screen-sm:                  768px !default;
+$screen-sm-min:              $screen-sm !default;
+//** Deprecated `$screen-tablet` as of v3.0.1
+$screen-tablet:              $screen-sm-min !default;
+
+// Medium screen / desktop
+//** Deprecated `$screen-md` as of v3.0.1
+$screen-md:                  992px !default;
+$screen-md-min:              $screen-md !default;
+//** Deprecated `$screen-desktop` as of v3.0.1
+$screen-desktop:             $screen-md-min !default;
+
+// Large screen / wide desktop
+//** Deprecated `$screen-lg` as of v3.0.1
+$screen-lg:                  1200px !default;
+$screen-lg-min:              $screen-lg !default;
+//** Deprecated `$screen-lg-desktop` as of v3.0.1
+$screen-lg-desktop:          $screen-lg-min !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1) !default;
+$screen-sm-max:              ($screen-md-min - 1) !default;
+$screen-md-max:              ($screen-lg-min - 1) !default;
+
+
+/* =================================== */
+/*  Font Family and Colors Styles
+/* =================================== */
+
+// Font overrides
+$font-family-sans-serif: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+
+$font-family-serif: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+
+$font-family-base: $font-family-serif !default;
+
+$headings-font-family: $font-family-sans-serif !default;
+
+$font-weight-bold:  bold;
+
+
+$primary: #fed136 !default;
+$primary-color	: #f8b600;
+$title-color	: #222222;
+$text-color		: #777777;
+
+
+$offwhite		: #f9f9ff;
+$black			: #000;
+$white			: #fff;
 
 /*Mixins*/
 
@@ -47,3 +223,35 @@ $borderColor: #e8e8e8;
     color: $linkColor;
     background: #fff;
 }
+
+
+
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transition($transition) {
+  -moz-transition:    all $transition ease;
+  -o-transition:      all $transition ease;
+  -webkit-transition: all $transition ease;
+  -ms-transition: 		all $transition ease;
+  transition:         all $transition ease;
+}
+
+@mixin gradient-background(){
+  background: rgba(46,158,91,1);
+  background: -moz-linear-gradient(45deg, rgba(46,158,91,1) 0%, rgba(253,183,44,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(46,158,91,1)), color-stop(100%, rgba(253,183,44,1)));
+  background: -webkit-linear-gradient(45deg, rgba(46,158,91,1) 0%, rgba(253,183,44,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(46,158,91,1) 0%, rgba(253,183,44,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(46,158,91,1) 0%, rgba(253,183,44,1) 100%);
+  background: linear-gradient(45deg, rgba(46,158,91,1) 0%, rgba(253,183,44,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e9e5b', endColorstr='#fdb72c', GradientType=1 );
+}
+
+

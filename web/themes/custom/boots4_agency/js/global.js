@@ -60,6 +60,20 @@
         theme_home();
 
 
+        // Collapse Navbar
+        var navbarCollapse = function() {
+            if ($("#main-menu").offset().top > 100) {
+                $("#main-menu").addClass("navbar-scrolled");
+            } else {
+                $("#main-menu").removeClass("navbar-scrolled");
+            }
+        };
+        // Collapse now if page is not at top
+        navbarCollapse();
+        // Collapse the navbar when page is scrolled
+        $(window).scroll(navbarCollapse);
+
+
     }
   };
 
