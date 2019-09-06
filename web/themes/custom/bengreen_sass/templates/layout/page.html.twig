@@ -127,20 +127,6 @@
                   {% endif %}
               </nav>
           {% endif %}
-          {% if   page.bottom_header or page.bottom_header_form %}
-              {{ page.bottom_header }}
-              <nav{{ navbar_bottom_attributes }}>
-                  {% if container_navbar %}
-                  <div class="container">
-                      {% endif %}
-                      {#  here navbar_top content - moved above #}
-
-                      {% if container_navbar %}
-                  </div>
-                  {% endif %}
-              </nav>
-          {% endif %}
-
       {% endblock %}
     </header>
     {% if page.highlighted %}
