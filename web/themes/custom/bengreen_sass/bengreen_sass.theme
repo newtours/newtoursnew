@@ -10,6 +10,58 @@ use Drupal\Core\Link;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
 
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Override particular feature of base theme
+ */
+function bengreen_sass_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
+
+    $form['components']['navbar']['bengreen_sass_navbar_top_navbar'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Navbar Top is Navbar'),
+        '#description' => t('Check if Navbar Top .navbar class should be added.'),
+        '#default_value' => theme_get_setting('bengreen_sass_navbar_top_navbar'),
+    ];
+    $form['components']['navbar']['bengreen_sass_navbar_top_position'] = [
+        '#type' => 'select',
+        '#title' => t('Navbar top position'),
+        '#description' => t('Select your navbar top position.'),
+        '#default_value' => theme_get_setting('bengreen_sass_navbar_top_position'),
+        '#options' => [
+            'fixed-top' => t('Fixed Top'),
+            'fixed-bottom' => t('Fixed Bottom'),
+            'sticky-top' => t('Sticky Top'),
+        ],
+        '#empty_option' => t('Normal'),
+    ];
+    $form['components']['navbar']['bengreen_sass_navbar_top_color'] = [
+        '#type' => 'select',
+        '#title' => t('Navbar top color'),
+        '#description' => t('Select a color for links in navbar top.'),
+        '#default_value' => theme_get_setting('bengreen_sass_navbar_top_color'),
+        '#options' => [
+            'navbar-light' => t('Light'),
+            'navbar-dark' => t('Dark'),
+        ],
+        '#empty_option' => t('Default'),
+    ];
+    $form['components']['navbar']['bengreen_sass_navbar_top_background'] = [
+        '#type' => 'select',
+        '#title' => t('Navbar top background'),
+        '#description' => t('Select a color for background in navbar top.'),
+        '#default_value' => theme_get_setting('bengreen_sass_navbar_top_background'),
+        '#options' => [
+            'bg-primary' => t('Primary'),
+            'bg-light' => t('Light'),
+            'bg-dark' => t('Dark'),
+            'bg-dark-custom' => t('Custom'),
+        ],
+        '#empty_option' => t('Default'),
+    ];
+
+}
 /**
  * Implements hook_preprocess_HOOK() for HTML document templates.
  *

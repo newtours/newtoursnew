@@ -432,6 +432,13 @@
 		}
 	}
 }
+
+.bg-dark-custom {
+  background:$dark-blue; /* $defaul-blue*/
+}
+.navbar-dark-custom {
+  color:$white;
+}
 /*
 .navbar-brand {
     display: inline-block;
