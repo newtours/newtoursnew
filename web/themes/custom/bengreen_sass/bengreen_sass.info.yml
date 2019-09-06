@@ -9,7 +9,7 @@ libraries:
   - bengreen_sass/global-styling
   - bengreen_sass/slick  
 libraries-override:
-  bootstrap_barrio/global-styling: false
+  bootstrap_barrio/global-styling: true
   bootstrap_barrio/file: false
 regions:
   top_header: 'Top Header'
