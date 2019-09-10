@@ -73,17 +73,34 @@
   <div id="page">
     <header id="header" class="header" role="banner" aria-label="{{ 'Site header'|t}}">
       {% block head %}
+        {% if page.secondary_menu or page.top_header or page.top_header_form %}
+          <nav{{ navbar_top_attributes }}>
+          {% if container_navbar %}
+          <div class="container">
+          {% endif %}
+                        {{ page.top_header }}
+             
 
+              {% if page.top_header_form %}
+                <div class="form-inline navbar-form float-right">
+                  {{ page.top_header_form }}
+                </div>
+              {% endif %}
+          {% if container_navbar %}
+          </div>
+          {% endif %}
+          </nav>
+        {% endif %}
         <nav{{ navbar_attributes }}>
           {% if container_navbar %}
           <div class="container">
           {% endif %}
             {{ page.header }}
-
             {% if page.primary_menu or page.header_form %}
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
               <div class="collapse navbar-collapse" id="CollapsingNavbar">
                 {{ page.primary_menu }}
+                  {{ page.secondary_menu }}
                 {% if page.header_form %}
                   <div class="form-inline navbar-form float-right">
                     {{ page.header_form }}
@@ -98,35 +115,6 @@
           </div>
           {% endif %}
         </nav>
-          {% if  page.secondary_menu or page.top_header or page.top_header_form %}
-              <nav class="navbar navbar-expand-lg navbar-dark-custom bg-dark-custom" data-toggle="affix">
-                  <a class="navbar-brand" href="#">
-                      <img src="/themes/custom/bengreen_sass/logo.svg" alt="Home" class="img-fluid d-inline-block align-top " width="62" height="42">
-                  </a>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                      {{ page.primary_menu }}
-                      {{ page.secondary_menu }}
-                      {{ page.top_header }}
-                      {% if page.top_header_form %}
-                          <div class="form-inline navbar-form float-right">
-                              {{ page.top_header_form }}
-                          </div>
-                      {% endif %}
-                  </div>
-              </nav>
-              <nav{{ navbar_top_attributes }}>
-                  {% if container_navbar %}
-                  <div class="container">
-                          {% endif %}
-                      {#  here navbar_top content - moved above #}
-                      {% if container_navbar %}
-                  </div>
-                  {% endif %}
-              </nav>
-          {% endif %}
       {% endblock %}
     </header>
     {% if page.highlighted %}

@@ -319,4 +319,51 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
 
+/* Top header image */
+#navbar-top {
+    .block-page-top-image-block {
+        .top-image-block {
+            height: 8.9em;
+            width: 62em;
+            #top-image-liberty{
+                left:0.3em;
+                z-index: 100;
+                top: -0.5em;
+                width:6.25em;
+                height:10em;
+            }
+            #top-image-city {
+                left:4.0em;
+                z-index: 98;
+                width:49.68em;
+                height:9.375em
+            }
+            #top-image-bus {
+                left:50em;
+                z-index: 100;
+                top: 1em;
+                width:15.625em;
+                height:9.375em;    
+            }
+        }
+    }
+    .navbar-brand {
+        padding-left:1.5em !important;
+        text-align:center;
+        width:20em !important;
+        height:4em !important;
+        image{
+            margin:auto !important;
+        }
+
+    }
+   .top-credential {
+            color:$defaul-blue;
+            /*height:4.5em !important; */
+            font-size:0.6em;
+            font-weight:$font-weight-normal;
+            font-family: $font-primary            
+        }
+}
+
 
