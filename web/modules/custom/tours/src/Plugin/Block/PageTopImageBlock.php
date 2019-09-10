@@ -66,8 +66,9 @@ class PageTopImageBlock extends BlockBase {
                 <img src="/sites/default/files/images/bus2.png" width="250" height="150" border="0" alt = "Russian Tour in USA and Canada, Туры по США"   />
             </div>'
             . '</div>';
-    $build['tours_default_block_tour_name']['#markup'] = $markUp;
-
+    //$build['tours_default_block_tour_name']['#markup'] = $markUp;
+                //top_image_block
+      $build['tours_default_block_tour_name']['#theme'] = 'top_image_block';
     return $build;
   }
 

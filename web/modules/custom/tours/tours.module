@@ -67,6 +67,11 @@ function tours_theme($existing, $type, $theme, $path) {
     ], 
     'boots_tmp' =>[
 
-    ],      
+    ],
+     'top_image_block'=>[
+         'variables'=>[
+
+         ]
+     ]
  ];
 }
