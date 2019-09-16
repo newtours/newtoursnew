@@ -321,10 +321,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Top header image */
 #navbar-top {
+    section{
+        margin:auto;
+        min-height:8.4em;
+    }
     .block-page-top-image-block {
         .top-image-block {
             height: 8.9em;
-            width: 62em;
+            width: 62em; 
             #top-image-liberty{
                 left:0.3em;
                 z-index: 100;
@@ -336,7 +340,7 @@ body.mobile-nav-active #mobile-nav-toggle {
                 left:4.0em;
                 z-index: 98;
                 width:49.68em;
-                height:9.375em
+                height:9.375em;
             }
             #top-image-bus {
                 left:50em;
@@ -344,13 +348,18 @@ body.mobile-nav-active #mobile-nav-toggle {
                 top: 1em;
                 width:15.625em;
                 height:9.375em;    
+
             }
+        @include media-breakpoint-down(xl) { 
+            width: 42em; 
+                }    
         }
+
     }
     .navbar-brand {
         padding-left:1.5em !important;
         text-align:center;
-        width:20em !important;
+        /*width:20em !important; */
         height:4em !important;
         image{
             margin:auto !important;
