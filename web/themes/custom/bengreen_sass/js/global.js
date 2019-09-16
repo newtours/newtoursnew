@@ -26,6 +26,7 @@
           $('body').removeClass("scrolldown");
         }
         position = scroll;
+          console.log($('body').attr("class"))
       });
    
 
@@ -83,7 +84,7 @@
 					st = $w.scrollTop(),
 					navbar = $('.ftco_navbar'),
 					sd = $('.js-scroll-wrap');
-
+//console.log(st);
 			if (st > 150) {
 				if ( !navbar.hasClass('scrolled') ) {
 					navbar.addClass('scrolled');	
@@ -112,6 +113,7 @@
 					sd.removeClass('sleep');
 				}
 			}
+            //console.log(navbar.attr("class"))
 		});
 	};
 	scrollWindow();

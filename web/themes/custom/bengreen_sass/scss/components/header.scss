@@ -360,9 +360,10 @@ body.mobile-nav-active #mobile-nav-toggle {
         padding-left:1.5em !important;
         text-align:center;
         /*width:20em !important; */
-        height:4em !important;
-        image{
+        /*height:4em !important; */
+        #main-top-logo {
             margin:auto !important;
+            height: 5.3em !important;
         }
 
     }
@@ -373,6 +374,9 @@ body.mobile-nav-active #mobile-nav-toggle {
             font-weight:$font-weight-normal;
             font-family: $font-primary            
         }
+}
+#navbar-main {
+  height:80px;
 }
 
 
