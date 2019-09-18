@@ -351,8 +351,17 @@ body.mobile-nav-active #mobile-nav-toggle {
 
             }
         @include media-breakpoint-down(xl) { 
-            width: 42em; 
-                }    
+            /*width: 42em; */
+                }
+          @include media-breakpoint-down(xs) {
+            display:none !important;
+          }
+          @include media-breakpoint-down(sm) {
+            display:none !important;
+          }
+          @include media-breakpoint-down(md) {
+            display:none !important;
+          }
         }
 
     }
@@ -368,7 +377,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
     }
    .top-credential {
-            color:$defaul-blue;
+            color:$default-blue;
             /*height:4.5em !important; */
             font-size:0.6em;
             font-weight:$font-weight-normal;
@@ -377,6 +386,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 #navbar-main {
   height:80px;
+  background-color: $default-blue;
+  padding-left:0em !important;
+  /*top:11.6em; */
+}
+#CollapsingNavbar {
+  background-color: $default-blue;
+  padding:0.3em;
 }
 
 

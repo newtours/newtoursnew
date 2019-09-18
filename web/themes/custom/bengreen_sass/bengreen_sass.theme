@@ -250,7 +250,9 @@ function bengreen_sass_preprocess_page(&$variables) {
 	  'id' => ['navbar-top' ],
   ];
   $variables['navbar_attributes'] = [
-    'class' => [ 'navbar' ],
+    'class' => [
+        'navbar','sticky-top'
+    ],
 	  'id' => [ 'navbar-main' ],
   ];
   $variables['content_attributes'] = [
@@ -426,6 +428,7 @@ function bengreen_sass_preprocess_region(&$variables) {
     'header',
     'sidebar_first',
     'sidebar_second',
+      'header_form'
   ];
   if (theme_get_setting('bootstrap_barrio_region_class_' . $variables['elements']['#region']) !== NULL) {
     $variables['attributes']['class'][] = theme_get_setting('bootstrap_barrio_region_class_' . $variables['elements']['#region']);
