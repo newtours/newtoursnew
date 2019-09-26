@@ -15,7 +15,7 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * Adds body classes if certain regions have content.
  */
-function bootstrap_barrio_preprocess_html444(&$variables) {
+function bootstrap_barrio_preprocess_html(&$variables) {
   if (!isset($variables['attributes']['class'])) {
     $variables['attributes']['class'] = [];
   }
@@ -86,7 +86,7 @@ function bootstrap_barrio_page_attachments_alter(&$page) {
 /**
  * Implements hook_preprocess_HOOK() for page templates.
  */
-function bootstrap_barrio_preprocess_page444(&$variables) {
+function bootstrap_barrio_preprocess_page(&$variables) {
   if (\Drupal::moduleHandler()->moduleExists('bootstrap_library')) {
     $library = theme_get_setting('bootstrap_barrio_library');
     switch ($library) {
@@ -128,10 +128,6 @@ function bootstrap_barrio_preprocess_page444(&$variables) {
     'class' => [ 'navbar' ],
 	  'id' => ['navbar-top' ],
   ];
-    $variables['navbar_top_bottom__attributes'] = [
-        'class' => [ 'navbar' ],
-        'id' => ['navbar-top-bottom' ],
-    ];
   $variables['navbar_attributes'] = [
     'class' => [ 'navbar' ],
 	  'id' => [ 'navbar-main' ],
@@ -251,7 +247,7 @@ function bootstrap_barrio_preprocess_page444(&$variables) {
 /**
  * Implements hook_preprocess_HOOK() for page templates.
  */
-function bootstrap_barrio_preprocess_page_title444(&$variables) {
+function bootstrap_barrio_preprocess_page_title(&$variables) {
   // Since the title and the shortcut link are both block level elements,
   // positioning them next to each other is much simpler with a wrapper div.
   if (!empty($variables['title_suffix']['add_or_remove_shortcut']) && $variables['title']) {
@@ -300,7 +296,7 @@ function bootstrap_barrio_preprocess_node(&$variables) {
 /**
  * Implements hook_preprocess_HOOK() for region.html.twig.
  */
-function bootstrap_barrio_preprocess_region3333(&$variables) {
+function bootstrap_barrio_preprocess_region(&$variables) {
   $nowrap = [
     'breadcrumb',
     'highlighted',
@@ -322,7 +318,7 @@ function bootstrap_barrio_preprocess_region3333(&$variables) {
 /**
  * Implements hook_preprocess_HOOK() for block.html.twig.
  */
-function bootstrap_barrio_preprocess_block444(&$variables) {
+function bootstrap_barrio_preprocess_block(&$variables) {
   // Add a clearfix class to system branding blocks.
   if ($variables['plugin_id'] == 'system_branding_block') {
     $variables['attributes']['class'][] = 'clearfix';
@@ -380,7 +376,7 @@ function bootstrap_barrio_preprocess_file_managed_file(&$variables) {
 /**
  * Implements hook_preprocess_HOOK() for menu.html.twig.
  */
-function bootstrap_barrio_preprocess_menu444(&$variables) {
+function bootstrap_barrio_preprocess_menu(&$variables) {
   $variables['attributes']['class'][] = 'clearfix';
 }
 
@@ -433,7 +429,7 @@ function bootstrap_barrio_preprocess_views_view_table(&$variables) {
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for region templates.
  */
-function bootstrap_barrio_theme_suggestions_region_alter444(array &$suggestions, array $variables) {
+function bootstrap_barrio_theme_suggestions_region_alter(array &$suggestions, array $variables) {
   $nowrap = [
     'breadcrumb',
     'highlighted',

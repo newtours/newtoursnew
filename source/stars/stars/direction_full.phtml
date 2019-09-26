@@ -1,0 +1,187 @@
+<?php
+//include ("stars/new_stars_main_menu.php");
+
+#main table of tour list
+#
+#
+#
+
+$direction_id=0;
+//print_r($stars->array_groups);
+?>
+<div style='margin:auto;padding:5px' id='short-tour-list'>
+    <table align='center' border='1' cellpadding='0' cellspacing='0' style='margin:auto;color:#000099;font-size:1.2em;font-weight:bold;' id="stars-list-full">
+
+        <tr style='background:#000099;color:#fff;height:30px'>
+            <td align='center'>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td align='center'>КАТЕГОРИЯ</td>
+            <td align='center'>Дни</td>
+            <td align='center'>Главные достопримечательности,<br/> города и штаты</td>
+        </tr>
+<!--
+<tr id='tr-stars0' style='height:50px'><td align='center'>1</td><td style='padding:0px 3px 0px 3px' class='direction_link' vol='stars0' align='center'><a href="?newyear=2012" style='color:#ff0000'><b>ВСЕ НОВОГОДНИЕ ТУРЫ СЕРИИ
+ЗВЕЗДЫ АТЛАНТИКИ</b></a></td>
+                        <td style='text-align:center;color:#990000;font-size:11px' >
+        </td>
+                        <td  style='padding:0px 3px 0px 3px;color:#ff0000' >Экскурсионные программы, которые включают праздничные даты.
+        </td>
+        </tr>
+-->
+        <tr id='tr-stars1'>
+            <td align='center'>1</td>
+        <td style='padding:0px 3px 0px 3px' class='direction_link' vol='stars1' >
+            <a href="#stars2"><b>АТЛАНТИКА <br/>АТЛАНТИКА и ВИРДЖИНИЯ</b></a>
+        </td>
+        <td style='text-align:center;color:#990000;font-size:11px' >5&nbsp;-&nbsp;16
+        </td>
+            <td  style='padding:0px 3px 0px 3px' >Нью-Йорк, Вашингтон, Бостон, Филадельфия, Ниагарские Водопады, Ричмонд, Норфолк, Вирджиния-Бич
+        </td>
+        </tr>
+            <tr id='tr-stars2'>
+        <td align='center'>2</td>
+        <td style='padding:0px 3px 0px 3px' class='direction_link' vol='stars2' ><a href="#stars2"><b>АТЛАНТИКА и ЗАПАДНОЕ ПОБЕРЕЖЬЕ США - ДВА ОКЕАНА
+            </b>
+            <br/>
+            Включая пляжи Майами
+            </a>
+        </td>
+
+                        <td style='text-align:center;color:#990000;font-size:11px' >8&nbsp;-&nbsp;20
+        </td>
+                        <td  style='padding:0px 3px 0px 3px' >Лос-Анжелес, Лас-Вегас, Сан-Франциско, Сан-Диего, Заповедники, Нью-Йорк, Вашингтон, Бостон, Филадельфия, Ниагарские Водопады.
+        </td>
+        </tr>
+        <tr id='tr-stars6' style='border-bottom:none'>
+            <td align='center' class='bottom-none'>3
+            </td>
+            <td style='padding:5px 3px 5px 3px'  >
+                <a href="/stars/?direction=florida#atlantica-florida"><b>АТЛАНТИКА И ФЛОРИДА</b></a>
+            </td>
+            <td style='text-align:center;color:#990000;font-size:11px'  >
+                10-18
+            </td>
+            <td    style='padding:0px 3px 0px 3px' >
+                Майами, Орландо, Тампа, города Атлантики, отдых, круизы
+            </td>
+        </tr>
+
+        <tr id='tr-stars10'>
+            <td align='center'>4</td>
+            <td style='padding:3px 3px 3px 3px' class='direction_link' vol='stars10' >
+                <a href="#stars10"><b>АТЛАНТИКА И СРЕДНИЙ ЗАПАД (АТЛАНТИКА-ЧИКАГО)</b>
+                </a>
+            </td>
+            <td style='text-align:center;color:#990000;font-size:11px' >12-14
+        </td>
+                        <td  style='padding:0px 3px 0px 3px' >Чикаго и города Атлантики
+        </td>
+        </tr>
+        
+        
+            <tr id='tr-stars3'>
+                <td align='center'>5</td>
+            <td style='padding:0px 3px 0px 3px' class='direction_link' vol='stars3' ><a href="#stars3">
+            <b>США-КАНАДА<br/>АТЛАНТИКА И КАНАДА</b></a></td>
+            <td style='text-align:center;color:#990000;font-size:11px' >8-16
+            </td>
+
+                        <td  style='padding:0px 3px 0px 3px' >Монреаль, Квебек, Оттава, Торонто, Ниагарские Водопады.<br/>Нью-Йорк, Вашингтон, Бостон.
+        </td>
+        </tr>
+            <tr id='tr-stars4'>
+                <td align='center'>6</td>
+            <td style='padding:0px 3px 0px 3px' class='direction_link' vol='stars4' ><a href="#stars4"><b>ВСЯ КАНАДА - ВОСТОК И ЗАПАД</b></a></td>
+                        <td style='text-align:center;color:#990000;font-size:11px' > 15
+        </td>
+                        <td  style='padding:0px 3px 0px 3px' rowspan='2'>Монреаль, Квебек, Оттава, Торонто, Ниагарские Водопады,  <br/> Ванкувер, Эдмонтон, Калгари, Заповедники
+        </td>
+        </tr>
+
+        <tr id='tr-stars5'><td align='center' class='top-none bottom-none'>&nbsp;</td><td style='padding:0px 3px 0px 3px' class='direction_link' vol='stars5' ><a href="#stars5"><b>КАНАДА </b><br/><span style="color:#990000">(без заезда в США)</span></a></td>
+                        <td style='text-align:center;color:#990000;font-size:11px' >6-11
+        </td>
+         </tr>
+
+        <tr id='tr-stars15'>
+            <td align='center'>7</td>
+            <td style='padding:6px 3px 6px 3px' class='direction_link' vol='stars9' >
+                <a href="#stars9"><b>США-КАНАДА<br/>КАНАДА и ФЛОРИДА</b></a>
+            </td>
+                        <td style='text-align:center;color:#990000;font-size:11px' >15-17
+        </td>
+                        <td  style='padding:0px 3px 0px 3px' >Майами, Орландо,   города Канады
+        </td>
+
+        </tr>
+
+        <tr id='tr-stars11'><td align='center'>8</td>
+        <td style='padding:5px 3px 5px 3px' class='direction_link' vol='stars11' >
+            <a href="#stars11"><b>ГРАНД-ТУРЫ: АЛЯСКА, ЗАПАДНАЯ КАНАДА, КАЛИФОРНИЯ, ГАВАЙИ</b><br/>ПРИРОДНЫЕ ЗАПОВЕДНИКИ США и КАНАДЫ</a>
+        </td>
+
+                        <td style='text-align:center;color:#990000;font-size:11px' >15&nbsp;-&nbsp;28
+        </td>
+                        <td  style='padding:0px 3px 0px 3px' >Аляска, Западная Канада, Калифорния, Гавайи
+        </td>
+        </tr>
+        <tr id='tr-stars12'><td align='center'>9</td><td style='padding:3px 3px 3px 3px' class='direction_link' vol='stars12' ><a href="#stars12"><b>ЭКЗОТИЧЕСКИЕ ТУРЫ, включающие ЯМАЙКУ, КОСТА-РИКУ, МЕКСИКУ</b></a></td>
+                        <td style='text-align:center;color:#990000;font-size:11px' >8-21
+        </td>
+
+                        <td  style='padding:0px 3px 0px 3px' >Ямайка, Коста-Рика, Мексика
+        </td>
+        </tr>
+<?php
+include ('stars/directions.phtml');
+
+
+
+  /*
+
+
+foreach ($stars_tours_directions as $directions_list) {
+
+
+
+                        $left_menu_arr[]=$stars_tours_directions[$direction_id];
+                        $direction_id_n = $direction_id+1;
+                         $direction_link='stars'.$direction_id;
+
+                        if ($direction_id == 0)  $direction_link_out = '?newyear=2012';
+                        else  $direction_link_out='#stars'.$direction_id;
+
+                        print "<tr id='tr-$direction_link'>";
+                        if($direction_id==6)  {
+                        print "<td align='center'
+                        class='bottom-none'>$direction_id_n \n\t</td>";
+                        $direction_id_n--;
+                        }
+                        elseif ($direction_id==7) {
+                        $direction_id_n--;
+                        print "<td align='center' class='bottom-none'>&nbsp; \n\t</td>";
+
+                        }
+                        elseif ($direction_id==8) {
+                        print "<td align='center'>&nbsp; \n\t</td>";
+                        $direction_id_n--;
+                        }
+                        else print "<td align='center'>$direction_id_n</td>";
+                        print "<td style='padding:0px 3px 0px 3px' class='direction_link' vol='$direction_link' ><a href=\"$direction_link_out\"><b>".strip_tags($directions_list,'<span>')."</b></a></td>
+                        <td style='text-align:center;color:#990000;font-size:11px' >$stars_tours_directions_days[$direction_id] \n\t</td>";
+                        if ($direction_id==6){
+                        print "
+                        <td rowspan='3' style='padding:0px 3px 0px 3px' >$stars_tours_directions_details[$direction_id] \n\t</td>";
+                        }
+                        elseif($direction_id==7 or $direction_id==8 ) {}
+                        else {
+                        print "
+                        <td  style='padding:0px 3px 0px 3px' >$stars_tours_directions_details[$direction_id] \n\t</td>";
+                        }
+                        print"\n\t</tr>\n\t";
+                        $direction_id++;
+
+
+}
+*/
+?>
+</table></div>
