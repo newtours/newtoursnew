@@ -26,6 +26,7 @@
         "drupal/console": "^1.0.2",
         "drupal/core": "^8.6.0",
         "drupal/datatables": "^1.0",
+        "drupal/flag": "^4.0",
         "drupal/time_field": "^1.10",
         "drush/drush": "^9.0.0",
         "greenlion/php-sql-parser": "^4.3",
