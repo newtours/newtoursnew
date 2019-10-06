@@ -575,11 +575,8 @@ function bengreen_sass_theme_suggestions_region_alter(array &$suggestions, array
   }
   if ( $region_clean ) {
     $suggestions[] = 'region__nowrap';
-  }
-  
-
-
-    if (isset($path[1])) {
+  }  
+  if (isset($path[1])) {
         if ('calendar' == $path[1]) {
             $suggestions[] = 'region__sidebar_first_menu';
         }
