@@ -1,0 +1,838 @@
+
+
+#block-qbplnavbarblock{
+    margin-bottom: 120px;
+}
+.navbar-fixed-top{
+}
+
+/*For Web Experience*/
+  #Web-QBPL-Menu{
+      display: block !important;
+      box-shadow: none;
+      background-color: $white;
+    }
+
+  #Mobile-QBPL-Menu{
+      display: none !important;
+  }
+/*End of Web Experience*/
+
+#render_menu_books{
+  padding-left:40px;
+  padding-right: 40px;
+}
+
+.menu_header{
+    height: 48px;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: $storm-gray ;
+    padding-left: 40px !important;
+}
+
+.menu_close{
+    font-size: 60px !important;
+    opacity: 100 !important;
+    font-weight: normal !important;
+    line-height: 35px !important;
+}
+
+/*My Account Drop Downs*/
+
+.dropdown-menu{
+  left: -135px !important;
+  margin-top: 17px !important;
+}
+
+    .dropdown-menu:after {
+        position: absolute;
+        top: -11px;
+        left: 135px;
+        display: inline-block;
+        border-right: 11px solid transparent;
+        border-bottom: 11px solid $input-border;
+        border-left: 11px solid transparent;
+        content:'';
+    }
+
+.navbar-myaccount-dropdown-wrapper{
+  width: 300px;
+  padding:24px 21px 26px 21px !important;
+  background-color: $white !important;
+  box-shadow: 0 4px 10px 0 $mc-dropdown-border !important;
+  li {
+    a{
+      white-space: inherit;
+    }
+  }
+}
+.navbar-myaccount-username{
+  padding:15px 15px 15px 10px !important;
+  font-size: 18px;
+}
+.navbar-myaccount-userlist{
+  padding: 10px 10px 0px 10px !important;
+  font-size: 15px;
+}
+
+.navbar-myaccount-userinfo-right{
+  float: right;
+}
+
+.navbar-myaccount-userlogout{
+  padding:10px !important;
+  font-size: 15px;
+  color: $boulder !important;
+}
+
+// #navbar-myaccount-dropdown-close{
+.navbar-myaccount-dropdown-close{
+  display: none !important;
+}
+
+// #navbar-myaccount-dropdown-open{
+.navbar-myaccount-dropdown-open{
+  display: inline-block !important;
+}
+
+.navbar-dropdown-line{
+    width: 100%;
+    height: 2px;
+    border-bottom: solid 1px $table-border-color;
+    margin-top: 10px;
+    display: block !important;
+}
+
+
+.card:hover {
+  border: thin solid $pure-blue;
+  border-radius: 1px;
+}
+
+.card .book-image {
+    width: 208px;
+    max-height: 208px;
+    height: auto;
+    overflow: hidden !important;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 0;
+}
+.card img {
+}
+.card .book-metadata {
+    display: inline-block;
+    height: 250px;
+    background-color: $white;
+    position: relative;
+    z-index: 10;
+    margin: 208px 0 0 0;
+    padding: 0 15px;
+}
+
+.card .book-title {
+    font-size: 16px;
+    margin-top: .25em !important;
+    margin-bottom: .5em;
+}
+
+.book-summary {
+    margin-bottom: 3.5em;
+    color: $dove-grey;
+    font-size: 12px;
+}
+
+.small-card {
+    width: 165px;
+    height: 225px;
+    display: inline-block;
+    overflow: hidden;
+    border: 1px $table-border-color solid;
+    max-height: 225px;
+    margin: 0 0 20px 20px;
+    padding: 0;
+    vertical-align: top;
+    position: relative;
+}
+
+.small-card:hover {
+  border:1px $pure-blue solid;
+}
+
+.small-card .small-book-image {
+    max-height: 142px;
+    width: 165px;
+    height: 142px;
+    overflow: hidden !important;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 0;
+}
+.small-card .small-book-metadata {
+    display: inline-block;
+    height: 83px;
+    width: 165px;
+    background-color: $white;
+    position: relative;
+    z-index: 10;
+    margin: 142px 0 0 0;
+    padding: 0 15px;
+}
+
+.small-card .small-book-title {
+    font-size: 16px;
+    text-align: center;
+    margin-top: .25em !important;
+    margin-bottom: .5em;
+}
+
+.small-book-summary {
+    margin-bottom: 3.5em;
+    color: $dove-grey;
+    font-size: 12px;
+}
+
+
+/*Background for Header Nav*/
+.BG {
+  width: 100%;
+  background-color: $white;
+}
+.BG-top {
+  height: 72px;
+  line-height: 70.5px;
+}
+
+.BG-bottom {
+  height: 66.5px;
+  line-height: 66.5px;
+  margin-left: 27px !important;
+}
+
+.BG-top-left{
+    float:left;
+}
+
+.BG-top-right {
+  display: inline-block;
+  margin-left: 20px;
+    @media (min-width: 1212px) and (max-width: 1245px) {
+      display: inline-block;
+      margin-left: 10px;
+      float: right;
+    }
+    div {
+      display: inline;
+    }
+}
+
+
+#block-gtranslate, #block-gtranslate--2 {
+  display: none;
+}
+
+.BG-bullet{
+   color: $boulder;
+   padding:2px;
+   font-size: 16px;
+}
+
+.BG-bottom-padding {
+  padding:20.5px 30px 25px 30px;
+}
+
+.icon---Logo {
+  width: 330px;
+  height: 47px;
+  object-fit: contain;
+  margin-left:90px;
+}
+
+#login-logo img {
+  height: 25px;
+  @media (min-width: $screen-md-min) {
+  height: 30px;
+  }
+}
+
+.icon---language {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+}
+.dropdown-layer-gray {
+  font-size: 10px;
+  width: 17px;
+  height: 13px;
+  font-size: 10px;
+  color: $boulder;
+  padding:5px;
+}
+
+.BG-top-font {
+  width: 52px;
+  height: 17px;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  text-align: left;
+  color: $boulder;
+}
+
+/*Help    •    Locations    •    Get a Card    •    Login*/
+.Help-Locations-G {
+  width: 349px;
+  height: 17px;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  text-align: left;
+  color: $boulder;
+}
+.Help-Locations-G-padding{
+   padding:26px 12px 26px 12px;
+}
+
+.Donate {
+  color: $royal-blue;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  text-align: center;
+  height: 17px;
+  margin-left: 5px;
+  padding:26px 16px 27px 16px;
+  border-left: solid 1px $table-border-color;
+  border-right: solid 1px $table-border-color;
+  width: 80px;
+
+}
+
+
+.donate-line {
+  width: 3px;
+  height: 71px;
+  opacity: 0.24;
+  border: solid 1px $input-color-placeholder;
+}
+
+//-----------------------------------------
+// !! NAVBAR DONATE BUTTON STYLE
+//-----------------------------------------
+
+#Web-QBPL-Menu {
+  .BG-top-right {
+    .Donate {
+      a {
+        color: $white !important;
+        background-color: $mariner;
+        padding:10px;
+      }
+    }
+    .Donate{
+      a:hover {
+        background-color: $bondi-blue;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+.webmenu-user-icon{
+  width: 50px;
+}
+
+.Search-padding{
+  padding:26px 28px 26px 20px;
+}
+.Search {
+  width: 66px;
+  height: 17px;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  text-align: left;
+  color: $black-russian;
+}
+
+.Line {
+  width: 100%;
+  height: 2px;
+  border-bottom: solid 1px $iron-grey;
+}
+
+/*Nav Bar Second Row */
+
+.dropdown-layer-blue {
+  width: 17px;
+  height: 12px;
+  object-fit: contain;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  text-align: left;
+  color: $bondi-blue;
+  padding:5px;
+}
+
+a.Books-Movies-More,
+a.Calendar,
+a.Research,
+a.Programs-Activities,
+a.Support-the-Library,
+a.About-Us {
+  color: $charade;
+}
+
+a.Books-Movies-More {
+  margin-left:32px;
+  width: 161px;
+  height: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  text-align: left;
+  padding: 20.5px 30px 25px;
+}
+
+a.Calendar {
+  width: 67px;
+  height: 20px;
+  font-size: 16px;
+  font-weight: 600 ;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+a.Research {
+  width: 68px;
+  height: 20px;
+  font-size: 16px;
+  font-weight: 600 ;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+a.Programs-Activities {
+  width: 157px;
+  height: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+}
+
+
+a.Support-the-Library {
+  width: 143px;
+  height: 20px;
+  font-size: 16px;
+  font-weight: 600 ;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+}
+
+a.About-Us {
+  width: 70px;
+  height: 20px;
+  font-size: 16px;
+  font-weight: 600 ;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+
+
+/*End QBPL*/
+
+
+#bg-largeview {
+  height: 597px;
+}
+
+.bg-largeview-verticalnav{
+  background-color: $dark-purple;
+  // height: 597px;
+  min-height: 625px;
+  padding: 22px 0;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  color: $white;
+}
+
+
+.bg-largeview-verticalnav-item {
+  height: 48px;
+  cursor: pointer;
+  padding-left: 40px;
+  line-height: 48px !important;
+}
+
+.bg-largeview-verticalnav-item:hover {
+  //color: $yellow;
+  background-color: $mid-purple;
+}
+
+
+.bg-largeview-verticalnav-item-selected {
+  height: 48px;
+  background-color: $black-russian;
+  line-height: 48px;
+}
+.bg-largeview-info{
+  padding:32px 41px;
+  background-color: $mega-quick-bg !important;
+  // height: 597px;
+  min-height: 625px;
+  border-top: 1px solid $mega-quick-bg;
+}
+.bg-largeview-items-bottom{
+  a {
+    color: $white;
+    //font-size: 18px;
+    font-size: 13px;
+    font-weight: 200;
+    text-transform: uppercase;
+
+  }
+  padding:25px 38px;
+  @media (max-width: 500px){
+    padding: 25px 20px;
+  }
+}
+.verticalnav-item-arrow{
+  font-size: 14px;
+  font-weight: normal;
+  float:right;
+  padding-top:5px;
+  line-height: 35px !important;
+  height: 48px;
+  padding-right: 20px;
+}
+.verticalnavLine {
+  height: 2px;
+  border-bottom: solid 1px $boulder;
+  margin-top: 20px;
+}
+
+
+.loader {
+    margin-top: 70px;
+    border: 16px solid $gray-lighter; /* Light grey */
+    border-top: 16px solid $strong-blue; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/*End QBPL*/
+
+
+/*For Mobile Experience*/
+@media (max-width: 1210px){
+  #Web-QBPL-Menu{
+    display: none !important;
+    }
+  #Mobile-QBPL-Menu{
+    display: block !important;
+  }
+  .mobile-hamburger{
+    font-size: 24px;
+    line-height: inherit !important;
+  }
+  .mobile-hamburger-wrapper{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .icon-ic-x2{
+    font-size: 20px;
+    line-height: inherit !important;
+    padding-right: 20px;
+  }
+  .icon-ic-search-mobile{
+    font-size: 24px;
+    line-height: inherit !important;
+    padding-right: 10px;
+  }
+  #block-qbplnavbarblock{
+    margin-bottom: 50px !important;
+  }
+}
+
+@media (max-width: $screen-xs) {
+  .icon-ic-x2 {
+    padding: 10px;
+  }
+  .icon-ic-x2:before {
+    font-family: icomoon;
+    content: "\e97b";
+  }
+}
+
+.mobile-search-icon{
+  font-size: 20px;
+  color: $gray-base;
+}
+#mobileSearchInput{
+  display: none;
+}
+
+.BG-mobile {
+  width: 100%;
+  box-shadow: 0 2px 4px 0 $nobel-grey;
+}
+
+.BG-mobile-top {
+  height: 70.5px;
+  background-color: $white;
+  line-height: 70.5px;
+  overflow: hidden;
+}
+
+.mobile-verticalnav-menu{
+  display: none;
+  background-color: $dark-purple;
+  width: 300px;
+  height: 700px;
+  overflow-y:auto;
+  padding-bottom:100px;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  color: $white;
+  position: relative;
+  float: left;
+  @media (max-width: 360px) {
+    height: 550px;
+    overflow: scroll;
+  }
+}
+
+.bg-mobile-largeview-verticalnav-user-item {
+  cursor: pointer;
+  padding-left: 20px;
+  color: $white;
+}
+
+.bg-mobile-largeview-verticalnav-user-item:hover {
+  // color: $yellow;
+  // border-left: 4px solid $yellow;
+}
+
+.user-verticalnav-item-arrow {
+    font-size: 14px;
+    font-weight: normal;
+    float: right;
+    line-height: 68px !important;
+    height: 68px;
+    padding-right: 37px;
+}
+
+.language-verticalnav-item-arrow {
+    font-size: 14px;
+    font-weight: normal;
+    float: right;
+    line-height: 48px !important;
+    height: 48px;
+    padding-right: 20px;
+}
+
+.bg-mobile-largeview-verticalnav-item {
+  height: 48px;
+  cursor: pointer;
+  padding-left: 20px;
+  line-height: 48px !important;
+}
+
+// Solution For Navitems Overlapping Issue In Iphone 5
+
+@media (max-width: 320px) {
+  #mobile-vertical-menu-layer-3 {
+    .bg-mobile-largeview-verticalnav-item {
+      line-height: 1.2 !important;
+      margin-top: 10px;
+    }
+  }
+}
+
+//.bg-mobile-largeview-verticalnav-item:hover,
+//.bg-mobile-largeview-verticalnav-item a:hover {
+//  color: $yellow;
+//}
+
+.mobile-verticalnav-bottom-text{
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.user-bg {
+  height: 68px;
+  background-color: $brighter-purple;
+  line-height: 68px !important;
+}
+
+.ic-donate {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.ic-help {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.ic-locations {
+  width: 16px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.ic-card {
+  width: 20px;
+  height: 14px;
+  object-fit: contain;
+}
+
+#mobile-vertical-menu-navbar-mobile-layer-books-movies-more, #mobile-vertical-menu-navbar-mobile-layer-research, #mobile-vertical-menu-navbar-mobile-layer-programs,
+#mobile-vertical-menu-navbar-mobile-layer-my-account,#mobile-vertical-menu-navbar-mobile-layer-about, #mobile-vertical-menu-layer-3, #mobile-vertical-menu-layer-4{
+  display: none;
+}
+
+#mobile-vertical-menu-navbar-mobile-layer-bmm-books{
+  display: none;
+}
+
+#mobile-vertical-menu-navbar-mobile-layer-my-account-overview,#mobile-vertical-menu-navbar-mobile-layer-my-account-edit,
+#mobile-vertical-menu-navbar-mobile-layer-my-account-card,#mobile-vertical-menu-navbar-mobile-layer-my-account-checkedout,
+#mobile-vertical-menu-navbar-mobile-layer-my-account-requests,#mobile-vertical-menu-navbar-mobile-layer-my-account-wishlist,
+#mobile-vertical-menu-navbar-mobile-layer-my-account-programs,#mobile-vertical-menu-navbar-mobile-layer-my-account-fees,
+#mobile-vertical-menu-navbar-mobile-layer-my-account-messages,#mobile-vertical-menu-navbar-mobile-layer-my-account-interests,
+#mobile-vertical-menu-navbar-mobile-layer-my-account-friends{
+  display: none;
+}
+
+.bg-mobile-largeview-verticalnav-item>a {
+  color: $white ;
+  font-weight: 300;
+  //font-size: 13px;
+}
+.bg-largeview-verticalnav-item >a {
+  color: $white;
+  font-weight: 300;
+}
+.mobile-verticalnav-bottom-text>a,.mobile-verticalnav-bottom-text>a:hover{
+  color: $white !important;
+}
+
+.navbar-mobile-my-account-card-barcode-box {
+  font-size: 10px;
+  padding: 20px;
+  margin: 15px;
+  color: $gray-base;
+  //width: 266px;
+  height: 344px;
+  border-radius: 4px;
+  background-color: $white;
+  //box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.5);
+  .navbar-mobile-barcode-image {
+    transform: scale(.8,.8);
+    margin-left: -20px;
+  }
+}
+
+/*Search Bar*/
+#custom-search-input {
+  margin:0;
+  padding: 0;
+}
+
+#custom-search-input .search-query {
+    border:none !important;
+    box-shadow: none !important;
+    line-height: 70.5px;
+    height: 70.5px;
+    font-size: 18px;
+}
+
+#custom-search-input button {
+    border:none !important;
+    box-shadow: none !important;
+    background: none;
+    color:$gray-base;
+    line-height: 70.5px;
+    height: 70.5px;
+    padding:0px !important;
+}
+
+.search-query:focus + button {
+    z-index: 3;
+}
+/*Search Bar*/
+
+
+.mobile-vertical-menu-navbar>a{
+  color: $white !important;
+}
+/*End of Mobile Experience*/
+
+.qbpl-user-icon-not-logged:before {
+  @extend .ic-icon;
+  content: "\e91a";
+  font-size: 45px;
+  color: $white;
+  opacity: 0.25;
+  vertical-align: middle;
+}
+.qbpl-user-icon-logged:before {
+  @extend .ic-icon;
+  content: "\e91a";
+  font-size: 45px;
+  color: $white;
+  vertical-align: middle;
+}
+
+.submenu-render-link:hover {
+   color: $bondi-blue !important;
+}

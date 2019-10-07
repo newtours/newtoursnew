@@ -555,9 +555,12 @@ function bengreen_sass_preprocess_views_view_table(&$variables) {
  */
 function bengreen_sass_theme_suggestions_region_alter(array &$suggestions, array $variables) {
       
-    $current_path = \Drupal::service('path.current')->getPath();      
+    $current_path = \Drupal::service('path.current')->getPath();  
+    if ('/'== $current_path) {
+        $suggestions[] = 'page__home__';
+    }
     $path = explode('/', $current_path);
-    
+
     $nowrap = [
     'breadcrumb',
     'highlighted',
@@ -739,7 +742,10 @@ function bengreen_sass_theme_suggestions_page_alter(array &$suggestions, array $
 
     $current_path = \Drupal::service('path.current')->getPath();
     $path = explode('/', $current_path);
-
+    if ('/'== $current_path) {
+        $suggestions[] = 'page__home__';
+    }
+    $path = explode('/', $current_path);
     if (isset($path[1])) {
 
 
