@@ -30,6 +30,7 @@ class PageTopImageBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function blockForm($form, FormStateInterface $form_state) {
+      //$config = $this->getConfiguration();
     $form['tour_name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Tour Name'),
@@ -62,6 +63,17 @@ class PageTopImageBlock extends BlockBase {
 
   public function build() {
     $build = [];
+    $defaulImageLocation = '/sites/default/files/images/';
+    $topImages = [
+        $defaulImageLocation.'statue_liberty2.png',
+        $defaulImageLocation.'newyork.png',
+        $defaulImageLocation.'bus2.png'       
+    ];
+    $topImagesMock = [
+        'https://via.placeholder.com/100x160/09f.png/fff?text=1+img',
+        'https://via.placeholder.com/795x150/09f.png/fff?text=2+img',
+        'https://via.placeholder.com/250x150/09f.png/fff?text=3+img'
+    ];
     $markUp = '<div id="top-image-block" class="top-image-block position-relative text-center">'
             . '<div class="d-inline position-absolute" id="top-image-liberty">
                 <img src="https://via.placeholder.com/100x160/09f.png/fff?text=1+img" width="100" height="160" border="0" alt="Russian Tour in USA and Canada, Туры по США"   />
@@ -75,7 +87,11 @@ class PageTopImageBlock extends BlockBase {
             . '</div>';
     //$build['tours_default_block_tour_name']['#markup'] = $markUp;
                 //top_image_block
-      $build['tours_default_block_tour_name']['#theme'] = 'top_image_block';
+      $build = [
+          '#theme' => 'top_image_block',
+          '#image_source'=> $defaulImageLocation,
+          '#images'=>$topImages
+          ];
     return $build;
   }
 

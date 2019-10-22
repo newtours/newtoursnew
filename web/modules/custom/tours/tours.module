@@ -70,7 +70,8 @@ function tours_theme($existing, $type, $theme, $path) {
     ],
      'top_image_block'=>[
          'variables'=>[
-
+             'image_source'=> null,
+             'images'=> null
          ]
      ]
  ];
