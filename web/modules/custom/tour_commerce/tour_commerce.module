@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains tour_commerce.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function tour_commerce_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the tour_commerce module.
+    case 'help.page.tour_commerce':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Commerce Based Tour Commerce') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tour_commerce_theme() {
+  return [
+    'tour_commerce' => [
+      'render element' => 'children',
+    ],
+  ];
+}

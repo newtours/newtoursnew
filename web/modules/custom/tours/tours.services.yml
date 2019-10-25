@@ -5,3 +5,6 @@ services:
     tags:
       - { name: twig.extension }
 
+  tours.data:
+    class: Drupal\tours\ToursData
+    arguments: ["@entity_type.manager"]

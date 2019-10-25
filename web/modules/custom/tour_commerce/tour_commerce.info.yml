@@ -1,0 +1,5 @@
+name: 'tour_commerce'
+type: module
+description: 'Commerce Based Tour Commerce'
+core: 8.x
+package: 'New Tours'

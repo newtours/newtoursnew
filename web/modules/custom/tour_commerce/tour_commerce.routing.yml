@@ -1,0 +1,9 @@
+
+tour_commerce.tour_commerce_controller_createProduct:
+  path: '/tour-commerce/create-product/{tour}'
+  defaults:
+    _controller: '\Drupal\tour_commerce\Controller\TourCommerceController::createProduct'
+    _title: 'createProduct from Tour'
+    tour: NULL
+  requirements:
+    _permission: 'access content'

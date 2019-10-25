@@ -368,6 +368,11 @@ var_dump($tours);exit;
     }
 
 
+    public function createProduct ($tour = null)
+    {
+
+
+    }
 
 
 

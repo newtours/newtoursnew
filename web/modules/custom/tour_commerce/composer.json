@@ -1,0 +1,14 @@
+{
+  "name": "drupal/tour_commerce",
+  "type": "drupal-module",
+  "description": "Commerce Based Tour Commerce",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/tour_commerce",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/tour_commerce",
+    "source": "http://cgit.drupalcode.org/tour_commerce"
+  },
+  "require": { }
+}
