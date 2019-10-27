@@ -28,8 +28,11 @@ content:
     region: content
 hidden:
   field_tour_date: true
+  field_tour_date_generated_from: true
   field_tour_date_old_rowd: true
+  field_tour_date_old_tour_rowid: true
   field_tour_date_prefix: true
+  field_tour_date_remark: true
   field_tour_date_suffix: true
   field_tour_date_tour: true
   langcode: true

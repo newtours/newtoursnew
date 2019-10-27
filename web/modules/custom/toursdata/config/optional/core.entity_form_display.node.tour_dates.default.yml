@@ -5,6 +5,8 @@ dependencies:
     - field.field.node.tour_dates.body
     - field.field.node.tour_dates.field_tour_date
     - field.field.node.tour_dates.field_tour_date_generated_from
+    - field.field.node.tour_dates.field_tour_date_lock
+    - field.field.node.tour_dates.field_tour_date_lock_reason
     - field.field.node.tour_dates.field_tour_date_old_rowd
     - field.field.node.tour_dates.field_tour_date_old_tour_rowid
     - field.field.node.tour_dates.field_tour_date_prefix
@@ -44,6 +46,21 @@ content:
     region: content
   field_tour_date_generated_from:
     weight: 129
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_tour_date_lock:
+    weight: 130
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_tour_date_lock_reason:
+    weight: 131
     settings:
       size: 60
       placeholder: ''
@@ -90,12 +107,9 @@ content:
     region: content
   field_tour_date_tour:
     weight: 126
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   langcode:
     type: language_select

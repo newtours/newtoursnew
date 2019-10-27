@@ -35,6 +35,7 @@ dependencies:
     - field.field.node.tours.field_tour_price
     - field.field.node.tours.field_tour_startdate
     - field.field.node.tours.field_tour_tour_direction
+    - field.field.node.tours.field_tour_tour_node_id
     - field.field.node.tours.field_tour_tour_type
     - field.field.node.tours.field_tour_week_days
     - node.type.tours
@@ -308,6 +309,15 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_tour_tour_node_id:
+    weight: 139
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
     region: content
   field_tour_tour_type:
     weight: 136

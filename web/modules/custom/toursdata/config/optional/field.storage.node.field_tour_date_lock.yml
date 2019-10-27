@@ -1,0 +1,18 @@
+uuid: 12e04e72-8d32-4667-bdb2-d360a5e50375
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_tour_date_lock
+field_name: field_tour_date_lock
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -33,6 +33,7 @@ hidden:
   field_tour_price_4: true
   field_tour_price_flight: true
   field_tour_price_kids: true
+  field_tour_price_lux: true
   field_tour_price_prefix: true
   field_tour_price_promo: true
   field_tour_price_single: true

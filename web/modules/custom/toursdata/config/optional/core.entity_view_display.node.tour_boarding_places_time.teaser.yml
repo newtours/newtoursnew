@@ -28,6 +28,10 @@ content:
     region: content
 hidden:
   field_boarding_time: true
+  field_boarding_time_old_rowid: true
+  field_boarding_time_place: true
   field_boarding_time_prefix: true
   field_boarding_time_suffix: true
+  field_boarding_time_tour: true
+  field_boarding_time_tour_rowid: true
   langcode: true

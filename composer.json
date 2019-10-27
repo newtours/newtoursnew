@@ -24,7 +24,7 @@
         "drupal/bootstrap_sass": "^1.9",
         "drupal/calendar": "1.x-dev",
         "drupal/commerce": "^2.14",
-        "drupal/console": "^1.0.2",
+        "drupal/console": "~1.0",
         "drupal/core": "^8.6.0",
         "drupal/datatables": "^1.0",
         "drupal/flag": "^4.0",
