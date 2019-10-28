@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hotel_country
+    - node.type.hotels
+  module:
+    - address
+id: node.hotels.field_hotel_country
+field_name: field_hotel_country
+entity_type: node
+bundle: hotels
+label: hotel_country
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: US
+default_value_callback: ''
+settings:
+  available_countries: {  }
+field_type: address_country

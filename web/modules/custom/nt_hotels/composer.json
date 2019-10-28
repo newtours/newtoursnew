@@ -1,0 +1,14 @@
+{
+  "name": "drupal/nt_hotels",
+  "type": "drupal-module",
+  "description": "Hotels Related Module",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/nt_hotels",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/nt_hotels",
+    "source": "http://cgit.drupalcode.org/nt_hotels"
+  },
+  "require": { }
+}

@@ -1,0 +1,20 @@
+uuid: 73c5f95c-27c6-43be-957f-7b1d4020002f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_hotel_room_old_rowid
+field_name: field_hotel_room_old_rowid
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

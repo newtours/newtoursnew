@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hotel_room_prices_bus
+    - node.type.hotel_room_prices
+id: node.hotel_room_prices.field_hotel_room_prices_bus
+field_name: field_hotel_room_prices_bus
+entity_type: node
+bundle: hotel_room_prices
+label: 'Hotel Room Prices Bus'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: float

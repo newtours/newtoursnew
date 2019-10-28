@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains nt_hotels.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function nt_hotels_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the nt_hotels module.
+    case 'help.page.nt_hotels':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Hotels Related Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function nt_hotels_theme() {
+  return [
+    'nt_hotels' => [
+      'render element' => 'children',
+    ],
+  ];
+}

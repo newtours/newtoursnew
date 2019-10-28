@@ -1,0 +1,5 @@
+name: 'hotels'
+type: module
+description: 'Hotels Related Module'
+core: 8.x
+package: 'New Tours'

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hotel_room_prices_room
+    - node.type.hotel_room_prices
+    - node.type.hotel_rooms
+id: node.hotel_room_prices.field_hotel_room_prices_room
+field_name: field_hotel_room_prices_room
+entity_type: node
+bundle: hotel_room_prices
+label: 'Hotel Room Prices Room'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      hotel_rooms: hotel_rooms
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

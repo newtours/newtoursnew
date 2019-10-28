@@ -1,0 +1,19 @@
+uuid: c913757f-5cd2-41e0-bc51-b91be7b13f74
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - node
+id: node.field_hotel_country
+field_name: field_hotel_country
+entity_type: node
+type: address_country
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

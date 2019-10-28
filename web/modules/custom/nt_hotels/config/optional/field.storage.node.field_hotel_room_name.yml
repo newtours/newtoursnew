@@ -1,0 +1,20 @@
+uuid: 869af4cf-fcce-4ea0-a789-f6fee3bf5964
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_hotel_room_name
+field_name: field_hotel_room_name
+entity_type: node
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

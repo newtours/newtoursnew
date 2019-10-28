@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hotel_room_descr
+    - node.type.hotel_rooms
+  module:
+    - text
+id: node.hotel_rooms.field_hotel_room_descr
+field_name: field_hotel_room_descr
+entity_type: node
+bundle: hotel_rooms
+label: 'Hotel Room Descr'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,176 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.hotel_room_prices.body
+    - field.field.node.hotel_room_prices.field_hotel_room_price_adult
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_2_child
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_3_person
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_4_person
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_bus
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_bus_chil
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_hotel
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_room
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_rowid
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_single
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_start_en
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_teen
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_tips
+    - node.type.hotel_room_prices
+  module:
+    - datetime_range
+    - text
+    - user
+id: node.hotel_room_prices.default
+targetEntityType: node
+bundle: hotel_room_prices
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_hotel_room_price_adult:
+    weight: 105
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hotel_room_prices_2_child:
+    weight: 113
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hotel_room_prices_3_person:
+    weight: 107
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hotel_room_prices_4_person:
+    weight: 108
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hotel_room_prices_bus:
+    weight: 109
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hotel_room_prices_bus_chil:
+    weight: 110
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hotel_room_prices_hotel:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_hotel_room_prices_room:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_hotel_room_prices_rowid:
+    weight: 102
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_hotel_room_prices_single:
+    weight: 106
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hotel_room_prices_start_en:
+    weight: 114
+    label: above
+    settings:
+      separator: '-'
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  field_hotel_room_prices_teen:
+    weight: 112
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hotel_room_prices_tips:
+    weight: 111
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

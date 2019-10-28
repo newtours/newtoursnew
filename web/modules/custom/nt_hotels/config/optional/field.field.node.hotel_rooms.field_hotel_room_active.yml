@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hotel_room_active
+    - node.type.hotel_rooms
+id: node.hotel_rooms.field_hotel_room_active
+field_name: field_hotel_room_active
+entity_type: node
+bundle: hotel_rooms
+label: 'Hotel Room Active'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

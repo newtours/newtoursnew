@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hotel_old_rowid
+    - node.type.hotels
+id: node.hotels.field_hotel_old_rowid
+field_name: field_hotel_old_rowid
+entity_type: node
+bundle: hotels
+label: hotel_old_rowid
+description: 'Legacy row id'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
