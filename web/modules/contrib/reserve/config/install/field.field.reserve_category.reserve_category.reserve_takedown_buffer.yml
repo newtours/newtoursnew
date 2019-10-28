@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reserve_category.reserve_takedown_buffer
+  module:
+    - options
+    - reserve
+id: reserve_category.reserve_category.reserve_takedown_buffer
+field_name: reserve_takedown_buffer
+entity_type: reserve_category
+bundle: reserve_category
+label: 'Takedown Buffer'
+description: 'Takedown time required for reservations for all items in this category. This time will be added to each reservation to extend the reserved calendar time.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

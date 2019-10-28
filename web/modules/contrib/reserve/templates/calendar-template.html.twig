@@ -1,0 +1,37 @@
+<div id="rooms-calendar">
+  <div id="tabbedPanels">
+    <div id="info">
+      <div>{{ calendar_header }}</div>
+      <hr>
+      <div id="start">{{ reservation_instructions }}</div>
+    </div>
+<br>
+    <h3 class="date">{{ 'Reservation Calendar'|t }}</h3>
+    <div class="hours">{{ date }} </div>
+    <div class="hours">{{ building_hours_display }}</div>
+
+    <div class="reserve-center"><img id="arrow" src="{{ arrow }}" /></div>
+    <div id="date-change">{{ date_picker }}</div>
+
+    <!-- Tabs -->
+    <ul class="room-tabs">
+      {% for cat in categories %}
+      <li><a class="{{ cat.active }}" href="#{{ cat.tag }}">{{ cat.title }}</a></li>
+      {% endfor %}
+    </ul>
+
+    <div class="panelContainer">
+      {% for cat1 in categories %}
+      <div id="{{ cat1.tag }}" class="panel {{ cat1.show }}">
+        <div class="gcolumns {{ orientclass }}">
+          {# $table from D7 #}
+          {{ cat1.table }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="clear"></div>
+  </div>
+</div>
+

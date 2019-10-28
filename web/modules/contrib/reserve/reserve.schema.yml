@@ -1,0 +1,21 @@
+field.storage_settings.reserve_category_reference:
+  type: mapping
+  label: 'Reserve Category reference field storage settings'
+  mapping:
+    target_type:
+      type: string
+      label: 'Type of entity to reference'
+
+field.field_settings.reserve_category_reference:
+  type: mapping
+  label: 'Reserve Category reference field settings'
+  mapping:
+    handler:
+      type: string
+      label: 'Reference method'
+    handler_settings:
+      type: entity_reference_selection.[%parent.handler]
+      label: 'Reserve Category reference selection plugin settings'
+    access_override:
+      type: boolean
+      label: 'Reserve Cateegories'

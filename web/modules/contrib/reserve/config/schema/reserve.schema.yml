@@ -1,0 +1,13 @@
+field.field_settings.reserve_category:
+  type: mapping
+  label: 'Reserve Category settings'
+  mapping:
+    categories:
+      type: int
+      label: 'Allowable Categories'
+    calendar_header:
+      type: text
+      label: 'Calendar Header'
+    reservation_instructions:
+      type: text
+      label: 'Reservation Instructions'

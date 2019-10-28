@@ -1,0 +1,81 @@
+# Reservation routing definition
+reserve_reservation.settings_tab:
+  route_name: reserve_reservation.settings
+  title: 'Settings'
+  base_route: reserve_reservation.settings
+
+entity.reserve_reservation.canonical:
+  route_name: entity.reserve_reservation.canonical
+  base_route: entity.reserve_reservation.canonical
+  title: 'View'
+
+entity.reserve_reservation.edit_form:
+  route_name: entity.reserve_reservation.edit_form
+  base_route: entity.reserve_reservation.canonical
+  title: 'Edit'
+
+entity.reserve_reservation.delete_form:
+  route_name:  entity.reserve_reservation.delete_form
+  base_route:  entity.reserve_reservation.canonical
+  title: Delete
+  weight: 10
+
+# Reservation Category routing definition
+reserve_category.settings_tab:
+  route_name: reserve_category.settings
+  title: 'Settings'
+  base_route: reserve_category.settings
+
+entity.reserve_category.edit_form:
+  route_name: entity.reserve_category.edit_form
+  base_route: entity.reserve_category.canonical
+  title: 'Edit'
+entity.reserve_category.canonical:
+  route_name: entity.reserve_category.canonical
+  base_route: entity.reserve_category.canonical
+  title: 'View'
+entity.reserve_category.delete_form:
+  route_name:  entity.reserve_category.delete_form
+  base_route:  entity.reserve_category.canonical
+  title: Delete
+  weight: 10
+
+# Reserve Settings
+reserve.settings:
+  title: 'Settings'
+  route_name: reserve.settings
+  base_route: reserve.settings
+
+reserve.settings.hours:
+  title: 'Hours'
+  route_name: reserve.settings.hours
+  base_route: reserve.settings
+
+reserve.settings.display:
+  title: 'Display'
+  route_name: reserve.settings.display
+  base_route: reserve.settings
+  weight: 10
+
+reserve.settings.hours.default:
+  title: 'Default Hours'
+  route_name: reserve.settings.hours
+  parent_id: reserve.settings.hours
+
+reserve.settings.hours.daily:
+  title: 'Daily Overrides'
+  route_name: reserve.settings.hours.daily
+  parent_id: reserve.settings.hours
+
+reserve.calendar:
+  title: 'Calendar'
+  route_name: reserve.calendar
+  base_route: reserve.calendar
+
+reserve.myreservation:
+  title: 'My Reservations'
+  route_name: view.reservations.page_2
+  base_route: reserve.calendar
+
+
+

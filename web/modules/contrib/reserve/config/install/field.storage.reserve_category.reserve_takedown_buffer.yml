@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - reserve
+id: reserve_category.reserve_takedown_buffer
+field_name: reserve_takedown_buffer
+entity_type: reserve_category
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 0
+      label: none
+    -
+      value: 30
+      label: '30 minutes'
+    -
+      value: 60
+      label: '1 hour'
+    -
+      value: 90
+      label: '90 minutes'
+    -
+      value: 120
+      label: '2 hours'
+  allowed_values_function: ''
+module: options
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

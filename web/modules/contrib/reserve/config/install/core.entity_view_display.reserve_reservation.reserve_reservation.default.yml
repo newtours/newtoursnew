@@ -1,0 +1,104 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.reserve_reservation.reserve_reservation.reservable_content_type
+    - field.field.reserve_reservation.reserve_reservation.reservable_id
+    - field.field.reserve_reservation.reserve_reservation.reservation_date
+    - field.field.reserve_reservation.reserve_reservation.reservation_ebundle
+    - field.field.reserve_reservation.reserve_reservation.reservation_length
+    - field.field.reserve_reservation.reserve_reservation.reservation_private
+    - field.field.reserve_reservation.reserve_reservation.reservation_repeat_type
+    - field.field.reserve_reservation.reserve_reservation.reservation_repeat_until
+    - field.field.reserve_reservation.reserve_reservation.reservation_series_id
+    - field.field.reserve_reservation.reserve_reservation.reservation_time
+  module:
+    - datetime
+    - options
+    - reserve
+    - user
+_core:
+  default_config_hash: 2s_-pGyf2O4EgKGyzwqMfNGNDoQcLHAdTET2ioShrjo
+id: reserve_reservation.reserve_reservation.default
+targetEntityType: reserve_reservation
+bundle: reserve_reservation
+mode: default
+content:
+  name:
+    label: above
+    type: string
+    weight: -4
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  reservation_date:
+    weight: 7
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  reservation_length:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  reservation_private:
+    weight: 1
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  reservation_repeat_type:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  reservation_repeat_until:
+    weight: 4
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  reservation_series_id:
+    weight: 6
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  reservation_time:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  user_id:
+    label: hidden
+    type: author
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  reservable_content_type: true
+  reservable_id: true
+  reservation_ebundle: true

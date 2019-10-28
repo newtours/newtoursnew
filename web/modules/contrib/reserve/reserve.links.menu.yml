@@ -1,0 +1,38 @@
+
+# Reservation menu items definition
+entity.reserve_reservation.collection:
+  title: 'Reservations'
+  route_name: entity.reserve_reservation.collection
+  description: 'List reservations'
+  parent: system.admin_structure
+  
+reserve_reservation.admin.structure.settings:
+  title: Reservation settings
+  description: 'Configure reservations'
+  route_name: reserve_reservation.settings
+  parent: entity.reserve_reservation.collection
+
+# Reservation Category menu items definition
+entity.reserve_category.collection:
+  title: 'Reservation Categories'
+  route_name: entity.reserve_category.collection
+  description: 'List reservation categories'
+  parent: entity.reserve_reservation.collection
+
+reserve_category.admin.structure.settings:
+  title: Reservation Category settings
+  description: 'Configure reservation categories'
+  route_name: reserve_category.settings
+  parent: entity.reserve_category.collection
+
+reserve.admin.system.settings:
+  title: Reserve
+  description: 'Configure Reserve'
+  route_name: reserve.settings
+  parent: 'system.admin_config_system'
+reserve.admin.system.settings.hours:
+  title: Hours
+  description: 'Configure Reserve Hours'
+  route_name: reserve.settings.hours
+  parent: 'reserve.admin.system.settings'
+  weight: -10

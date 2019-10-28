@@ -1,0 +1,10 @@
+entity.reserve_reservation.add_form:
+  route_name: entity.reserve_reservation.add_form
+  title: 'Add Reservation'
+  appears_on:
+    - entity.reserve_reservation.collection
+entity.reserve_category.add_form:
+  route_name: entity.reserve_category.add_form
+  title: 'Add Reservation Category'
+  appears_on:
+    - entity.reserve_category.collection

@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - reserve
+id: reserve_reservation.reservation_private
+field_name: reservation_private
+entity_type: reserve_reservation
+type: boolean
+settings: {  }
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

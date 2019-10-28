@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reserve_reservation.reservation_ebundle
+  module:
+    - reserve
+id: reserve_reservation.reserve_reservation.reservation_ebundle
+field_name: reservation_ebundle
+entity_type: reserve_reservation
+bundle: reserve_reservation
+label: Ebundle
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

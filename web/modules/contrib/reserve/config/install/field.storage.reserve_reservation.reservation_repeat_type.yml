@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - reserve
+id: reserve_reservation.reservation_repeat_type
+field_name: reservation_repeat_type
+entity_type: reserve_reservation
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 0
+      label: 'No repeat'
+    -
+      value: 1
+      label: 'Repeat all days until'
+    -
+      value: 2
+      label: 'Repeat this day of the week until'
+  allowed_values_function: ''
+module: options
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

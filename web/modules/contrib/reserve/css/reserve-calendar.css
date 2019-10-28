@@ -1,0 +1,259 @@
+/* ----------------------------- ROOM RESERVATIONS ---------------------------- */
+
+#rooms-calendar .slink {
+  margin-right: 40px;
+}
+
+.reservations-block ul {
+  list-style-image: url(images/bullet.gif);
+}
+
+.reservations-block #reservations {
+  margin-bottom: 5px;
+}
+
+#rooms-calendar .room-tabs {
+  margin: 0 0 0 7px;
+  padding: 0;
+}
+
+#rooms-calendar ul li,
+#rooms-calendar ul.menu li,
+#rooms-calendar .item-list ul li,
+#rooms-calendar li.leaf {
+  background: none;
+  padding: 0 0.75em 0.2em 0.75em;
+}
+
+#rooms-calendar .room-tabs li {
+  float: left;
+  list-style: none;
+  margin: 0 0 -3px 0;
+  padding: 2px 3px;
+}
+
+#rooms-calendar .room-tabs li a {
+  background: #dddddd;
+  border: 1px solid #999999;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  display: block;
+  -moz-border-radius-topleft: 7px;
+  -moz-border-radius-topright: 7px;
+  padding: 3px 5px;
+  text-decoration: none;
+  -webkit-border-top-left-radius: 7px;
+  -webkit-border-top-right-radius: 7px;
+}
+
+#rooms-calendar .room-tabs li a.active {
+  background: #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+#rooms-calendar .panelContainer {
+  border: 1px solid #999;
+  clear: left;
+}
+
+#rooms-calendar .panelContainer:after {
+  content: " ";
+  display: table;
+  clear: both;
+  min-height: 20px;
+}
+
+#rooms-calendar .panel {
+  padding: 0 10px;
+}
+
+#rooms-calendar #tabbedPanels .date {
+  clear: both;
+  margin: 0;
+  text-align: center;
+}
+
+#rooms-calendar #tabbedPanels .hours {
+  color: #666666;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#rooms-calendar #date-change, 
+#rooms-calendar .reserve-center {
+  text-align: center;
+}
+
+#rooms-calendar .panel .gcolumns .grid-column {
+  float: left;
+}
+
+#rooms-calendar div.grid-column {
+  max-width: 113px;
+}
+
+#rooms-calendar .panel .gcolumns ul {
+  padding: 0 1px;
+}
+
+#rooms-calendar .panel .gcolumns li {
+  border: 1px solid #dddddd;
+  font-size: 85%;
+  height: 1.33em;
+  line-height: 15px;
+  list-style-type: none;
+ /* margin: -1px auto 0; */
+  padding: 2px 0;
+  text-align: center;
+}
+
+/*#rooms-calendar .panel .gcolumns li.odd {
+  border-top: 1px solid #999999;
+}
+*/
+#rooms-calendar .panel .gcolumns li.room-info {
+  border: none;
+}
+
+#rooms-calendar .panel .gcolumns li.room-info-heading {
+  padding-bottom: 5px;
+}
+
+#rooms-calendar .panel .gcolumns li.room-info-footer {
+  padding-top: 5px;
+}
+
+#rooms-calendar .panel .gcolumns .hours-column li {
+  width: 112px;
+}
+
+#rooms-calendar .panel .gcolumns .room-column li {
+  width: 115px;
+}
+
+#rooms-calendar .panel .gcolumns li.timeslot {
+  background-color: #fff;
+  *height: 1.33em;
+  *margin-bottom: 2px;
+}
+
+#rooms-calendar .panel .gcolumns li.reservable {
+  background-color: #fff;
+}
+
+#rooms-calendar .panel .gcolumns li.open {
+  background-color: #fff;
+	width: 112px !important;
+}
+
+#rooms-calendar .panel .gcolumns li.booked {
+  background-color: #ddd;
+	/*width: 109px !important;*/
+}
+
+#rooms-calendar .gcolumns li.setup {
+  background-color: #eee;
+}
+
+#rooms-calendar .panel .gcolumns li.closed {
+  background-color: #d1dfdf;
+  border: 1px solid #d1dfdf;
+}
+
+#rooms-calendar .hide {
+  display: none;
+}
+
+.page-room-reservations .form-item label {
+  display: inline;
+}
+
+#txtmsg-fields {
+  display: none;
+}
+
+#date-change {
+  margin-bottom:20px;
+}
+.clear {clear:both;}
+
+/* QTIP Overrides */
+
+.qtip {
+  box-shadow: -2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.qtip canvas {
+  display: none;
+  width: 400px;
+}
+.qtip-link, .qtip-additional-element {
+  border-bottom: 1px dotted #999;
+}
+
+.qtip h4 {
+  margin: 0px;
+  margin-top: 0.5em;
+  font-size: 12px;
+  color: #999;
+  font-family: 'AvenirNextLTW01-Regular', Arial;
+}
+
+.qtip-tooltip {
+  font-family: 'AvenirNextLTW01-Regular', Arial;
+  font-size: 12px;
+  margin-bottom: 0.5em;
+  width: 400px;
+}
+
+/*! Light tooltip style */
+.ui-tooltip-light .ui-tooltip-titlebar,
+.ui-tooltip-light .ui-tooltip-content{
+  border-color: transparent;
+  color: #333;
+}
+
+.ui-tooltip-light .ui-tooltip-content {
+  background-color: white;
+  width: 270px !important;
+}
+
+.ui-tooltip-light .ui-tooltip-titlebar {
+  width: 244px !important;
+}
+
+
+#ui-datepicker-div {
+  z-index:2 !important;
+}
+
+#rooms-calendar ul li.reservable:hover, #rooms-calendar ul li.open:hover {
+  background-color:#FFF;
+}
+
+#rooms-calendar .panel .gcolumns li.reservable {
+  text-align:center;
+  vertical-align:middle;
+  background-color:#fff;
+  border:1px solid #ccc;
+}
+
+#rooms-calendar .panelContainer .grid-column li.highlighted {
+  background-color:#999;
+}
+
+#rooms-calendar .reserve-group {
+  /*border: 1px solid blue;*/
+	outline: 1px solid blue;
+	width: 111px;
+	position: relative;
+}
+
+#rooms-calendar .panel .gcolumns .reserve-series li.booked {
+  background-color: lightgreen;
+}
+
+.gcolumns a, .gcolumns a.link {
+	border-bottom: none !important;
+}

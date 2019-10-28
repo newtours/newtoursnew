@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reserve_reservation.reservable_id
+  module:
+    - reserve
+id: reserve_reservation.reserve_reservation.reservable_id
+field_name: reservable_id
+entity_type: reserve_reservation
+bundle: reserve_reservation
+label: 'Reservable ID'
+description: 'Holds the entity id of the item being reserved. Automatically added through the calendar UI.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
+locked: true

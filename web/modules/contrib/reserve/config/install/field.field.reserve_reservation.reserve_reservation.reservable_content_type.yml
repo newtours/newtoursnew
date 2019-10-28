@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reserve_reservation.reservable_content_type
+  module:
+    - options
+    - reserve
+id: reserve_reservation.reserve_reservation.reservable_content_type
+field_name: reservable_content_type
+entity_type: reserve_reservation
+bundle: reserve_reservation
+label: 'Reservable Entity Type'
+description: 'Holds the type of content entity that this reservation is being made on. Set through the UI.'
+required: false
+translatable: false
+default_value:
+default_value_callback: ''
+settings: {  }
+field_type: list_string
+locked: true

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/reserve",
+  "type": "drupal-module",
+  "description": "Reservation system.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/reserve",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/reserve",
+    "source": "http://cgit.drupalcode.org/reserve"
+  },
+  "require": { }
+}

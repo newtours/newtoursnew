@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reserve_reservation.reservation_repeat_until
+  module:
+    - datetime
+    - reserve
+id: reserve_reservation.reserve_reservation.reservation_repeat_until
+field_name: reservation_repeat_until
+entity_type: reserve_reservation
+bundle: reserve_reservation
+label: 'Repeat Until'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

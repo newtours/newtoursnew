@@ -1,0 +1,101 @@
+<?php
+
+/**
+ * @file
+ * Contains reserve.module..
+ *
+ * @todo: fix reserve cat field with cardinality of 1
+ *
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity\BundleEntityFormBase;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+define ('RESERVE_SAVE_CONFIRMATION_MSG', t('Configuration settings have been saved'));
+define ('RESERVE_RESET_CONFIRMATION_MSG', t('Configuration settings have been reset to their default values'));
+
+module_load_include('inc', 'reserve', 'reserve');
+module_load_include('inc', 'reserve', 'reserve.series');
+module_load_include('inc', 'reserve', 'reservation');
+
+$GLOBALS['debug'] = false;
+
+/**
+ * Implements hook_help().
+ */
+function reserve_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the reserve module.
+    case 'help.page.reserve':
+      $output = '';
+      $output .= '<h3>' . t('Overview') . '</h3>';
+      $output .= '<p>' . t('The Reserve module allows for the "booking" of entities. It provides a calendar for each bundle which is set up to be bookable.
+      From this calendar you can see what time slots have been booked as well as select a time slot to book. Many options are provided to make a very flexible
+      booking system.') . '</p>';
+      $output .= '<h3>' . t('Setup') . '</h3>';
+      $output .= '<p>' . t('A few things must be set up before you may use the booking system:') . '</p>
+        <ul>
+        <li>' . t('Create the content bundle which is to be reservable. E.g. Room') . '</li>
+        <li>' . t('Create Reservation Categories as required. E.g. Large, Small. Set required values for each category.') . '</li>
+        <li>' . t('Add the Reservation Category field type to the bundle which you want to make reservable. Select which Reservation Categories
+        will apply to this bundle.') . '</li>
+        <li>' . t('Review the settings under Reserve Settings and modify as required.') . '</li>
+        <li>' . t('Set required permissions.') . '</li>
+        <li>' . t('Finally, define the default times that entities are reservable. You may also set any daily overrides that may be required (optional).') . '</li>
+        </ul>
+        <p>' . t('The booking calendar will now be available at /reserve/{entitytype.bundle}/calendar. E.g. /reserve/node.room/calendar') . '</p>';
+
+      return $output;
+
+    default:
+  }
+}
+
+ /**
+ * Implements hook_entity_insert().
+ */
+function reserve_entity_insert(EntityInterface $entity) {
+  reserve_entity_type_save($entity);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function reserve_entity_update(EntityInterface $entity) {
+  reserve_entity_type_save($entity);
+}
+
+/**
+ * Helper to save group information.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity object.
+ */
+function reserve_entity_type_save(EntityInterface $entity) {
+  $bundle = $entity->id();
+  $definition = \Drupal::entityTypeManager()->getDefinition($entity->getEntityTypeId());
+  $entity_type_id = $definition->getBundleOf();
+}
+
+/**
+ * Implements hook_theme().
+ */
+function reserve_theme($existing, $type, $theme, $path) {
+  return array(
+    'calendar_template' => array(
+      'variables' => array(
+        'date_picker' => NULL,
+        'arrow' => NULL,
+        'date' => NULL,
+        'calendar_text' => NULL,
+        'dates' => NULL,
+        'categories' => NULL,
+        'calendar_header' => NULL,
+        'reservation_instructions' => NULL,
+        'building_hours_display' => NULL,
+      ),
+    ),
+  );
+}

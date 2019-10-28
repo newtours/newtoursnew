@@ -1,0 +1,64 @@
+# Admin
+administer reservations:
+  title: 'Administer Reservations'
+  description: 'Allow access to the administration form to configure Reservations.'
+  restrict access: true
+
+administer reservation categories:
+  title: 'Administer Reservation Categories'
+  description: 'Allow access to the administration form to configure Reservation Categories.'
+  restrict access: true
+
+# Reservations
+add reservations:
+  title: 'Create new Reservations'
+
+add reservations extended:
+  title: 'Create new Reservations (extended)'
+
+edit any reservation:
+  title: 'Edit Any Reservation'
+
+edit own reservation:
+  title: 'Edit Own Reservation'
+
+delete any reservation:
+  title: 'Delete Any Reservation'
+
+delete own reservation:
+  title: 'Delete Own Reservation'
+
+view published reservations:
+  title: 'View published Reservations'
+
+view unpublished reservations:
+  title: 'View unpublished Reservations'
+
+book over reservation buffer:
+  title: 'Book over reservation buffer'
+
+access reservation overview:
+  title: 'Access the Reservation overview page'
+
+# Categories
+add reservation categories:
+  title: 'Create new Reservation Categories'
+
+edit reservation categories:
+  title: 'Edit Reservation Categories'
+
+delete reservation categories:
+  title: 'Delete Reservation Categories'
+
+view published reservation categories:
+  title: 'View published Reservation Categories'
+
+view unpublished reservation categories:
+  title: 'View unpublished Reservation Categories'
+
+access reservation category overview:
+  title: 'Access the Reservation Category overview page'
+
+permission_callbacks:
+  - Drupal\reserve\Controller\ReservePermissions::permissions
+

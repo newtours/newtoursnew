@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reserve_reservation.reservation_length
+  module:
+    - options
+    - reserve
+id: reserve_reservation.reserve_reservation.reservation_length
+field_name: reservation_length
+entity_type: reserve_reservation
+bundle: reserve_reservation
+label: 'Length'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

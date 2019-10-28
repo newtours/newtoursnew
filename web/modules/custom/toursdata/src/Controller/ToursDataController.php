@@ -1243,6 +1243,12 @@ class ToursDataController extends ControllerBase {
 
     }
 
+
+    protected function _updateHotelPrices ()
+    {
+
+
+    }
     /**
      * Actually main purpose delete tour and all related dates, prices, boarding time etc
      * But can delete single dependency

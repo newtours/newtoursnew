@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reserve_category.reserve_minadv_ext
+  module:
+    - options
+    - reserve
+id: reserve_category.reserve_category.reserve_minadv_ext
+field_name: reserve_minadv_ext
+entity_type: reserve_category
+bundle: reserve_category
+label: 'Minimum Advance Booking (extended)'
+description: 'Minimum number of days in advance that a booking may be made (extended user). Default value is 0.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

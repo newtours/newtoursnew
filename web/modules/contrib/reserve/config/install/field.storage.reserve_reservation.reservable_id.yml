@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - reserve
+id: reserve_reservation.reservable_id
+field_name: reservable_id
+entity_type: reserve_reservation
+type: integer
+settings:
+  unsigned: true
+  size: normal
+module: core
+locked: true
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

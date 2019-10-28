@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - reserve
+id: reserve_reservation.reservation_series_id
+field_name: reservation_series_id
+entity_type: reserve_reservation
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

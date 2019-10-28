@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - reserve
+id: reserve_reservation.reservation_repeat_until
+field_name: reservation_repeat_until
+entity_type: reserve_reservation
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

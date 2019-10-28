@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - reserve
+    - options
+id: reserve_reservation.reservation_length
+field_name: reservation_length
+entity_type: reserve_reservation
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 30
+      label: '30 minutes'
+    -
+      value: 60
+      label: '1 hour'
+    -
+      value: 90
+      label: '1.5 hours'
+    -
+      value: 120
+      label: '2 hours'
+    -
+      value: 150
+      label: '2.5 hours'
+    -
+      value: 180
+      label: '3 hours'
+    -
+      value: 210
+      label: '3.5 hours'
+    -
+      value: 240
+      label: '4 hours'
+    -
+      value: 270
+      label: '4.5 hours'
+    -
+      value: 300
+      label: '5 hours'
+module: core
+locked: true
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

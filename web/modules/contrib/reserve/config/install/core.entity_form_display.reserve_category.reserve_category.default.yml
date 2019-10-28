@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.reserve_category.reserve_category.reserve_setup_buffer
+    - field.field.reserve_category.reserve_category.reserve_takedown_buffer
+    - field.field.reserve_category.reserve_category.reserve_minadv_std
+    - field.field.reserve_category.reserve_category.reserve_minadv_ext
+    - field.field.reserve_category.reserve_category.reserve_maxadv_std
+    - field.field.reserve_category.reserve_category.reserve_maxadv_ext
+  module:
+    - reserve
+id: reserve_category.reserve_category.default
+targetEntityType: reserve_category
+bundle: reserve_category
+mode: default
+content:
+  name:
+    weight: -10
+    type: string_textfield
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  reserve_setup_buffer:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  reserve_takedown_buffer:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  reserve_minadv_std:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  reserve_minadv_ext:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  reserve_maxadv_std:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  reserve_maxadv_ext:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  user_id: true

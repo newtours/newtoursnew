@@ -1,0 +1,61 @@
+# Route name can be used in several places; e.g. links, redirects, and local
+# actions.
+
+reserve.settings:
+  path: '/admin/config/system/reserve'
+  defaults:
+    _form: '\Drupal\reserve\Form\ReserveSettingsForm'
+    _title: 'Reserve Settings'
+  requirements:
+    _permission: 'administer reservation categories'
+
+reserve.settings.hours:
+  path: '/admin/config/system/reserve/hours'
+  defaults:
+    _form: '\Drupal\reserve\Form\ReserveDefaultHoursForm'
+    _title: 'Reserve Settings (Default Hours)'
+  requirements:
+    _permission: 'administer reservation categories'
+
+reserve.settings.hours.daily:
+  path: '/admin/config/system/reserve/hours/daily/{passed_month}'
+  defaults:
+    _form: '\Drupal\reserve\Form\ReserveDailyHoursForm'
+    _title: 'Reserve Settings (Daily Overrides)'
+    passed_month: 'yyyy_mm'
+  requirements:
+    _permission: 'administer reservation categories'
+    passed_month: '20[0-9][0-9]_[0-1][0-9]'
+
+reserve.settings.display:
+  path: '/admin/config/system/reserve/diplay'
+  defaults:
+    _form: '\Drupal\reserve\Form\ReserveDisplayForm'
+    _title: 'Reserve Settings (Display)'
+  requirements:
+    _permission: 'administer reservation categories'
+
+reserve.calendar:
+  path: '/reserve/{ebundle}/calendar/{selected_month}/{selected_day}'
+  defaults:
+    _controller: '\Drupal\reserve\Controller\CalendarController::calendar'
+    _title_callback: '\Drupal\reserve\Controller\CalendarController::calendarTitle'
+    selected_month: ''
+    selected_day: ''
+  requirements:
+    _custom_access: '\Drupal\reserve\Controller\CalendarController::accessCalendarPage'
+
+reserve.reservation.add:
+  path: '/reserve_reservation/add/{month}/{day}/{time}/{id}/{ebundle}'
+  defaults:
+    _entity_form: 'reserve_reservation.default'
+    _title: 'Add Reservation'
+  requirements:
+    _permission: 'access content'
+
+reserve.reservation.add.callback:
+  path: '/reserve/ajax/reservation_add'
+  defaults:
+    _controller: '\Drupal\reserve\Controller\CalendarController::reservationAddModalCallback'
+  requirements:
+    _permission: 'access content'

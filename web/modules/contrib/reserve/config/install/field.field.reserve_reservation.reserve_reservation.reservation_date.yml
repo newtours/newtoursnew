@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reserve_reservation.reservation_date
+  module:
+    - datetime
+    - reserve
+id: reserve_reservation.reserve_reservation.reservation_date
+field_name: reservation_date
+entity_type: reserve_reservation
+bundle: reserve_reservation
+label: Date
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
+locked: true

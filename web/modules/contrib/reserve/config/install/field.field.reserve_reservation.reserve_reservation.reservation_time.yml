@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reserve_reservation.reservation_time
+  module:
+    - reserve
+id: reserve_reservation.reserve_reservation.reservation_time
+field_name: reservation_time
+entity_type: reserve_reservation
+bundle: reserve_reservation
+label: Time
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

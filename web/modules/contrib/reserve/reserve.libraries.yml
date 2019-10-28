@@ -1,0 +1,11 @@
+reserve:
+  version: 1.x
+  css:
+    theme:
+      css/reserve-calendar.css: {}
+  js:
+    js/reserve.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+    - core/drupal.dialog.ajax
