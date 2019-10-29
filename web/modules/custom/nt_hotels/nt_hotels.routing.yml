@@ -1,0 +1,8 @@
+
+nt_hotels.hotels_controller_createHotel:
+  path: 'nt-hotels/create'
+  defaults:
+    _controller: '\Drupal\nt_hotels\Controller\HotelsController::createHotel'
+    _title: 'createHotel'
+  requirements:
+    _permission: 'access content'
