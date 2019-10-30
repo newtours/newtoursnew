@@ -140,6 +140,8 @@ class ToursDataController extends ControllerBase {
             case 'prices':
                 $return = $this->_updatePricesTabel($id);
                 break;
+            case 'hotels';
+                return $this->_updateHotels();
             case 'files':
                 if('stars' == $id) {
                     $return = $this->_updateFromStarsFile(null);
@@ -1244,8 +1246,235 @@ class ToursDataController extends ControllerBase {
     }
 
 
-    protected function _updateHotelPrices ()
+    protected function _updateHotels ( $hotel_rowid = null)
     {
+
+        // Load Tours Entities before export, due hotel tables related to tours
+        $tours_ent_ids = $this->entityTypeManager()
+            ->loadByProperties([
+                'type' => 'tours'
+            ]);
+        if (0 == count($tours_ent_ids)){
+            return 'Tours  not exists, need insert it first';
+        }
+        foreach ($tours_ent_ids as $key=>$value) {
+            $tours[$value->field_tour_old_rowid->value]  = $key;
+        }
+
+        $db = $this->_setExternalConnection();
+        // Load source tour_places
+        if ($hotel_rowid)  {
+            $data = $db->select('hotels','h')
+                ->fields('h')
+                ->condition('hotel_rowid',$hotel_rowid, '=')
+                ->execute();
+        }
+        else {
+            $data = $db->select('hotels','h')
+                ->fields('h')
+                ->execute()->fetchAll();
+        }
+        \Drupal\Core\Database\Database::setActiveConnection();
+
+        foreach ( $data as $m=>$hotel) {
+
+            $hotel_ent = $this->entityTypeManager()
+                ->loadByProperties([
+                    'type' => 'hotels',
+                    //'field_boarding_time_tour_rowid' => $tour->tp_tour,
+                    'field_hotel_old_rowid' =>$hotel->hotel_rowid
+                ]);
+            $nodeKey = key($hotel_ent); // this is node Id
+            $node = $hotel_ent[$nodeKey];
+
+            if (1 == count($hotel_ent)) {
+
+                $node->setTitle($hotel->hotel_name);
+
+                    $node->field_hotel_old_rowid = $hotel->hotel_rowid;
+                    $node->field_hotel_name = $hotel->hotel_name;
+                    $node->field_hotel_descr= $hotel->hotel_descr;
+                    $node->field_hotel_country = 'us';
+                    $node->field_hotel_address_address_line1 = $hotel->hotel_address1;
+                    $node->field_hotel_address_address_line2 = $hotel->hotel_address2;
+                    $node->field_hotel_address_locality= $hotel->hotel_city;
+                    $node->field_hotel_address_administrative_area= $hotel->state;
+                    $node->field_hotel_address_postal_code= $hotel->zipcode;
+                    $node->field_hotel_photo= $hotel->hotel_photo;
+
+                $added =  $node->save();
+                if (2 == $added) {
+                    $entityArray[$hotel->hotel_rowid] = 'edited -  ' . $node->id();
+                    //if ($node->id() != $nodeKey) return 'Updated incorrect entity ' . $nodeKey . ' to ' .$node->id();
+                }
+                //
+            } else {
+                $node = $this->entityTypeManager()->create(
+                    ['type' => 'hotels',
+                        'title' => (isset($hotel->hotel_name)) ? $hotel->hotel_name : 'no Named',
+                        'field_hotel_old_rowid' => $hotel->hotel_rowid,
+                        'field_hotel_name' => $hotel->hotel_name,
+                        'field_hotel_descr' => $hotel->hotel_descr,
+                        'field_hotel_country' => 'us',
+                        'field_hotel_address_address_line1' => $hotel->hotel_address1,
+                        'field_hotel_address_address_line2' => $hotel->hotel_address2,
+                        'field_hotel_address_locality' => $hotel->hotel_city,
+                        'field_hotel_address_administrative_area' => $hotel->state,
+                        'field_hotel_address_postal_code' => $hotel->zipcode,
+                        'field_hotel_photo' => $hotel->hotel_photo,
+                    ]);
+
+                $added = $node->save();
+                if (1 == $added) {
+                    $entityArray[$hotel->hotel_rowid] = 'created -  ' . $node->id();
+                }
+            }
+            $this->_updateHotelRooms ($node->id(),$hotel->hotel_rowid);
+        }
+        return $entityArray;
+
+    }
+
+    /**
+     * @param $hotelNodeId - node id of hotel
+     * @param $hotelId - old hotel rowid
+     */
+    protected function _updateHotelRooms ($hotelNodeId,$hotelId)
+    {
+
+        $db = $this->_setExternalConnection();
+        // Load source tour_places
+        if ($hotelId)  {
+            $data = $db->select('hotel_rooms','h')
+                ->fields('h')
+                ->condition('room_hotel',$hotelId, '=')
+                ->execute();
+        }
+        \Drupal\Core\Database\Database::setActiveConnection();
+        foreach ($data as $m=>$room) {
+
+            $room_ent = $this->entityTypeManager()
+                ->loadByProperties([
+                    'type' => 'hotel_rooms',
+                    //'field_boarding_time_tour_rowid' => $tour->tp_tour,
+                    'field_hotel_room_old_rowid' =>$room->room_rowid
+                ]);
+            $nodeKey = key($room_ent); // this is node Id
+            $node = $room_ent[$nodeKey];
+
+            if (1 == count($room_ent)) {
+
+                $node->setTitle($room->room_name);
+                $node->field_hotel_room_old_rowid = $room->room_rowid;
+                $node->field_hotel_room_name = $room->room_name;
+                $node->field_hotel_room_descr= $room->room_descr;
+                $node->field_hotel_room_active = $room->room_active;
+                $node->field_hotel_photo = $room->room_photo;
+                $node->field_hotel_room_hotel->target_id = $hotelNodeId;
+                $added =  $node->save();
+                if (2 == $added) {
+                    $entityArray[$room->room_rowid] = 'edited -  ' . $node->id();
+                    //if ($node->id() != $nodeKey) return 'Updated incorrect entity ' . $nodeKey . ' to ' .$node->id();
+                }
+                //
+            } else {
+                $node = $this->entityTypeManager()->create(
+                    ['type' => 'hotel_rooms',
+                        'title' => (isset($room->room_name)) ? $room->room_name : 'no Named',
+                        'field_hotel_room_old_rowid' => $room->room_rowid,
+                        'field_hotel_room_name' => $room->room_name,
+                        'field_hotel_room_descr' => $room->rooml_descr,
+                        'field_hotel_photo' => $room->room_photo,
+                        'field_hotel_room_active'=>$room->room_active,
+                    ]);
+                $node->field_hotel_room_hotel->target_id = $hotelNodeId;
+                $added = $node->save();
+                if (1 == $added) {
+                    $entityArray[$room->room_rowid] = 'created -  ' . $node->id();
+                }
+            }
+            $this->_updateHotelPrices ($node->id(),$hotelNodeId,$room->room_rowid);
+        }
+
+    }
+
+    /**
+     * @param $hotelNodeId - node id of hotel
+     * @param $roomNodeId - node id of room
+     * @param $hotelId - old hotel rowid
+     */
+    protected function _updateHotelPrices ($roomNodeId,$hotelNodeId,$roomId)
+    {
+
+        $db = $this->_setExternalConnection();
+        // Load source tour_places
+        if ($roomId)  {
+            $data = $db->select('hotel_prices','h')
+                ->fields('h')
+                ->condition('hp_room',$roomId, '=')
+                ->execute();
+        }
+        \Drupal\Core\Database\Database::setActiveConnection();
+        foreach ($data as $m=>$room) {
+
+            $room_ent = $this->entityTypeManager()
+                ->loadByProperties([
+                    'type' => 'hotel_room_prices',
+                    //'field_boarding_time_tour_rowid' => $tour->tp_tour,
+                    'field_hotel_room_prices_rowid' =>$room->hp_rowid
+                ]);
+            $nodeKey = key($room_ent); // this is node Id
+            $node = $room_ent[$nodeKey];
+
+            if (1 == count($room_ent)) {
+
+                $node->field_hotel_room_price_adult     = $room->hp_adult;
+	            $node->field_hotel_room_prices_2_child  = $room->hp_child1;
+	            $node->field_hotel_room_prices_3_person = $room->hp_add_adult3;
+	            $node->field_hotel_room_prices_4_person = $room->hp_add_adult4;
+	            $node->field_hotel_room_prices_bus      = $room->hp_bus;
+                $node->field_hotel_room_prices_bus_chil = $room->hp_bus_child;
+	            $node->field_hotel_room_prices_hotel->target_id    = $hotelNodeId;
+	            $node->field_hotel_room_prices_room->target_id     = $roomNodeId;
+	            $node->field_hotel_room_prices_rowid    = $room->hp_rowid;
+	            $node->field_hotel_room_prices_single   = $room->single_accomodation;
+	            //$node->field_hotel_room_prices_start_en = $room->
+	            $node->field_hotel_room_prices_teen     = $room->hp_teen;
+	            $node->field_hotel_room_prices_tips     = $room->hp_tip;
+
+                $node->setTitle('Room Price-' . $roomId . '-room-' . $roomNodeId . '-hotel-'.$hotelNodeId);
+
+                $added =  $node->save();
+                if (2 == $added) {
+                    $entityArray[$room->room_rowid] = 'edited -  ' . $node->id();
+                    //if ($node->id() != $nodeKey) return 'Updated incorrect entity ' . $nodeKey . ' to ' .$node->id();
+                }
+                //
+            } else {
+                $node = $this->entityTypeManager()->create(
+                    ['type' => 'hotel_room_prices',
+                        'title' => 'Room Price-' . $roomId . '-room-' . $roomNodeId . '-hotel-'.$hotelNodeId,
+                        'field_hotel_room_price_adult'     => $room->hp_adult,
+                        'field_hotel_room_prices_2_child'  => $room->hp_child1,
+                        'field_hotel_room_prices_3_person' => $room->hp_add_adult3,
+                        'field_hotel_room_prices_4_person' => $room->hp_add_adult4,
+                        'field_hotel_room_prices_bus'      => $room->hp_bus,
+                        'field_hotel_room_prices_bus_chil' => $room->hp_bus_child,
+                        'field_hotel_room_prices_rowid'    => $room->hp_rowid,
+                        'field_hotel_room_prices_single'   => $room->single_accomodation,
+                        'field_hotel_room_prices_teen'     => $room->hp_teen,
+                        'field_hotel_room_prices_tips'     => $room->hp_tip,
+                    ]);
+                $node->field_hotel_room_prices_hotel->target_id    = $hotelNodeId;
+                $node->field_hotel_room_prices_room->target_id     = $roomNodeId;
+                $added = $node->save();
+                if (1 == $added) {
+                    $entityArray[$room->room_rowid] = 'created -  ' . $node->id();
+                }
+            }
+
+        }
+
 
 
     }
