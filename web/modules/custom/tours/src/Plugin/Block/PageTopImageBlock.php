@@ -63,7 +63,8 @@ class PageTopImageBlock extends BlockBase {
 
   public function build() {
     $build = [];
-    $defaulImageLocation = '/sites/default/files/images/';
+    $basePath = (base_path() == '/') ? '' : base_path();
+    $defaulImageLocation = $basePath .'/sites/default/files/images/';
     $topImages = [
         $defaulImageLocation.'statue_liberty2.png',
         $defaulImageLocation.'newyork.png',
