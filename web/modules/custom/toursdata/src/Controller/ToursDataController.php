@@ -1441,8 +1441,9 @@ class ToursDataController extends ControllerBase {
 	            //$node->field_hotel_room_prices_start_en = $room->
 	            $node->field_hotel_room_prices_teen     = $room->hp_teen;
 	            $node->field_hotel_room_prices_tips     = $room->hp_tip;
+                $node->field_hotel_room_prices_nnights = $room->hp_nnights;
 
-                $node->setTitle('Room Price-' . $roomId . '-room-' . $roomNodeId . '-hotel-'.$hotelNodeId);
+                $node->setTitle('Room Price-' . $roomId . '-room-' . $roomNodeId . '-hotel-'.$hotelNodeId . '-' . $room->hp_nnights . ' nights');
 
                 $added =  $node->save();
                 if (2 == $added) {
@@ -1453,7 +1454,7 @@ class ToursDataController extends ControllerBase {
             } else {
                 $node = $this->entityTypeManager()->create(
                     ['type' => 'hotel_room_prices',
-                        'title' => 'Room Price-' . $roomId . '-room-' . $roomNodeId . '-hotel-'.$hotelNodeId,
+                        'title' => 'Room Price-' . $roomId . '-room-' . $roomNodeId . '-hotel-'.$hotelNodeId . '-' . $room->hp_nnights . ' nights',
                         'field_hotel_room_price_adult'     => $room->hp_adult,
                         'field_hotel_room_prices_2_child'  => $room->hp_child1,
                         'field_hotel_room_prices_3_person' => $room->hp_add_adult3,
@@ -1464,6 +1465,7 @@ class ToursDataController extends ControllerBase {
                         'field_hotel_room_prices_single'   => $room->single_accomodation,
                         'field_hotel_room_prices_teen'     => $room->hp_teen,
                         'field_hotel_room_prices_tips'     => $room->hp_tip,
+                        'field_hotel_room_prices_nnights'  => $room->hp_nnights,
                     ]);
                 $node->field_hotel_room_prices_hotel->target_id    = $hotelNodeId;
                 $node->field_hotel_room_prices_room->target_id     = $roomNodeId;
