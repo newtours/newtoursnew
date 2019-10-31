@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.hotel_room_prices.field_hotel_room_prices_bus
     - field.field.node.hotel_room_prices.field_hotel_room_prices_bus_chil
     - field.field.node.hotel_room_prices.field_hotel_room_prices_hotel
+    - field.field.node.hotel_room_prices.field_hotel_room_prices_nnights
     - field.field.node.hotel_room_prices.field_hotel_room_prices_room
     - field.field.node.hotel_room_prices.field_hotel_room_prices_rowid
     - field.field.node.hotel_room_prices.field_hotel_room_prices_single
@@ -91,6 +92,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_hotel_room_prices_nnights:
+    weight: 135
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
     region: content
   field_hotel_room_prices_room:
     weight: 124
