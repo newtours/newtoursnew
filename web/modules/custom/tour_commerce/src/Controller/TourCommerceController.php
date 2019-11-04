@@ -17,6 +17,23 @@ use Drupal\tours\ToursData;
 class TourCommerceController extends ControllerBase {
 
 
+    protected $_productTypesDefault = [
+        'tours',
+        'hotel',
+        'flight'
+    ];
+
+    protected $_productTypeVariationsDefault = [
+        'regular_one_day',
+        'regular_bus_hotel',
+        'regular_flight',
+        'stars_bus',
+        'stars_flight',
+        'private_bus',
+        'private_flight',
+        'international'
+    ];
+
     public function __construct (ToursData $toursData)
     {
         $this->toursData = $toursData;
@@ -50,12 +67,13 @@ class TourCommerceController extends ControllerBase {
    *   price is a core/lib/Drupal/Core/Field/FieldItemList
    */
   public function createProduct($tour = null) {
-
+      //$this->getProductTypes();exit;
 $tour = 65;
 //var_dump($entity_ids);exit;
       $tourData = $this->toursData->getTour($tour);
 
       $tourNodeId = key($tourData);
+      $this->_determineTourProductType($tourData[$tourNodeId]);
       //var_dump($tourData[$tourNodeId]['tour_prices'][$tour][0]['price_nodeid']);exit;
       $nTours = count($tourData);
 
@@ -172,7 +190,7 @@ $tour = 65;
 // Create the new variation type.
         $variationType = \Drupal\commerce_product\Entity\ProductVariationType::create([
             'status' => 1, // Status, 0 for disabled, 1 for enabled.
-            'id' => '$variationType',
+            'id' => $variationType,
             'label' => 'Variation for ' ,  $variationType,
             'orderItemType' => 'default', // Order item type to reference. Default is 'default'.
             'generateTitle' => TRUE, // True to generate titles based off of attribute values.
@@ -214,6 +232,38 @@ $tour = 65;
         ]);
         $attribute->save();
         return $attribute;
+
+    }
+
+    /**
+     * Get all product types
+     * @return array
+     */
+    public function getProductTypes() {
+        $product_types = \Drupal\commerce_product\Entity\ProductType::loadMultiple();
+        //var_dump(array_keys($product_types));exit;
+        return array_keys($product_types);
+    }
+
+    /**
+     * Need explicit assign if tour with flight, in tour_type
+     * @param $tourData
+     * @return string
+     */
+    protected function _determineTourProductType ($tourData)
+    {
+        $tourType = $this->toursData->showTourType($tourData['tour_type']);
+        //$tourPrices = $tourData['tour_prices'][$tourData['tour_rowid']];
+        //var_dump($tourPrices);exit;
+        if('1' == $tourData['tour_days'] && 1 == $tourType->field_tour_type_rowid->value) {
+            return 'regular_one_day';
+        }elseif('1'< $tourData['tour_days'] && 2 == $tourType->field_tour_type_rowid->value  ) {
+            return 'regular_flight';
+
+        } elseif ('1'< $tourData['tour_days'] && 1 == $tourType->field_tour_type_rowid->value) {
+            return 'regular_bus_hotel'  ;
+        }
+        var_dump($tourData);exit;
 
     }
 }

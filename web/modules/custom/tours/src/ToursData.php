@@ -56,6 +56,7 @@ class ToursData implements ToursDataInterface {
                 $nodeKey = key($entity_ids); // this is node Id
                 $tourDate = $this->showTourDates([$nodeKey]);
                 $tourPrice = $this->showTourPrice([$nodeKey]);
+
               $node = $entity_ids[$nodeKey];  // current($entity_ids) or reset
               $tourData[$nodeKey] = [
                   'tour_rowid'=>$node->field_tour_old_rowid->value,
@@ -67,7 +68,8 @@ class ToursData implements ToursDataInterface {
                   'field_tour_days_suffix'=>$node->field_tour_days_suffix->value,
                   'title'=>$node->getTitle(),
                   'tour_dates'=>$tourDate,
-                  'tour_prices'=>$tourPrice
+                  'tour_prices'=>$tourPrice,
+                  'tour_type'=> $node->field_tour_tour_type->target_id
               ];
               return $tourData;
           } else {
@@ -157,6 +159,13 @@ class ToursData implements ToursDataInterface {
             ];
         }
         return isset($prices) ? $prices : NULL;
+
+    }
+
+    public function showTourType ( $typeNodeId )
+    {
+
+        return $this->nodeStorage->load($typeNodeId);
 
     }
 }
