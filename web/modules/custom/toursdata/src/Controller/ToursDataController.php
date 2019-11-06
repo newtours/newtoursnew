@@ -1052,6 +1052,33 @@ class ToursDataController extends ControllerBase {
                         'type' => 'tour_prices',
                         'field_tour_price_tour' => $entityId,
                     ]);
+                // Suffix, Prefix logic
+                $tourPriceSuffix = '';
+                $tourPricePrefix = '';
+                $remark = explode (',',$tour->tour_price_remark);
+                if (isset($remark[1])) {
+                    $tourPricePrefix = $remark[0];
+                }
+                else {
+                    if(strpos($tour->tour_price_remark,'от')!==false) {
+                        $tourPricePrefix = 'от';
+                        $tour->tour_price_remark = trim(str_replace("от", "", $tour->tour_price_remark));
+                        $tour->tour_price_remark = ltrim($tour->tour_price_remark ,',');
+
+                    }
+                }
+
+                if ( strpos($tour->tour_price_remark,'*')!==false ) {
+                        $tourPriceSuffix .= '*';
+                }
+                $tourPriceSuffix .= ' '. $tour->tour_price_remark;
+
+                if ( strpos($tour->tour_price_remark,'перелет')!==false){
+                        $tourFlight = true;;
+                }
+
+                // End of suffix prefix logic
+
              if (count($prices_ent_ids) > 0 ) {
                  $nodeKey = key($prices_ent_ids); // this is node Id
                  $node = $prices_ent_ids[$nodeKey];
@@ -1064,10 +1091,10 @@ class ToursDataController extends ControllerBase {
                  $node->field_tour_price_flight->value = $tour->tour_price_flight;
                  $node->field_tour_price_without_flight->value = $tour->tour_price_without_flight;
                  $node->field_tour_price_kids->value   = $tour->tour_price_kids;
-                 $node->field_tour_price_prefix->value = $tour->tour_price_prefix;
+                 $node->field_tour_price_prefix->value = (isset($tour->tour_price_prefix)&& !empty($tour->tour_price_prefix)) ? $tour->tour_price_prefix : trim($tourPricePrefix);
                  $node->field_tour_price_promo->value   = $tour->tour_price_promo;
                  $node->field_tour_price_single->value  = $tour->tour_price_single;
-                 $node->field_tour_price_suffix->value  = $tour->tour_price_suffix;
+                 $node->field_tour_price_suffix->value  = (isset($tour->tour_price_suffix) && !empty($tour->tour_price_suffix)) ? $tour->tour_price_suffix: trim($tourPriceSuffix);
                  $node->field_tour_price_teen->value   = $tour->tour_price_teen;
                  $node->field_tour_price_lux = $tour->tour_price_lux;
                  $node->field_tour_price_tour_rowid->value = $tour->tour_rowid;
@@ -1079,6 +1106,7 @@ class ToursDataController extends ControllerBase {
                      if ($node->id() != $nodeKey) return 'Updated incorrect entity ' . $nodeKey . ' to ' .$node->id();
                  }
              } else {
+
                  $node = $this->entityTypeManager()->create(
                      ['type' => 'tour_prices',
                         'title'=>'Prices for '.strip_tags($tour->tour_name),
@@ -1089,10 +1117,10 @@ class ToursDataController extends ControllerBase {
                          'field_tour_price_flight' => $tour->tour_price_flight,
                          'field_tour_price_without_flight' => $tour->tour_price_without_flight,
                          'field_tour_price_kids' => $tour->tour_price_kids,
-                         'field_tour_price_prefix' => $tour->tour_price_prefix,
+                         'field_tour_price_prefix' => (isset($tour->tour_price_prefix)&& !empty($tour->tour_price_prefix)) ? $tour->tour_price_prefix : trim($tourPricePrefix),
                          'field_tour_price_promo' => $tour->tour_price_promo,
                          'field_tour_price_single' => $tour->tour_price_single,
-                         'field_tour_price_suffix' => $tour->tour_price_suffix,
+                         'field_tour_price_suffix' => (isset($tour->tour_price_suffix) && !empty($tour->tour_price_suffix)) ? $tour->tour_price_suffix: trim($tourPriceSuffix), // Need create suffix, according old application logic
                          'field_tour_price_teen' => $tour->tour_price_teen,
                          'field_tour_price_lux' => $tour->tour_price_lux,
                          //'field_tour_price_tour' => $entityId,
