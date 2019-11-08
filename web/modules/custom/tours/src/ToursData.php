@@ -155,6 +155,7 @@ class ToursData implements ToursDataInterface {
                 'price_prefix'=>$value->field_tour_date_prefix->value,
                 'price_tour_rowid'=>$value->field_tour_price_tour_rowid->value,
                 'price_tour_old'=>$value->field_tour_old_price->value,
+                'price_tour_is_flight'=>$value->field_tour_price_is_flight->value
 
             ];
         }

@@ -1058,6 +1058,8 @@ class ToursDataController extends ControllerBase {
                 $remark = explode (',',$tour->tour_price_remark);
                 if (isset($remark[1])) {
                     $tourPricePrefix = $remark[0];
+                    $tour->tour_price_remark = trim(str_replace("от", "", $tour->tour_price_remark));
+                    $tour->tour_price_remark = ltrim($tour->tour_price_remark ,',');
                 }
                 else {
                     if(strpos($tour->tour_price_remark,'от')!==false) {
@@ -1076,6 +1078,11 @@ class ToursDataController extends ControllerBase {
                 if ( strpos($tour->tour_price_remark,'перелет')!==false){
                         $tourFlight = true;;
                 }
+                if ( strpos($tour->tour_price_remark,'+ перелет')!==false){
+                    $tourPriceWithoutFlight = $tour->tour_price;;
+                } else {
+                    $tourPriceWithoutFlight = null;
+                }
 
                 // End of suffix prefix logic
 
@@ -1089,16 +1096,17 @@ class ToursDataController extends ControllerBase {
                  $node->field_tour_price_3->value    = $tour->tour_price_disc_3;
                  $node->field_tour_price_4->value    = $tour->tour_price_disc_4;
                  $node->field_tour_price_flight->value = $tour->tour_price_flight;
-                 $node->field_tour_price_without_flight->value = $tour->tour_price_without_flight;
+                 $node->field_tour_price_without_flight->value = isset($tour->tour_price_without_flight) ? $tour->tour_price_without_flight : $tourPriceWithoutFlight;
                  $node->field_tour_price_kids->value   = $tour->tour_price_kids;
                  $node->field_tour_price_prefix->value = (isset($tour->tour_price_prefix)&& !empty($tour->tour_price_prefix)) ? $tour->tour_price_prefix : trim($tourPricePrefix);
                  $node->field_tour_price_promo->value   = $tour->tour_price_promo;
                  $node->field_tour_price_single->value  = $tour->tour_price_single;
                  $node->field_tour_price_suffix->value  = (isset($tour->tour_price_suffix) && !empty($tour->tour_price_suffix)) ? $tour->tour_price_suffix: trim($tourPriceSuffix);
                  $node->field_tour_price_teen->value   = $tour->tour_price_teen;
-                 $node->field_tour_price_lux = $tour->tour_price_lux;
+                 $node->field_tour_price_lux->value = $tour->tour_price_lux;
                  $node->field_tour_price_tour_rowid->value = $tour->tour_rowid;
                  $node->field_tour_price_tour->target_id = $entityId;
+                 $node->field_tour_price_is_flight->value = isset($tourFlight) ? $tourFlight : false;
 
                  $added =  $node->save($nodeKey);
                  if (2 == $added) {
@@ -1115,7 +1123,7 @@ class ToursDataController extends ControllerBase {
                          'field_tour_price_3' =>   $tour->tour_price_disc_3,
                          'field_tour_price_4' =>   $tour->tour_price_disc_4,
                          'field_tour_price_flight' => $tour->tour_price_flight,
-                         'field_tour_price_without_flight' => $tour->tour_price_without_flight,
+                         'field_tour_price_without_flight' => isset($tour->tour_price_without_flight) ? $tour->tour_price_without_flight : $tourPriceWithoutFlight,
                          'field_tour_price_kids' => $tour->tour_price_kids,
                          'field_tour_price_prefix' => (isset($tour->tour_price_prefix)&& !empty($tour->tour_price_prefix)) ? $tour->tour_price_prefix : trim($tourPricePrefix),
                          'field_tour_price_promo' => $tour->tour_price_promo,
@@ -1125,6 +1133,7 @@ class ToursDataController extends ControllerBase {
                          'field_tour_price_lux' => $tour->tour_price_lux,
                          //'field_tour_price_tour' => $entityId,
                          'field_tour_price_tour_rowid' => $tour->tour_rowid,
+                         'field_tour_price_is_flight' => isset($tourFlight) ? $tourFlight : false,
                      ]);
                  $node->field_tour_price_tour->target_id = $entityId;
                  $added = $node->save();

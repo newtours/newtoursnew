@@ -12,15 +12,25 @@ use Drupal\tours\ToursData;
 
 
 /**
+ * Refer to https://docs.drupalcommerce.org/commerce2/developer-guide/products/overview/terminology
  * Class TourCommerceController.
  */
 class TourCommerceController extends ControllerBase {
 
 
     protected $_productTypesDefault = [
-        'tours',
-        'hotel',
-        'flight'
+        'default'=>[
+            'label'=>'Default Tour Type Product'
+        ],
+        'tour'=>[
+            'label'=>' Tour Type Product'
+        ],
+        'hotel'=>[
+            'label'=>'Hotel Type Product'
+        ],
+        'flight'=>[
+            'label'=>'Flight Type Product'
+        ]
     ];
 
     protected $_productTypeVariationsDefault = [
@@ -29,9 +39,35 @@ class TourCommerceController extends ControllerBase {
         'regular_flight',
         'stars_bus',
         'stars_flight',
+        'stars_hotel',
         'private_bus',
         'private_flight',
         'international'
+    ];
+
+    protected $_productAttributeDefault = [
+        'age_related_child_teen'=>[
+            'adult',
+            'child',
+            'teen'
+        ],
+        'accomodation'=>[
+            'Standart (Two person in Room)',
+            'single',
+            'third',
+            'fourth'
+        ],
+        'flight_related'=>[
+            'without flight',
+            'with flight',
+            'one way flight'
+        ],
+
+        'age_related2'=>[
+            'adult1',
+            'child1',
+            'teen1'
+        ],
     ];
 
     public function __construct (ToursData $toursData)
@@ -53,6 +89,32 @@ class TourCommerceController extends ControllerBase {
         );
     }
 
+
+    /**
+     * Initial  method to  build all store fields
+     */
+    public function buildArchitecture ()
+    {
+
+        $productTypes = $this->getProductTypes();
+
+        foreach($this->_productTypesDefault as $key=>$value) {
+
+            if (!in_array($key,$productTypes)) {
+                $this->createProductType($key);
+            }
+        }
+
+        $productAttribute = $this->getProductAttributes();
+        foreach($this->_productAttributeDefault as $key=>$value) {
+            if (!in_array($key,$productAttribute)) {
+                $this->_createProductVariationType($key,'default');
+            }
+        }
+
+
+    }
+
   /**
    * https://www.drupal.org/project/commerce/issues/2811529
    * Createproduct.
@@ -67,13 +129,26 @@ class TourCommerceController extends ControllerBase {
    *   price is a core/lib/Drupal/Core/Field/FieldItemList
    */
   public function createProduct($tour = null) {
-      //$this->getProductTypes();exit;
+      $this->buildArchitecture();
 $tour = 65;
-//var_dump($entity_ids);exit;
+      echo 'getProductTypes ';
+        var_dump($this->getProductTypes());
+      echo '<br/>';
+      echo 'getProductVariations ';
+        var_dump($this->getProductVariations());
+      echo '<br/>';
+      echo 'getProductAttributes ';
+        var_dump($this->getProductAttributes());
+      echo '<br/>';
+      echo 'getProductVariationTypes ';
+        var_dump($this->getProductTypeVariations());exit;
       $tourData = $this->toursData->getTour($tour);
 
       $tourNodeId = key($tourData);
-      $this->_determineTourProductType($tourData[$tourNodeId]);
+      $productType = $this->_determineTourProductType($tourData[$tourNodeId]);
+      $productVariationType = $this->_determineProductTypeVariation($tourData[$tourNodeId]);
+
+      //var_dump($productVariationType);exit;
       //var_dump($tourData[$tourNodeId]['tour_prices'][$tour][0]['price_nodeid']);exit;
       $nTours = count($tourData);
 
@@ -101,12 +176,16 @@ $tour = 65;
                       'value'=> $value->get('price')->getValue()
                   ];
               }
+
           }
       } else {
           // Create variation
-          $variation[] = $this->createProductVariation($tourData[$tourNodeId]['tour_prices'][$tour][0]['price_main']);
+          $variation[] = $this->createProductVariation($tourData[$tourNodeId]['tour_prices'][$tour][0]['price_main'],['variation_type'=>$productVariationType,'attribute'=>'general']);
           if(isset($tourData[$tourNodeId]['tour_prices'][$tour][0]['price_child'])) {
-
+              $variation[] = $this->createProductVariation($tourData[$tourNodeId]['tour_prices'][$tour][0]['price_child'],['variation_type'=>$productVariationType,'attribute'=>'price_child']);
+          }
+          if(isset($tourData[$tourNodeId]['tour_prices'][$tour][0]['price_flight'])) {
+              $variation[] = $this->createProductVariation($tourData[$tourNodeId]['tour_prices'][$tour][0]['price_flight'],['variation_type'=>$productVariationType,'attribute'=>'price_flight']);
           }
 
           /**
@@ -154,12 +233,12 @@ $tour = 65;
         } else {
 
             // Now we make the variation like we did above, except we also have to state the attribute for color.
-            $variation = \Drupal\commerce_product\Entity\ProductVariation::create([
+            $variation = ProductVariation::create([
                 'type' => $attribute['variation_type'], // The default variation type is 'default'.
                 'sku' => 'test-product-01', // The variation sku.
                 'status' => 1, // The product status. 0 for disabled, 1 for enabled.
                 'price' => $price,
-                'attribute_color' => $attribute['attribute'], // Set the attribute_color to the value entity, can use id as well.
+                'attribute_price' => $attribute['attribute'], // Set the attribute_color to the value entity, can use id as well.
             ]);
             $variation->save();
         }
@@ -167,14 +246,19 @@ $tour = 65;
 
     }
 
+    /**
+     * Create Product type (default,tour,hotel,)
+     * @param $id
+     */
     public function createProductType ($id)
     {
+        $properties =  $this->_productTypesDefault[$id];
         $productType = \Drupal\commerce_product\Entity\ProductType::create([
             'id' => $id,
-            'label' => 'Product Type with Price Variations',
-            'status' => 1, // 0 for disabled, 1 for enabled
-            'description' => 'Tour Prices Variations', // Optional
-            'variationType' => 'variation_type_with_color', // The variation type we want to reference for this
+            'label' => isset($properties['label']) ? $properties['label'] :'Product Type with Price Variations',
+            'status' => isset($properties['status']) ? $properties['status'] :1, // 0 for disabled, 1 for enabled
+            'description' => isset($properties['description']) ? $properties['description'] : 'Default Tour Prices Variations', // Optional
+            'variationType' => isset($properties['variation_type']) ? $properties['variation_type'] :'default', // The variation type we want to reference for this
             'injectVariationFields' => TRUE, // Optional - defaults to true
         ]);
         $productType->save();
@@ -185,33 +269,42 @@ $tour = 65;
         commerce_product_add_body_field($productType);
     }
 
-    protected function _createProductVariationType ($variationType = 'variation_type_tour_prices')
+
+    /**
+     * @param string $variationType
+     */
+    protected function _createProductVariationType ($variation,$variationTypeId = 'default')
     {
 // Create the new variation type.
+        /**
         $variationType = \Drupal\commerce_product\Entity\ProductVariationType::create([
             'status' => 1, // Status, 0 for disabled, 1 for enabled.
-            'id' => $variationType,
-            'label' => 'Variation for ' ,  $variationType,
+            'id' => $variation,
+            'label' => 'Variation for ' .  $variation,
             'orderItemType' => 'default', // Order item type to reference. Default is 'default'.
             'generateTitle' => TRUE, // True to generate titles based off of attribute values.
         ]);
         $variationType->save();
-
+*/
 // The actual attribute we want to make. Super creative 'color' being used as an example.
+        $id = $variation;
         $priceAttribute = \Drupal\commerce_product\Entity\ProductAttribute::create([
-            'id' => 'prices',
-            'label' => 'Product Attribute Tour Prices ',
+            'id' => $id,
+            'label' => 'Attribute for '.$id,
         ]);
         $priceAttribute->save();
 
 // The service that adds the attribute to the variation type.
         $fieldManager = \Drupal::service('commerce_product.attribute_field_manager');
-        $fieldManager->createField($priceAttribute, $variationType->id());
-
+        $fieldManager->createField($priceAttribute,$variationTypeId ); // $variationType->id()
+        foreach($this->_productAttributeDefault[$variation] as $key=>$value) {
+            $variationCreate[$variation] = $this->_createProductVarationAttribute ( $value, $id);
+        }
 // Making the individual attribute values for 'color'.
-        $regular = $this->_createProductVarationAttribute ( 'regular' , $attribute = 'prices');
-        $child = $this->_createProductVarationAttribute ( 'child' , $attribute = 'prices');
-        $teen = $this->_createProductVarationAttribute ( 'teen' , $attribute = 'prices');
+        //$regular = $this->_createProductVarationAttribute ( 'regular' , $id);
+        //$child = $this->_createProductVarationAttribute ( 'child' ,$id);
+       // $teen = $this->_createProductVarationAttribute ( 'teen' , $id);
+        return $variationCreate;
 
 
     }
@@ -235,15 +328,44 @@ $tour = 65;
 
     }
 
-    /**
+    /** Type of Product, like tour,hotel,bus.flight
      * Get all product types
      * @return array
      */
     public function getProductTypes() {
-        $product_types = \Drupal\commerce_product\Entity\ProductType::loadMultiple();
+        $productTypes = \Drupal\commerce_product\Entity\ProductType::loadMultiple();
         //var_dump(array_keys($product_types));exit;
-        return array_keys($product_types);
+        return array_keys($productTypes);
     }
+
+    /**
+     * Variation of Product Type. Like regular_bus, regular_bus_hotel, regular_flight etc
+     * @return array
+     */
+    public function getProductTypeVariations ()
+    {
+        $productVariationTypes = \Drupal\commerce_product\Entity\ProductVariationType::loadMultiple();
+        //var_dump(array_keys($product_types));exit;
+        return array_keys($productVariationTypes);
+
+    }
+    public function getProductAttributes ()
+    {
+        $productAttribute = \Drupal\commerce_product\Entity\ProductAttribute::loadMultiple();
+        //var_dump(array_keys($product_types));exit;
+        return array_keys($productAttribute);
+
+    }
+
+    public function getProductVariations ()
+    {
+        $productVariations = \Drupal\commerce_product\Entity\ProductVariation::loadMultiple();
+        //var_dump(array_keys($product_types));exit;
+        return array_keys($productVariations);
+
+    }
+
+
 
     /**
      * Need explicit assign if tour with flight, in tour_type
@@ -252,18 +374,27 @@ $tour = 65;
      */
     protected function _determineTourProductType ($tourData)
     {
+            return 'tour';
+        //var_dump($tourData);exit;
+    }
+
+    protected function _determineProductTypeVariation ($tourData)
+    {
         $tourType = $this->toursData->showTourType($tourData['tour_type']);
-        //$tourPrices = $tourData['tour_prices'][$tourData['tour_rowid']];
-        //var_dump($tourPrices);exit;
+        $tourPrices = $tourData['tour_prices'][$tourData['tour_rowid']];
+        //var_dump( $tourPrices[0]['price_tour_is_flight']);exit;
         if('1' == $tourData['tour_days'] && 1 == $tourType->field_tour_type_rowid->value) {
             return 'regular_one_day';
-        }elseif('1'< $tourData['tour_days'] && 2 == $tourType->field_tour_type_rowid->value  ) {
+        }elseif('1'< $tourData['tour_days'] && 1 == $tourPrices[0]['price_tour_is_flight']) {
             return 'regular_flight';
 
-        } elseif ('1'< $tourData['tour_days'] && 1 == $tourType->field_tour_type_rowid->value) {
+        } elseif ('1'< $tourData['tour_days'] && 0 == $tourPrices[0]['price_tour_is_flight']) {
             return 'regular_bus_hotel'  ;
+        } elseif ('1'== $tourData['tour_days'] && 8 == $tourType->field_tour_type_rowid->value) {
+            return 'stars_bus'  ;
+        } elseif ('1'<$tourData['tour_days'] && 8 == $tourType->field_tour_type_rowid->value && 0 == $tourPrices['price_tour_is_flight']) {
+            return 'stars_hotel'  ;
         }
-        var_dump($tourData);exit;
-
+        //var_dump($tourData);exit;
     }
 }
