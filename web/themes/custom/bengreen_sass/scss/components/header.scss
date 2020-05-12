@@ -328,31 +328,41 @@ body.mobile-nav-active #mobile-nav-toggle {
     .block-page-top-image-block {
         .top-image-block {
             height: 8.9em;
-            width: 62em; 
+            width: 40em; 
             #top-image-liberty{
                 left:0.3em;
                 z-index: 100;
                 top: -0.5em;
                 width:6.25em;
                 height:10em;
+                position:absolute;
+
             }
             #top-image-city {
                 left:4.0em;
                 z-index: 98;
                 width:49.68em;
                 height:9.375em;
+                position:absolute;
             }
             #top-image-bus {
                 left:50em;
                 z-index: 100;
                 top: 1em;
                 width:15.625em;
-                height:9.375em;    
+                height:9.375em;  
+                position:absolute;
+                 display:none;
+                @media (min-width: 1070px) {
+                    display:block;
+                }
 
             }
-        @include media-breakpoint-down(xl) { 
-            /*width: 42em; */
-                }
+
+        @media (min-width: 1300px) {
+                    width: 62em; 
+                }             
+                
           @include media-breakpoint-down(xs) {
             display:none !important;
           }
@@ -386,7 +396,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 #navbar-main {
   height:80px;
-  background-color: $default-blue;
+  background-color: $default-blue !important;
   padding-left:0em !important;
   /*top:11.6em; */
 }

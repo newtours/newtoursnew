@@ -180,3 +180,11 @@ $text-color		: #777777;
 $white			: #fff;
 $offwhite		: #f9f9ff;
 $black			: #222;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);

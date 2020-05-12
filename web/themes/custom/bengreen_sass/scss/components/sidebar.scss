@@ -3,7 +3,10 @@
 .sidebar {
     .block {
         border-style: solid;
+        border-color:$border-grey;
         border-width: $border-width;
+        
+        
         padding: $spacer $spacer;
         margin: 0 0 $spacer;
         .content {
@@ -18,6 +21,7 @@
         text-shadow: 0 $border-width 0 $white;
         font-size: $font-size-lg;
         line-height: $headings-line-height;
+        color:#990000;
     }
     tbody {
         border: none;
@@ -30,6 +34,11 @@
     nav ul.nav {
         margin: 0 -($spacer);
     }
+    nav  > li {
+    position: relative;
+    display: block;
+}
+    
 }
 
 

@@ -9,6 +9,7 @@
 /nbproject/
 /config/sync
 nbproject/
+.netbeans.xml
 
 # Ignore sensitive information
 /web/sites/*/settings.php

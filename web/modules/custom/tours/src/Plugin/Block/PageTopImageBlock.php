@@ -76,13 +76,13 @@ class PageTopImageBlock extends BlockBase {
         'https://via.placeholder.com/250x150/09f.png/fff?text=3+img'
     ];
     $markUp = '<div id="top-image-block" class="top-image-block position-relative text-center">'
-            . '<div class="d-inline position-absolute" id="top-image-liberty">
+            . '<div class="" id="top-image-liberty">
                 <img src="https://via.placeholder.com/100x160/09f.png/fff?text=1+img" width="100" height="160" border="0" alt="Russian Tour in USA and Canada, Туры по США"   />
               </div>
-            <div class="d-inline position-absolute" id="top-image-city">
+            <div class="" id="top-image-city">
                 <img src="https://via.placeholder.com/795x150/09f.png/fff?text=2+img" width="795" height="150" border="0" alt = "Russian Tour in USA and Canada, Туры по США"   />
             </div>
-            <div class="d-inline position-absolute" id="top-image-bus">
+            <div class="" id="top-image-bus">
                 <img src="https://via.placeholder.com/250x150/09f.png/fff?text=3+img" width="250" height="150" border="0" alt = "Russian Tour in USA and Canada, Туры по США"   />
             </div>'
             . '</div>';
