@@ -31,6 +31,7 @@
         "drupal/datatables": "^1.0",
         "drupal/flag": "^4.0",
         "drupal/radix": "^4.8",
+        "drupal/radix_layouts": "^4.1",
         "drupal/time_field": "^1.10",
         "drush/drush": "^9.0.0",
         "greenlion/php-sql-parser": "^4.3",
