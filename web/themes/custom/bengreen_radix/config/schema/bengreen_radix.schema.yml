@@ -1,0 +1,5 @@
+# Schema for the configuration files of the bengreen_radix theme.
+
+bengreen_radix.settings:
+  type: theme_settings
+  label: 'bengreen_radix settings'

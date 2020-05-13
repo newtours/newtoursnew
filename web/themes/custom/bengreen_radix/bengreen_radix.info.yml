@@ -1,0 +1,39 @@
+name: bengreen_radix
+description: A theme based on Radix.
+screenshot: screenshot.png
+core: 8.x
+# version: VERSION
+engine: twig
+type: theme
+base theme: radix
+
+regions:
+  top_header: 'Top Header'
+  top_header_form: "Top Header Form"
+  navbar_branding: Navbar branding
+  navbar_left:  Navbar left
+  navbar_right: Navbar right
+  header: Header
+  content: Content
+  page_bottom: Page bottom
+  footer: Footer
+
+libraries:
+  - radix/style
+  - bengreen_radix/style
+
+libraries-override:
+  radix/bootstrap: false
+
+ckeditor_stylesheets:
+  - assets/css/bengreen_radix.style.css
+
+component-libraries:
+  bengreen_radix:
+    paths:
+      - ./src/components
+
+# Information added by Drupal.org packaging script on 2020-03-17
+version: '8.x-4.8'
+project: 'radix'
+datestamp: 1584430760
