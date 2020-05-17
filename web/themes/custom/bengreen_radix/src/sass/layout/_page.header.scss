@@ -3,3 +3,125 @@
 .page__header {
 
 }
+.bg-blue{
+        background-color: $default-blue !important;
+    }
+.navbar-white .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+               &:hover {
+                color:rgba(255, 255, 255, 1) !important;
+            }
+    }  
+
+/* Top header image */
+.top-header-block{
+    section{
+        margin:auto;
+        min-height:8.4em;
+    }
+
+    .block--pagetopimageblock-2 {
+        .top-image-block {
+            height: 8.9em;
+            width: 40em; 
+            margin:auto;
+            #top-image-liberty{
+                left:0.3em;
+                z-index: 100;
+                top: -0.5em;
+                width:6.25em;
+                height:10em;
+                position:absolute;
+
+            }
+            #top-image-city {
+                left:4.0em;
+                z-index: 98;
+                width:49.68em;
+                height:9.375em;
+                position:absolute;
+            }
+            #top-image-bus {
+                left:50em;
+                z-index: 100;
+                top: 1em;
+                width:15.625em;
+                height:9.375em;  
+                position:absolute;
+                 display:none;
+                @media (min-width: 1070px) {
+                    display:block;
+                }
+
+            }
+
+        @media (min-width: 1300px) {
+                    width: 62em; 
+                }             
+                
+          @include media-breakpoint-down(xs) {
+            display:none !important;
+          }
+          @include media-breakpoint-down(sm) {
+            display:none !important;
+          }
+          @include media-breakpoint-down(md) {
+            display:none !important;
+          }
+        }
+
+    }
+    .navbar-brand {
+        padding-left:1.5em !important;
+        text-align:center;
+        /*width:20em !important; */
+        /*height:4em !important; */
+        #main-top-logo {
+            margin:auto !important;
+            height: 5.3em !important;
+        }
+
+    }
+   .top-credential {
+            color:$default-blue; 
+            /*height:4.5em !important; */
+            font-size:0.6em;
+            font-weight:$font-weight-normal;
+            font-family: $font-primary            
+        }
+}
+
+.breadcrumb {
+  /*@include container-custom; */
+  background-color: inherit;
+  color: $white;
+  font-size: 14px; //$font-size-small+1; //14px
+  margin-bottom: 0px;
+  padding: 15px 0 9px;
+  text-transform: capitalize !important;
+  @media (min-width: 1070px) {
+    padding: 44px 0 9px;
+  }
+  a {
+    //color: $porcelain;;
+    font-weight: 100;
+  }
+  .active {
+    color: inherit;
+    font-weight: 600;
+  }
+
+  a:hover {
+   // color: $light-purple;
+  }
+
+  li:first-child a:before {
+    content: "\e91d";
+    font-family: "icomoon";
+    margin-right: 5px;
+  }
+  li:nth-child(2):before {
+    content: " ";
+    padding: 0;
+  }
+}

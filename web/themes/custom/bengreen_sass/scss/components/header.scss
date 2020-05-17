@@ -46,6 +46,9 @@
 
 }
 
+
+
+
 .top-head-btn{
   background:$primary-color;
   padding:9px 26px;
@@ -398,11 +401,24 @@ body.mobile-nav-active #mobile-nav-toggle {
   height:80px;
   background-color: $default-blue !important;
   padding-left:0em !important;
+  ul li {
+  color: rgba(255, 255, 255, 0.7) !important;
+               &:hover {
+                color:rgba(255, 255, 255, 1) !important;
+            }
+  }
+  ul #menu-logo-image {
+      width:70px;
+      img {
+        width:70px;
+        display:none;
+      }  
+      
+  }
   /*top:11.6em; */
 }
 #CollapsingNavbar {
   background-color: $default-blue;
   padding:0.3em;
 }
-
 

@@ -6,20 +6,35 @@
 #}
 <div class="page">
     
-      {% if page.top_header %}
-        {{ page.top_header }}
-      {% endif %}    
+  {% if page.top_header %}
+      <div class="top-header-block justify-content-between text-center">
+        <div class="container">  
+          <div class="row">
+              <div class="col-md-3  ">
+                <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="navbar-brand ">       
+                    <img src="/sites/default/files/logo2.png" alt="logo" class="img-fluid d-inline-block align-top "  id="main-top-logo"/>   
+                    <div class="top-credential" >
+                        <div>89-11 Merrick Blv</div>
+                        <div>Tel: 718-934-7644 </div>
+                        <div>name@queenslibrary.org</div>
+                    </div>
+                    </a>
+              </div>      
+                            
+          <div class="col-md-9 d-flex flex-row">
+            {{ page.top_header }}
+          </div>
+      </div>
+    </div>
+   </div>
+  {% endif %}    
     
-  {% embed '@radix/navbar/navbar.twig' with {
+  {% embed '@bengreen_radix/navbar/navbar.twig' with {
     placement: 'sticky-top',
     container: 'fixed',
-    color: 'light',
-    utility_classes: ['bg-light'],
+    color: 'white',
+    utility_classes: ['bg-blue'],
   } %}
-
-     
-
-   
   
     {% block branding %}
       {% if page.navbar_branding %}

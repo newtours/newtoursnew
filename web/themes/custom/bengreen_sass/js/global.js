@@ -10,7 +10,20 @@
   Drupal.behaviors.bootstrap_barrio_subtheme = {
     attach: function(context, settings) {
       var position = $(window).scrollTop();
+      var navbarTopHeight = $("#navbar-top").height()
       $(window).scroll(function () {
+          console.log(navbarTopHeight,$(this).scrollTop())
+          $("#menu-logo-image").attr("data-pos",$(this).scrollTop());
+        if ($(this).scrollTop() > (navbarTopHeight-70)) {
+          $("#main-top-logo,.top-credential").fadeTo( 0, 0 );
+          $("#menu-logo-image img").fadeIn(200) ;
+        } else {
+            $("#main-top-logo,.top-credential").fadeTo( 0, 1 );
+             $("#menu-logo-image img").fadeOut(200,function(){
+                 //$("#main-top-logo,.top-credential").fadeTo( 0, 1 );
+             }) ;
+             
+        }
         if ($(this).scrollTop() > 50) {
           $('body').addClass("scrolled");
         }
@@ -117,6 +130,7 @@
 		});
 	};
 	scrollWindow();
+
 
 
     }

@@ -101,7 +101,30 @@ $yiq-contrasted-threshold:  150 !default;
 $yiq-text-dark:             $gray-900 !default;
 $yiq-text-light:            $white !default;
 
+//## Blue variations Copid from Bario
+$default-blue: #000099;
+$dark-blue: #2a00b3;
+$mariner:			#5C3296; // Global textual link color, Links on light background (Porcelain)
+$doger-blue:			#000099; // Link hover color, Button color **replaced with doublespace bright-purple
+$border-blue:			#000099; // Blue border for buttons, **replaced with doublespace bright-purple
+$pure-blue:			#000080; // carousel card border color
+//$royal-blue:			#5C3296; // Load more button border in careers page
+$royal-blue:			#2570eb; // Load more button border in careers page
+$bluewood:			#2e405a; // Page hero headers, item quick view background,  title cards, footer
+$mega-quick-bg:         #e4e6f0; // Mega menu background color, Quickview background color
+$bright-purple:         #5C3296; // Global link color
+$brighter-purple:       #754EC4; // Hover global link color
+$mid-purple:            #422980; // Homepage carousel background, Title container, megamenu hover, interior(NAV) header
+$dark-purple:           #282561; // Mega menu panel, footer, quickview, my-account background
+$darkest-purple:        #1a0a50; // Dart text color, carousel tab text color
+$light-purple:          #c9c7ff; // Mega menu active link color
+$storm-gray:            #6A6C87; // Mega menu text color
+$tab-purple:            #130245; // Hero Carousel tab color
 
+//# Pearl Lusta variations
+$pearl-lusta: #f5edd6; 
+$pearl-lusta-light: #fcfaf4;
+$pearl-lusta-lighter: #faf6eb;
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.

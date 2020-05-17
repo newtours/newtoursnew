@@ -7,7 +7,7 @@ let gulp = require('gulp'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   browserSync = require('browser-sync').create()
-
+// ['assets/js/**/*.js', 'assets/css/**/*.css']
 const paths = {
   scss: {
     src: './src/sass/bengreen_radix.style.scss',
