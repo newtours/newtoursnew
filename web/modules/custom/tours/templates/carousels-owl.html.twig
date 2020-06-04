@@ -1,0 +1,51 @@
+
+
+
+
+<div class="section">
+  <div class="container" >
+    <!-- Carousel -->
+    <div class="row">
+      <div class="col-md-12 border border-primary" >
+        <div class="owl-carousel owl-theme top-main-page-header">
+
+  {% if tours_data is defined and not empty %}
+    {% for key,value in tours_data %}
+      {% if value.active == true %}
+        <div class="item d-flex flex-row">
+          <div class="card" >
+            <img class="card-img-top mx-auto" src="{{ value.image }}" alt="{{ value.title }}" >
+            <div class="card-body">
+              <h5 class="card-title">{{ value.title }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ topcard.subtitle }}</h6>
+              <p class="card-text">
+                {{ value.text }}
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {%  endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

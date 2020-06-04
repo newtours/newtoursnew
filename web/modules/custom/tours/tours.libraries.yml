@@ -1,4 +1,5 @@
 ## YAML Template.
+## /libraries/owl/assets/owl.carousel.css
 respTable:
   js:
     js/tourTable.js: {}
@@ -42,3 +43,14 @@ slick-carousel:
     js/slickCarousel.js: {}
   dependencies:
     - core/jquery
+owl-carousel:
+  css:
+    theme:
+      /libraries/owl/assets/owl.carousel.css: {}
+      /libraries/owl/assets/owl.theme.default.min.css: {}
+  js:
+    /libraries/owl/owl.carousel.min.js: {}
+    js/owlCarousel.js: {}
+  dependencies:
+    - core/jquery
+

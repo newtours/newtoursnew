@@ -1,11 +1,13 @@
 /* TYPOGRAPHY */
 
-
+//@import "../../../libraries/fontawesome/css/fontawesome.min";
 /* Google Fonts */
 
 //@import url("https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic");
 //@import url("https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,800,900");
 // font families
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500,600,700,800,900");
 $font-primary: 'Roboto',Arial, sans-serif;
 $font-lato: 'Lato',
 Arial,

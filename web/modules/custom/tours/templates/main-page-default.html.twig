@@ -1,0 +1,186 @@
+<div class="section">
+ <div class="container">
+   <div class="row" id="home-page-header">
+    <div class="col-md-12">
+      <div class="heading_s2 text-center my-3">
+        <h3 class="h1-responsive font-weight-bold text-center">Экскурсии и туры по США и Канаде на русском языке</h3>
+      </div>
+    </div>
+  </div>
+   <!--Grid row-->
+   <div class="row mx-1 ">
+     <!--Grid column-->
+     <div class="col-md-12 mb-4">
+       <div class="card card-image" style="background-image: url({{ main_info_content.bg_image }});">
+         <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+           <div>
+             <h6 class="pink-text"><i class="fas fa-plane"></i> <i class="fas fa-bus"></i> <i class="fas fa-car"></i> <i class="fas fa-helicopter"></i>  <i class="fas fa-biking"></i> <i class="fas fa-hiking"></i>  <!-- <strong> NewTours</strong>--></h6>
+             <h3 class="card-title py-3 font-weight-bold"><strong>{{ main_info_content.title }}</strong></h3>
+             <p class="mb-0">{{ main_info_content.text |raw }} {{ main_info_content.text1 |raw }}</p>
+             {% if main_info_content.text3 is defined and not empty %}
+                <ul class="card-meta-horizont  list-inline">
+                  {% for key,value in main_info_content.text3 %}
+                    <li class="list-inline-item">{{ value |raw }}</li>
+                  {% endfor %}
+                </ul>
+             {% endif %}
+             <!--
+             <a class="btn btn-oncard btn-secondary btn-rounded"><i class="far fa-clone left"></i> View project</a>
+             -->
+           </div>
+         </div>
+       </div>
+     </div>
+     <!--Grid column-->
+
+     <!--Grid column-->
+     <!-- First Card Holidays -->
+     <div class="col-md-4 mb-3 height-450">
+       <div class="card card-image  top-info-second-row" style="background-image: url({{ topcard.img[0] }});">
+         <div class="text-white text-center d-flex align-items-center rgba-black-light py-5 px-4">
+           <div>
+             <h6 class="pink-text"><i class="fas fa-chart-pie"></i><strong> Holidays</strong></h6>
+             <h3 class="card-title py-3 font-weight-bold"><strong>{{ topcard.title[0] |raw }}</strong></h3>
+
+               {% if topcard.content is defined and not empty %}
+             <ul class="card-meta pb-4">
+               {% for key,value in topcard.content %}
+                 <li class="">
+                   <a href="{{ value.link }}">
+                     <i class="far fa-calendar-alt"></i>
+                     {{ value.text |raw }}
+                   </a>
+
+
+                 </li>
+               {% endfor %}
+             </ul>
+             {% endif %}
+           </div>
+         </div>
+         <a class="btn btn-oncard btn-pink btn-rounded" href="{{  topcard.content[0]['link'] }}"><i class="far fa-clone left"></i>
+           {{topcard.content[0]['text'] }}</a>
+       </div>
+     </div>
+     <!--Grid column-->
+     <!--Grid column-->
+     <div class="col-md-4 mb-3 height-450">
+       <div class="card card-image  top-info-second-row" style="background-image: url({{ topcard.img[1] }});">
+         <div class="text-white text-center d-flex align-items-center rgba-black-light py-5 px-4">
+           <div>
+             <h6 class="pink-text"><i class="fas fa-chart-pie"></i><strong> Atlantic Stars</strong></h6>
+             <h3 class="card-title py-3 font-weight-bold"><strong>Серия туров "Звезды Атлантики"</strong></h3>
+             <p class="pb-3">Восточное Побережье, Западное Побережье, Канада, Флорида</p>
+           </div>
+         </div>
+         <a class="btn btn-oncard btn-green btn-rounded"><i class="far fa-clone left"></i> Смотреть все туры</a>
+       </div>
+     </div>
+     <!--Grid column-->
+     <!--Grid column-->
+     <div class="col-md-4 mb-3 height-450">
+       <div class="card card-image  top-info-second-row" style="background-image: url({{ topcard.img[2] }});">
+         <div class="text-white text-center d-flex align-items-center rgba-black-light py-5 px-4">
+           <div>
+             <h6 class="green-text"><i class="far fa-eye"></i><strong>California</strong></h6>
+             <h3 class="card-title py-3 font-weight-bold"><strong>Туры по западу США</strong></h3>
+             <p class="pb-3">
+               Фирменный Маршрут NEW TOURS на протяжении 30 ЛЕТ!
+               <br/>Калифорния - Невада -Аризона - Юта
+
+             </p>
+           </div>
+         </div>
+         <a class="btn btn-oncard btn-pink btn-rounded"><i class="far fa-clone left"></i> Смотреть все туры</a>
+       </div>
+     </div>
+     <!--Grid column-->
+
+   </div>
+   <!--Grid row end -->
+  <!-- Top Card -->
+   <!--
+    <div class="row">
+      <div class="col-sm">
+        <div class="card" >
+          <img class="card-img-top" src="{{ topcard.img[0] }}" alt="Card image cap">
+          <div class="card-body card-content-absolute">
+            <h5 class="card-title">{{ topcard.title[0] |raw }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ topcard.subtitle[0] }}</h6>
+            <ul class="card-meta list-inline">
+              <li class="list-inline-item">
+                <a href="/calendar"><i class="far fa-calendar-alt"></i>{{ topcard.calendar[0] }}</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/calendar"><i class="far fa-calendar-alt"></i>{{ topcard.calendar[0] }}</a>
+              </li>
+            </ul>
+            <p class="card-text">
+              {{ topcard.content[0] }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card " >
+          <img class="card-img-top" src="{{ topcard.img[1] }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ topcard.title[1] }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ topcard.subtitle[1] }}</h6>
+            <p class="card-text">
+              {{ topcard.content[1] }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card" >
+          <img class="card-img-top" src="{{ topcard.img[2] }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ topcard.title[0] }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ topcard.subtitle[0] }}</h6>
+            <p class="card-text">
+              {{ topcard.content[0] }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    -->
+  <!-- End of Top Card -->
+
+
+ </div>
+</div>
+
+
+
+<!-- Main page Central Content -->
+{% if central_content is defined and not empty %}
+<div class="section" >
+  <div class="container py-3" >
+    {% for key,value in central_content %}
+    <div class="card my-lg-3 my-sm-2 my-md-1 shadow-lg">
+      <div class="row hor-card-mainpage">
+        <div class="col-md-4 card-img-container">
+          <img src="{{ value.img }}" class="w-100" alt="{{ value.button.text }}">
+        </div>
+        <div class="col-md-8 px-3">
+          <div class="card-block px-3 py-3">
+            <h4 class="card-title text-center text-uppercase">{{ value.title | raw }}</h4>
+              {% for textKey,textValue in value.text %}
+                <p class="card-text">{{ textValue |raw }}</p>
+              {% endfor%}
+            <a href="{{ value.button.link |raw }}" class="btn btn-primary">{{ value.button.text }}</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+<!-- Main page Central content end -->
+

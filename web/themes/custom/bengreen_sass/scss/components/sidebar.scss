@@ -5,8 +5,8 @@
         border-style: solid;
         border-color:$border-grey;
         border-width: $border-width;
-        
-        
+
+
         padding: $spacer $spacer;
         margin: 0 0 $spacer;
         .content {
@@ -33,12 +33,16 @@
     }
     nav ul.nav {
         margin: 0 -($spacer);
+      li {
+        display: block;
+        position: relative;
+      }
     }
     nav  > li {
     position: relative;
     display: block;
 }
-    
+
 }
 
 

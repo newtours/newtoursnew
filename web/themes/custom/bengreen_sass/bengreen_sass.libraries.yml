@@ -1,19 +1,21 @@
 global-styling:
   version: VERSION
-  js: 
+  js:
     js/popper.min.js: {}
-    js/bootstrap.min.js: {}   
+    js/bootstrap.min.js: {}
     js/scrollax.min.js: {}
     js/jquery.waypoints.min.js: {}
     node_modules/aos/dist/aos.js: {}
     /libraries/owl/owl.carousel.min.js: {}
-    js/global.js: {} 
+    js/global.js: {}
     #js/main.js: {}
   css:
     component:
+       #/libraries/fontawesome/css/fontawesome.min.css: {}
        /libraries/slick/slick/slick.css: {}
        /libraries/slick/slick/slick-theme.css: {}
        css/style.css: {}
+
   dependencies:
     - core/jquery
     - core/drupal
@@ -22,4 +24,4 @@ slick:
   js:
     /libraries/slick/slick/slick.min.js: {}
   dependencies:
-    - core/jquery    
+    - core/jquery

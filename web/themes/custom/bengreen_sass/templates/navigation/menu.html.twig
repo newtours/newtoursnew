@@ -30,7 +30,13 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('nav') }}>
+      {%
+        set classesTop = [
+        'flex-column',
+         'nav',
+      ]
+      %}
+      <ul{{ attributes.addClass(classesTop) }}  >
     {% else %}
       <ul class="menu">
     {% endif %}

@@ -6,6 +6,10 @@
 .site-footer {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 35px 0 30px;
+
+}
+.site-footer h1,h2,h3,h4,h5,h6 {
+  color: #ffffff !important;
 }
 .site-footer .layout-container {
   padding: 0 15px;

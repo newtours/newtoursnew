@@ -59,12 +59,36 @@ function tours_theme($existing, $type, $theme, $path) {
         ],
 
     ],
+
+    'carousels_top' => [
+      'variables' => [
+        'tours_data'=>NULL,
+        'empty_data' => NULL,
+        'dates_data'=>NULL,
+        'price_data'=>NULL,
+        'header'=> NULL,
+        'table_title'=> NULL
+      ],
+
+    ],
+    'carousels_owl' => [
+      'variables' => [
+        'tours_data'=>NULL,
+        'empty_data' => NULL,
+        'dates_data'=>NULL,
+        'price_data'=>NULL,
+        'header'=> NULL,
+        'table_title'=> NULL
+      ],
+
+    ],
+
     'wishlist_carousel' => [
-          
+
     ],
     'index_list' =>[
 
-    ], 
+    ],
     'boots_tmp' =>[
 
     ],
@@ -73,6 +97,25 @@ function tours_theme($existing, $type, $theme, $path) {
              'image_source'=> null,
              'images'=> null
          ]
-     ]
+     ],
+    'main_page_default'=>[
+      'variables'=>[
+        'topcard'=> null,
+        'top_content'=>null,
+        'main_info_content'=>null,
+        'image_source'=> null,
+        'central_content'=> null,
+        'images'=> null
+      ]
+    ],
+    'page_default_footer'=>[
+      'variables'=>[
+        'topcard'=> null,
+        'top_content'=>null,
+        'main_content'=>null,
+        'image_source'=> null,
+        'images'=> null
+      ]
+    ]
  ];
 }

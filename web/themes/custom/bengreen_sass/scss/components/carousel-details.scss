@@ -1,44 +1,156 @@
+//----------------
+// OWL carousel slider
+//----------------
+.owl-carousel.top-main-page-header {
+  .owl-dots {
+
+  }
+  .owl-stage-outer {
+    overflow: hidden;
+  }
+  .owl-item + .owl-item{
+    margin-left:0px;
+  }
+  img{
+    transition: all 0.3s ease-in-out;
+    width:90%;
+    position: relative;
+    overflow: hidden;
+     a {
+      display: block;
+      overflow: hidden;
+    }
+
+  }
+  .card {
+    //width:12rem;
+    margin: 0 auto;
+  }
+  .card:hover img {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+
+
+  .ion-arrow-left-c::before {
+    content: "\ec43";
+    font-family: 'Linearicons';
+  }
+
+  .ion-arrow-right-c::before {
+    content: "\ec44";
+    font-family: 'Linearicons';
+  }
+
+  .owl-theme .owl-nav .owl-prev {
+    left: -70px;
+  }
+
+  .owl-theme .owl-nav .owl-next {
+    right: -70px;
+  }
+
+  .owl-theme .owl-nav [class*="owl-"] {
+    background-color: #fff;
+    position: absolute;
+    top: 35%;
+  }
+
+  .owl-theme .owl-nav [class*="owl-"] :hover {
+    color: #333;
+  }
+}
+
+
+.slider {
+  width: 90%;
+  margin: 100px auto;
+  .slick-next{
+    right:0 !important;
+    transform: rotate(-180deg) !important;
+    //transform: rotate(360deg) !important;
+  }
+  .slick-prev{
+    //left: 410px !important;
+    transform: rotate(360deg) !important;
+    //transform: rotate(-180deg) !important;
+  }
+}
+
+.slick-slide {
+  margin: 0px 20px;
+}
+
+.slick-slide img {
+  width: 100%;
+}
+
 
 //-----------------------------------
 // !! CAROUSEL SLIDER ARROW BUTTONS
 //-----------------------------------
 
 .slick-prev{
-   transform: rotate(-180deg) !important;
+  //transform: rotate(-180deg) !important;
 }
 
 .slick-next{
-   transform: rotate(360deg) !important;
+  transform: rotate(360deg) !important;
 }
 
 .slick-prev, .slick-next{
-    padding: 0 0.625em !important;
-    border-radius: 3.4375em !important;
-    box-shadow: 0 0.125em 0.9375em 0 rgba(0, 0, 0, 0.5) !important;
-    padding: 0.625em 1.875em !important;
-    width: 4.8125em !important;
-    height: 4.8125em !important;
-    z-index: 1000 !important;
-    top: 9.125em !important;
+  padding: 0 10px !important;
+  border-radius: 55px !important;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.5) !important;
+  padding: 10px 30px !important;
+  width: 77px !important;
+  height: 77px !important;
+  z-index: 1000 !important;
+  top: 146px !important;
 }
 
 
-
+.slick-prev:before, .slick-next:before{
+  content: "\f100" !important;
+  font-family: "Font Awesome 5 Free", fantasy !important;
+  font-weight: 900;
+  font-size: 25px !important;
+  color: $doger-blue;
+  opacity:1;
+}
 
 .slick-prev:hover, .slick-next:hover {
-   background:$doger-blue !important;
-   box-shadow: 0 0.125em 0.9375em 0 rgba(0, 0, 0, 0.32);
- }
+  background:$doger-blue !important;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.32);
+}
 
+//.slick-prev:hover:before, .slick-prev:focus:before, .slick-next:hover:before, .slick-next:focus:before {
+.slick-prev:hover:before, .slick-next:hover:before {
+  color:$white;
+}
 
+.slick-prev:focus, .slick-next:focus {
+  background: $white;
+}
 
+.slick-prev, .slick-next{
+  display:none !important;
+  background-color: $white;
 
+  @media (max-width: $screen-lg){
+    .slick-prev, .slick-next{
+      display: none !important;
+    }
+  }
+}
 
 .slick-slider:hover{
 
   @media (min-width: $screen-lg){
 
-  .slick-prev, .slick-next{
+    .slick-prev, .slick-next{
       display:block !important;
     }
   }

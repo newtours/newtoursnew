@@ -1,0 +1,157 @@
+/**
+ * @file
+ * Bootstrap Barrio specific styling for cards.
+ */
+
+.card {
+  .card-content-absolute {
+    position: absolute;
+    bottom: 0;
+    background-color: transparent;
+    padding: 15px;
+    z-index: 1;
+    right: 0;
+    left: 0;
+  }
+  .card-body{
+    color: $white !important;
+    text-transform: capitalize;
+    font-family: 'Roboto', sans-serif !important;
+    h5 {
+      font-family: 'Roboto', sans-serif !important;
+    }
+  }
+  card-content-heading {
+    font-weight: 700;
+    line-height: normal;
+  }
+  ul.card-meta {
+    display: table;
+    padding-left: 0pt;
+    text-align: left;
+    li {
+      //float: left;
+      list-style: none;
+      margin-right: 15px;
+      //display: list-item;
+      a {
+        color: #fff;
+        text-transform: capitalize;
+        font-size: 14px;
+
+        i {
+          margin-right: 5px;
+          color: #FF324D;
+          vertical-align: middle;
+          font-weight: normal;
+          font-size:20px;
+        }
+        i.calendar:before {
+          content: "\f073";
+        }
+        i.comment:before {
+          content: "\f27a";
+        }
+      }
+      a:hover{
+        color: #FF324D;
+        text-decoration:none;
+      }
+    }
+  }
+  ul.card-meta-horizont {
+    display: table;
+    li {
+      float: left;
+      list-style: none;
+      margin-right: 15px;
+      a {
+        color: $pink-ligh;
+        text-transform: capitalize;
+        font-size: 1.1rem;
+        font-weight:bold;
+
+        i {
+          margin-right: 5px;
+          color: $white;
+          vertical-align: middle;
+          font-weight: normal;
+          font-size:20px;
+        }
+        i.calendar:before {
+          content: "\f073";
+        }
+        i.comment:before {
+          content: "\f27a";
+        }
+      }
+      a:hover{
+        color: $white;
+        text-decoration:none;
+      }
+    }
+  }
+  .hor-card-mainpage {
+    .card-title{
+      color:$burgundy !important;
+    }
+    img {
+
+    }
+    p {
+      font-size: .78rem;
+      margin-bottom: 0.9rem;
+    }
+    .card-img-container:hover img {
+      animation-name: stretch;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-out;
+      animation-delay: 0s;
+      animation-direction: alternate;
+      animation-iteration-count: 2; //infinite;
+      animation-fill-mode: none;
+      animation-play-state: running;
+      //animation-delay: .5s;
+    }
+    @keyframes stretch {
+      0% {
+        transform: scale(.3);
+        //background-color: red;
+        border-radius: 100%;
+      }
+      50% {
+        background-color: orange;
+      }
+      100% {
+        transform: scale(1.2);
+        background-color: yellow;
+      }
+    }
+  }
+}
+.card.card-image {
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  [class*="rgba-"] {
+    border-radius: .25rem;
+  }
+   .rgba-black-strong,   .rgba-black-strong:after {
+    background-color: rgba(0,0,0,0.6);
+  }
+   .rgba-black-light,  .rgba-black-light:after {
+      background-color: rgba(0, 0, 0, 0.2) !important;
+
+  }
+  &.top-info-second-row {
+    height: 100% !important;
+      div  {
+        height: 100% !important;
+      }
+
+    .btn {
+      //margin-bottom:-200px !important;
+    }
+
+  }
+}

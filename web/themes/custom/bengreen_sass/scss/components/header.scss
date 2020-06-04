@@ -57,7 +57,7 @@
 .main-menu{
   padding-bottom:20px ;
   padding-top:20px ;
-  background:rgba(#fff,.15);  
+  background:rgba(#fff,.15);
   padding-left:15px;
   padding-right:15px;
 }
@@ -78,7 +78,7 @@
     display:none;
   }
   .main-menu{
-    background:transparent;    
+    background:transparent;
   }
 }
 
@@ -158,7 +158,7 @@
   text-decoration: none;
   display: inline-block;
   color: $white;
-  font-weight:500;  
+  font-weight:500;
   font-size: 12px;
   text-transform: uppercase;
   outline: none;
@@ -219,7 +219,7 @@
 
 #mobile-nav-toggle i {
   color: $white;
-  font-weight: 900;  
+  font-weight: 900;
 }
 
 @media (max-width: 991px) {
@@ -331,7 +331,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     .block-page-top-image-block {
         .top-image-block {
             height: 8.9em;
-            width: 40em; 
+            width: 40em;
             #top-image-liberty{
                 left:0.3em;
                 z-index: 100;
@@ -353,7 +353,7 @@ body.mobile-nav-active #mobile-nav-toggle {
                 z-index: 100;
                 top: 1em;
                 width:15.625em;
-                height:9.375em;  
+                height:9.375em;
                 position:absolute;
                  display:none;
                 @media (min-width: 1070px) {
@@ -363,9 +363,9 @@ body.mobile-nav-active #mobile-nav-toggle {
             }
 
         @media (min-width: 1300px) {
-                    width: 62em; 
-                }             
-                
+                    width: 62em;
+                }
+
           @include media-breakpoint-down(xs) {
             display:none !important;
           }
@@ -394,7 +394,7 @@ body.mobile-nav-active #mobile-nav-toggle {
             /*height:4.5em !important; */
             font-size:0.6em;
             font-weight:$font-weight-normal;
-            font-family: $font-primary            
+            font-family: $font-primary
         }
 }
 #navbar-main {
@@ -412,8 +412,8 @@ body.mobile-nav-active #mobile-nav-toggle {
       img {
         width:70px;
         display:none;
-      }  
-      
+      }
+
   }
   /*top:11.6em; */
 }
@@ -421,4 +421,49 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-color: $default-blue;
   padding:0.3em;
 }
+.row {
+  &#home-page-header {
+    h4 {
+      color: $default-blue !important;
+    }
+    h3 {
+      color: $default-blue !important;
+    }
+    h2 {
+      color: $default-blue !important;
+    }
+  }
+  // Created for dotted earth image, not used yet
+  &#home-page-top-info {
+    img{
+      opacity: 0.2;
+      border:none;
+    }
+    .card{
+      border:none;
+      height:450px;
+      .card-content-absolute {
+        position: absolute;
+        top: 0;
+        background-color: transparent;
+        padding: 15px;
+        z-index: 1;
+        right: 0;
+        left: 0;
+        color:$default-blue !important;
+
+      }
+      .card-meta {
+        position: absolute;
+        bottom: 0;
+        background-color: transparent;
+        padding: 15px;
+        z-index: 1;
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
 

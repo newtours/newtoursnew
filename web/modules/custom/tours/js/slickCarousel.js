@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -50,12 +50,33 @@
         slidesToShow: 3,
         slidesToScroll: 3
     });
-    $(".center").slick({
+    $("#top-mainpage-carousel").slick({
         dots: true,
         infinite: true,
         centerMode: true,
-        slidesToShow: 3,
-        slidesToScroll: 1
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        //focusOnSelect: true,
+      responsive: [
+        {
+          breakpoint: 1210,
+          settings: {
+            variableWidth: true,
+            draggable: true,
+            slidesToShow: 2,
+            arrows: false
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            variableWidth: true,
+            draggable: true,
+            slidesToShow: 1,
+            arrows: false
+          }
+        }
+      ]
     });
     $(".variable").slick({
         dots: true,
