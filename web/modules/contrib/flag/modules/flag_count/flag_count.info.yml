@@ -1,5 +1,5 @@
-name: Flag Bookmark
-description: Provides an example bookmark flag and supporting views.
+name: Flag Count
+description: Provides an example on how to display flag counts
 core: 8.x
 type: module
 dependencies:
