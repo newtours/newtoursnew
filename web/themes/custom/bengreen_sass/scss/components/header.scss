@@ -405,6 +405,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: rgba(255, 255, 255, 0.7) !important;
                &:hover {
                 color:rgba(255, 255, 255, 1) !important;
+                 .dropdown-menu {
+                   display: block;
+                   top:85% !important;
+                 }
             }
   }
   ul #menu-logo-image {

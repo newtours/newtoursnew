@@ -60,7 +60,8 @@
           ]
         %}
         {% if item.below %}
-          {{ link(item.title, item.url, {'class': link_classes, 'data-toggle': 'dropdown', 'aria-expanded': 'false', 'aria-haspopup': 'true' }) }}
+          {# 'class': link_classes, 'data-toggle': 'dropdown', #}
+          {{ link(item.title, item.url, {'class': link_classes,  'aria-expanded': 'false', 'aria-haspopup': 'true' }) }}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% else %}
           {{ link(item.title, item.url, {'class': link_classes}) }}
