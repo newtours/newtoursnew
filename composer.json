@@ -13,7 +13,8 @@
         "drupal/address_autocomplete_gmaps": "1.x-dev@dev",
         "drupal/mail_login": "^2.2",
         "drupal/geofield": "^1.16",
-        "drush/drush": "9.*"
+        "drush/drush": "9.*",
+        "drupal/datatables": "^2.0"
     },
     "repositories": {
         "drupal": {
