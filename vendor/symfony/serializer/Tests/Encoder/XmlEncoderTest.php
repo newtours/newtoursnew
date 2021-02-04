@@ -14,6 +14,7 @@ namespace Symfony\Component\Serializer\Tests\Encoder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 use Symfony\Component\Serializer\Normalizer\CustomNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Serializer;
@@ -267,10 +268,10 @@ XML;
     {
         $source = <<<XML
 <?xml version="1.0"?>
-<document index="-12.11">Name</document>
+<document index="12.11">Name</document>
 XML;
 
-        $this->assertSame(['@index' => -12.11, '#' => 'Name'], $this->encoder->decode($source, 'xml'));
+        $this->assertSame(['@index' => 12.11, '#' => 'Name'], $this->encoder->decode($source, 'xml'));
     }
 
     public function testDecodeNegativeFloatAttribute()
@@ -281,6 +282,16 @@ XML;
 XML;
 
         $this->assertSame(['@index' => -12.11, '#' => 'Name'], $this->encoder->decode($source, 'xml'));
+    }
+
+    public function testDecodeFloatAttributeWithZeroWholeNumber()
+    {
+        $source = <<<XML
+<?xml version="1.0"?>
+<document index="0.123">Name</document>
+XML;
+
+        $this->assertSame(['@index' => 0.123, '#' => 'Name'], $this->encoder->decode($source, 'xml'));
     }
 
     public function testNoTypeCastAttribute()
@@ -661,6 +672,20 @@ XML;
         $this->assertEquals($expectedXml, $actualXml);
     }
 
+    public function testEncodeXmlWithDomNodeValue()
+    {
+        $expectedXml = <<<'XML'
+<?xml version="1.0"?>
+<response><foo>bar</foo><bar>foo &amp; bar</bar></response>
+
+XML;
+        $document = new \DOMDocument();
+
+        $actualXml = $this->encoder->encode(['foo' => $document->createTextNode('bar'), 'bar' => $document->createTextNode('foo & bar')], 'xml');
+
+        $this->assertEquals($expectedXml, $actualXml);
+    }
+
     public function testEncodeXmlWithDateTimeObjectValue()
     {
         $xmlEncoder = $this->createXmlEncoderWithDateTimeNormalizer();
@@ -677,6 +702,14 @@ XML;
         $actualXml = $xmlEncoder->encode(['foo' => ['@dateTime' => new \DateTime($this->exampleDateTimeString)]], 'xml');
 
         $this->assertEquals($this->createXmlWithDateTimeField(), $actualXml);
+    }
+
+    public function testNotEncodableValueExceptionMessageForAResource()
+    {
+        $this->expectException(NotEncodableValueException::class);
+        $this->expectExceptionMessage('An unexpected value could not be serialized: stream resource');
+
+        (new XmlEncoder())->encode(tmpfile(), 'xml');
     }
 
     /**

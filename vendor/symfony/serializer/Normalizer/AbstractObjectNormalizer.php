@@ -91,7 +91,7 @@ abstract class AbstractObjectNormalizer extends AbstractNormalizer
 
         foreach ($stack as $attribute => $attributeValue) {
             if (!$this->serializer instanceof NormalizerInterface) {
-                throw new LogicException(sprintf('Cannot normalize attribute "%s" because the injected serializer is not a normalizer', $attribute));
+                throw new LogicException(sprintf('Cannot normalize attribute "%s" because the injected serializer is not a normalizer.', $attribute));
             }
 
             $data = $this->updateData($data, $attribute, $this->serializer->normalize($attributeValue, $format, $this->createChildContext($context, $attribute, $format)));
@@ -108,7 +108,7 @@ abstract class AbstractObjectNormalizer extends AbstractNormalizer
      *
      * @return string[]
      */
-    protected function getAttributes($object, $format = null, array $context)
+    protected function getAttributes($object, $format, array $context)
     {
         $class = \get_class($object);
         $key = $class.'-'.$context['cache_key'];
@@ -244,15 +244,17 @@ abstract class AbstractObjectNormalizer extends AbstractNormalizer
                 return null;
             }
 
-            if ($type->isCollection() && null !== ($collectionValueType = $type->getCollectionValueType()) && Type::BUILTIN_TYPE_OBJECT === $collectionValueType->getBuiltinType()) {
+            $collectionValueType = $type->isCollection() ? $type->getCollectionValueType() : null;
+
+            // Fix a collection that contains the only one element
+            // This is special to xml format only
+            if ('xml' === $format && null !== $collectionValueType && (!\is_array($data) || !\is_int(key($data)))) {
+                $data = [$data];
+            }
+
+            if (null !== $collectionValueType && Type::BUILTIN_TYPE_OBJECT === $collectionValueType->getBuiltinType()) {
                 $builtinType = Type::BUILTIN_TYPE_OBJECT;
                 $class = $collectionValueType->getClassName().'[]';
-
-                // Fix a collection that contains the only one element
-                // This is special to xml format only
-                if ('xml' === $format && !\is_int(key($data))) {
-                    $data = [$data];
-                }
 
                 if (null !== $collectionKeyType = $type->getCollectionKeyType()) {
                     $context['key_type'] = $collectionKeyType;
@@ -266,7 +268,7 @@ abstract class AbstractObjectNormalizer extends AbstractNormalizer
 
             if (Type::BUILTIN_TYPE_OBJECT === $builtinType) {
                 if (!$this->serializer instanceof DenormalizerInterface) {
-                    throw new LogicException(sprintf('Cannot denormalize attribute "%s" for class "%s" because injected serializer is not a denormalizer', $attribute, $class));
+                    throw new LogicException(sprintf('Cannot denormalize attribute "%s" for class "%s" because injected serializer is not a denormalizer.', $attribute, $class));
                 }
 
                 $childContext = $this->createChildContext($context, $attribute, $format);
@@ -302,7 +304,7 @@ abstract class AbstractObjectNormalizer extends AbstractNormalizer
      */
     protected function denormalizeParameter(\ReflectionClass $class, \ReflectionParameter $parameter, $parameterName, $parameterData, array $context, $format = null)
     {
-        if (null === $this->propertyTypeExtractor || null === $types = $this->propertyTypeExtractor->getTypes($class->getName(), $parameterName)) {
+        if ((method_exists($parameter, 'isVariadic') && $parameter->isVariadic()) || null === $this->propertyTypeExtractor || null === $this->propertyTypeExtractor->getTypes($class->getName(), $parameterName)) {
             return parent::denormalizeParameter($class, $parameter, $parameterName, $parameterData, $context, $format);
         }
 
@@ -398,6 +400,7 @@ abstract class AbstractObjectNormalizer extends AbstractNormalizer
      */
     private function getCacheKey($format, array $context)
     {
+        unset($context[self::OBJECT_TO_POPULATE]);
         unset($context['cache_key']); // avoid artificially different keys
         try {
             return md5($format.serialize([

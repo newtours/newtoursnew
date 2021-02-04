@@ -15,6 +15,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,6 @@ use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Config\EnvParametersResource;
 use Symfony\Component\HttpKernel\DependencyInjection\ResettableServicePass;
 use Symfony\Component\HttpKernel\DependencyInjection\ServicesResetter;
-use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\HttpKernel\Tests\Fixtures\KernelForOverrideName;
@@ -79,7 +79,7 @@ class KernelTest extends TestCase
         $containerDir = __DIR__.'/Fixtures/cache/custom/'.substr(\get_class($kernel->getContainer()), 0, 16);
         $this->assertTrue(unlink(__DIR__.'/Fixtures/cache/custom/FixturesCustomDebugProjectContainer.php.meta'));
         $this->assertFileExists($containerDir);
-        $this->assertFileNotExists($containerDir.'.legacy');
+        $this->assertFileDoesNotExist($containerDir.'.legacy');
 
         $kernel = new CustomProjectDirKernel(function ($container) { $container->register('foo', 'stdClass')->setPublic(true); });
         $kernel->boot();
@@ -87,8 +87,8 @@ class KernelTest extends TestCase
         $this->assertFileExists($containerDir);
         $this->assertFileExists($containerDir.'.legacy');
 
-        $this->assertFileNotExists($legacyContainerDir);
-        $this->assertFileNotExists($legacyContainerDir.'.legacy');
+        $this->assertFileDoesNotExist($legacyContainerDir);
+        $this->assertFileDoesNotExist($legacyContainerDir.'.legacy');
     }
 
     public function testBootInitializesBundlesAndContainer()
@@ -119,7 +119,7 @@ class KernelTest extends TestCase
     public function testBootSetsTheBootedFlagToTrue()
     {
         // use test kernel to access isBooted()
-        $kernel = $this->getKernelForTest(['initializeBundles', 'initializeContainer']);
+        $kernel = $this->getKernel(['initializeBundles', 'initializeContainer']);
         $kernel->boot();
 
         $this->assertTrue($kernel->isBooted());
@@ -220,9 +220,12 @@ class KernelTest extends TestCase
     public function testShutdownGivesNullContainerToAllBundles()
     {
         $bundle = $this->getMockBuilder('Symfony\Component\HttpKernel\Bundle\Bundle')->getMock();
-        $bundle->expects($this->at(3))
+        $bundle->expects($this->exactly(2))
             ->method('setContainer')
-            ->with(null);
+            ->withConsecutive(
+                [$this->isInstanceOf(ContainerInterface::class)],
+                [null]
+            );
 
         $kernel = $this->getKernel(['getBundles']);
         $kernel->expects($this->any())
@@ -899,7 +902,7 @@ EOF;
      */
     public function testKernelStartTimeIsResetWhileBootingAlreadyBootedKernel()
     {
-        $kernel = $this->getKernelForTest(['initializeBundles'], true);
+        $kernel = $this->getKernel(['initializeBundles'], [], true);
         $kernel->boot();
         $preReBoot = $kernel->getStartTime();
 
@@ -957,15 +960,15 @@ EOF;
      *
      * @return Kernel
      */
-    protected function getKernel(array $methods = [], array $bundles = [])
+    protected function getKernel(array $methods = [], array $bundles = [], $debug = false)
     {
         $methods[] = 'registerBundles';
 
         $kernel = $this
-            ->getMockBuilder('Symfony\Component\HttpKernel\Kernel')
+            ->getMockBuilder(KernelForTest::class)
             ->setMethods($methods)
-            ->setConstructorArgs(['test', false])
-            ->getMockForAbstractClass()
+            ->setConstructorArgs(['test', $debug])
+            ->getMock()
         ;
         $kernel->expects($this->any())
             ->method('registerBundles')
@@ -980,10 +983,11 @@ EOF;
 
     protected function getKernelForTest(array $methods = [], $debug = false)
     {
-        $kernel = $this->getMockBuilder('Symfony\Component\HttpKernel\Tests\Fixtures\KernelForTest')
+        $kernel = $this->getMockBuilder(KernelForTest::class)
             ->setConstructorArgs(['test', $debug])
             ->setMethods($methods)
-            ->getMock();
+            ->getMock()
+        ;
         $p = new \ReflectionProperty($kernel, 'rootDir');
         $p->setAccessible(true);
         $p->setValue($kernel, __DIR__.'/Fixtures');
@@ -1003,6 +1007,11 @@ class TestKernel implements HttpKernelInterface
 
     public function handle(Request $request, $type = self::MASTER_REQUEST, $catch = true)
     {
+    }
+
+    public function getProjectDir()
+    {
+        return __DIR__.'/Fixtures';
     }
 }
 

@@ -29,7 +29,7 @@ class AbstractObjectNormalizerTest extends TestCase
     public function testDenormalize()
     {
         $normalizer = new AbstractObjectNormalizerDummy();
-        $normalizedData = $normalizer->denormalize(['foo' => 'foo', 'bar' => 'bar', 'baz' => 'baz'], __NAMESPACE__.'\Dummy');
+        $normalizedData = $normalizer->denormalize(['foo' => 'foo', 'bar' => 'bar', 'baz' => 'baz'], Dummy::class);
 
         $this->assertSame('foo', $normalizedData->foo);
         $this->assertNull($normalizedData->bar);
@@ -39,12 +39,12 @@ class AbstractObjectNormalizerTest extends TestCase
     public function testInstantiateObjectDenormalizer()
     {
         $data = ['foo' => 'foo', 'bar' => 'bar', 'baz' => 'baz'];
-        $class = __NAMESPACE__.'\Dummy';
+        $class = Dummy::class;
         $context = [];
 
         $normalizer = new AbstractObjectNormalizerDummy();
 
-        $this->assertInstanceOf(__NAMESPACE__.'\Dummy', $normalizer->instantiateObject($data, $class, $context, new \ReflectionClass($class), []));
+        $this->assertInstanceOf(Dummy::class, $normalizer->instantiateObject($data, $class, $context, new \ReflectionClass($class), []));
     }
 
     public function testDenormalizeWithExtraAttributes()
@@ -55,7 +55,7 @@ class AbstractObjectNormalizerTest extends TestCase
         $normalizer = new AbstractObjectNormalizerDummy($factory);
         $normalizer->denormalize(
             ['fooFoo' => 'foo', 'fooBar' => 'bar'],
-            __NAMESPACE__.'\Dummy',
+            Dummy::class,
             'any',
             ['allow_extra_attributes' => false]
         );
@@ -121,16 +121,62 @@ class AbstractObjectNormalizerTest extends TestCase
         $extractor = $this->getMockBuilder(PhpDocExtractor::class)->getMock();
         $extractor->method('getTypes')
             ->will($this->onConsecutiveCalls(
-                [
-                    new Type(
-                        'array',
-                        false,
-                        null,
-                        true,
-                        new Type('int'),
-                        new Type('object', false, DummyChild::class)
-                    ),
-                ],
+                [new Type('array', false, null, true, new Type('int'), new Type('object', false, DummyChild::class))],
+                null
+            ));
+
+        $denormalizer = new AbstractObjectNormalizerCollectionDummy(null, null, $extractor);
+        $arrayDenormalizer = new ArrayDenormalizerDummy();
+        $serializer = new SerializerCollectionDummy([$arrayDenormalizer, $denormalizer]);
+        $arrayDenormalizer->setSerializer($serializer);
+        $denormalizer->setSerializer($serializer);
+
+        return $denormalizer;
+    }
+
+    public function testDenormalizeStringCollectionDecodedFromXmlWithOneChild()
+    {
+        $denormalizer = $this->getDenormalizerForStringCollection();
+
+        // if an xml-node can have children which should be deserialized as string[]
+        // and only one child exists
+        $stringCollection = $denormalizer->denormalize(['children' => 'foo'], StringCollection::class, 'xml');
+
+        $this->assertInstanceOf(StringCollection::class, $stringCollection);
+        $this->assertIsArray($stringCollection->children);
+        $this->assertCount(1, $stringCollection->children);
+        $this->assertEquals('foo', $stringCollection->children[0]);
+    }
+
+    public function testDenormalizeStringCollectionDecodedFromXmlWithTwoChildren()
+    {
+        $denormalizer = $this->getDenormalizerForStringCollection();
+
+        // if an xml-node can have children which should be deserialized as string[]
+        // and only one child exists
+        $stringCollection = $denormalizer->denormalize(['children' => ['foo', 'bar']], StringCollection::class, 'xml');
+
+        $this->assertInstanceOf(StringCollection::class, $stringCollection);
+        $this->assertIsArray($stringCollection->children);
+        $this->assertCount(2, $stringCollection->children);
+        $this->assertEquals('foo', $stringCollection->children[0]);
+        $this->assertEquals('bar', $stringCollection->children[1]);
+    }
+
+    public function testDenormalizeNotSerializableObjectToPopulate()
+    {
+        $normalizer = new AbstractObjectNormalizerDummy();
+        $normalizedData = $normalizer->denormalize(['foo' => 'foo'], Dummy::class, null, [AbstractObjectNormalizer::OBJECT_TO_POPULATE => new NotSerializable()]);
+
+        $this->assertSame('foo', $normalizedData->foo);
+    }
+
+    private function getDenormalizerForStringCollection()
+    {
+        $extractor = $this->getMockBuilder(PhpDocExtractor::class)->getMock();
+        $extractor->method('getTypes')
+            ->will($this->onConsecutiveCalls(
+                [new Type('array', false, null, true, new Type('int'), new Type('string'))],
                 null
             ));
 
@@ -210,6 +256,12 @@ class AbstractObjectNormalizerWithMetadata extends AbstractObjectNormalizer
     {
         $object->$attribute = $value;
     }
+}
+
+class StringCollection
+{
+    /** @var string[] */
+    public $children;
 }
 
 class DummyCollection
@@ -333,5 +385,17 @@ class ArrayDenormalizerDummy implements DenormalizerInterface, SerializerAwareIn
     public function setSerializer(SerializerInterface $serializer)
     {
         $this->serializer = $serializer;
+    }
+}
+
+class NotSerializable
+{
+    public function __sleep()
+    {
+        if (class_exists(\Error::class)) {
+            throw new \Error('not serializable');
+        }
+
+        throw new \Exception('not serializable');
     }
 }
