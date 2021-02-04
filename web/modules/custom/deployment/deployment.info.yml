@@ -1,0 +1,5 @@
+name: 'deployment'
+type: module
+description: 'Deploy staff from gitHub'
+core: 8.x
+package: 'Custom'

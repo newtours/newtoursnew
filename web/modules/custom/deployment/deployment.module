@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains deployment.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function deployment_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the deployment module.
+    case 'help.page.deployment':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Deploy staff from gitHub') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function deployment_theme() {
+  return [
+    'deployment' => [
+      'render element' => 'children',
+      'variables' => ['result' => NULL],
+    ],
+  ];
+}

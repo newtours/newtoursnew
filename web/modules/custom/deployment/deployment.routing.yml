@@ -1,0 +1,9 @@
+deployment.deploy_controller_Deploy:
+  path: '/deployment/deploy'
+  defaults:
+    _controller: '\Drupal\deployment\Controller\DeployController::Deploy'
+    _title: 'Deploy'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

@@ -1,0 +1,13 @@
+{
+    "name": "deployment",
+    "type": "drupal-module",
+    "description": "Deploy staff from gitHub",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/deployment",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/deployment",
+        "source": "http://cgit.drupalcode.org/deployment"
+    }
+}

@@ -1,0 +1,7 @@
+deployment.deploy_controller_Deploy:
+  title: 'Deploy'
+  route_name: deployment.deploy_controller_Deploy
+  description: 'Deploy Project via Git'
+  parent: system.admin_config_system
+  weight: 99
+
