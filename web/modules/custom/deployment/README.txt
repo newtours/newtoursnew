@@ -8,7 +8,7 @@ sssmz54e2ykb
 
 DOWNLOAD ADDITIONAL MODULES
 ---------------------------
-
+ git fetch git@github.com:newtours/newtoursnew.git  development:development &&   git --work-tree=/home/sssmz54e2ykb/public_html checkout -f development
 
 
 MORE INFORMATION
